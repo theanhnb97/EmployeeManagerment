@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DataAccessLayer
 {
-    public interface IObject<T>
+    public interface IEntities<T>
     {
         /// <summary>
         /// Get All Data from DB to List

@@ -1,26 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using log4net;
-using Oracle.ManagedDataAccess.Client;
-
-namespace DataAccessLayer
+﻿namespace DataAccessLayer
 {
-    class SqlHelp
+    using log4net;
+    using Oracle.ManagedDataAccess.Client;
+    using System;
+    using System.Data;
+
+    /// <summary>
+    /// Defines the <see cref="SqlHelpers" />
+    /// </summary>
+    internal class SqlHelpers
     {
         /// <summary>
-        /// Excute Query return DataTable
+        /// Defines the _logger
         /// </summary>
-        /// <param name="queryString"></param>
-        /// <param name="con"></param>
-        /// <param name="sP"></param>
-        /// <returns></returns>
-        /// 
         private readonly ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        /// <summary>
+        /// The ExcuteQuery
+        /// </summary>
+        /// <param name="queryString">The queryString<see cref="String"/></param>
+        /// <param name="commandType">The commandType<see cref="CommandType"/></param>
+        /// <param name="con">The con<see cref="OracleConnection"/></param>
+        /// <param name="sP">The sP<see cref="OracleParameter[]"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable ExcuteQuery(String queryString, CommandType commandType, OracleConnection con, OracleParameter[] sP)
         {
             try
@@ -42,13 +44,13 @@ namespace DataAccessLayer
         }
 
         /// <summary>
-        /// Excute query non return sqldata
+        /// The ExcuteNonQuery
         /// </summary>
-        /// <param name="queryString"></param>
-        /// <param name="commandType"></param>
-        /// <param name="con"></param>
-        /// <param name="sP"></param>
-        /// <returns></returns>
+        /// <param name="queryString">The queryString<see cref="String"/></param>
+        /// <param name="commandType">The commandType<see cref="CommandType"/></param>
+        /// <param name="con">The con<see cref="OracleConnection"/></param>
+        /// <param name="sP">The sP<see cref="OracleParameter[]"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int ExcuteNonQuery(String queryString, CommandType commandType, OracleConnection con, OracleParameter[] sP)
         {
             try
@@ -66,7 +68,5 @@ namespace DataAccessLayer
                 return 0;
             }
         }
-
-
     }
 }
