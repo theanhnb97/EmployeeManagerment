@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
     public interface IObject<T>
     {
         /// <summary>
-        /// Get All Data from DB to List<T>
+        /// Get All Data from DB to List
         /// </summary>
         /// <returns></returns>
         List<T> Get();
@@ -20,7 +17,7 @@ namespace DataAccessLayer
         /// <param name="keyword"></param>
         /// <returns></returns>
         List<T> Search(String keyword);
-
+        
         /// <summary>
         /// Delete and return result
         /// </summary>
