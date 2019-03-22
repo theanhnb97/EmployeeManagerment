@@ -15,17 +15,17 @@ namespace DataAccessLayer
         /// <summary>
         /// Excute Query return DataTable
         /// </summary>
-        /// <param name="QueryString"></param>
+        /// <param name="queryString"></param>
         /// <param name="con"></param>
         /// <param name="sP"></param>
         /// <returns></returns>
         /// 
-        ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public DataTable ExcuteQuery(String QueryString,CommandType commandType, OracleConnection con, OracleParameter[] sP)
+        private readonly ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public DataTable ExcuteQuery(String queryString, CommandType commandType, OracleConnection con, OracleParameter[] sP)
         {
             try
             {
-                OracleCommand cmd = new OracleCommand(QueryString, con);
+                OracleCommand cmd = new OracleCommand(queryString, con);
                 cmd.CommandType = commandType;
                 if (sP != null)
                     cmd.Parameters.AddRange(sP);
@@ -36,7 +36,7 @@ namespace DataAccessLayer
             }
             catch (OracleException e)
             {
-                logger.Debug(e.Message);
+                _logger.Debug(e.Message);
                 return null;
             }
         }
@@ -44,16 +44,17 @@ namespace DataAccessLayer
         /// <summary>
         /// Excute query non return sqldata
         /// </summary>
-        /// <param name="QueryString"></param>
+        /// <param name="queryString"></param>
+        /// <param name="commandType"></param>
         /// <param name="con"></param>
         /// <param name="sP"></param>
         /// <returns></returns>
-        public int ExcuteNonQuery(String QueryString,CommandType commandType, OracleConnection con, OracleParameter[] sP)
+        public int ExcuteNonQuery(String queryString, CommandType commandType, OracleConnection con, OracleParameter[] sP)
         {
             try
             {
                 con.Open();
-                OracleCommand cmd = new OracleCommand(QueryString, con);
+                OracleCommand cmd = new OracleCommand(queryString, con);
                 cmd.CommandType = commandType;
                 if (sP != null)
                     cmd.Parameters.AddRange(sP);
@@ -61,11 +62,11 @@ namespace DataAccessLayer
             }
             catch (OracleException e)
             {
-                logger.Debug(e.Message);
+                _logger.Debug(e.Message);
                 return 0;
             }
         }
-        
+
 
     }
 }
