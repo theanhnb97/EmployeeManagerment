@@ -1,0 +1,12 @@
+D:\TheAnh\CSharp\Day4\Day4\Assignments\NguyenTheAnh_ntanh6\CommonLibrary\bin\Debug\CommonLibrary.dll
+D:\TheAnh\CSharp\Day4\Day4\Assignments\NguyenTheAnh_ntanh6\CommonLibrary\bin\Debug\CommonLibrary.pdb
+D:\TheAnh\CSharp\Day4\Day4\Assignments\NguyenTheAnh_ntanh6\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
+D:\TheAnh\CSharp\Day4\Day4\Assignments\NguyenTheAnh_ntanh6\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
+D:\TheAnh\CSharp\Day4\Day4\Assignments\NguyenTheAnh_ntanh6\CommonLibrary\obj\Debug\CommonLibrary.dll
+D:\TheAnh\CSharp\Day4\Day4\Assignments\NguyenTheAnh_ntanh6\CommonLibrary\obj\Debug\CommonLibrary.pdb
+D:\TheAnh\CSharp\Exam\NguyenTheAnh_ntanh6\CommonLibrary\bin\Debug\CommonLibrary.dll
+D:\TheAnh\CSharp\Exam\NguyenTheAnh_ntanh6\CommonLibrary\bin\Debug\CommonLibrary.pdb
+D:\TheAnh\CSharp\Exam\NguyenTheAnh_ntanh6\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
+D:\TheAnh\CSharp\Exam\NguyenTheAnh_ntanh6\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
+D:\TheAnh\CSharp\Exam\NguyenTheAnh_ntanh6\CommonLibrary\obj\Debug\CommonLibrary.dll
+D:\TheAnh\CSharp\Exam\NguyenTheAnh_ntanh6\CommonLibrary\obj\Debug\CommonLibrary.pdb
