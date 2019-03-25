@@ -55,6 +55,10 @@
     <Compile Include="Helpers\SqlHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj">
+      <Project>{f96878e6-0a71-4f23-b308-ae36a81380da}</Project>
+      <Name>CommonLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entity\Entity.csproj">
       <Project>{37e750de-ecd8-440b-b490-564347f70f46}</Project>
       <Name>Entity</Name>
