@@ -3,7 +3,7 @@ using System.Configuration;
 using Oracle.ManagedDataAccess.Client;
 
 
-namespace DataAccessLayer
+namespace DataAccessLayer.Helpers
 {
     public class Connection
     {
