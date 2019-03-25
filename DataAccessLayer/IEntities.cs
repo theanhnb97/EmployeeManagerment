@@ -16,7 +16,7 @@ namespace DataAccessLayer
         /// </summary>
         /// <param name="keyword"></param>
         /// <returns></returns>
-        List<T> Search(String keyword);
+        List<T> Search(string keyword);
         
         /// <summary>
         /// Delete and return result

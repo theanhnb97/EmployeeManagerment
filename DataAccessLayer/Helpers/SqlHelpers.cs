@@ -1,14 +1,14 @@
-﻿namespace DataAccessLayer
-{
-    using log4net;
-    using Oracle.ManagedDataAccess.Client;
-    using System;
-    using System.Data;
+﻿using log4net;
+using Oracle.ManagedDataAccess.Client;
+using System;
+using System.Data;
 
+namespace DataAccessLayer.Helpers
+{
     /// <summary>
     /// Defines the <see cref="SqlHelpers" />
     /// </summary>
-    internal class SqlHelpers
+    public class SqlHelpers
     {
         /// <summary>
         /// Defines the _logger
