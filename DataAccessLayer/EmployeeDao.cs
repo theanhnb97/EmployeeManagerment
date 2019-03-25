@@ -17,7 +17,7 @@ namespace DataAccessLayer
         bool Login(string UserName, string Password);
     }
 
-    public class EmployeeDao : IEntities<Employee>,IEmployee
+    public class EmployeeDao : IEntities<Employee>, IEmployee
     {
         SqlHelpers<Employee> sql = new SqlHelpers<Employee>();
         ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -70,7 +70,21 @@ namespace DataAccessLayer
                     new OracleParameter("@passwords",Password),
                 };
                 DataTable dt = sql.ExcuteQuery(cmd, CommandType.Text, con, myParameters);
-                return dt.Rows.Count != 0;
+                return dt.Rows.Count > 1;
+            }
+        }
+        public DataTable Login1(string UserName, string Password)
+        {
+            using (OracleConnection con = Connection.GetConnection)
+            {
+                String cmd = "Select login('@user','@pass') as a from dual";
+                OracleParameter[] myParameters = new OracleParameter[]
+                {
+                    new OracleParameter("@user",UserName),
+                    new OracleParameter("@pass",Password),
+                };
+                
+                return sql.ExcuteQuery(cmd, CommandType.Text, con, myParameters);
             }
         }
     }

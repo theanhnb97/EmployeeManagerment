@@ -38,14 +38,17 @@
             this.btnOk = new Bunifu.Framework.UI.BunifuFlatButton();
             this.txtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.txtUserName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pnLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnLeft
             // 
             this.pnLeft.BackColor = System.Drawing.Color.White;
+            this.pnLeft.Controls.Add(this.dataGridView1);
             this.pnLeft.Controls.Add(this.pictureBox1);
             this.pnLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnLeft.Location = new System.Drawing.Point(0, 0);
@@ -211,6 +214,14 @@
             this.txtUserName.Text = "UserName";
             this.txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 366);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(279, 107);
+            this.dataGridView1.TabIndex = 1;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,6 +239,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnRight.ResumeLayout(false);
             this.pnRight.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -243,5 +255,6 @@
         private System.Windows.Forms.Label lblLogo;
         private Bunifu.Framework.UI.BunifuFlatButton btnCancel;
         private System.Windows.Forms.Label lblExit;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

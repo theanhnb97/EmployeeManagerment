@@ -44,3 +44,5 @@ D:\TheAnh\Data\Git\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer
 D:\TheAnh\Data\Git\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 D:\TheAnh\Data\Git\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 D:\TheAnh\Data\Git\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\DataAccessLayer\bin\Debug\CommonLibrary.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\DataAccessLayer\bin\Debug\CommonLibrary.pdb

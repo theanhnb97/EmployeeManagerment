@@ -17,7 +17,7 @@ namespace DataAccessLayer.Helpers
         /// Defines the _logger
         /// </summary>
         private readonly ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private DataTable2List<T> myDataTable2List=new DataTable2List<T>();
+        private DataTable2List<T> _myDataTable2List=new DataTable2List<T>();
         /// <summary>
         /// The ExcuteQuery
         /// </summary>
@@ -69,7 +69,7 @@ namespace DataAccessLayer.Helpers
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 List<T> myList=new List<T>();
-                myList = myDataTable2List.ConvertDataTable<T>(dt);
+                myList = _myDataTable2List.ConvertDataTable<T>(dt);
                 return myList;
             }
             catch (OracleException e)

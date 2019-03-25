@@ -33,16 +33,17 @@ namespace Main
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            if (myEmployeeBus.Login(txtUserName.Text.Trim(),txtPassword.Text.Trim()))
-            {
-                Thread threadMainForm = new Thread(new ThreadStart(ShowFormMain));
-                threadMainForm.Start();
-                Application.Exit();
-            }
-            else
-            {
-                MessageBox.Show("UserName or Password is not correct!");
-            }
+            dataGridView1.DataSource = myEmployeeBus.Login1(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+            //if (myEmployeeBus.Login(txtUserName.Text.Trim(), txtPassword.Text.Trim()))
+            //{
+            //    Thread threadMainForm = new Thread(new ThreadStart(ShowFormMain));
+            //    threadMainForm.Start();
+            //    Application.Exit();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("UserName or Password is not correct!");
+            //}
         }
         private void ShowFormMain()
         {
