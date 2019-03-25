@@ -32,12 +32,12 @@
             this.pnLeft = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnRight = new System.Windows.Forms.Panel();
+            this.lblExit = new System.Windows.Forms.Label();
             this.lblLogo = new System.Windows.Forms.Label();
             this.btnCancel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnOk = new Bunifu.Framework.UI.BunifuFlatButton();
             this.txtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.txtUserName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.lblExit = new System.Windows.Forms.Label();
             this.pnLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnRight.SuspendLayout();
@@ -78,6 +78,18 @@
             this.pnRight.Size = new System.Drawing.Size(445, 476);
             this.pnRight.TabIndex = 1;
             // 
+            // lblExit
+            // 
+            this.lblExit.AutoSize = true;
+            this.lblExit.Font = new System.Drawing.Font("Colonna MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExit.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblExit.Location = new System.Drawing.Point(408, 9);
+            this.lblExit.Name = "lblExit";
+            this.lblExit.Size = new System.Drawing.Size(25, 22);
+            this.lblExit.TabIndex = 4;
+            this.lblExit.Text = "X";
+            this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
+            // 
             // lblLogo
             // 
             this.lblLogo.AutoSize = true;
@@ -99,7 +111,7 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.DisabledColor = System.Drawing.Color.Gray;
             this.btnCancel.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnCancel.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnCancel.Iconimage")));
+            this.btnCancel.Iconimage = null;
             this.btnCancel.Iconimage_right = null;
             this.btnCancel.Iconimage_right_Selected = null;
             this.btnCancel.Iconimage_Selected = null;
@@ -110,16 +122,16 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(59, 312);
+            this.btnCancel.Location = new System.Drawing.Point(59, 324);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnCancel.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.White;
             this.btnCancel.selected = false;
-            this.btnCancel.Size = new System.Drawing.Size(116, 48);
+            this.btnCancel.Size = new System.Drawing.Size(119, 36);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnCancel.Textcolor = System.Drawing.Color.White;
             this.btnCancel.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -134,7 +146,7 @@
             this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOk.DisabledColor = System.Drawing.Color.Gray;
             this.btnOk.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnOk.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnOk.Iconimage")));
+            this.btnOk.Iconimage = null;
             this.btnOk.Iconimage_right = null;
             this.btnOk.Iconimage_right_Selected = null;
             this.btnOk.Iconimage_Selected = null;
@@ -145,18 +157,19 @@
             this.btnOk.IconVisible = true;
             this.btnOk.IconZoom = 90D;
             this.btnOk.IsTab = false;
-            this.btnOk.Location = new System.Drawing.Point(270, 312);
+            this.btnOk.Location = new System.Drawing.Point(270, 324);
             this.btnOk.Name = "btnOk";
             this.btnOk.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.btnOk.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.btnOk.OnHoverTextColor = System.Drawing.Color.White;
             this.btnOk.selected = false;
-            this.btnOk.Size = new System.Drawing.Size(116, 48);
+            this.btnOk.Size = new System.Drawing.Size(116, 36);
             this.btnOk.TabIndex = 2;
             this.btnOk.Text = "Login";
-            this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnOk.Textcolor = System.Drawing.Color.White;
             this.btnOk.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // txtPassword
             // 
@@ -198,18 +211,6 @@
             this.txtUserName.Text = "UserName";
             this.txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // lblExit
-            // 
-            this.lblExit.AutoSize = true;
-            this.lblExit.Font = new System.Drawing.Font("Colonna MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExit.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblExit.Location = new System.Drawing.Point(408, 9);
-            this.lblExit.Name = "lblExit";
-            this.lblExit.Size = new System.Drawing.Size(25, 22);
-            this.lblExit.TabIndex = 4;
-            this.lblExit.Text = "X";
-            this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,6 +220,8 @@
             this.Controls.Add(this.pnLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.pnLeft.ResumeLayout(false);

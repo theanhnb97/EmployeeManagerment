@@ -19,7 +19,7 @@ namespace DataAccessLayer
 
     public class EmployeeDao : IEntities<Employee>,IEmployee
     {
-        SqlHelpers sql = new SqlHelpers();
+        SqlHelpers<Employee> sql = new SqlHelpers<Employee>();
         ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public List<Employee> Get()
         {
@@ -63,15 +63,14 @@ namespace DataAccessLayer
         {
             using (OracleConnection con = Connection.GetConnection)
             {
-                int count = 0;
-                OracleParameter[] myParameters=new OracleParameter[]
+                String cmd = "Select login('@usernames','@passwords') from dual";
+                OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("UserNamee",UserName),
-                    new OracleParameter("Password",Password),
-                    new OracleParameter("Count",count) 
+                    new OracleParameter("@usernames",UserName),
+                    new OracleParameter("@passwords",Password),
                 };
-                sql.ExcuteNonQuery("Login", CommandType.StoredProcedure, con, myParameters);
-                return count != 0;
+                DataTable dt = sql.ExcuteQuery(cmd, CommandType.Text, con, myParameters);
+                return dt.Rows.Count != 0;
             }
         }
     }
