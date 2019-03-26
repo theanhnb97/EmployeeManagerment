@@ -38,5 +38,10 @@ namespace BusinessLayer
             return departmentDal.Update(department);
         }
 
+        public DataTable SearchDepartment(string keyword)
+        {
+            return departmentDal.SearchDepartment(keyword);
+        }
+
     }
 }

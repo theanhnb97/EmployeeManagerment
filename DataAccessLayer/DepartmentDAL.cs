@@ -38,8 +38,8 @@ namespace DataAccessLayer
             }
             catch (Exception e)
             {
-                //ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                //logger.Debug(e.Message);
+                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
                 return 0;
             }
         }
@@ -182,9 +182,38 @@ namespace DataAccessLayer
                 return 0;
             }
         }
-        public DataTable SearchDePartment(string keyword)
+        public DataTable SearchDepartment(string keyword)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlHelp sqlHelp = new SqlHelp();
+                using (OracleConnection connection = Connect.GetConnection)
+                {
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    OracleCommand cmd = new OracleCommand();
+
+                    cmd = new OracleCommand("Department_Search", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("p_departmentName", keyword);
+                    cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    da.SelectCommand = cmd;
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+                return null;
+
+            }
+
         }
 
 
