@@ -16,9 +16,8 @@ namespace BusinessLayer
             return myEmployeeDao.Login(UserName, Password);
         }
 
-        public DataTable Login1(string UserName, string Password)
-        {
-            return myEmployeeDao.Login1(UserName, Password);
-        }
+       
+
+
     }
 }

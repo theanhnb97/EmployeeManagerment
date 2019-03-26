@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Bunifu.Framework.UI;
 using BusinessLayer;
 
 namespace Main
 {
     public partial class Login : Form
     {
-        EmployeeBus myEmployeeBus=new EmployeeBus();
+        EmployeeBus myEmployeeBus = new EmployeeBus();
 
         public Login()
         {
@@ -28,22 +29,33 @@ namespace Main
 
         private void lblExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult myDialogResult = MessageBox.Show("Do you want exit?", "Question",
+                MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Question,MessageBoxDefaultButton.Button3);
+            if (myDialogResult == DialogResult.Yes)
+                Application.Exit();
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = myEmployeeBus.Login1(txtUserName.Text.Trim(), txtPassword.Text.Trim());
-            //if (myEmployeeBus.Login(txtUserName.Text.Trim(), txtPassword.Text.Trim()))
-            //{
-            //    Thread threadMainForm = new Thread(new ThreadStart(ShowFormMain));
-            //    threadMainForm.Start();
-            //    Application.Exit();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("UserName or Password is not correct!");
-            //}
+            if (txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "")
+            {
+                lblNotify.Text = "Please input username/password.";
+                lblNotify.Visible = true;
+                txtUserName.Focus();
+                return;
+            }
+            if (myEmployeeBus.Login(txtUserName.Text.Trim(), txtPassword.Text.Trim()))
+            {
+                Thread threadMainForm = new Thread(new ThreadStart(ShowFormMain));
+                threadMainForm.Start();
+                Application.Exit();
+            }
+            else
+            {
+                lblNotify.Text = "UserName or Password is not correct.";
+                lblNotify.Visible = true;
+            }
         }
         private void ShowFormMain()
         {
@@ -51,5 +63,29 @@ namespace Main
             f.ShowDialog();
         }
 
+
+        private void textBox_Leave(object sender, EventArgs e)
+        {
+            BunifuMaterialTextbox myTextBox = (BunifuMaterialTextbox)sender;
+            if (myTextBox.Text == "")
+            {
+                myTextBox.Text = "Username";
+                myTextBox.ForeColor = Color.Silver;
+            }
+        }
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            BunifuMaterialTextbox myTextBox = (BunifuMaterialTextbox)sender;
+            if (myTextBox.Text == "Username")
+            {
+                myTextBox.Text = "";
+                myTextBox.ForeColor = Color.Black;
+            }
+        }
+        private void login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnOk_Click(btnOk,e);
+        }
     }
 }

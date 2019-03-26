@@ -9,6 +9,7 @@ using DataAccessLayer.Helpers;
 using Entity;
 using log4net;
 using Oracle.ManagedDataAccess.Client;
+//using Oracle.DataAccess.Client;
 
 namespace DataAccessLayer
 {
@@ -63,29 +64,17 @@ namespace DataAccessLayer
         {
             using (OracleConnection con = Connection.GetConnection)
             {
-                String cmd = "Select login('@usernames','@passwords') from dual";
+                String cmd = "Select login(:usernames,:passwords) from dual";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("@usernames",UserName),
-                    new OracleParameter("@passwords",Password),
+                    new OracleParameter("usernames",UserName),
+                    new OracleParameter("passwords",Password),
                 };
                 DataTable dt = sql.ExcuteQuery(cmd, CommandType.Text, con, myParameters);
-                return dt.Rows.Count > 1;
+                bool a= dt.Rows[0][0].ToString()!="";
+                return a;
             }
         }
-        public DataTable Login1(string UserName, string Password)
-        {
-            using (OracleConnection con = Connection.GetConnection)
-            {
-                String cmd = "Select login('@user','@pass') as a from dual";
-                OracleParameter[] myParameters = new OracleParameter[]
-                {
-                    new OracleParameter("@user",UserName),
-                    new OracleParameter("@pass",Password),
-                };
-                
-                return sql.ExcuteQuery(cmd, CommandType.Text, con, myParameters);
-            }
-        }
+       
     }
 }

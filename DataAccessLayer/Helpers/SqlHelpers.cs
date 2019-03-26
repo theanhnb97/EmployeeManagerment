@@ -1,10 +1,11 @@
 ﻿using log4net;
-using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 using CommonLibrary;
+using Oracle.ManagedDataAccess.Client;
+//using Oracle.DataAccess.Client;
 
 namespace DataAccessLayer.Helpers
 {
