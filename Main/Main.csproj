@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="SalaryManagement.Designer.cs">
       <DependentUpon>SalaryManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bang\UcTask.cs">
       <SubType>UserControl</SubType>
     </Compile>

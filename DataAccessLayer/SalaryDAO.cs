@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Oracle.ManagedDataAccess.Client;
 using Entity.DTO;
+using System.Data;
 
 namespace DataAccessLayer
 {
@@ -20,7 +21,7 @@ namespace DataAccessLayer
     public class SalaryDAO : IEntities<Salary>, ISalary
     {       
         string Connect = "DATA SOURCE=192.168.35.210:1521/orcl;PASSWORD=theanh;PERSIST SECURITY INFO=True;USER ID=GDP";
-        SqlHelpers sql = new SqlHelpers();
+        SqlHelpers<Salary> sql = new SqlHelpers<Salary>();
         ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public int Add(Salary obj)
         {
@@ -219,11 +220,19 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        List<Salary> IEntities<Salary>.Get()
+        public DataTable Get()
         {
             throw new NotImplementedException();
         }
 
+        DataTable IEntities<Salary>.Search(string keyword)
+        {
+            throw new NotImplementedException();
+        }
 
+        public List<SalaryView> SearchSalary(string name, string dept, DateTime fDate, DateTime tDate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
