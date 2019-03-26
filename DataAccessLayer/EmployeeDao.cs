@@ -67,10 +67,12 @@ namespace DataAccessLayer
             {
                 using (OracleConnection oracleConnection = Connection.GetConnection)
                 {
+                    OracleCommand oracleCommand = new OracleCommand();
                     string storeName = "EMPLOYEE_INSERT";
                     OracleParameter[] oracleParameters = new OracleParameter[]
                     {
-                        new OracleParameter("RolesId",employee.FullName),
+                        //(OracleParameter) (oracleCommand.Parameters.Add("RolesId",OracleDbType.Int32,ParameterDirection.Input).Value = employee.RolesId),
+                        new OracleParameter("RolesId",employee.RolesId),
                         new OracleParameter("DepartmentId",employee.DepartmentId),
                         new OracleParameter("Rank",employee.Rank),
                         new OracleParameter("FullName",employee.FullName),
@@ -81,7 +83,7 @@ namespace DataAccessLayer
                         new OracleParameter("Phone",employee.Phone),
                         new OracleParameter("Email",employee.Email),
                         new OracleParameter("Status",employee.Status),
-                        new OracleParameter("IsDelete",employee.IsDelete)
+                        new OracleParameter("IsDelete", employee.IsDelete)
 
                     };
                     result = sql.ExcuteNonQuery(storeName,CommandType.StoredProcedure,oracleConnection, oracleParameters);
