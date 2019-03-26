@@ -44,3 +44,14 @@ D:\TheAnh\Data\Git\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer
 D:\TheAnh\Data\Git\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 D:\TheAnh\Data\Git\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 D:\TheAnh\Data\Git\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\Debug\Entity.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\Debug\Entity.pdb
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.csprojAssemblyReference.cache
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
