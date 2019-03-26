@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccessLayer;
+using Entity;
 using Entity.DTO;
 
 namespace BusinessLayer
@@ -21,6 +22,11 @@ namespace BusinessLayer
         public List<EmployeeDTO> GetAll()
         {
             return employeeDao.GetAll();
+        }
+
+        public int Insert(Employee employee)
+        {
+            return employeeDao.Add(employee);
         }
     }
 }

@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessLayer;
 
 namespace Main
 {
     public partial class Employee : Form
     {
+        EmployeeBus employeeBus = new EmployeeBus();
+
         public Employee()
         {
             InitializeComponent();
@@ -22,15 +25,17 @@ namespace Main
             Entity.Employee employee = new Entity.Employee();
             employee.FullName = txtFullName.Text;
             employee.Address = txtAddress.Text;
-            employee.DepartmentId = Convert.ToInt32(txtDepartment.Text);
+            employee.DepartmentId = Convert.ToInt64(txtDepartment.Text);
             employee.Email = txtEmail.Text;
             employee.Identity = txtIdentity.Text;
             employee.Password = txtPassword.Text;
-            employee.RolesId = Convert.ToInt32(txtRole.Text);
+            employee.RolesId = Convert.ToInt64(txtRole.Text);
             employee.Phone = txtPhone.Text;
             employee.UserName = txtUserName.Text;
-            employee.IsDelete = false;
-            employee.Rank = Convert.ToByte(txtRank.Text);
+            employee.IsDelete = 0;
+            employee.Status = Convert.ToInt16(txtStatus.Text);
+            employee.Rank = Convert.ToInt16(txtRank.Text);
+            employeeBus.Insert(employee);
         }
     }
 }

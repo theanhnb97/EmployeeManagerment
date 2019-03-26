@@ -60,9 +60,39 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        public int Add(Employee obj)
+        public int Add(Employee employee)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            try
+            {
+                using (OracleConnection oracleConnection = Connection.GetConnection)
+                {
+                    string storeName = "EMPLOYEE_INSERT";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("RolesId",employee.FullName),
+                        new OracleParameter("DepartmentId",employee.DepartmentId),
+                        new OracleParameter("Rank",employee.Rank),
+                        new OracleParameter("FullName",employee.FullName),
+                        new OracleParameter("UserName",employee.UserName),
+                        new OracleParameter("Password",employee.FullName),
+                        new OracleParameter("Identity",employee.Identity),
+                        new OracleParameter("Address",employee.Address),
+                        new OracleParameter("Phone",employee.Phone),
+                        new OracleParameter("Email",employee.Email),
+                        new OracleParameter("Status",employee.Status),
+                        new OracleParameter("IsDelete",employee.IsDelete)
+
+                    };
+                    result = sql.ExcuteNonQuery(storeName,CommandType.StoredProcedure,oracleConnection, oracleParameters);
+                }
+            }
+            catch (Exception e)
+            {
+                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+            }
+            return result;
         }
 
         public bool Login(string username, string password)
