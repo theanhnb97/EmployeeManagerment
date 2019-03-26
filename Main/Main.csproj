@@ -72,6 +72,9 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
@@ -83,6 +86,11 @@
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\Main.AddForm.resources" />
+    <EmbeddedResource Include="obj\Debug\Main.EditForm.resources" />
+    <EmbeddedResource Include="obj\Debug\Main.FormMain.resources" />
+    <EmbeddedResource Include="obj\Debug\Main.Login.resources" />
+    <EmbeddedResource Include="obj\Debug\Main.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -93,6 +101,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="bin\Debug\Main.exe.config" />
+    <None Include="obj\Debug\Main.csproj.CopyComplete" />
+    <None Include="obj\Debug\Main.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\Main.csprojAssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -120,7 +132,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\Main.exe" />
+    <Content Include="bin\Debug\Main.pdb" />
     <Content Include="Image\logo_cmc_global.jpg" />
+    <Content Include="obj\Debug\Main.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Main.exe" />
+    <Content Include="obj\Debug\Main.pdb" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

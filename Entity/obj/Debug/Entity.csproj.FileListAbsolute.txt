@@ -23,7 +23,6 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Entity\obj\Debug\Entity.dll
 D:\TheAnh\Data\Git\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\bin\Debug\Entity.dll
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
-C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\obj\Debug\Entity.dll
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
