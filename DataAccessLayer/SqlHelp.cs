@@ -10,7 +10,7 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace DataAccessLayer
 {
-    class SqlHelp
+    public class SqlHelp
     {
         /// <summary>
         /// Excute Query return DataTable

@@ -51,6 +51,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Department\Department.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Department\Department.Designer.cs">
+      <DependentUpon>Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Department\DepartmentAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Department\DepartmentAdd.Designer.cs">
+      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Department\DepartmentUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Department\DepartmentUpdate.Designer.cs">
+      <DependentUpon>DepartmentUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +77,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Department\Department.resx">
+      <DependentUpon>Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Department\DepartmentAdd.resx">
+      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Department\DepartmentUpdate.resx">
+      <DependentUpon>DepartmentUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

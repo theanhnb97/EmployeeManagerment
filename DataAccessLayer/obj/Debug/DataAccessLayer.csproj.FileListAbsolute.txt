@@ -33,3 +33,14 @@ D:\VisualStudio\Project\EmployeeManagerment\DataAccessLayer\bin\Debug\Entity.dll
 D:\VisualStudio\Project\EmployeeManagerment\DataAccessLayer\bin\Debug\Oracle.ManagedDataAccess.dll
 D:\VisualStudio\Project\EmployeeManagerment\DataAccessLayer\bin\Debug\Entity.pdb
 D:\VisualStudio\Project\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+E:\ProjectEmployee\EmployeeManagerment\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+E:\ProjectEmployee\EmployeeManagerment\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+E:\ProjectEmployee\EmployeeManagerment\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+E:\ProjectEmployee\EmployeeManagerment\DataAccessLayer\bin\Debug\Entity.dll
+E:\ProjectEmployee\EmployeeManagerment\DataAccessLayer\bin\Debug\Oracle.ManagedDataAccess.dll
+E:\ProjectEmployee\EmployeeManagerment\DataAccessLayer\bin\Debug\Entity.pdb
+E:\ProjectEmployee\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.csprojAssemblyReference.cache
+E:\ProjectEmployee\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+E:\ProjectEmployee\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+E:\ProjectEmployee\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+E:\ProjectEmployee\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

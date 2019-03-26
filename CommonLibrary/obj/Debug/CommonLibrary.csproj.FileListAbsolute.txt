@@ -16,3 +16,9 @@ D:\VisualStudio\Project\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrar
 D:\VisualStudio\Project\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
 D:\VisualStudio\Project\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
 D:\VisualStudio\Project\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.pdb
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache

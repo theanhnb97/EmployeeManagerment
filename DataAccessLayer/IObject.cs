@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace DataAccessLayer
 {
@@ -38,5 +39,7 @@ namespace DataAccessLayer
         /// <param name="obj"></param>
         /// <returns></returns>
         int Add(T obj);
+        DataTable GetAll();
+        
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Main.Department;
 
 
 namespace Main
@@ -20,7 +21,8 @@ namespace Main
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
-            
+           Department.Department fDepartment=new Department.Department();
+            fDepartment.Show();
         }
     }
 }
