@@ -60,10 +60,6 @@ D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\Oracle.ManagedDat
 D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\log4net.xml
 D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.dll
 D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.pdb
-C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
-C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
-C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.dll
-C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.pdb
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\bin\Debug\BusinessLayer.dll
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\bin\Debug\BusinessLayer.pdb
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\bin\Debug\DataAccessLayer.dll
@@ -76,4 +72,8 @@ C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\bin\Debug\DataA
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\bin\Debug\Entity.pdb
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\bin\Debug\log4net.xml
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.pdb
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.pdb

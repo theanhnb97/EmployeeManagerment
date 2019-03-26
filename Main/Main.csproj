@@ -59,27 +59,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSetSalary.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetSalary.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="SalaryAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SalaryAdd.Designer.cs">
-      <DependentUpon>SalaryAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SalaryManagement.cs">
+    <Compile Include="Dong\SalaryManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SalaryManagement.Designer.cs">
+    <Compile Include="Dong\SalaryManagement.designer.cs">
       <DependentUpon>SalaryManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dong\SalaryAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dong\SalaryAdd.Designer.cs">
+      <DependentUpon>SalaryAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Bang\UcTask.cs">
       <SubType>UserControl</SubType>
@@ -122,6 +112,12 @@
     <EmbeddedResource Include="Bang\UcTask.resx">
       <DependentUpon>UcTask.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dong\SalaryManagement.resx">
+      <DependentUpon>SalaryManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dong\SalaryAdd.resx">
+      <DependentUpon>SalaryAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hai\Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,28 +143,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DataSetSalary.xsc">
-      <DependentUpon>DataSetSalary.xsd</DependentUpon>
-    </None>
-    <None Include="DataSetSalary.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetSalary.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSetSalary.xss">
-      <DependentUpon>DataSetSalary.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -209,7 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dai\" />
-    <Folder Include="Dong\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

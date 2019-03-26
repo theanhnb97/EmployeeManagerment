@@ -18,7 +18,7 @@ namespace Main
         ActionManagement ucActionManagement=new ActionManagement();
         Employees ucEmployees=new Employees();
         UcTask ucTask =new UcTask();
-
+        SalaryManagement salary = new SalaryManagement();
         private void LoadUC()
         {
             pnMain.Controls.Add(ucActionManagement);
@@ -30,6 +30,8 @@ namespace Main
             pnMain.Controls.Add(ucTask);
             ucTask.Dock = DockStyle.Fill;
 
+            pnMain.Controls.Add(salary);
+            salary.Dock = DockStyle.Fill;
 
         }
 
@@ -115,6 +117,7 @@ namespace Main
         private void btnSalary_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
+            salary.BringToFront();
         }
 
         private void btnTask_Click(object sender, EventArgs e)

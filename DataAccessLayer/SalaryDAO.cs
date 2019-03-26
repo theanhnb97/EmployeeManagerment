@@ -73,22 +73,6 @@ namespace DataAccessLayer
             }
             return 1;
         }
-
-
-        private SalaryView GetRowData(OracleDataReader objReader)
-        {
-            SalaryView salaryView = new SalaryView();
-            salaryView.FullName = objReader["FULLNAME"].ToString();
-            salaryView.Identity = objReader["IDENTITY"].ToString();
-            salaryView.Rank = int.Parse(objReader["RANK"].ToString());
-            salaryView.Dept = objReader["DEPARTMENTNAME"].ToString();
-            salaryView.Basic = int.Parse(objReader["BASICSALARY"].ToString());
-            salaryView.Bussiness = int.Parse(objReader["BUSINESSSALARY"].ToString());
-            salaryView.Coefficient = float.Parse(objReader["COEFFICIENT"].ToString());
-            salaryView.Total = double.Parse(objReader["TOTAL"].ToString());
-            return salaryView;
-        }
-
         public List<SalaryView> GetData()
         {
             List<SalaryView> salaryViews = new List<SalaryView>();
@@ -100,14 +84,23 @@ namespace DataAccessLayer
                 Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
                 Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
                 try
-                {
+                { 
                     objConn.Open();
-                    OracleDataReader objReader = Ocmd.ExecuteReader();
-                    salaryViews.Add(GetRowData(objReader));
-                    while (objReader.NextResult() == true)
+                    OracleDataReader objReader = Ocmd.ExecuteReader();                   
+                    while (objReader.Read())
                     {
-                        salaryViews.Add(GetRowData(objReader));
+                        SalaryView salaryView = new SalaryView();
+                        salaryView.FullName = objReader["FULLNAME"].ToString();
+                        salaryView.Identity = objReader["IDENTITY"].ToString();
+                        salaryView.Rank = int.Parse(objReader["RANK"].ToString());
+                        salaryView.Dept = objReader["DEPARTMENTNAME"].ToString();
+                        salaryView.Basic = int.Parse(objReader["BASICSALARY"].ToString());
+                        salaryView.Bussiness = int.Parse(objReader["BUSINESSSALARY"].ToString());
+                        salaryView.Coefficient = float.Parse(objReader["COEFFICIENT"].ToString());
+                        salaryView.Total = double.Parse(objReader["TOTAL"].ToString());
+                        salaryViews.Add(salaryView);
                     }
+                    objReader.Close();
                 }
                 catch
                 {
@@ -162,11 +155,20 @@ namespace DataAccessLayer
                 {
                     objConn.Open();
                     OracleDataReader objReader = Ocmd.ExecuteReader();
-                    salaryViews.Add(GetRowData(objReader));
-                    while (objReader.NextResult() == true)
+                    while (objReader.Read())
                     {
-                        salaryViews.Add(GetRowData(objReader));
+                        SalaryView salaryView = new SalaryView();
+                        salaryView.FullName = objReader["FULLNAME"].ToString();
+                        salaryView.Identity = objReader["IDENTITY"].ToString();
+                        salaryView.Rank = int.Parse(objReader["RANK"].ToString());
+                        salaryView.Dept = objReader["DEPARTMENTNAME"].ToString();
+                        salaryView.Basic = int.Parse(objReader["BASICSALARY"].ToString());
+                        salaryView.Bussiness = int.Parse(objReader["BUSINESSSALARY"].ToString());
+                        salaryView.Coefficient = float.Parse(objReader["COEFFICIENT"].ToString());
+                        salaryView.Total = double.Parse(objReader["TOTAL"].ToString());
+                        salaryViews.Add(salaryView);
                     }
+                    objReader.Close();
                 }
                 catch
                 {

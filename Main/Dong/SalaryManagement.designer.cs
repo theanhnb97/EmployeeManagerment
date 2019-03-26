@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -38,37 +37,24 @@
             this.btnLoadData = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvSalary = new System.Windows.Forms.DataGridView();
             this.lblPage = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dateToDateFilter = new System.Windows.Forms.DateTimePicker();
-            this.dateFromDateFilter = new System.Windows.Forms.DateTimePicker();
+            this.dateTDateFilter = new System.Windows.Forms.DateTimePicker();
+            this.dateFDateFilter = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtAccountFilter = new System.Windows.Forms.TextBox();
+            this.txtDeptFilter = new System.Windows.Forms.TextBox();
             this.txtNameFilter = new System.Windows.Forms.TextBox();
-            this.dataSet1 = new Main.DataSet1();
-            this.sALARYGETALLBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sALARY_GETALLTableAdapter = new Main.DataSet1TableAdapters.SALARY_GETALLTableAdapter();
-            this.fULLNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDENTITYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rANKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dEPARTMENTNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bASICSALARYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bUSINESSSALARYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cOEFFICIENTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tOTALDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalary)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sALARYGETALLBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -86,9 +72,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(25, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 13);
+            this.label1.Size = new System.Drawing.Size(137, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Salary Management";
+            this.label1.Text = "Employee Management";
             // 
             // panel2
             // 
@@ -157,17 +143,26 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dgvSalary);
             this.groupBox1.Controls.Add(this.lblPage);
-            this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.btnNext);
             this.groupBox1.Controls.Add(this.btnPrevious);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 178);
+            this.groupBox1.Location = new System.Drawing.Point(0, 199);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(809, 359);
+            this.groupBox1.Size = new System.Drawing.Size(809, 338);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Salary Information";
+            this.groupBox1.Text = "Employee list";
+            // 
+            // dgvSalary
+            // 
+            this.dgvSalary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSalary.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvSalary.Location = new System.Drawing.Point(3, 16);
+            this.dgvSalary.Name = "dgvSalary";
+            this.dgvSalary.Size = new System.Drawing.Size(803, 336);
+            this.dgvSalary.TabIndex = 0;
             // 
             // lblPage
             // 
@@ -178,27 +173,6 @@
             this.lblPage.Size = new System.Drawing.Size(37, 15);
             this.lblPage.TabIndex = 5;
             this.lblPage.Text = "1 / 10";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.fULLNAMEDataGridViewTextBoxColumn,
-            this.iDENTITYDataGridViewTextBoxColumn,
-            this.rANKDataGridViewTextBoxColumn,
-            this.dEPARTMENTNAMEDataGridViewTextBoxColumn,
-            this.bASICSALARYDataGridViewTextBoxColumn,
-            this.bUSINESSSALARYDataGridViewTextBoxColumn,
-            this.cOEFFICIENTDataGridViewTextBoxColumn,
-            this.tOTALDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.sALARYGETALLBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(803, 298);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnNext
             // 
@@ -222,40 +196,40 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dateToDateFilter);
-            this.groupBox2.Controls.Add(this.dateFromDateFilter);
+            this.groupBox2.Controls.Add(this.dateTDateFilter);
+            this.groupBox2.Controls.Add(this.dateFDateFilter);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.txtAccountFilter);
+            this.groupBox2.Controls.Add(this.txtDeptFilter);
             this.groupBox2.Controls.Add(this.txtNameFilter);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 57);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(809, 121);
+            this.groupBox2.Size = new System.Drawing.Size(809, 142);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filter area";
             // 
-            // dateToDateFilter
+            // dateTDateFilter
             // 
-            this.dateToDateFilter.Location = new System.Drawing.Point(459, 81);
-            this.dateToDateFilter.Name = "dateToDateFilter";
-            this.dateToDateFilter.Size = new System.Drawing.Size(258, 20);
-            this.dateToDateFilter.TabIndex = 15;
+            this.dateTDateFilter.Location = new System.Drawing.Point(459, 81);
+            this.dateTDateFilter.Name = "dateTDateFilter";
+            this.dateTDateFilter.Size = new System.Drawing.Size(258, 20);
+            this.dateTDateFilter.TabIndex = 15;
             // 
-            // dateFromDateFilter
+            // dateFDateFilter
             // 
-            this.dateFromDateFilter.Location = new System.Drawing.Point(171, 81);
-            this.dateFromDateFilter.Name = "dateFromDateFilter";
-            this.dateFromDateFilter.Size = new System.Drawing.Size(204, 20);
-            this.dateFromDateFilter.TabIndex = 14;
+            this.dateFDateFilter.Location = new System.Drawing.Point(171, 81);
+            this.dateFDateFilter.Name = "dateFDateFilter";
+            this.dateFDateFilter.Size = new System.Drawing.Size(204, 20);
+            this.dateFDateFilter.TabIndex = 14;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(396, 84);
+            this.label5.Location = new System.Drawing.Point(406, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 6;
@@ -264,7 +238,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(394, 30);
+            this.label4.Location = new System.Drawing.Point(391, 29);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 13);
             this.label4.TabIndex = 7;
@@ -273,7 +247,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(109, 84);
+            this.label2.Location = new System.Drawing.Point(109, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 9;
@@ -282,18 +256,18 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(111, 29);
+            this.label6.Location = new System.Drawing.Point(109, 29);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Name";
             // 
-            // txtAccountFilter
+            // txtDeptFilter
             // 
-            this.txtAccountFilter.Location = new System.Drawing.Point(459, 26);
-            this.txtAccountFilter.Name = "txtAccountFilter";
-            this.txtAccountFilter.Size = new System.Drawing.Size(106, 20);
-            this.txtAccountFilter.TabIndex = 12;
+            this.txtDeptFilter.Location = new System.Drawing.Point(459, 26);
+            this.txtDeptFilter.Name = "txtDeptFilter";
+            this.txtDeptFilter.Size = new System.Drawing.Size(161, 20);
+            this.txtDeptFilter.TabIndex = 12;
             // 
             // txtNameFilter
             // 
@@ -301,68 +275,6 @@
             this.txtNameFilter.Name = "txtNameFilter";
             this.txtNameFilter.Size = new System.Drawing.Size(204, 20);
             this.txtNameFilter.TabIndex = 11;
-            // 
-            // dataSet1
-            // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sALARYGETALLBindingSource
-            // 
-            this.sALARYGETALLBindingSource.DataMember = "SALARY_GETALL";
-            this.sALARYGETALLBindingSource.DataSource = this.dataSet1;
-            // 
-            // sALARY_GETALLTableAdapter
-            // 
-            this.sALARY_GETALLTableAdapter.ClearBeforeFill = true;
-            // 
-            // fULLNAMEDataGridViewTextBoxColumn
-            // 
-            this.fULLNAMEDataGridViewTextBoxColumn.DataPropertyName = "FULLNAME";
-            this.fULLNAMEDataGridViewTextBoxColumn.HeaderText = "FULLNAME";
-            this.fULLNAMEDataGridViewTextBoxColumn.Name = "fULLNAMEDataGridViewTextBoxColumn";
-            // 
-            // iDENTITYDataGridViewTextBoxColumn
-            // 
-            this.iDENTITYDataGridViewTextBoxColumn.DataPropertyName = "IDENTITY";
-            this.iDENTITYDataGridViewTextBoxColumn.HeaderText = "IDENTITY";
-            this.iDENTITYDataGridViewTextBoxColumn.Name = "iDENTITYDataGridViewTextBoxColumn";
-            // 
-            // rANKDataGridViewTextBoxColumn
-            // 
-            this.rANKDataGridViewTextBoxColumn.DataPropertyName = "RANK";
-            this.rANKDataGridViewTextBoxColumn.HeaderText = "RANK";
-            this.rANKDataGridViewTextBoxColumn.Name = "rANKDataGridViewTextBoxColumn";
-            // 
-            // dEPARTMENTNAMEDataGridViewTextBoxColumn
-            // 
-            this.dEPARTMENTNAMEDataGridViewTextBoxColumn.DataPropertyName = "DEPARTMENTNAME";
-            this.dEPARTMENTNAMEDataGridViewTextBoxColumn.HeaderText = "DEPARTMENTNAME";
-            this.dEPARTMENTNAMEDataGridViewTextBoxColumn.Name = "dEPARTMENTNAMEDataGridViewTextBoxColumn";
-            // 
-            // bASICSALARYDataGridViewTextBoxColumn
-            // 
-            this.bASICSALARYDataGridViewTextBoxColumn.DataPropertyName = "BASICSALARY";
-            this.bASICSALARYDataGridViewTextBoxColumn.HeaderText = "BASICSALARY";
-            this.bASICSALARYDataGridViewTextBoxColumn.Name = "bASICSALARYDataGridViewTextBoxColumn";
-            // 
-            // bUSINESSSALARYDataGridViewTextBoxColumn
-            // 
-            this.bUSINESSSALARYDataGridViewTextBoxColumn.DataPropertyName = "BUSINESSSALARY";
-            this.bUSINESSSALARYDataGridViewTextBoxColumn.HeaderText = "BUSINESSSALARY";
-            this.bUSINESSSALARYDataGridViewTextBoxColumn.Name = "bUSINESSSALARYDataGridViewTextBoxColumn";
-            // 
-            // cOEFFICIENTDataGridViewTextBoxColumn
-            // 
-            this.cOEFFICIENTDataGridViewTextBoxColumn.DataPropertyName = "COEFFICIENT";
-            this.cOEFFICIENTDataGridViewTextBoxColumn.HeaderText = "COEFFICIENT";
-            this.cOEFFICIENTDataGridViewTextBoxColumn.Name = "cOEFFICIENTDataGridViewTextBoxColumn";
-            // 
-            // tOTALDataGridViewTextBoxColumn
-            // 
-            this.tOTALDataGridViewTextBoxColumn.DataPropertyName = "TOTAL";
-            this.tOTALDataGridViewTextBoxColumn.HeaderText = "TOTAL";
-            this.tOTALDataGridViewTextBoxColumn.Name = "tOTALDataGridViewTextBoxColumn";
             // 
             // SalaryManagement
             // 
@@ -374,16 +286,15 @@
             this.Controls.Add(this.panel1);
             this.Name = "SalaryManagement";
             this.Size = new System.Drawing.Size(809, 614);
+            this.Load += new System.EventHandler(this.Salary_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalary)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sALARYGETALLBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -400,28 +311,17 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblPage;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvSalary;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DateTimePicker dateToDateFilter;
-        private System.Windows.Forms.DateTimePicker dateFromDateFilter;
+        private System.Windows.Forms.DateTimePicker dateTDateFilter;
+        private System.Windows.Forms.DateTimePicker dateFDateFilter;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtAccountFilter;
+        private System.Windows.Forms.TextBox txtDeptFilter;
         private System.Windows.Forms.TextBox txtNameFilter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fULLNAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDENTITYDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rANKDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dEPARTMENTNAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bASICSALARYDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bUSINESSSALARYDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cOEFFICIENTDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tOTALDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource sALARYGETALLBindingSource;
-        private DataSet1 dataSet1;
-        private DataSet1TableAdapters.SALARY_GETALLTableAdapter sALARY_GETALLTableAdapter;
     }
 }
