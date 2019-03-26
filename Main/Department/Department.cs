@@ -97,6 +97,9 @@ namespace Main.Department
             frUpdate.ShowDialog();
         }
 
-        
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
