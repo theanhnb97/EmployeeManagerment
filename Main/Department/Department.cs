@@ -102,7 +102,11 @@ namespace Main.Department
             string keyword = txtDepartmentName.Text;
             DepartmentBUS departmentBus=new DepartmentBUS();
             dgvDepartment.DataSource=departmentBus.SearchDepartment(keyword);
-            
+            txtDepartmentName.Text = "";
+            cbStatus.Checked = false;
+            rdbIsDelete.Checked = false;
+
+
         }
     }
 }

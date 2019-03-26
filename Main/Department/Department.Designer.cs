@@ -38,7 +38,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDepartmentName = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbStatus = new System.Windows.Forms.CheckBox();
             this.rdbIsDelete = new System.Windows.Forms.RadioButton();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
@@ -109,7 +109,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rdbIsDelete);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.cbStatus);
             this.groupBox1.Controls.Add(this.txtDepartmentName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(50, 13);
@@ -135,15 +135,15 @@
             this.txtDepartmentName.Size = new System.Drawing.Size(155, 20);
             this.txtDepartmentName.TabIndex = 1;
             // 
-            // checkBox1
+            // cbStatus
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(381, 40);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(56, 17);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Status";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbStatus.AutoSize = true;
+            this.cbStatus.Location = new System.Drawing.Point(381, 40);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(56, 17);
+            this.cbStatus.TabIndex = 2;
+            this.cbStatus.Text = "Status";
+            this.cbStatus.UseVisualStyleBackColor = true;
             // 
             // rdbIsDelete
             // 
@@ -210,7 +210,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdbIsDelete;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbStatus;
         private System.Windows.Forms.TextBox txtDepartmentName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSearch;
