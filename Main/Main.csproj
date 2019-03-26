@@ -37,8 +37,8 @@
     <Reference Include="Bunifu_UI_v1.52">
       <HintPath>..\packages\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\..\Day4\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -80,6 +80,29 @@
     </Compile>
     <Compile Include="SalaryManagement.Designer.cs">
       <DependentUpon>SalaryManagement.cs</DependentUpon>
+    <Compile Include="Bang\UcTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Bang\UcTask.designer.cs">
+      <DependentUpon>UcTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hai\Employee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hai\Employee.designer.cs">
+      <DependentUpon>Employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hai\Employees.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Hai\Employees.designer.cs">
+      <DependentUpon>Employees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheAnh\ActionManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TheAnh\ActionManagement.Designer.cs">
+      <DependentUpon>ActionManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -95,11 +118,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="SalaryAdd.resx">
-      <DependentUpon>SalaryAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Bang\UcTask.resx">
+      <DependentUpon>UcTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalaryManagement.resx">
-      <DependentUpon>SalaryManagement.cs</DependentUpon>
+    <EmbeddedResource Include="Hai\Employee.resx">
+      <DependentUpon>Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hai\Employees.resx">
+      <DependentUpon>Employees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheAnh\ActionManagement.resx">
+      <DependentUpon>ActionManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -139,6 +168,7 @@
     <None Include="DataSetSalary.xss">
       <DependentUpon>DataSetSalary.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -166,7 +196,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Image\logo_cmc_global.jpg" />
+    <Content Include="Image\1532332941logo_cmc_global.jpg" />
+    <Content Include="Image\icon.ico" />
+    <Content Include="Image\Logo CMC JAPAN %281%29.png" />
+    <Content Include="Image\Material\baseline-account_circle-24px.svg" />
+    <Content Include="Image\Material\baseline-attach_file-24px.svg" />
+    <Content Include="Image\Material\baseline-build-24px.svg" />
+    <Content Include="Image\Material\baseline-contact_support-24px.svg" />
+    <Content Include="Image\Material\baseline-lock_open-24px.svg" />
+    <Content Include="Image\Material\icons8-shutdown-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dai\" />
+    <Folder Include="Dong\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

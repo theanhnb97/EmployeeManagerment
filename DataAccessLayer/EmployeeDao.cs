@@ -9,19 +9,21 @@ using DataAccessLayer.Helpers;
 using Entity;
 using log4net;
 using Oracle.ManagedDataAccess.Client;
+//using Oracle.DataAccess.Client;
 
 namespace DataAccessLayer
 {
-    interface IEmployee
+    interface IEmployee:IEntities<Employee>
     {
         bool Login(string UserName, string Password);
     }
 
-    public class EmployeeDao : IEntities<Employee>,IEmployee
+    public class EmployeeDao : IEmployee
     {
-        SqlHelpers sql = new SqlHelpers();
-        ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public List<Employee> Get()
+        protected SqlHelpers<Employee> sql = new SqlHelpers<Employee>();
+        protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        public DataTable Get()
         {
             List<Employee> employees = new List<Employee>();
             try
@@ -29,17 +31,17 @@ namespace DataAccessLayer
                 using (OracleConnection oracleConnection = Connection.GetConnection)
                 {
                     string storeName = "Employee_GetAll";
-                    DataTable data = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, null);
+                    return sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, null);
                 }
             }
             catch (Exception e)
             {
                 logger.Debug(e.Message);
+                return null;
             }
-            return employees;
         }
 
-        public List<Employee> Search(string keyword)
+        public DataTable Search(string keyword)
         {
             throw new NotImplementedException();
         }
@@ -59,20 +61,21 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        public bool Login(string UserName, string Password)
+        public bool Login(string username, string password)
         {
             using (OracleConnection con = Connection.GetConnection)
             {
-                int count = 0;
-                OracleParameter[] myParameters=new OracleParameter[]
+                String cmd = "Select login(:usernames,:passwords) from dual";
+                OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("UserNamee",UserName),
-                    new OracleParameter("Password",Password),
-                    new OracleParameter("Count",count) 
+                    new OracleParameter("usernames",username),
+                    new OracleParameter("passwords",password),
                 };
-                sql.ExcuteNonQuery("Login", CommandType.StoredProcedure, con, myParameters);
-                return count != 0;
+                DataTable dt = sql.ExcuteQuery(cmd, CommandType.Text, con, myParameters);
+                bool a= dt.Rows[0][0].ToString()!="";
+                return a;
             }
         }
+       
     }
 }

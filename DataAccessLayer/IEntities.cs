@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace DataAccessLayer
 {
@@ -9,14 +10,14 @@ namespace DataAccessLayer
         /// Get All Data from DB to List
         /// </summary>
         /// <returns></returns>
-        List<T> Get();
+        DataTable Get();
 
         /// <summary>
         /// Search T From DB
         /// </summary>
         /// <param name="keyword"></param>
         /// <returns></returns>
-        List<T> Search(string keyword);
+        DataTable Search(string keyword);
         
         /// <summary>
         /// Delete and return result
