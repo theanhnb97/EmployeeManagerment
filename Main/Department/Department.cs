@@ -99,7 +99,10 @@ namespace Main.Department
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
+            string keyword = txtDepartmentName.Text;
+            DepartmentBUS departmentBus=new DepartmentBUS();
+            dgvDepartment.DataSource=departmentBus.SearchDepartment(keyword);
+            
         }
     }
 }
