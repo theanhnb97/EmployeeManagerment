@@ -18,9 +18,12 @@ namespace DataAccessLayer
         bool Login(string UserName, string Password);
     }
 
-    public class EmployeeDao : DALBase, IEmployee
+    public class EmployeeDao : IEmployee
     {
-        public List<Employee> Get()
+        protected SqlHelpers<Employee> sql = new SqlHelpers<Employee>();
+        protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        public DataTable Get()
         {
             List<Employee> employees = new List<Employee>();
             try
@@ -28,17 +31,17 @@ namespace DataAccessLayer
                 using (OracleConnection oracleConnection = Connection.GetConnection)
                 {
                     string storeName = "Employee_GetAll";
-                    DataTable data = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, null);
+                    return sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, null);
                 }
             }
             catch (Exception e)
             {
                 logger.Debug(e.Message);
+                return null;
             }
-            return employees;
         }
 
-        public List<Employee> Search(string keyword)
+        public DataTable Search(string keyword)
         {
             throw new NotImplementedException();
         }
@@ -58,15 +61,15 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        public bool Login(string UserName, string Password)
+        public bool Login(string username, string password)
         {
             using (OracleConnection con = Connection.GetConnection)
             {
                 String cmd = "Select login(:usernames,:passwords) from dual";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("usernames",UserName),
-                    new OracleParameter("passwords",Password),
+                    new OracleParameter("usernames",username),
+                    new OracleParameter("passwords",password),
                 };
                 DataTable dt = sql.ExcuteQuery(cmd, CommandType.Text, con, myParameters);
                 bool a= dt.Rows[0][0].ToString()!="";

@@ -1,5 +1,4 @@
-﻿using log4net;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +15,24 @@ namespace Main
     public partial class FormMain : Form
     {
         private List<Button> btnMenuButtons;
+        ActionManagement ucActionManagement=new ActionManagement();
+        Employees ucEmployees=new Employees();
+        UcTask ucTask =new UcTask();
+
+        private void LoadUC()
+        {
+            pnMain.Controls.Add(ucActionManagement);
+            ucActionManagement.Dock = DockStyle.Fill;
+
+            pnMain.Controls.Add(ucEmployees);
+            ucEmployees.Dock = DockStyle.Fill;
+
+            pnMain.Controls.Add(ucTask);
+            ucTask.Dock = DockStyle.Fill;
+
+
+        }
+
         public FormMain()
         {
             InitializeComponent();
@@ -32,6 +49,7 @@ namespace Main
             btnMenuButtons.Add(btnEmployee);
             btnMenuButtons.Add(btnTask);
             btnMenuButtons.Add(btnSalary);
+            LoadUC();
         }
 
         private void picLogout_Click(object sender, EventArgs e)
@@ -70,6 +88,8 @@ namespace Main
             slide.Height = inActiceButton.Height;
             slide.Top = inActiceButton.Top;
         }
+
+
         private void btnMenuItem_Click(object sender, EventArgs e)
         {
             Button inActiceButton = (Button) sender;
@@ -89,6 +109,7 @@ namespace Main
         private void btnAction_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
+            ucActionManagement.BringToFront();
         }
 
         private void btnSalary_Click(object sender, EventArgs e)
@@ -99,6 +120,7 @@ namespace Main
         private void btnTask_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
+            ucTask.BringToFront();
         }
 
         private void btnDepartment_Click(object sender, EventArgs e)
@@ -109,6 +131,7 @@ namespace Main
         private void btnEmployee_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
+            ucEmployees.BringToFront();
         }
     }
 }

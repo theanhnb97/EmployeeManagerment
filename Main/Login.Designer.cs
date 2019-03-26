@@ -32,13 +32,13 @@
             this.pnLeft = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnRight = new System.Windows.Forms.Panel();
+            this.lblNotify = new System.Windows.Forms.Label();
             this.lblExit = new System.Windows.Forms.Label();
             this.lblLogo = new System.Windows.Forms.Label();
             this.btnCancel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnOk = new Bunifu.Framework.UI.BunifuFlatButton();
             this.txtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.txtUserName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.lblNotify = new System.Windows.Forms.Label();
             this.pnLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnRight.SuspendLayout();
@@ -79,6 +79,17 @@
             this.pnRight.Name = "pnRight";
             this.pnRight.Size = new System.Drawing.Size(445, 476);
             this.pnRight.TabIndex = 1;
+            // 
+            // lblNotify
+            // 
+            this.lblNotify.AutoSize = true;
+            this.lblNotify.ForeColor = System.Drawing.Color.Maroon;
+            this.lblNotify.Location = new System.Drawing.Point(59, 296);
+            this.lblNotify.Name = "lblNotify";
+            this.lblNotify.Size = new System.Drawing.Size(59, 13);
+            this.lblNotify.TabIndex = 5;
+            this.lblNotify.Text = "Thông báo";
+            this.lblNotify.Visible = false;
             // 
             // lblExit
             // 
@@ -140,8 +151,8 @@
             // 
             // btnOk
             // 
-            this.btnOk.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.btnOk.Activecolor = System.Drawing.Color.SteelBlue;
+            this.btnOk.BackColor = System.Drawing.Color.SteelBlue;
             this.btnOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOk.BorderRadius = 0;
             this.btnOk.ButtonText = "Login";
@@ -161,8 +172,8 @@
             this.btnOk.IsTab = false;
             this.btnOk.Location = new System.Drawing.Point(270, 328);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btnOk.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.btnOk.Normalcolor = System.Drawing.Color.SteelBlue;
+            this.btnOk.OnHovercolor = System.Drawing.Color.SteelBlue;
             this.btnOk.OnHoverTextColor = System.Drawing.Color.White;
             this.btnOk.selected = false;
             this.btnOk.Size = new System.Drawing.Size(116, 36);
@@ -218,17 +229,6 @@
             this.txtUserName.Enter += new System.EventHandler(this.textBox_Enter);
             this.txtUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.login_KeyDown);
             this.txtUserName.Leave += new System.EventHandler(this.textBox_Leave);
-            // 
-            // lblNotify
-            // 
-            this.lblNotify.AutoSize = true;
-            this.lblNotify.ForeColor = System.Drawing.Color.Maroon;
-            this.lblNotify.Location = new System.Drawing.Point(59, 296);
-            this.lblNotify.Name = "lblNotify";
-            this.lblNotify.Size = new System.Drawing.Size(59, 13);
-            this.lblNotify.TabIndex = 5;
-            this.lblNotify.Text = "Thông báo";
-            this.lblNotify.Visible = false;
             // 
             // Login
             // 
