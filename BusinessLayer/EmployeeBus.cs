@@ -15,9 +15,5 @@ namespace BusinessLayer
         {
             return myEmployeeDao.Login(UserName, Password);
         }
-
-       
-
-
     }
 }

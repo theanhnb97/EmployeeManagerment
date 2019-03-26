@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer.Helpers;
+using log4net;
+using Oracle.ManagedDataAccess.Client;
 
 namespace DataAccessLayer
 {
@@ -10,14 +14,20 @@ namespace DataAccessLayer
     {
         
     }
-    public class AtionDAL:DALBase,IAction
+    public class AtionDAL:IAction
     {
-        public List<Action> Get()
+    protected SqlHelpers<Action> sql = new SqlHelpers<Action>();
+        protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public DataTable Get()
         {
-            throw new NotImplementedException();
+            using (OracleConnection con = Connection.GetConnection)
+            {
+                String cmd = "Select * from Action";
+                return sql.ExcuteQuery(cmd, CommandType.Text, con, null);
+            }
         }
 
-        public List<Action> Search(string keyword)
+        public DataTable Search(string keyword)
         {
             throw new NotImplementedException();
         }
