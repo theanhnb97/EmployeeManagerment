@@ -40,6 +40,8 @@ namespace DataAccessLayer
         /// <returns></returns>
         int Add(T obj);
         DataTable GetAll();
+        DataTable GetById(int id);
         
+
     }
 }

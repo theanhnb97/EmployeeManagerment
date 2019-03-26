@@ -27,6 +27,16 @@ namespace BusinessLayer
         {
             return departmentDal.Delete(id);
         }
+        public DataTable GetById(int id)
+        {
+            return departmentDal.GetById(id);
+
+        }
+
+        public int Update(Department department)
+        {
+            return departmentDal.Update(department);
+        }
 
     }
 }

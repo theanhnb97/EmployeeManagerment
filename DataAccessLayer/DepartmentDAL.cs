@@ -100,13 +100,37 @@ namespace DataAccessLayer
                     return dt;
 
 
+                }
 
+            }
+            catch (Exception e)
+            {
+                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+                return null;
 
+            }
+        }
 
+        public DataTable GetById(int id)
+        {
+            try
+            {
+                SqlHelp sqlHelp = new SqlHelp();
+                using (OracleConnection connection = Connect.GetConnection)
+                {
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    OracleCommand cmd = new OracleCommand();
 
+                    cmd = new OracleCommand("Department_GetById", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("p_departmentID", id);
+                    cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-
-
+                    da.SelectCommand = cmd;
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
 
 
                 }
@@ -121,20 +145,50 @@ namespace DataAccessLayer
             }
         }
 
-       
-
         public List<Department> Search(string keyword)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(Department obj)
+        public int Update(Department department)
+        {
+            try
+            {
+                SqlHelp sqlHelp = new SqlHelp();
+                using (OracleConnection connection = Connect.GetConnection)
+                {
+
+                    string queryProcInsert = "Department_Update";
+                    CommandType conCommandType = CommandType.StoredProcedure;
+                    OracleParameter[] parameters = new OracleParameter[]
+                    {
+                        new OracleParameter("p_departmentID",department.DepartmentID), 
+                        new OracleParameter("p_departmentName",department.DepartmentName),
+                        new OracleParameter("p_status",department.Status),
+                        new OracleParameter("p_isDelete",department.IsDelete),
+                        new OracleParameter("p_description",department.Description),
+
+                    };
+
+                    return sqlHelp.ExcuteNonQuery(queryProcInsert, conCommandType, connection, parameters);
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+                return 0;
+            }
+        }
+        public DataTable SearchDePartment(string keyword)
         {
             throw new NotImplementedException();
         }
 
-       
 
-       
+
+
     }
 }

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
+using Entity;
+using Entity;
 using log4net;
 
 namespace Main.Department
@@ -27,7 +29,7 @@ namespace Main.Department
 
         private void Department_Load(object sender, EventArgs e)
         {
-            DepartmentBUS departmentBus=new DepartmentBUS();
+            DepartmentBUS departmentBus = new DepartmentBUS();
             dgvDepartment.DataSource = departmentBus.GetAll();
         }
 
@@ -77,5 +79,24 @@ namespace Main.Department
             DepartmentBUS departmentBus = new DepartmentBUS();
             dgvDepartment.DataSource = departmentBus.GetAll();
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Entity.Department department = new Entity.Department();
+            int index = dgvDepartment.CurrentCell.RowIndex;
+            department.DepartmentID= int.Parse(dgvDepartment.Rows[index].Cells[0].Value.ToString());
+            department.DepartmentName = dgvDepartment.Rows[index].Cells[1].Value.ToString();
+            department.Status = int.Parse(dgvDepartment.Rows[index].Cells[2].Value.ToString());
+            department.IsDelete = int.Parse(dgvDepartment.Rows[index].Cells[3].Value.ToString());
+            department.Description = dgvDepartment.Rows[index].Cells[4].Value.ToString();
+
+            DepartmentUpdate frUpdate = new DepartmentUpdate();
+
+            frUpdate.Department = department;
+
+            frUpdate.ShowDialog();
+        }
+
+        
     }
 }
