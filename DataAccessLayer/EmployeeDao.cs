@@ -9,18 +9,17 @@ using DataAccessLayer.Helpers;
 using Entity;
 using log4net;
 using Oracle.ManagedDataAccess.Client;
+//using Oracle.DataAccess.Client;
 
 namespace DataAccessLayer
 {
-    interface IEmployee
+    interface IEmployee:IEntities<Employee>
     {
         bool Login(string UserName, string Password);
     }
 
-    public class EmployeeDao : IEntities<Employee>,IEmployee
+    public class EmployeeDao : DALBase, IEmployee
     {
-        SqlHelpers<Employee> sql = new SqlHelpers<Employee>();
-        ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public List<Employee> Get()
         {
             List<Employee> employees = new List<Employee>();
@@ -63,15 +62,17 @@ namespace DataAccessLayer
         {
             using (OracleConnection con = Connection.GetConnection)
             {
-                String cmd = "Select login('@usernames','@passwords') from dual";
+                String cmd = "Select login(:usernames,:passwords) from dual";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("@usernames",UserName),
-                    new OracleParameter("@passwords",Password),
+                    new OracleParameter("usernames",UserName),
+                    new OracleParameter("passwords",Password),
                 };
                 DataTable dt = sql.ExcuteQuery(cmd, CommandType.Text, con, myParameters);
-                return dt.Rows.Count != 0;
+                bool a= dt.Rows[0][0].ToString()!="";
+                return a;
             }
         }
+       
     }
 }

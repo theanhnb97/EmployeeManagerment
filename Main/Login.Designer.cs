@@ -38,6 +38,7 @@
             this.btnOk = new Bunifu.Framework.UI.BunifuFlatButton();
             this.txtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.txtUserName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.lblNotify = new System.Windows.Forms.Label();
             this.pnLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnRight.SuspendLayout();
@@ -66,6 +67,7 @@
             // pnRight
             // 
             this.pnRight.BackColor = System.Drawing.Color.White;
+            this.pnRight.Controls.Add(this.lblNotify);
             this.pnRight.Controls.Add(this.lblExit);
             this.pnRight.Controls.Add(this.lblLogo);
             this.pnRight.Controls.Add(this.btnCancel);
@@ -122,7 +124,7 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(59, 324);
+            this.btnCancel.Location = new System.Drawing.Point(59, 328);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnCancel.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -157,7 +159,7 @@
             this.btnOk.IconVisible = true;
             this.btnOk.IconZoom = 90D;
             this.btnOk.IsTab = false;
-            this.btnOk.Location = new System.Drawing.Point(270, 324);
+            this.btnOk.Location = new System.Drawing.Point(270, 328);
             this.btnOk.Name = "btnOk";
             this.btnOk.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.btnOk.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
@@ -188,8 +190,11 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(327, 42);
             this.txtPassword.TabIndex = 1;
-            this.txtPassword.Text = "Password";
+            this.txtPassword.Text = "Username";
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtPassword.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.login_KeyDown);
+            this.txtPassword.Leave += new System.EventHandler(this.textBox_Leave);
             // 
             // txtUserName
             // 
@@ -208,8 +213,22 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(327, 42);
             this.txtUserName.TabIndex = 0;
-            this.txtUserName.Text = "UserName";
+            this.txtUserName.Text = "Username";
             this.txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtUserName.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.login_KeyDown);
+            this.txtUserName.Leave += new System.EventHandler(this.textBox_Leave);
+            // 
+            // lblNotify
+            // 
+            this.lblNotify.AutoSize = true;
+            this.lblNotify.ForeColor = System.Drawing.Color.Maroon;
+            this.lblNotify.Location = new System.Drawing.Point(59, 296);
+            this.lblNotify.Name = "lblNotify";
+            this.lblNotify.Size = new System.Drawing.Size(59, 13);
+            this.lblNotify.TabIndex = 5;
+            this.lblNotify.Text = "Thông báo";
+            this.lblNotify.Visible = false;
             // 
             // Login
             // 
@@ -243,5 +262,6 @@
         private System.Windows.Forms.Label lblLogo;
         private Bunifu.Framework.UI.BunifuFlatButton btnCancel;
         private System.Windows.Forms.Label lblExit;
+        private System.Windows.Forms.Label lblNotify;
     }
 }
