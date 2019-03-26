@@ -143,7 +143,7 @@ namespace DataAccessLayer
             return 1;
         }
 
-        public List<SalaryView> SearchSalary(string name, string dept, DateTime fDate, DateTime tDate)
+        public List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate)
         {
             List<SalaryView> salaryViews = new List<SalaryView>();
             using (OracleConnection objConn = new OracleConnection(Connect))
