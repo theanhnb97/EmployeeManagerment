@@ -44,10 +44,16 @@
             this.pnSlide = new System.Windows.Forms.Panel();
             this.btnSalary = new System.Windows.Forms.Button();
             this.pnMain = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvData = new System.Windows.Forms.DataGridView();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnMenu.SuspendLayout();
+            this.pnMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
             // pnTop
@@ -237,11 +243,51 @@
             // 
             // pnMain
             // 
+            this.pnMain.Controls.Add(this.dgvData);
+            this.pnMain.Controls.Add(this.panel1);
             this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMain.Location = new System.Drawing.Point(216, 50);
             this.pnMain.Name = "pnMain";
             this.pnMain.Size = new System.Drawing.Size(809, 614);
             this.pnMain.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightCyan;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 588);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(809, 26);
+            this.panel1.TabIndex = 1;
+            // 
+            // dgvData
+            // 
+            this.dgvData.AllowUserToAddRows = false;
+            this.dgvData.AllowUserToDeleteRows = false;
+            this.dgvData.BackgroundColor = System.Drawing.Color.White;
+            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.STT,
+            this.Name});
+            this.dgvData.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvData.Location = new System.Drawing.Point(0, 223);
+            this.dgvData.Name = "dgvData";
+            this.dgvData.ReadOnly = true;
+            this.dgvData.RowHeadersVisible = false;
+            this.dgvData.Size = new System.Drawing.Size(809, 365);
+            this.dgvData.TabIndex = 2;
+            // 
+            // STT
+            // 
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.ReadOnly = true;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Tên";
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
             // 
             // FormMain
             // 
@@ -255,7 +301,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(637, 417);
-            this.Name = "FormMain";
+            //this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee Management";
             this.Load += new System.EventHandler(this.FormMain_Load);
@@ -264,6 +310,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picLogout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnMenu.ResumeLayout(false);
+            this.pnMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -284,5 +332,9 @@
         private System.Windows.Forms.Panel pnSlide;
         private System.Windows.Forms.Button btnSalary;
         private System.Windows.Forms.Button btnEmployee;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dgvData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
     }
 }

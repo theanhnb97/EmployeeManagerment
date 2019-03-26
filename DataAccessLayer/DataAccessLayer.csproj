@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AtionDAL.cs" />
+    <Compile Include="DALBase.cs" />
     <Compile Include="EmployeeDao.cs" />
     <Compile Include="Helpers\Connection.cs" />
     <Compile Include="IEntities.cs" />

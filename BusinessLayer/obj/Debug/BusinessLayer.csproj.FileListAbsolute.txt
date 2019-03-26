@@ -56,6 +56,4 @@ D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csp
 D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
 D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.dll
 D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.pdb
-D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.dll
-D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\Oracle.ManagedDataAccess.dll
