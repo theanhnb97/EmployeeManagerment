@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TheAnh\Action_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheAnh\Action_Add.Designer.cs">
+      <DependentUpon>Action_Add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bang\UcTask.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="TheAnh\Action_Add.resx">
+      <DependentUpon>Action_Add.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bang\UcTask.resx">
       <DependentUpon>UcTask.cs</DependentUpon>
     </EmbeddedResource>

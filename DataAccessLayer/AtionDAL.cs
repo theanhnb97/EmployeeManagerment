@@ -7,23 +7,29 @@ using System.Threading.Tasks;
 using DataAccessLayer.Helpers;
 using log4net;
 using Oracle.ManagedDataAccess.Client;
+using Action = Entity.Action;
 
 namespace DataAccessLayer
 {
-    interface IAction:IEntities<Action>
+    interface IAction : IEntities<Action>
     {
-        
+
     }
-    public class AtionDAL:IAction
+    public class AtionDAL : IAction
     {
-    protected SqlHelpers<Action> sql = new SqlHelpers<Action>();
+        protected SqlHelpers<Action> sql = new SqlHelpers<Action>();
         protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public DataTable Get()
         {
             using (OracleConnection con = Connection.GetConnection)
             {
-                String cmd = "Select * from Action";
-                return sql.ExcuteQuery(cmd, CommandType.Text, con, null);
+                String cmd = "Action_GetAll";
+                OracleParameter[] myParameters = new OracleParameter[]
+                {
+                    new OracleParameter("listAction",OracleDbType.RefCursor,ParameterDirection.Output)
+                };
+                return sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
         }
 
@@ -34,17 +40,46 @@ namespace DataAccessLayer
 
         public int Delete(int id)
         {
-            throw new NotImplementedException();
+            using (OracleConnection con = Connection.GetConnection)
+            {
+                String cmd = "Action_Delete";
+                OracleParameter[] myParameters = new OracleParameter[]
+                {
+                    new OracleParameter("actionids",id)
+                };
+                return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+            }
         }
 
         public int Update(Action obj)
         {
-            throw new NotImplementedException();
+            using (OracleConnection con = Connection.GetConnection)
+            {
+                String cmd = "Action_Update";
+                OracleParameter[] myParameters = new OracleParameter[]
+                {
+                    new OracleParameter("actionids",obj.ActionID),
+                    new OracleParameter("actionnames",obj.ActionName),
+                    new OracleParameter("isdeletes",obj.IsDelete),
+                    new OracleParameter("descriptions",obj.Description)
+                };
+                return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+            }
         }
 
         public int Add(Action obj)
         {
-            throw new NotImplementedException();
+            using (OracleConnection con = Connection.GetConnection)
+            {
+                String cmd = "Action_Insert";
+                OracleParameter[] myParameters = new OracleParameter[]
+                {
+                    new OracleParameter("actionnames",obj.ActionName),
+                    new OracleParameter("isdeletes",obj.IsDelete),
+                    new OracleParameter("descriptions",obj.Description)
+                };
+                return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+            }
         }
     }
 }

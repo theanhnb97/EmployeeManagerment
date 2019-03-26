@@ -28,3 +28,4 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\CommonLibrary.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Employee.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Employees.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcTask.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Action_Add.resources
