@@ -5,10 +5,12 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bunifu.Framework.UI;
 using BusinessLayer;
+using Entity;
 
 namespace Main
 {
@@ -27,18 +29,6 @@ namespace Main
 
         private DataTable rolesTable, actionTable, allData;
         private int m, n, x;
-        private void UcRolesAction_Load(object sender, EventArgs e)
-        {
-            rolesTable = myRoles.Get();
-            actionTable = myAction.Get();
-            allData = myRolesActionBus.Get();
-            m = rolesTable.Rows.Count;
-            n = actionTable.Rows.Count;
-            x = allData.Rows.Count;
-            if (m * n != x) MessageBox.Show("Có lỗi về dữ liệu của bảng ma trận phân quyền!");
-            LoadDataTable();
-        }
-
         void CreateTable()
         {
             tlpnData = new TableLayoutPanel();
@@ -51,17 +41,45 @@ namespace Main
             tlpnData.Size = new Size(793, 479);
         }
 
+        Label Getlabel(String Text)
+        {
+            Label obj = new Label();
+            obj.Text = Text;
+            obj.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+            obj.ForeColor = SystemColors.HotTrack;
+            return obj;
+        }
+        void LoadForm()
+        {
+            tlpnData.Controls.Clear();
+            rolesTable = myRoles.Get();
+            actionTable = myAction.Get();
+            allData = myRolesActionBus.Get();
+            m = rolesTable.Rows.Count;
+            n = actionTable.Rows.Count;
+            x = allData.Rows.Count;
+            if (m * n != x) MessageBox.Show("Có lỗi về dữ liệu của bảng ma trận phân quyền!");
+            LoadDataTable();
+        }
         void LoadDataTable()
         {
-            tlpnData.Controls.Add(new Label() { Text = "Tên Action" }, 0, 0);
+            //tlpnData.Controls.Add(Getlabel("."), 0, 0);
             int start = 0;
             foreach (DataRow item in rolesTable.Rows)
             {
                 start++;
-                Label rolesName = new Label();
-                rolesName.Text = item["ROLESNAME"].ToString();
+                Label rolesName = Getlabel(item["ROLESNAME"].ToString());
                 tlpnData.Controls.Add(rolesName, start, 0);
             }
+
+            start = 0;
+            foreach (DataRow item in actionTable.Rows)
+            {
+                start++;
+                Label obj = Getlabel(item["ACTIONNAME"].ToString());
+                tlpnData.Controls.Add(obj, 0, start);
+            }
+
             int hang = 1, cot = 0;
             for (int i = 0; i < x; i++)
             {
@@ -71,9 +89,57 @@ namespace Main
                     hang++;
                     cot = 1;
                 }
-                BunifuiOSSwitch myOsSwitch= new BunifuiOSSwitch();
-                myOsSwitch.Value = allData.Rows[i]["ISTRUE"].ToString()!="0";
+                BunifuiOSSwitch myOsSwitch = new BunifuiOSSwitch();
+                myOsSwitch.OnColor = SystemColors.HotTrack;
+                myOsSwitch.Text = allData.Rows[i]["ID"].ToString();
+                myOsSwitch.Value = allData.Rows[i]["ISTRUE"].ToString() != "0";
                 tlpnData.Controls.Add(myOsSwitch, cot, hang);
+            }
+        }
+
+        private void UcRolesAction_Enter(object sender, EventArgs e)
+        {
+            //LoadForm();
+        }
+
+        private void UcRolesAction_MouseClick(object sender, MouseEventArgs e)
+        {
+            //LoadForm();
+        }
+
+        private void UcRolesAction_Load(object sender, EventArgs e)
+        {
+            LoadForm();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            DialogResult myDialogResult = MessageBox.Show("Bạn có chắc muốn cập nhật quyền cho Roles?", "Câu hỏi",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (myDialogResult == DialogResult.Yes)
+            {
+                List<RolesAction> myArray =new List<RolesAction>();
+                List<BunifuiOSSwitch> myList = tlpnData.Controls.OfType<BunifuiOSSwitch>().ToList();
+                foreach (BunifuiOSSwitch item in myList)
+                {
+                    RolesAction temp= new RolesAction();
+                    temp.ID = int.Parse(item.Text);
+                    if(item.Value)
+                        temp.IsTrue = 1;
+                    else
+                        temp.IsTrue = 0;
+                    myArray.Add(temp);
+                }
+
+                if (myRolesActionBus.Update(myArray) == -1)
+                {
+                    MessageBox.Show("Thành công!");
+                    LoadForm();
+                }
+                else
+                    MessageBox.Show("Thất bại!");
+
             }
         }
     }

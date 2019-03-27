@@ -16,7 +16,7 @@ namespace DataAccessLayer
     {
         DataTable GetAllTrue(int id);
     }
-    public class RolesActionDAL: IRolesAction
+    public class RolesActionDAL : IRolesAction
     {
         protected SqlHelpers<RolesAction> sql = new SqlHelpers<RolesAction>();
         protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -28,14 +28,14 @@ namespace DataAccessLayer
                 String cmd = "RolesAction_GetAllTrue";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("ids",id), 
+                    new OracleParameter("ids",id),
                     new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
                 return sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
         }
 
-        
+
 
         public DataTable Get()
         {
@@ -65,24 +65,21 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        public int Update(RolesAction[] obj)
+        public int Update(List<RolesAction> obj)
         {
-            using (OracleConnection con = Connection.GetConnection)
+            String cmd = "RolesAction_Update";
+            foreach (RolesAction item in obj)
             {
-                String cmd = "RolesAction_Update";
-                foreach (var item in obj)
+
+                OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    OracleParameter[] myParameters = new OracleParameter[]
-                    {
                         new OracleParameter("ids",item.ID),
-                        new OracleParameter("actionids",item.ActionID),
-                        new OracleParameter("rolesids",item.RolesID),
                         new OracleParameter("istrues",item.IsTrue)
-                    };
+                };
+                using (OracleConnection con = Connection.GetConnection)
                     sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
-                }
-                return -1;
             }
+            return -1;
         }
 
         public int Add(RolesAction obj)

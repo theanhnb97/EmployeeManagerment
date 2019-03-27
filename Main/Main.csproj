@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormControls.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TheAnh\Role_Add.cs">
       <SubType>Form</SubType>
     </Compile>

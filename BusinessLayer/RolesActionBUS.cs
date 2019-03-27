@@ -30,7 +30,7 @@ namespace BusinessLayer
             return myDal.Delete(id);
         }
 
-        public int Update(RolesAction[] obj)
+        public int Update(List<RolesAction> obj)
         {
             return myDal.Update(obj);
         }

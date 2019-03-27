@@ -14,6 +14,7 @@ namespace Main
 {
     public partial class FormMain : Form
     {
+        public int rolesId;
         private List<Button> btnMenuButtons;
         ActionManagement ucActionManagement=new ActionManagement();
         Employees ucEmployees=new Employees();
@@ -41,8 +42,9 @@ namespace Main
 
         }
 
-        public FormMain()
+        public FormMain(int rolesId)
         {
+            this.rolesId = rolesId;
             InitializeComponent();
             btnMenuButtons = new List<Button>();
         }

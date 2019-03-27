@@ -11,7 +11,7 @@ namespace BusinessLayer
     public class EmployeeBus
     {
         private readonly EmployeeDao myEmployeeDao=new EmployeeDao();
-        public bool Login(string UserName, string Password)
+        public int Login(string UserName, string Password)
         {
             return myEmployeeDao.Login(UserName, Password);
         }

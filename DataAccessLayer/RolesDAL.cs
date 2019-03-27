@@ -27,7 +27,7 @@ namespace DataAccessLayer
                 String cmd = "Roles_GetAll";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("listActionss",OracleDbType.RefCursor,ParameterDirection.Output)
+                    new OracleParameter("listAction",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
                 return sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }

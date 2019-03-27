@@ -75,7 +75,7 @@
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnAdd.Textcolor = System.Drawing.Color.White;
             this.btnAdd.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // UcRolesAction
             // 
@@ -87,6 +87,8 @@
             this.Name = "UcRolesAction";
             this.Size = new System.Drawing.Size(809, 588);
             this.Load += new System.EventHandler(this.UcRolesAction_Load);
+            this.Enter += new System.EventHandler(this.UcRolesAction_Enter);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UcRolesAction_MouseClick);
             this.ResumeLayout(false);
             this.PerformLayout();
 

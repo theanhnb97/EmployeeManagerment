@@ -11,7 +11,7 @@ namespace DataAccessLayer
 {
     interface IEmployee:IEntities<Employee>
     {
-        bool Login(string UserName, string Password);
+        int Login(string UserName, string Password);
     }
 
     public class EmployeeDao : IEmployee
@@ -57,19 +57,28 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        public bool Login(string username, string password)
+        public int Login(string username, string password)
         {
             using (OracleConnection con = Connection.GetConnection)
             {
-                String cmd = "Select login(:usernames,:passwords) from dual";
-                OracleParameter[] myParameters = new OracleParameter[]
+                try
                 {
-                    new OracleParameter("usernames",username),
-                    new OracleParameter("passwords",password),
-                };
-                DataTable dt = sql.ExcuteQuery(cmd, CommandType.Text, con, myParameters);
-                bool a= dt.Rows[0][0].ToString()!="";
-                return a;
+                    String cmd = "Loginn";
+                    OracleParameter[] myParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("usernames",username),
+                        new OracleParameter("passwords",password),
+                        new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
+                    };
+                    DataTable dt = sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                    int a = int.Parse(dt.Rows[0][1].ToString());
+                    return a;
+                }
+                catch (Exception e)
+                {
+                    return 0;
+                }
+                
             }
         }
        
