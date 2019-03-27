@@ -28,5 +28,15 @@ namespace BusinessLayer
         {
             return employeeDao.Add(employee);
         }
+
+        public int Update(Employee employee)
+        {
+            return employeeDao.Update(employee);
+        }
+
+        public int Delete(int employeeId)
+        {
+            return employeeDao.Delete(employeeId);
+        }
     }
 }

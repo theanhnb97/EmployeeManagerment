@@ -38,6 +38,14 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.lblPage = new System.Windows.Forms.Label();
             this.dgv_employee = new System.Windows.Forms.DataGridView();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GroupRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Identity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartmentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -51,14 +59,6 @@
             this.txtGroupFilter = new System.Windows.Forms.TextBox();
             this.txtAccountFilter = new System.Windows.Forms.TextBox();
             this.txtNameFilter = new System.Windows.Forms.TextBox();
-            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GroupRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Identity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartmentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_employee)).BeginInit();
@@ -113,6 +113,7 @@
             this.btnEdit.TabIndex = 18;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -135,6 +136,7 @@
             this.btnDelete.TabIndex = 19;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnLoadData
             // 
@@ -155,6 +157,7 @@
             this.btnClear.TabIndex = 16;
             this.btnClear.Text = "Refresh";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // lblPage
             // 
@@ -183,6 +186,55 @@
             this.dgv_employee.Name = "dgv_employee";
             this.dgv_employee.Size = new System.Drawing.Size(803, 336);
             this.dgv_employee.TabIndex = 0;
+            this.dgv_employee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_employee_CellClick);
+            // 
+            // FullName
+            // 
+            this.FullName.DataPropertyName = "FULLNAME";
+            this.FullName.HeaderText = "Họ tên";
+            this.FullName.Name = "FullName";
+            // 
+            // UserName
+            // 
+            this.UserName.DataPropertyName = "USERNAME";
+            this.UserName.HeaderText = "Tên TK";
+            this.UserName.Name = "UserName";
+            // 
+            // GroupRole
+            // 
+            this.GroupRole.DataPropertyName = "ROLESID";
+            this.GroupRole.HeaderText = "Nhóm";
+            this.GroupRole.Name = "GroupRole";
+            // 
+            // Identity
+            // 
+            this.Identity.DataPropertyName = "IDENTITY";
+            this.Identity.HeaderText = "CMTND";
+            this.Identity.Name = "Identity";
+            // 
+            // Phone
+            // 
+            this.Phone.DataPropertyName = "PHONE";
+            this.Phone.HeaderText = "SĐT";
+            this.Phone.Name = "Phone";
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "EMAIL";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "ADDRESS";
+            this.Address.HeaderText = "Địa Chỉ";
+            this.Address.Name = "Address";
+            // 
+            // DepartmentName
+            // 
+            this.DepartmentName.DataPropertyName = "DEPARTMENTID";
+            this.DepartmentName.HeaderText = "Phòng";
+            this.DepartmentName.Name = "DepartmentName";
             // 
             // btnNext
             // 
@@ -303,54 +355,6 @@
             this.txtNameFilter.Name = "txtNameFilter";
             this.txtNameFilter.Size = new System.Drawing.Size(204, 20);
             this.txtNameFilter.TabIndex = 11;
-            // 
-            // FullName
-            // 
-            this.FullName.DataPropertyName = "FULLNAME";
-            this.FullName.HeaderText = "Họ tên";
-            this.FullName.Name = "FullName";
-            // 
-            // UserName
-            // 
-            this.UserName.DataPropertyName = "USERNAME";
-            this.UserName.HeaderText = "Tên TK";
-            this.UserName.Name = "UserName";
-            // 
-            // GroupRole
-            // 
-            this.GroupRole.DataPropertyName = "ROLESID";
-            this.GroupRole.HeaderText = "Nhóm";
-            this.GroupRole.Name = "GroupRole";
-            // 
-            // Identity
-            // 
-            this.Identity.DataPropertyName = "IDENTITY";
-            this.Identity.HeaderText = "CMTND";
-            this.Identity.Name = "Identity";
-            // 
-            // Phone
-            // 
-            this.Phone.DataPropertyName = "PHONE";
-            this.Phone.HeaderText = "SĐT";
-            this.Phone.Name = "Phone";
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "EMAIL";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            // 
-            // Address
-            // 
-            this.Address.DataPropertyName = "ADDRESS";
-            this.Address.HeaderText = "Địa Chỉ";
-            this.Address.Name = "Address";
-            // 
-            // DepartmentName
-            // 
-            this.DepartmentName.DataPropertyName = "DEPARTMENTID";
-            this.DepartmentName.HeaderText = "Phòng";
-            this.DepartmentName.Name = "DepartmentName";
             // 
             // Employees
             // 

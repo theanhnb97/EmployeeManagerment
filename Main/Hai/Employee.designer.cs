@@ -139,6 +139,7 @@
             this.btnCancel.TabIndex = 51;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAddAndCreate
             // 
@@ -306,6 +307,7 @@
             this.Controls.Add(this.txtPassword);
             this.Name = "Employee";
             this.Text = "Employee";
+            this.Load += new System.EventHandler(this.Employee_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
