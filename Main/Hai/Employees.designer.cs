@@ -80,9 +80,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(25, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 20);
+            this.label1.Size = new System.Drawing.Size(163, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Employee Management";
+            this.label1.Text = "Quản Lý Nhân Viên";
             // 
             // groupBox1
             // 
@@ -101,7 +101,7 @@
             this.groupBox1.Size = new System.Drawing.Size(809, 392);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Employee list";
+            this.groupBox1.Text = "Danh sách nhân viên";
             // 
             // btnEdit
             // 
@@ -111,7 +111,7 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 18;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -122,7 +122,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 17;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -134,7 +134,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 19;
-            this.btnDelete.Text = "Delete";
+            this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -145,7 +145,7 @@
             this.btnLoadData.Name = "btnLoadData";
             this.btnLoadData.Size = new System.Drawing.Size(75, 23);
             this.btnLoadData.TabIndex = 15;
-            this.btnLoadData.Text = "Search";
+            this.btnLoadData.Text = "Tìm kiếm";
             this.btnLoadData.UseVisualStyleBackColor = true;
             // 
             // btnClear
@@ -155,7 +155,7 @@
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 16;
-            this.btnClear.Text = "Refresh";
+            this.btnClear.Text = "Làm mới";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -274,7 +274,7 @@
             this.groupBox2.Size = new System.Drawing.Size(809, 139);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filter area";
+            this.groupBox2.Text = "Tìm kiếm";
             // 
             // dateToDateFilter
             // 

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccessLayer.Helpers;
@@ -28,20 +30,7 @@ namespace DataAccessLayer
 
         public DataTable Get()
         {
-            List<Employee> employees = new List<Employee>();
-            try
-            {
-                using (OracleConnection oracleConnection = Connection.GetConnection)
-                {
-                    string storeName = "Employee_GetAll";
-                    return sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, null);
-                }
-            }
-            catch (Exception e)
-            {
-                logger.Debug(e.Message);
-                return null;
-            }
+            throw new NotImplementedException();
         }
 
         public DataTable Search(string keyword)
@@ -82,7 +71,9 @@ namespace DataAccessLayer
                     string storeName = "EMPLOYEE_UPDATE";
                     OracleParameter[] oracleParameters = new OracleParameter[]
                     {
-                        new OracleParameter("EmployeeIdPara",employee.EmployeeId),
+                        // because parameter in store dont in "" then it upper case automaticlly, then must rename different with column name
+                        // but in oracleParameter c# upper case and lower case are the same things
+                        new OracleParameter("employeeIdPara",employee.EmployeeId),
                         new OracleParameter("rolesIdPara",employee.RolesId),
                         new OracleParameter("departmentIdPara",employee.DepartmentId),
                         new OracleParameter("rankPara",employee.Rank),
@@ -186,6 +177,5 @@ namespace DataAccessLayer
             }
             return employees;
         }
-
     }
 }

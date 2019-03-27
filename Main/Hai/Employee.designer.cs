@@ -48,12 +48,12 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtIdentity = new System.Windows.Forms.TextBox();
-            this.txtStatus = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtDepartment = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtRank = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.cbbRank = new System.Windows.Forms.ComboBox();
+            this.cbbDepartment = new System.Windows.Forms.ComboBox();
+            this.cbbStatus = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label7
@@ -226,13 +226,6 @@
             this.txtIdentity.Size = new System.Drawing.Size(215, 20);
             this.txtIdentity.TabIndex = 61;
             // 
-            // txtStatus
-            // 
-            this.txtStatus.Location = new System.Drawing.Point(149, 350);
-            this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(215, 20);
-            this.txtStatus.TabIndex = 55;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -241,13 +234,6 @@
             this.label9.Size = new System.Drawing.Size(37, 13);
             this.label9.TabIndex = 52;
             this.label9.Text = "Status";
-            // 
-            // txtDepartment
-            // 
-            this.txtDepartment.Location = new System.Drawing.Point(149, 390);
-            this.txtDepartment.Name = "txtDepartment";
-            this.txtDepartment.Size = new System.Drawing.Size(215, 20);
-            this.txtDepartment.TabIndex = 61;
             // 
             // label10
             // 
@@ -258,13 +244,6 @@
             this.label10.TabIndex = 60;
             this.label10.Text = "Department";
             // 
-            // txtRank
-            // 
-            this.txtRank.Location = new System.Drawing.Point(149, 430);
-            this.txtRank.Name = "txtRank";
-            this.txtRank.Size = new System.Drawing.Size(215, 20);
-            this.txtRank.TabIndex = 61;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -274,16 +253,41 @@
             this.label11.TabIndex = 60;
             this.label11.Text = "Rank";
             // 
+            // cbbRank
+            // 
+            this.cbbRank.FormattingEnabled = true;
+            this.cbbRank.Location = new System.Drawing.Point(149, 429);
+            this.cbbRank.Name = "cbbRank";
+            this.cbbRank.Size = new System.Drawing.Size(215, 21);
+            this.cbbRank.TabIndex = 62;
+            // 
+            // cbbDepartment
+            // 
+            this.cbbDepartment.FormattingEnabled = true;
+            this.cbbDepartment.Location = new System.Drawing.Point(150, 389);
+            this.cbbDepartment.Name = "cbbDepartment";
+            this.cbbDepartment.Size = new System.Drawing.Size(215, 21);
+            this.cbbDepartment.TabIndex = 62;
+            // 
+            // cbbStatus
+            // 
+            this.cbbStatus.FormattingEnabled = true;
+            this.cbbStatus.Location = new System.Drawing.Point(150, 349);
+            this.cbbStatus.Name = "cbbStatus";
+            this.cbbStatus.Size = new System.Drawing.Size(215, 21);
+            this.cbbStatus.TabIndex = 62;
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 531);
+            this.Controls.Add(this.cbbStatus);
+            this.Controls.Add(this.cbbDepartment);
+            this.Controls.Add(this.cbbRank);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtRank);
-            this.Controls.Add(this.txtDepartment);
             this.Controls.Add(this.txtIdentity);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
@@ -292,7 +296,6 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lblTitle);
@@ -335,11 +338,11 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtIdentity;
-        private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtDepartment;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtRank;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbbRank;
+        private System.Windows.Forms.ComboBox cbbDepartment;
+        private System.Windows.Forms.ComboBox cbbStatus;
     }
 }

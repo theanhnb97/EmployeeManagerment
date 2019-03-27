@@ -66,14 +66,13 @@ namespace Main
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int index = dgvEmployeeList.CurrentCell.RowIndex;
-            int id = int.Parse(dgvEmployeeList.Rows[index].Cells[0].Value.ToString());
-            DialogResult myResult;
-            myResult = MessageBox.Show("Are you sure to delete this employee?", "Notification",
+            int index = dgv_employee.CurrentCell.RowIndex;
+            int employeeId = Convert.ToInt32(dgv_employee.Rows[index].Cells["EMPLOYEEID"].Value.ToString());
+            var confirm = MessageBox.Show("Are you sure to delete this employee?", "Notification",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (myResult == DialogResult.OK)
+            if (confirm == DialogResult.OK)
             {
-                if (employeeBus.DeleteEmployee(id) == 1)
+                if (employeeBus.Delete(employeeId) == -1)
                 {
                     MessageBox.Show("Delete employee sucessfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnClear_Click(this, e);
