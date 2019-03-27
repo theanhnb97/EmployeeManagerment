@@ -31,3 +31,4 @@ C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.dll
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache

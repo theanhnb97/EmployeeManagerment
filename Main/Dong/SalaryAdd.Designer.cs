@@ -101,14 +101,19 @@
             this.cbbRank.Name = "cbbRank";
             this.cbbRank.Size = new System.Drawing.Size(215, 21);
             this.cbbRank.TabIndex = 82;
+            this.cbbRank.SelectedIndexChanged += new System.EventHandler(this.cbbRank_SelectedIndexChanged);
             // 
             // cbbDept
             // 
+            this.cbbDept.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbbDept.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbDept.FormattingEnabled = true;
             this.cbbDept.Location = new System.Drawing.Point(162, 70);
             this.cbbDept.Name = "cbbDept";
             this.cbbDept.Size = new System.Drawing.Size(215, 21);
             this.cbbDept.TabIndex = 81;
+            this.cbbDept.SelectedIndexChanged += new System.EventHandler(this.cbbDept_ItemSetected);
+            this.cbbDept.TextChanged += new System.EventHandler(this.cbbDept_TextChanged);
             // 
             // label7
             // 
@@ -238,6 +243,7 @@
             this.Controls.Add(this.label1);
             this.Name = "SalaryAdd";
             this.Text = "SalaryAdd";
+            this.Load += new System.EventHandler(this.Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

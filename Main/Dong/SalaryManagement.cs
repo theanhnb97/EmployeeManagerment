@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using Main.Dong;
+using System.Threading;
 
 namespace Main
 {
+    
     public partial class SalaryManagement : UserControl
     {
         SalaryBUS salary = new SalaryBUS();
@@ -22,7 +24,6 @@ namespace Main
         private void Salary_Load(object sender, EventArgs e)
         {
             dgvSalary.DataSource = salary.GetData();
-
             if (dgvSalary.DataSource == null)
             {
                 MessageBox.Show("Data Not Found!");
@@ -39,6 +40,9 @@ namespace Main
                 dgvSalary.Columns[7].HeaderCell.Value = "Total";
             }
         }
+
+
+
         private void btnLoadData_Click(object sender, System.EventArgs e)
         {
             string nameSearch = txtNameFilter.ToString();
@@ -50,9 +54,16 @@ namespace Main
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            SalaryAdd salaryAdd = new SalaryAdd();
-            salaryAdd.ShowDialog();           
+            Thread myth;
+            myth = new Thread(new System.Threading.ThreadStart(CallSaveDialog));
+            myth.ApartmentState = ApartmentState.STA;
+            myth.Start();
+            dgvSalary.DataSource = salary.GetData();
+        }
+        private void CallSaveDialog()
+        {
+            SalaryAdd sa = new SalaryAdd();
+            sa.ShowDialog();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -71,5 +82,6 @@ namespace Main
         {
 
         }
+
     }
 }

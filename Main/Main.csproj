@@ -144,7 +144,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dong\SalaryManagement.resx">
       <DependentUpon>SalaryManagement.cs</DependentUpon>
-      </EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dai\DepartmentAdd.resx">
       <DependentUpon>DepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +201,10 @@
       <Project>{10b61d6b-b964-4241-9980-72e66da7d18c}</Project>
       <Name>BusinessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj">
+      <Project>{F96878E6-0A71-4F23-B308-AE36A81380DA}</Project>
+      <Name>CommonLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entity\Entity.csproj">
       <Project>{37e750de-ecd8-440b-b490-564347f70f46}</Project>
       <Name>Entity</Name>
@@ -217,10 +221,7 @@
     <Content Include="Image\Material\baseline-lock_open-24px.svg" />
     <Content Include="Image\Material\icons8-shutdown-24.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dai\" />
-    <Folder Include="Dong\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -11,7 +11,7 @@ namespace BusinessLayer
     {
         DataTable GetAll();
         DataTable Filter(string taskName, int department, DateTime dueDate);
-
+        DataTable LoadEmployeeByDpt(int departmentId);
     }
     /// <summary>
     /// 
@@ -34,6 +34,13 @@ namespace BusinessLayer
              TaskDao objTaskDao = new TaskDao();
              return objTaskDao.Filter(taskName, department, dueDate);
         }
+
+        public DataTable LoadEmployeeByDpt(int departmentId)
+        {
+            TaskDao objTaskDao = new TaskDao();
+            return objTaskDao.LoadEmployeeByDpt(departmentId);
+        }
     }
+
 }
 
