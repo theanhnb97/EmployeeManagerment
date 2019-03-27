@@ -44,6 +44,7 @@
     <Compile Include="DTO\SalaryView.cs" />
     <Compile Include="Salary.cs" />
     <Compile Include="Action.cs" />
+    <Compile Include="Department.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task.cs" />

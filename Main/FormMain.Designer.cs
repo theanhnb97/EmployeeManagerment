@@ -245,6 +245,7 @@
             this.pnMain.Name = "pnMain";
             this.pnMain.Size = new System.Drawing.Size(809, 614);
             this.pnMain.TabIndex = 2;
+            this.pnMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnMain_Paint);
             // 
             // panel1
             // 
