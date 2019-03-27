@@ -49,16 +49,14 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dateToDateFilter = new System.Windows.Forms.DateTimePicker();
-            this.dateFromDateFilter = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtGroupFilter = new System.Windows.Forms.TextBox();
-            this.txtAccountFilter = new System.Windows.Forms.TextBox();
-            this.txtNameFilter = new System.Windows.Forms.TextBox();
+            this.txtFullName_Search = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtUserName_Search = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtIdentity_Search = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbbDepartment_Search = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_employee)).BeginInit();
@@ -147,6 +145,7 @@
             this.btnLoadData.TabIndex = 15;
             this.btnLoadData.Text = "Tìm kiếm";
             this.btnLoadData.UseVisualStyleBackColor = true;
+            this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
             // 
             // btnClear
             // 
@@ -258,16 +257,14 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dateToDateFilter);
-            this.groupBox2.Controls.Add(this.dateFromDateFilter);
-            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.cbbDepartment_Search);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txtIdentity_Search);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txtUserName_Search);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.txtGroupFilter);
-            this.groupBox2.Controls.Add(this.txtAccountFilter);
-            this.groupBox2.Controls.Add(this.txtNameFilter);
+            this.groupBox2.Controls.Add(this.txtFullName_Search);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 57);
             this.groupBox2.Name = "groupBox2";
@@ -276,85 +273,70 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm kiếm";
             // 
-            // dateToDateFilter
+            // label6
             // 
-            this.dateToDateFilter.Location = new System.Drawing.Point(459, 81);
-            this.dateToDateFilter.Name = "dateToDateFilter";
-            this.dateToDateFilter.Size = new System.Drawing.Size(258, 20);
-            this.dateToDateFilter.TabIndex = 15;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(72, 41);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Họ tên";
             // 
-            // dateFromDateFilter
+            // txtFullName_Search
             // 
-            this.dateFromDateFilter.Location = new System.Drawing.Point(171, 81);
-            this.dateFromDateFilter.Name = "dateFromDateFilter";
-            this.dateFromDateFilter.Size = new System.Drawing.Size(204, 20);
-            this.dateFromDateFilter.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(406, 87);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "To date";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(406, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Account";
+            this.txtFullName_Search.Location = new System.Drawing.Point(147, 34);
+            this.txtFullName_Search.Name = "txtFullName_Search";
+            this.txtFullName_Search.Size = new System.Drawing.Size(204, 20);
+            this.txtFullName_Search.TabIndex = 11;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(571, 33);
+            this.label3.Location = new System.Drawing.Point(433, 91);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Group";
+            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Phòng Ban";
+            // 
+            // txtUserName_Search
+            // 
+            this.txtUserName_Search.Location = new System.Drawing.Point(512, 34);
+            this.txtUserName_Search.Name = "txtUserName_Search";
+            this.txtUserName_Search.Size = new System.Drawing.Size(204, 20);
+            this.txtUserName_Search.TabIndex = 17;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(109, 87);
+            this.label2.Location = new System.Drawing.Point(72, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "From date";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Số CMTND";
             // 
-            // label6
+            // txtIdentity_Search
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(109, 33);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Name";
+            this.txtIdentity_Search.Location = new System.Drawing.Point(147, 84);
+            this.txtIdentity_Search.Name = "txtIdentity_Search";
+            this.txtIdentity_Search.Size = new System.Drawing.Size(204, 20);
+            this.txtIdentity_Search.TabIndex = 19;
             // 
-            // txtGroupFilter
+            // label4
             // 
-            this.txtGroupFilter.Location = new System.Drawing.Point(613, 26);
-            this.txtGroupFilter.Name = "txtGroupFilter";
-            this.txtGroupFilter.Size = new System.Drawing.Size(104, 20);
-            this.txtGroupFilter.TabIndex = 13;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(433, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Tên TK";
             // 
-            // txtAccountFilter
+            // cbbDepartment_Search
             // 
-            this.txtAccountFilter.Location = new System.Drawing.Point(459, 26);
-            this.txtAccountFilter.Name = "txtAccountFilter";
-            this.txtAccountFilter.Size = new System.Drawing.Size(106, 20);
-            this.txtAccountFilter.TabIndex = 12;
-            // 
-            // txtNameFilter
-            // 
-            this.txtNameFilter.Location = new System.Drawing.Point(171, 26);
-            this.txtNameFilter.Name = "txtNameFilter";
-            this.txtNameFilter.Size = new System.Drawing.Size(204, 20);
-            this.txtNameFilter.TabIndex = 11;
+            this.cbbDepartment_Search.FormattingEnabled = true;
+            this.cbbDepartment_Search.Location = new System.Drawing.Point(512, 84);
+            this.cbbDepartment_Search.Name = "cbbDepartment_Search";
+            this.cbbDepartment_Search.Size = new System.Drawing.Size(204, 21);
+            this.cbbDepartment_Search.TabIndex = 20;
             // 
             // Employees
             // 
@@ -388,16 +370,8 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DateTimePicker dateToDateFilter;
-        private System.Windows.Forms.DateTimePicker dateFromDateFilter;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtGroupFilter;
-        private System.Windows.Forms.TextBox txtAccountFilter;
-        private System.Windows.Forms.TextBox txtNameFilter;
+        private System.Windows.Forms.TextBox txtFullName_Search;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
@@ -411,5 +385,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtIdentity_Search;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtUserName_Search;
+        private System.Windows.Forms.ComboBox cbbDepartment_Search;
+        private System.Windows.Forms.Label label4;
     }
 }

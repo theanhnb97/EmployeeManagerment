@@ -83,5 +83,10 @@ namespace Main
                 }
             }
         }
+
+        private void btnLoadData_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
