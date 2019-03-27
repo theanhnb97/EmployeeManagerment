@@ -57,7 +57,7 @@ namespace Main
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            this.Hide();
+           
             SalaryEdit salaryEdit = new SalaryEdit();
             salaryEdit.ShowDialog();
         }

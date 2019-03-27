@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace Main.Dong
 {
     public partial class SalaryAdd : Form
     {
+        DepartmentBUS departmentBUS = new DepartmentBUS();
         public SalaryAdd()
         {
             InitializeComponent();
@@ -20,7 +22,7 @@ namespace Main.Dong
         {
             cbbDept.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbbDept.AutoCompleteSource = AutoCompleteSource.ListItems;
-            var temp = 
+
         }
     }
 }
