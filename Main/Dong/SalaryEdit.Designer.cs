@@ -1,6 +1,6 @@
 ﻿namespace Main.Dong
 {
-    partial class SalaryAdd
+    partial class SalaryEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -31,26 +31,24 @@
             this.cbbCoefficient = new System.Windows.Forms.ComboBox();
             this.cbbBussiness = new System.Windows.Forms.ComboBox();
             this.cbbBasic = new System.Windows.Forms.ComboBox();
-            this.cbbName = new System.Windows.Forms.ComboBox();
-            this.cbbIdentity = new System.Windows.Forms.ComboBox();
-            this.cbbRank = new System.Windows.Forms.ComboBox();
-            this.cbbDept = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSaveRefresh = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblDept = new System.Windows.Forms.Label();
+            this.lblRank = new System.Windows.Forms.Label();
+            this.lblIdentity = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cbbCoefficient
             // 
-            this.cbbCoefficient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbCoefficient.FormattingEnabled = true;
             this.cbbCoefficient.Location = new System.Drawing.Point(162, 289);
             this.cbbCoefficient.Name = "cbbCoefficient";
@@ -59,7 +57,6 @@
             // 
             // cbbBussiness
             // 
-            this.cbbBussiness.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbBussiness.FormattingEnabled = true;
             this.cbbBussiness.Location = new System.Drawing.Point(162, 251);
             this.cbbBussiness.Name = "cbbBussiness";
@@ -68,47 +65,11 @@
             // 
             // cbbBasic
             // 
-            this.cbbBasic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbBasic.FormattingEnabled = true;
             this.cbbBasic.Location = new System.Drawing.Point(162, 219);
             this.cbbBasic.Name = "cbbBasic";
             this.cbbBasic.Size = new System.Drawing.Size(215, 21);
             this.cbbBasic.TabIndex = 85;
-            // 
-            // cbbName
-            // 
-            this.cbbName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbName.FormattingEnabled = true;
-            this.cbbName.Location = new System.Drawing.Point(162, 177);
-            this.cbbName.Name = "cbbName";
-            this.cbbName.Size = new System.Drawing.Size(215, 21);
-            this.cbbName.TabIndex = 84;
-            // 
-            // cbbIdentity
-            // 
-            this.cbbIdentity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbIdentity.FormattingEnabled = true;
-            this.cbbIdentity.Location = new System.Drawing.Point(162, 139);
-            this.cbbIdentity.Name = "cbbIdentity";
-            this.cbbIdentity.Size = new System.Drawing.Size(215, 21);
-            this.cbbIdentity.TabIndex = 83;
-            // 
-            // cbbRank
-            // 
-            this.cbbRank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbRank.FormattingEnabled = true;
-            this.cbbRank.Location = new System.Drawing.Point(162, 107);
-            this.cbbRank.Name = "cbbRank";
-            this.cbbRank.Size = new System.Drawing.Size(215, 21);
-            this.cbbRank.TabIndex = 82;
-            // 
-            // cbbDept
-            // 
-            this.cbbDept.FormattingEnabled = true;
-            this.cbbDept.Location = new System.Drawing.Point(162, 70);
-            this.cbbDept.Name = "cbbDept";
-            this.cbbDept.Size = new System.Drawing.Size(215, 21);
-            this.cbbDept.TabIndex = 81;
             // 
             // label7
             // 
@@ -152,34 +113,24 @@
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(196, 29);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(107, 15);
+            this.lblTitle.Size = new System.Drawing.Size(76, 15);
             this.lblTitle.TabIndex = 73;
-            this.lblTitle.Text = "Add New Salary";
+            this.lblTitle.Text = "Edit Salary";
             // 
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(315, 380);
+            this.btnCancel.Location = new System.Drawing.Point(276, 380);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 76;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // btnSaveRefresh
-            // 
-            this.btnSaveRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveRefresh.Location = new System.Drawing.Point(195, 380);
-            this.btnSaveRefresh.Name = "btnSaveRefresh";
-            this.btnSaveRefresh.Size = new System.Drawing.Size(112, 23);
-            this.btnSaveRefresh.TabIndex = 75;
-            this.btnSaveRefresh.Text = "Save and refresh";
-            this.btnSaveRefresh.UseVisualStyleBackColor = true;
-            // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(111, 380);
+            this.btnSave.Location = new System.Drawing.Point(162, 380);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 74;
@@ -213,31 +164,62 @@
             this.label1.TabIndex = 72;
             this.label1.Text = "Identity";
             // 
-            // SalaryAdd
+            // lblDept
+            // 
+            this.lblDept.AutoSize = true;
+            this.lblDept.Location = new System.Drawing.Point(166, 73);
+            this.lblDept.Name = "lblDept";
+            this.lblDept.Size = new System.Drawing.Size(0, 13);
+            this.lblDept.TabIndex = 88;
+            // 
+            // lblRank
+            // 
+            this.lblRank.AutoSize = true;
+            this.lblRank.Location = new System.Drawing.Point(166, 110);
+            this.lblRank.Name = "lblRank";
+            this.lblRank.Size = new System.Drawing.Size(0, 13);
+            this.lblRank.TabIndex = 89;
+            // 
+            // lblIdentity
+            // 
+            this.lblIdentity.AutoSize = true;
+            this.lblIdentity.Location = new System.Drawing.Point(166, 147);
+            this.lblIdentity.Name = "lblIdentity";
+            this.lblIdentity.Size = new System.Drawing.Size(0, 13);
+            this.lblIdentity.TabIndex = 90;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(166, 185);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(0, 13);
+            this.lblName.TabIndex = 91;
+            // 
+            // SalaryEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 433);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblIdentity);
+            this.Controls.Add(this.lblRank);
+            this.Controls.Add(this.lblDept);
             this.Controls.Add(this.cbbCoefficient);
             this.Controls.Add(this.cbbBussiness);
             this.Controls.Add(this.cbbBasic);
-            this.Controls.Add(this.cbbName);
-            this.Controls.Add(this.cbbIdentity);
-            this.Controls.Add(this.cbbRank);
-            this.Controls.Add(this.cbbDept);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSaveRefresh);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Name = "SalaryAdd";
-            this.Text = "SalaryAdd";
+            this.Name = "SalaryEdit";
+            this.Text = "SalaryEdit";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,20 +230,19 @@
         private System.Windows.Forms.ComboBox cbbCoefficient;
         private System.Windows.Forms.ComboBox cbbBussiness;
         private System.Windows.Forms.ComboBox cbbBasic;
-        private System.Windows.Forms.ComboBox cbbName;
-        private System.Windows.Forms.ComboBox cbbIdentity;
-        private System.Windows.Forms.ComboBox cbbRank;
-        private System.Windows.Forms.ComboBox cbbDept;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSaveRefresh;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDept;
+        private System.Windows.Forms.Label lblRank;
+        private System.Windows.Forms.Label lblIdentity;
+        private System.Windows.Forms.Label lblName;
     }
 }

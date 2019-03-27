@@ -48,7 +48,6 @@ C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\bin\Debug\CommonLibrary.
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.csprojAssemblyReference.cache
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.UcTask.resources
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.SalaryManagement.resources
-C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.SalaryAdd.resources
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.Employee.resources
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.Employees.resources
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.ActionManagement.resources
@@ -60,3 +59,5 @@ C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.csproj.Co
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.csproj.CopyComplete
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.exe
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.pdb
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.Dong.SalaryEdit.resources
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Main\obj\Debug\Main.Dong.SalaryAdd.resources

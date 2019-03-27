@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
+using Main.Dong;
 
 namespace Main
 {
@@ -45,6 +46,30 @@ namespace Main
             DateTime fDate = DateTime.Parse(dateFDateFilter.ToString());
             DateTime tDate = DateTime.Parse(dateTDateFilter.ToString());
             dgvSalary.DataSource = salary.SearchSalary(nameSearch,deptSearch,fDate,tDate);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SalaryAdd salaryAdd = new SalaryAdd();
+            salaryAdd.ShowDialog();           
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SalaryEdit salaryEdit = new SalaryEdit();
+            salaryEdit.ShowDialog();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

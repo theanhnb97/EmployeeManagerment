@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Main
+namespace Main.Dong
 {
     public partial class SalaryAdd : Form
     {
@@ -16,10 +16,11 @@ namespace Main
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
+       private void Add_Load(object sender, EventArgs e)
         {
-
+            cbbDept.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbbDept.AutoCompleteSource = AutoCompleteSource.ListItems;
+            var temp = 
         }
     }
 }
