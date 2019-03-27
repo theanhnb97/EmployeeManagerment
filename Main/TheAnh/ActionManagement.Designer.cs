@@ -58,6 +58,7 @@
             this.dgvData.RowHeadersVisible = false;
             this.dgvData.Size = new System.Drawing.Size(809, 497);
             this.dgvData.TabIndex = 0;
+            this.dgvData.Enter += new System.EventHandler(this.dgvData_Enter);
             // 
             // ACTIONID
             // 
@@ -219,6 +220,7 @@
             this.Size = new System.Drawing.Size(809, 588);
             this.Load += new System.EventHandler(this.ActionManagement_Load);
             this.Click += new System.EventHandler(this.ActionManagement_Click);
+            this.Enter += new System.EventHandler(this.ActionManagement_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

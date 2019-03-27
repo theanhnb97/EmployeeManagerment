@@ -29,3 +29,6 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Employee.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Employees.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcTask.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Action_Add.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcRoles.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Role_Add.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcRolesAction.resources

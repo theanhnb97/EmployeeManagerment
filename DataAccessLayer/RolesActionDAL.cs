@@ -35,6 +35,7 @@ namespace DataAccessLayer
             }
         }
 
+        
 
         public DataTable Get()
         {
@@ -53,12 +54,33 @@ namespace DataAccessLayer
 
         public int Update(RolesAction obj)
         {
-            throw new NotImplementedException();
+            using (OracleConnection con = Connection.GetConnection)
+            {
+                String cmd = "RolesAction_Update";
+                OracleParameter[] myParameters = new OracleParameter[]
+                {
+                    new OracleParameter("ids",obj.ID),
+                    new OracleParameter("actionids",obj.ActionID),
+                    new OracleParameter("rolesids",obj.RolesID),
+                    new OracleParameter("istrues",obj.IsTrue)
+                };
+                return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+            }
         }
 
         public int Add(RolesAction obj)
         {
-            throw new NotImplementedException();
+            using (OracleConnection con = Connection.GetConnection)
+            {
+                String cmd = "RolesAction_Insert";
+                OracleParameter[] myParameters = new OracleParameter[]
+                {
+                    new OracleParameter("actionids",obj.ActionID),
+                    new OracleParameter("rolesids",obj.RolesID),
+                    new OracleParameter("istrues",obj.IsTrue)
+                };
+                return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+            }
         }
     }
 }

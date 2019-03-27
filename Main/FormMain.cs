@@ -18,6 +18,8 @@ namespace Main
         ActionManagement ucActionManagement=new ActionManagement();
         Employees ucEmployees=new Employees();
         UcTask ucTask =new UcTask();
+        UcRoles ucRoles=new UcRoles();
+        UcRolesAction ucRolesAction=new UcRolesAction();
 
         private void LoadUC()
         {
@@ -29,6 +31,12 @@ namespace Main
 
             pnMain.Controls.Add(ucTask);
             ucTask.Dock = DockStyle.Fill;
+
+            pnMain.Controls.Add(ucRoles);
+            ucRoles.Dock = DockStyle.Fill;
+
+            pnMain.Controls.Add(ucRolesAction);
+            ucRolesAction.Dock = DockStyle.Fill;
 
 
         }
@@ -100,11 +108,13 @@ namespace Main
         private void btnPhanQuyen_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender,e);
+            ucRolesAction.BringToFront();
         }
 
         private void btnRole_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
+            ucRoles.BringToFront();
         }
 
         private void btnAction_Click(object sender, EventArgs e)

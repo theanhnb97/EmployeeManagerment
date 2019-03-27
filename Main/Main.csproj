@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TheAnh\Role_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheAnh\Role_Add.Designer.cs">
+      <DependentUpon>Role_Add.cs</DependentUpon>
+    </Compile>
     <Compile Include="TheAnh\Action_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TheAnh\UcRoles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TheAnh\UcRoles.Designer.cs">
+      <DependentUpon>UcRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcRolesAction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcRolesAction.Designer.cs">
+      <DependentUpon>UcRolesAction.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="TheAnh\Role_Add.resx">
+      <DependentUpon>Role_Add.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TheAnh\Action_Add.resx">
       <DependentUpon>Action_Add.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +150,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TheAnh\UcRoles.resx">
+      <DependentUpon>UcRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcRolesAction.resx">
+      <DependentUpon>UcRolesAction.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

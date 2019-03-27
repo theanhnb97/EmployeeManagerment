@@ -77,5 +77,15 @@ namespace Main
         {
             Loadd();
         }
+
+        private void ActionManagement_Enter(object sender, EventArgs e)
+        {
+            Loadd();
+        }
+
+        private void dgvData_Enter(object sender, EventArgs e)
+        {
+            Loadd();
+        }
     }
 }
