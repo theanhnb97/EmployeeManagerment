@@ -11,8 +11,12 @@ namespace BusinessLayer
 {
     public class RolesActionBUS
     {
-        RolesActionDAL myDal=new RolesActionDAL();  
-        public DataTable GetTrue()
+        RolesActionDAL myDal=new RolesActionDAL();
+        public DataTable GetTrue(int id)
+        {
+            return myDal.GetAllTrue(id);
+        }
+        public DataTable Get()
         {
             return myDal.Get();
         }
@@ -26,7 +30,7 @@ namespace BusinessLayer
             return myDal.Delete(id);
         }
 
-        public int Update(RolesAction obj)
+        public int Update(RolesAction[] obj)
         {
             return myDal.Update(obj);
         }

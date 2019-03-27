@@ -110,10 +110,10 @@
     <Compile Include="TheAnh\UcRoles.Designer.cs">
       <DependentUpon>UcRoles.cs</DependentUpon>
     </Compile>
-    <Compile Include="UcRolesAction.cs">
+    <Compile Include="TheAnh\UcRolesAction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UcRolesAction.Designer.cs">
+    <Compile Include="TheAnh\UcRolesAction.Designer.cs">
       <DependentUpon>UcRolesAction.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="TheAnh\Role_Add.resx">
@@ -153,7 +153,7 @@
     <EmbeddedResource Include="TheAnh\UcRoles.resx">
       <DependentUpon>UcRoles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UcRolesAction.resx">
+    <EmbeddedResource Include="TheAnh\UcRolesAction.resx">
       <DependentUpon>UcRolesAction.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

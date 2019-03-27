@@ -29,7 +29,7 @@ namespace DataAccessLayer
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
                     new OracleParameter("ids",id), 
-                    new OracleParameter("listAction",OracleDbType.RefCursor,ParameterDirection.Output)
+                    new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
                 return sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
@@ -39,7 +39,15 @@ namespace DataAccessLayer
 
         public DataTable Get()
         {
-            throw new NotImplementedException();
+            using (OracleConnection con = Connection.GetConnection)
+            {
+                String cmd = "RolesAction_GetAll";
+                OracleParameter[] myParameters = new OracleParameter[]
+                {
+                    new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
+                };
+                return sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+            }
         }
 
         public DataTable Search(string keyword)
@@ -54,17 +62,26 @@ namespace DataAccessLayer
 
         public int Update(RolesAction obj)
         {
+            throw new NotImplementedException();
+        }
+
+        public int Update(RolesAction[] obj)
+        {
             using (OracleConnection con = Connection.GetConnection)
             {
                 String cmd = "RolesAction_Update";
-                OracleParameter[] myParameters = new OracleParameter[]
+                foreach (var item in obj)
                 {
-                    new OracleParameter("ids",obj.ID),
-                    new OracleParameter("actionids",obj.ActionID),
-                    new OracleParameter("rolesids",obj.RolesID),
-                    new OracleParameter("istrues",obj.IsTrue)
-                };
-                return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                    OracleParameter[] myParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("ids",item.ID),
+                        new OracleParameter("actionids",item.ActionID),
+                        new OracleParameter("rolesids",item.RolesID),
+                        new OracleParameter("istrues",item.IsTrue)
+                    };
+                    sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                }
+                return -1;
             }
         }
 
