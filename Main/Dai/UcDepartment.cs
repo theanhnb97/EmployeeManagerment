@@ -13,8 +13,11 @@ using log4net;
 
 namespace Main.Dai
 {
+   
     public partial class UcDepartment : UserControl
     {
+        int cusPage = 1;
+        
         public UcDepartment()
         {
             InitializeComponent();
@@ -22,8 +25,27 @@ namespace Main.Dai
 
         private void UcDepartment_Load(object sender, EventArgs e)
         {
+            
             DepartmentBUS departmentBus = new DepartmentBUS();
-            dgvDepartment.DataSource = departmentBus.GetAll();
+            //dgvDepartment.DataSource = departmentBus.GetAll();
+            
+            dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, 10, 20);
+           
+
+                lblPage.Text = cusPage.ToString() + '/' + 10;
+                for (int i = 1; i < dgvDepartment.Rows.Count; i++)
+                {
+                    int item = int.Parse(dgvDepartment.Rows[i].Cells[2].Value.ToString());
+                    if (item == 1)
+                    {
+                        string status = "Status";
+                        var s = dgvDepartment.Rows[i].Cells[2].Value.ToString();
+                        s = status;
+
+                    }
+                }
+
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -64,8 +86,7 @@ namespace Main.Dai
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            try
-            {
+            
                 DepartmentBUS departmentBus = new DepartmentBUS();
                 int index = dgvDepartment.CurrentCell.RowIndex;
                 int id = int.Parse(dgvDepartment.Rows[index].Cells[0].Value.ToString());
@@ -89,13 +110,7 @@ namespace Main.Dai
                 {
                     return;
                 }
-        }
-            catch (Exception ex)
-            {
-                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-               logger.Debug(ex.Message);
-
-            }
+        
 }
 
         private void btnDepartment_Click(object sender, EventArgs e)
@@ -107,7 +122,61 @@ namespace Main.Dai
         private void btnClean_Click(object sender, EventArgs e)
         {
             DepartmentBUS departmentBus = new DepartmentBUS();
-            dgvDepartment.DataSource = departmentBus.GetAll();
+            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
+            dgvDepartment.DataSource = departmentBus.GetAllPage(1,item,20);
+        }
+      
+    private void btnNext_Click(object sender, EventArgs e)
+    {
+        int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
+
+            DepartmentBUS departmentBus=new DepartmentBUS();
+        if (cusPage < 10)
+        {
+            cusPage++;
+            lblPage.Text = cusPage.ToString() + '/' + 10;
+            dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);
+            }
+        else
+        {
+            lblPage.Text = "10/10";
+        }
+
+    }
+
+        private void lblPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            DepartmentBUS departmentBus = new DepartmentBUS();
+            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
+
+            if (cusPage>=1)
+            {
+                cusPage--;
+                lblPage.Text = cusPage.ToString() + '/' + 10;
+                dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);
+            } 
+            if(cusPage<1)
+            {
+                cusPage = 1;
+                lblPage.Text = "1/" + 10;
+                dgvDepartment.DataSource = departmentBus.GetAllPage(1, item, 20);
+            }
+
+        }
+
+        private void dgvDepartment_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvDepartment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -42,6 +42,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnFilter = new System.Windows.Forms.Button();
             this.dgvDepartment = new System.Windows.Forms.DataGridView();
+            this.lblPage = new System.Windows.Forms.Label();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrevious = new System.Windows.Forms.Button();
+            this.cbPage = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartment)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +62,7 @@
             // 
             // btnClean
             // 
-            this.btnClean.Location = new System.Drawing.Point(45, 497);
+            this.btnClean.Location = new System.Drawing.Point(44, 521);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(84, 23);
             this.btnClean.TabIndex = 14;
@@ -68,7 +72,7 @@
             // 
             // btnCannel
             // 
-            this.btnCannel.Location = new System.Drawing.Point(683, 497);
+            this.btnCannel.Location = new System.Drawing.Point(684, 521);
             this.btnCannel.Name = "btnCannel";
             this.btnCannel.Size = new System.Drawing.Size(75, 23);
             this.btnCannel.TabIndex = 13;
@@ -77,7 +81,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(517, 497);
+            this.btnDelete.Location = new System.Drawing.Point(522, 521);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 12;
@@ -87,7 +91,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(358, 497);
+            this.btnUpdate.Location = new System.Drawing.Point(360, 521);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 11;
@@ -97,7 +101,7 @@
             // 
             // btnDepartment
             // 
-            this.btnDepartment.Location = new System.Drawing.Point(203, 497);
+            this.btnDepartment.Location = new System.Drawing.Point(204, 521);
             this.btnDepartment.Name = "btnDepartment";
             this.btnDepartment.Size = new System.Drawing.Size(86, 23);
             this.btnDepartment.TabIndex = 10;
@@ -174,11 +178,64 @@
             this.dgvDepartment.RowHeadersWidth = 50;
             this.dgvDepartment.Size = new System.Drawing.Size(745, 252);
             this.dgvDepartment.TabIndex = 9;
+            this.dgvDepartment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentClick);
+            this.dgvDepartment.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentDoubleClick);
+            // 
+            // lblPage
+            // 
+            this.lblPage.AutoSize = true;
+            this.lblPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPage.Location = new System.Drawing.Point(670, 476);
+            this.lblPage.Name = "lblPage";
+            this.lblPage.Size = new System.Drawing.Size(37, 15);
+            this.lblPage.TabIndex = 20;
+            this.lblPage.Text = "1 / 10";
+            this.lblPage.Click += new System.EventHandler(this.lblPage_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.Location = new System.Drawing.Point(712, 473);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(27, 23);
+            this.btnNext.TabIndex = 18;
+            this.btnNext.Text = ">";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrevious.Location = new System.Drawing.Point(633, 473);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(27, 23);
+            this.btnPrevious.TabIndex = 19;
+            this.btnPrevious.Text = "<";
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            // 
+            // cbPage
+            // 
+            this.cbPage.FormattingEnabled = true;
+            this.cbPage.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "20",
+            "50"});
+            this.cbPage.Location = new System.Drawing.Point(29, 476);
+            this.cbPage.Name = "cbPage";
+            this.cbPage.Size = new System.Drawing.Size(121, 21);
+            this.cbPage.TabIndex = 21;
+            this.cbPage.Text = "Page";
             // 
             // UcDepartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbPage);
+            this.Controls.Add(this.lblPage);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.btnPrevious);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnClean);
             this.Controls.Add(this.btnCannel);
@@ -195,6 +252,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartment)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -214,5 +272,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.DataGridView dgvDepartment;
+        private System.Windows.Forms.Label lblPage;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.ComboBox cbPage;
     }
 }

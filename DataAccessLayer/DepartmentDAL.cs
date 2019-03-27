@@ -93,7 +93,7 @@ namespace DataAccessLayer
 
                     cmd = new OracleCommand("Department_GetAllDeltete", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_isDelete",1);
+                    cmd.Parameters.Add("p_isDelete", 1);
                     cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
                     da.SelectCommand = cmd;
@@ -229,8 +229,8 @@ namespace DataAccessLayer
                     CommandType conCommandType = CommandType.StoredProcedure;
                     OracleParameter[] parameters = new OracleParameter[]
                     {
-                        new OracleParameter("p_departmentID",id),
-                        new OracleParameter("p_isDelete",'0')
+                    new OracleParameter("p_departmentID",id),
+                    new OracleParameter("p_isDelete",'0')
 
 
                     };
@@ -246,13 +246,42 @@ namespace DataAccessLayer
                 logger.Debug(e.Message);
                 return 0;
             }
+        }
+        public DataTable GetAllPage(int currPage,int recodperpage,int Pagesize)
+        {
+            try
+            {
+                SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
+                using (OracleConnection connection = Connection.GetConnection)
+                {
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    OracleCommand cmd = new OracleCommand();
 
-            
+                    cmd = new OracleCommand("Department_Page", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    
+                    cmd.Parameters.Add("currPage", currPage);
+                    cmd.Parameters.Add("recodperpage", recodperpage);
+                    cmd.Parameters.Add("Pagesize", Pagesize);
+                    cmd.Parameters.Add("p_isDelete", 1);
+                    cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
+                    da.SelectCommand = cmd;
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
 
-
+                }
 
         }
+            catch (Exception e)
+            {
+                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        logger.Debug(e.Message);
+                return null;
+
+            }
+}
         DataTable IEntities<Department>.Get()
         {
             throw new NotImplementedException();

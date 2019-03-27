@@ -48,5 +48,10 @@ namespace BusinessLayer
             return departmentDal.DeleteNoRemove(id);
         }
 
+        public DataTable GetAllPage(int currPage, int recodperpage, int Pagesize)
+        {
+            return departmentDal.GetAllPage(currPage, recodperpage, Pagesize);
+        }
+
     }
 }
