@@ -36,10 +36,10 @@
             this.btnClean = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtDepartmentName = new System.Windows.Forms.TextBox();
-            this.cbStatus = new System.Windows.Forms.CheckBox();
             this.rdbIsDelete = new System.Windows.Forms.RadioButton();
+            this.cbStatus = new System.Windows.Forms.CheckBox();
+            this.txtDepartmentName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartment)).BeginInit();
@@ -118,32 +118,7 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fillter";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "DepartmentName";
-            // 
-            // txtDepartmentName
-            // 
-            this.txtDepartmentName.Location = new System.Drawing.Point(127, 36);
-            this.txtDepartmentName.Name = "txtDepartmentName";
-            this.txtDepartmentName.Size = new System.Drawing.Size(155, 20);
-            this.txtDepartmentName.TabIndex = 1;
-            // 
-            // cbStatus
-            // 
-            this.cbStatus.AutoSize = true;
-            this.cbStatus.Location = new System.Drawing.Point(381, 40);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(56, 17);
-            this.cbStatus.TabIndex = 2;
-            this.cbStatus.Text = "Status";
-            this.cbStatus.UseVisualStyleBackColor = true;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // rdbIsDelete
             // 
@@ -155,6 +130,32 @@
             this.rdbIsDelete.TabStop = true;
             this.rdbIsDelete.Text = "IsDelete";
             this.rdbIsDelete.UseVisualStyleBackColor = true;
+            // 
+            // cbStatus
+            // 
+            this.cbStatus.AutoSize = true;
+            this.cbStatus.Location = new System.Drawing.Point(381, 40);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(56, 17);
+            this.cbStatus.TabIndex = 2;
+            this.cbStatus.Text = "Status";
+            this.cbStatus.UseVisualStyleBackColor = true;
+            // 
+            // txtDepartmentName
+            // 
+            this.txtDepartmentName.Location = new System.Drawing.Point(127, 36);
+            this.txtDepartmentName.Name = "txtDepartmentName";
+            this.txtDepartmentName.Size = new System.Drawing.Size(155, 20);
+            this.txtDepartmentName.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(31, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "DepartmentName";
             // 
             // btnSearch
             // 
