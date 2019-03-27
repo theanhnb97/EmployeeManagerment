@@ -21,7 +21,6 @@ namespace DataAccessLayer
     public class SalaryDAO : IEntities<Salary>, ISalary
     {       
         string Connect = "DATA SOURCE=192.168.35.210:1521/orcl;PASSWORD=theanh;PERSIST SECURITY INFO=True;USER ID=GDP";
-        SqlHelpers<Salary> sql = new SqlHelpers<Salary>();
         ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public int Add(Salary obj)
         {
@@ -188,12 +187,7 @@ namespace DataAccessLayer
                 Ocmd.CommandText = "SALARY_GETBYID";
                 Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
                 Ocmd.Parameters.Add("ID", OracleDbType.Decimal).Value = id;
-                Ocmd.Parameters.Add("EMPID", OracleDbType.Decimal).Direction = System.Data.ParameterDirection.Output;
-                Ocmd.Parameters.Add("CREATEDATE", OracleDbType.Date).Direction = System.Data.ParameterDirection.Output;
-                Ocmd.Parameters.Add("BASIC", OracleDbType.Decimal).Direction = System.Data.ParameterDirection.Output;
-                Ocmd.Parameters.Add("BUSSINESS", OracleDbType.Decimal).Direction = System.Data.ParameterDirection.Output;
-                Ocmd.Parameters.Add("COEFFI", OracleDbType.Double).Direction = System.Data.ParameterDirection.Output;
-                Ocmd.Parameters.Add("ISDELETE", OracleDbType.Decimal).Direction = System.Data.ParameterDirection.Output;
+                Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
                 try
                 {
                     objConn.Open();
