@@ -22,3 +22,9 @@ D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csp
 D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
 D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
 D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb
+E:\ProjectEmployee3\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll
+E:\ProjectEmployee3\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.pdb
+E:\ProjectEmployee3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
+E:\ProjectEmployee3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
+E:\ProjectEmployee3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
+E:\ProjectEmployee3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb

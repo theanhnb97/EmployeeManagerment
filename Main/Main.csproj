@@ -60,6 +60,24 @@
     <Compile Include="Bang\UcTask.designer.cs">
       <DependentUpon>UcTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dai\DepartmentAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dai\DepartmentAdd.designer.cs">
+      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dai\DepartmentUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dai\DepartmentUpdate.designer.cs">
+      <DependentUpon>DepartmentUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dai\UcDepartment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dai\UcDepartment.Designer.cs">
+      <DependentUpon>UcDepartment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hai\Employee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +112,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Bang\UcTask.resx">
       <DependentUpon>UcTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dai\DepartmentAdd.resx">
+      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dai\DepartmentUpdate.resx">
+      <DependentUpon>DepartmentUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dai\UcDepartment.resx">
+      <DependentUpon>UcDepartment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hai\Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>
@@ -159,7 +186,6 @@
     <Content Include="Image\Material\icons8-shutdown-24.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dai\" />
     <Folder Include="Dong\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

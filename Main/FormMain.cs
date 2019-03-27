@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Main.Dai;
 
 
 namespace Main
@@ -18,6 +19,7 @@ namespace Main
         ActionManagement ucActionManagement=new ActionManagement();
         Employees ucEmployees=new Employees();
         UcTask ucTask =new UcTask();
+        UcDepartment ucDepartment=new UcDepartment();
 
         private void LoadUC()
         {
@@ -28,6 +30,8 @@ namespace Main
             ucEmployees.Dock = DockStyle.Fill;
 
             pnMain.Controls.Add(ucTask);
+            ucTask.Dock = DockStyle.Fill;
+            pnMain.Controls.Add(ucDepartment);
             ucTask.Dock = DockStyle.Fill;
 
 
@@ -126,12 +130,19 @@ namespace Main
         private void btnDepartment_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
+            
+           ucDepartment.BringToFront();
         }
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
             ucEmployees.BringToFront();
+        }
+
+        private void pnMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

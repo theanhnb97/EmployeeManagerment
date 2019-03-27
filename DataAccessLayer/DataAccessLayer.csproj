@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AtionDAL.cs" />
+    <Compile Include="DepartmentDAL.cs" />
     <Compile Include="EmployeeDao.cs" />
     <Compile Include="Helpers\Connection.cs" />
     <Compile Include="IEntities.cs" />
