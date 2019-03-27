@@ -202,8 +202,12 @@
       <Name>BusinessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj">
-      <Project>{F96878E6-0A71-4F23-B308-AE36A81380DA}</Project>
+      <Project>{f96878e6-0a71-4f23-b308-ae36a81380da}</Project>
       <Name>CommonLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{23e1a25d-d4ed-4f86-857e-cf840837f584}</Project>
+      <Name>DataAccessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entity\Entity.csproj">
       <Project>{37e750de-ecd8-440b-b490-564347f70f46}</Project>

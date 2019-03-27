@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccessLayer.Helpers;
@@ -10,7 +12,6 @@ using Entity;
 using Entity.DTO;
 using log4net;
 using Oracle.ManagedDataAccess.Client;
-//using Oracle.DataAccess.Client;
 
 namespace DataAccessLayer
 {
@@ -29,20 +30,7 @@ namespace DataAccessLayer
 
         public DataTable Get()
         {
-            List<Employee> employees = new List<Employee>();
-            try
-            {
-                using (OracleConnection oracleConnection = Connection.GetConnection)
-                {
-                    string storeName = "Employee_GetAll";
-                    return sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, null);
-                }
-            }
-            catch (Exception e)
-            {
-                logger.Debug(e.Message);
-                return null;
-            }
+            throw new NotImplementedException();
         }
 
         public DataTable Search(string keyword)
@@ -50,14 +38,65 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        public int Delete(int id)
+        public int Delete(int employeeId)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            try
+            {
+                using (OracleConnection oracleConnection = Connection.GetConnection)
+                {
+                    string storeName = "EMPLOYEE_DELETE";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("employeeIdPara",employeeId)
+                    };
+                    result = sql.ExcuteNonQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                }
+            }
+            catch (Exception e)
+            {
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+            }
+            return result;
         }
 
-        public int Update(Employee obj)
+        public int Update(Employee employee)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            try
+            {
+                using (OracleConnection oracleConnection = Connection.GetConnection)
+                {
+                    string storeName = "EMPLOYEE_UPDATE";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
+                    {
+                        // because parameter in store dont in "" then it upper case automaticlly, then must rename different with column name
+                        // but in oracleParameter c# upper case and lower case are the same things
+                        new OracleParameter("employeeIdPara",employee.EmployeeId),
+                        new OracleParameter("rolesIdPara",employee.RolesId),
+                        new OracleParameter("departmentIdPara",employee.DepartmentId),
+                        new OracleParameter("rankPara",employee.Rank),
+                        new OracleParameter("fullNamePara",employee.FullName),
+                        new OracleParameter("userNamePara",employee.UserName),
+                        new OracleParameter("passwordPara",employee.FullName),
+                        new OracleParameter("identityPara",employee.Identity),
+                        new OracleParameter("addressPara",employee.Address),
+                        new OracleParameter("phonePara",employee.Phone),
+                        new OracleParameter("emailPara",employee.Email),
+                        new OracleParameter("statusPara",employee.Status),
+                        new OracleParameter("isDeletePara", employee.IsDelete)
+
+                    };
+                    result = sql.ExcuteNonQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                }
+            }
+            catch (Exception e)
+            {
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+            }
+            return result;
         }
 
         public int Add(Employee employee)
@@ -67,7 +106,7 @@ namespace DataAccessLayer
             {
                 using (OracleConnection oracleConnection = Connection.GetConnection)
                 {
-                    OracleCommand oracleCommand = new OracleCommand();
+                    //OracleCommand oracleCommand = new OracleCommand();
                     string storeName = "EMPLOYEE_INSERT";
                     OracleParameter[] oracleParameters = new OracleParameter[]
                     {
@@ -91,7 +130,7 @@ namespace DataAccessLayer
             }
             catch (Exception e)
             {
-                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
                 logger.Debug(e.Message);
             }
             return result;
@@ -138,6 +177,5 @@ namespace DataAccessLayer
             }
             return employees;
         }
-
     }
 }
