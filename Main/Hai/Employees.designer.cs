@@ -31,8 +31,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnLoadData = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.lblPage = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_employee = new System.Windows.Forms.DataGridView();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -46,14 +51,17 @@
             this.txtGroupFilter = new System.Windows.Forms.TextBox();
             this.txtAccountFilter = new System.Windows.Forms.TextBox();
             this.txtNameFilter = new System.Windows.Forms.TextBox();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnLoadData = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GroupRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Identity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartmentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_employee)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +92,7 @@
             this.groupBox1.Controls.Add(this.btnLoadData);
             this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.lblPage);
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dgv_employee);
             this.groupBox1.Controls.Add(this.btnNext);
             this.groupBox1.Controls.Add(this.btnPrevious);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -94,6 +102,59 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employee list";
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(104, 361);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 18;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(11, 361);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 17;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(195, 361);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnLoadData
+            // 
+            this.btnLoadData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadData.Location = new System.Drawing.Point(284, 361);
+            this.btnLoadData.Name = "btnLoadData";
+            this.btnLoadData.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadData.TabIndex = 15;
+            this.btnLoadData.Text = "Search";
+            this.btnLoadData.UseVisualStyleBackColor = true;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(377, 361);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 16;
+            this.btnClear.Text = "Refresh";
+            this.btnClear.UseVisualStyleBackColor = true;
             // 
             // lblPage
             // 
@@ -105,14 +166,23 @@
             this.lblPage.TabIndex = 5;
             this.lblPage.Text = "1 / 10";
             // 
-            // dataGridView1
+            // dgv_employee
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(803, 336);
-            this.dataGridView1.TabIndex = 0;
+            this.dgv_employee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_employee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FullName,
+            this.UserName,
+            this.GroupRole,
+            this.Identity,
+            this.Phone,
+            this.Email,
+            this.Address,
+            this.DepartmentName});
+            this.dgv_employee.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgv_employee.Location = new System.Drawing.Point(3, 16);
+            this.dgv_employee.Name = "dgv_employee";
+            this.dgv_employee.Size = new System.Drawing.Size(803, 336);
+            this.dgv_employee.TabIndex = 0;
             // 
             // btnNext
             // 
@@ -234,57 +304,53 @@
             this.txtNameFilter.Size = new System.Drawing.Size(204, 20);
             this.txtNameFilter.TabIndex = 11;
             // 
-            // btnEdit
+            // FullName
             // 
-            this.btnEdit.Enabled = false;
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(104, 361);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 18;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.FullName.DataPropertyName = "FULLNAME";
+            this.FullName.HeaderText = "Họ tên";
+            this.FullName.Name = "FullName";
             // 
-            // btnAdd
+            // UserName
             // 
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(11, 361);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 17;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.UserName.DataPropertyName = "USERNAME";
+            this.UserName.HeaderText = "Tên TK";
+            this.UserName.Name = "UserName";
             // 
-            // btnDelete
+            // GroupRole
             // 
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(195, 361);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 19;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.GroupRole.DataPropertyName = "ROLESID";
+            this.GroupRole.HeaderText = "Nhóm";
+            this.GroupRole.Name = "GroupRole";
             // 
-            // btnLoadData
+            // Identity
             // 
-            this.btnLoadData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadData.Location = new System.Drawing.Point(284, 361);
-            this.btnLoadData.Name = "btnLoadData";
-            this.btnLoadData.Size = new System.Drawing.Size(75, 23);
-            this.btnLoadData.TabIndex = 15;
-            this.btnLoadData.Text = "Search";
-            this.btnLoadData.UseVisualStyleBackColor = true;
+            this.Identity.DataPropertyName = "IDENTITY";
+            this.Identity.HeaderText = "CMTND";
+            this.Identity.Name = "Identity";
             // 
-            // btnClear
+            // Phone
             // 
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(377, 361);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 16;
-            this.btnClear.Text = "Refresh";
-            this.btnClear.UseVisualStyleBackColor = true;
+            this.Phone.DataPropertyName = "PHONE";
+            this.Phone.HeaderText = "SĐT";
+            this.Phone.Name = "Phone";
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "EMAIL";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "ADDRESS";
+            this.Address.HeaderText = "Địa Chỉ";
+            this.Address.Name = "Address";
+            // 
+            // DepartmentName
+            // 
+            this.DepartmentName.DataPropertyName = "DEPARTMENTID";
+            this.DepartmentName.HeaderText = "Phòng";
+            this.DepartmentName.Name = "DepartmentName";
             // 
             // Employees
             // 
@@ -296,11 +362,12 @@
             this.Controls.Add(this.panel1);
             this.Name = "Employees";
             this.Size = new System.Drawing.Size(809, 588);
+            this.Load += new System.EventHandler(this.Employees_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_employee)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -313,7 +380,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblPage;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_employee;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -332,5 +399,13 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnLoadData;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GroupRole;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Identity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentName;
     }
 }
