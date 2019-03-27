@@ -46,6 +46,8 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.cbPage = new System.Windows.Forms.ComboBox();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartment)).BeginInit();
             this.SuspendLayout();
@@ -180,6 +182,7 @@
             this.dgvDepartment.TabIndex = 9;
             this.dgvDepartment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentClick);
             this.dgvDepartment.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentDoubleClick);
+            this.dgvDepartment.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDepartment_CellFormatting);
             // 
             // lblPage
             // 
@@ -222,16 +225,26 @@
             "10",
             "20",
             "50"});
-            this.cbPage.Location = new System.Drawing.Point(29, 476);
+            this.cbPage.Location = new System.Drawing.Point(91, 473);
             this.cbPage.Name = "cbPage";
             this.cbPage.Size = new System.Drawing.Size(121, 21);
             this.cbPage.TabIndex = 21;
-            this.cbPage.Text = "Page";
+            this.cbPage.Text = "5";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(41, 478);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Page";
             // 
             // UcDepartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.cbPage);
             this.Controls.Add(this.lblPage);
             this.Controls.Add(this.btnNext);
@@ -276,5 +289,7 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.ComboBox cbPage;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Label label2;
     }
 }
