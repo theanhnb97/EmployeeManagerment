@@ -106,3 +106,6 @@ D:\TheAnh\Data\Git\Temp\theanh\Main\bin\Debug\DataAccessLayer.dll.config
 D:\TheAnh\Data\Git\Temp\theanh\Main\obj\Debug\Main.csproj.CopyComplete
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.AddTask.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Bang.frmEditTask.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Department.DepartmentAdd.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Department.DepartmentUpdate.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Dai.UcDepartment.resources

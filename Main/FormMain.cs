@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
+using Main.Dai;
 
 
 namespace Main
@@ -44,7 +45,7 @@ namespace Main
         UcRolesAction ucRolesAction;
         Employees ucEmployees;
         UcTask ucTask;
-        
+        UcDepartment ucDepartment;
 
         private void LoadUC()
         {
@@ -63,6 +64,8 @@ namespace Main
             pnMain.Controls.Add(ucRolesAction);
             ucRolesAction.Dock = DockStyle.Fill;
 
+            pnMain.Controls.Add(ucDepartment);
+            ucDepartment.Dock = DockStyle.Fill;
 
         }
 
@@ -75,6 +78,8 @@ namespace Main
             ucRolesAction = new UcRolesAction(RolesID);
             ucTask = new UcTask(RolesID);
             ucEmployees = new Employees(RolesID);
+            ucDepartment = new UcDepartment(RolesID);
+
 
             InitializeComponent();
             btnMenuButtons = new List<Button>();
@@ -171,6 +176,7 @@ namespace Main
         private void btnDepartment_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
+            ucDepartment.BringToFront();
         }
 
         private void btnEmployee_Click(object sender, EventArgs e)
