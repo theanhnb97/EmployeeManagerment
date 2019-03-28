@@ -18,15 +18,15 @@ namespace Entity.DTO
                     EmployeeId = employeeDto.EMPLOYEEID,
                     Email = employeeDto.EMAIL,
                     Identity = employeeDto.IDENTITY,
-                    Password = employeeDto.PASSWORD,
+                    //Password = employeeDto.PASSWORD,
                     Phone = employeeDto.PHONE,
                     Rank = employeeDto.RANK,
-                    RolesId = employeeDto.ROLESID,
-                    Status = employeeDto.STATUS,
+                    //RolesId = employeeDto.ROLESID,
+                    //Status = employeeDto.STATUS,
                     UserName = employeeDto.USERNAME,
-                    Address = employeeDto.ADDRESS,
+                    //Address = employeeDto.ADDRESS,
                     DepartmentId = employeeDto.DEPARTMENTID,
-                    IsDelete = employeeDto.ISDELETE,
+                    //IsDelete = employeeDto.ISDELETE,
                     FullName = employeeDto.FULLNAME
                 };
                 employees.Add(employee);
@@ -42,15 +42,15 @@ namespace Entity.DTO
             employee.EmployeeId = employeeDto.EMPLOYEEID;
             employee.Email = employeeDto.EMAIL;
             employee.Identity = employeeDto.IDENTITY;
-            employee.Password = employeeDto.PASSWORD;
+            //employee.Password = employeeDto.PASSWORD;
             employee.Phone = employeeDto.PHONE;
             employee.Rank = employeeDto.RANK;
-            employee.RolesId = employeeDto.ROLESID;
-            employee.Status = employeeDto.STATUS;
+            //employee.RolesId = employeeDto.ROLESID;
+            //employee.Status = employeeDto.STATUS;
             employee.UserName = employeeDto.USERNAME;
-            employee.Address = employeeDto.ADDRESS;
+            //employee.Address = employeeDto.ADDRESS;
             employee.DepartmentId = employeeDto.DEPARTMENTID;
-            employee.IsDelete = employeeDto.ISDELETE;
+            //employee.IsDelete = employeeDto.ISDELETE;
             employee.FullName = employeeDto.FULLNAME;
 
             return employee;

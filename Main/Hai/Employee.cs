@@ -17,10 +17,35 @@ namespace Main
 {
     public partial class Employee : Form
     {
+        private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+        protected int RolesID { get; set; }
+        protected override void OnLoad(EventArgs e)
+        {
+            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            bool result = RolesID == 1;
+            string formName = base.Name + ".";
+            string Action = "";
+            foreach (DataRow item in myDataTable.Rows)
+                Action += item["ACTIONNAME"].ToString().Trim() + ".";
+            if (Action.Contains(formName)) result = true;
+            if (result)
+                base.OnLoad(e);
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào hành động này!");
+                this.Close();
+            }
+        }
+
+
+
+
+
         EmployeeBus employeeBus = new EmployeeBus();
 
-        public Employee()
+        public Employee(int id)
         {
+            RolesID = id;
             InitializeComponent();
         }
 
@@ -34,12 +59,13 @@ namespace Main
                     Entity.Employee employee = new Entity.Employee();
                     employee.FullName = txtFullName.Text;
                     employee.Address = txtAddress.Text;
-                    //employee.DepartmentId = Convert.ToInt64(txtDepartment.Text);
+                    // tạm fix =1 vì chưa merge department functions
                     employee.DepartmentId = 1;
                     employee.Email = txtEmail.Text;
                     employee.Identity = txtIdentity.Text;
                     employee.Password = txtPassword.Text;
-                    employee.RolesId = Convert.ToInt64(txtRole.Text);
+                    // tạm fix =1 vì chưa merge role functions
+                    employee.RolesId = 1;
                     employee.Phone = txtPhone.Text;
                     employee.UserName = txtUserName.Text;
                     employee.IsDelete = 0;
@@ -100,7 +126,7 @@ namespace Main
                 txtEmail.Text = Employees.employeeForUpdate.Email;
                 txtIdentity.Text = Employees.employeeForUpdate.Identity;
                 txtPassword.Text = Employees.employeeForUpdate.Password;
-                txtRole.Text = Employees.employeeForUpdate.RolesId.ToString();
+                //txtRole.Text = Employees.employeeForUpdate.RolesId.ToString();
                 txtPhone.Text = Employees.employeeForUpdate.Phone;
                 txtUserName.Text = Employees.employeeForUpdate.UserName;
                 cbbStatus.SelectedIndex = cbbStatus.FindString(Enumerator.GetDescription((Enumeration.Status)Employees.employeeForUpdate.Status));

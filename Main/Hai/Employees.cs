@@ -14,18 +14,38 @@ namespace Main
 {
     public partial class Employees : UserControl
     {
+        private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+        protected int RolesID { get; set; }
+        protected override void OnLoad(EventArgs e)
+        {
+            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            bool result = RolesID == 1;
+            string ucName = base.Name + ".";
+            string Action = "";
+            foreach (DataRow item in myDataTable.Rows)
+                Action += item["ACTIONNAME"].ToString().Trim() + ".";
+            if (Action.Contains(ucName)) result = true;
+            if (result)
+                base.OnLoad(e);
+            else
+                this.Hide();
+        }
+
+        public Employees(int id)
+        {
+            this.RolesID = id;
+            InitializeComponent();
+        }
+
         private readonly EmployeeBus employeeBus = new EmployeeBus();
 
-        private  EmployeeMapper mapper = new EmployeeMapper();
+        private readonly EmployeeMapper mapper = new EmployeeMapper();
 
         public static Entity.Employee employeeForUpdate = new Entity.Employee();
 
         public static bool IsCreated;
 
-        public Employees()
-        {
-            InitializeComponent();
-        }
+        
 
         private void Employees_Load(object sender, EventArgs e)
         {
@@ -35,39 +55,38 @@ namespace Main
         private void btnAdd_Click(object sender, EventArgs e)
         {
             IsCreated = true;
-            Employee formEmployee = new Employee();
+            Employee formEmployee = new Employee(RolesID);
             formEmployee.Show();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             IsCreated = false;
-            Employee frmEmployee = new Employee();
+            Employee frmEmployee = new Employee(RolesID);
             frmEmployee.ShowDialog();
         }
 
         private void dgv_employee_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dgv_employee.CurrentCell.RowIndex;
-            List<EmployeeDTO> employeeDtos = dgv_employee.DataSource as List<EmployeeDTO>;
-            List<Entity.Employee> employees = mapper.CreateMappingList(employeeDtos);
-            if (employees!= null)
-            {
-                employeeForUpdate = employees[index];
-            }
+            int employeeId = Convert.ToInt32(dgv_employee.Rows[index].Cells["ID"].Value.ToString());
+            employeeForUpdate = employeeBus.GetByEmployeeId(employeeId);
             btnDelete.Enabled = true;
             btnEdit.Enabled = true;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            txtIdentity_Search.Text = "";
+            txtFullName_Search.Text = "";
+            txtUserName_Search.Text = "";
             dgv_employee.DataSource = employeeBus.GetAll();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int index = dgv_employee.CurrentCell.RowIndex;
-            int employeeId = Convert.ToInt32(dgv_employee.Rows[index].Cells["EMPLOYEEID"].Value.ToString());
+            int employeeId = Convert.ToInt32(dgv_employee.Rows[index].Cells["ID"].Value.ToString());
             var confirm = MessageBox.Show("Are you sure to delete this employee?", "Notification",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (confirm == DialogResult.OK)
@@ -86,7 +105,20 @@ namespace Main
 
         private void btnLoadData_Click(object sender, EventArgs e)
         {
+            Entity.Employee employeeForSearch = new Entity.Employee
+            {
+                FullName = txtFullName_Search.Text.Trim(),
+                UserName = txtUserName_Search.Text.Trim(),
+                Identity = txtIdentity_Search.Text.Trim()
+            };
+            // sau này sửa lấy department từ danh sách, thì chỗ này là cbb.selected value == 0
+            // ccb.departmentId = cbb.selected value
+            if (cbbDepartment_Search.Text == "")
+            {
+                employeeForSearch.DepartmentId = 0;
+            }
 
+            dgv_employee.DataSource = employeeBus.Search(employeeForSearch);
         }
     }
 }

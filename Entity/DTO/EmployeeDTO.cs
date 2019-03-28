@@ -16,7 +16,7 @@ namespace Entity.DTO
         /// <summary>
         /// Gets or sets the RolesId
         /// </summary>
-        public Int64 ROLESID { get; set; }
+        ///public Int64 ROLESID { get; set; }
 
         /// <summary>
         /// Gets or sets the DepartmentId
@@ -41,7 +41,7 @@ namespace Entity.DTO
         /// <summary>
         /// Gets or sets the Password
         /// </summary>
-        public string PASSWORD { get; set; }
+        ///public string PASSWORD { get; set; }
 
         /// <summary>
         /// Gets or sets the Identity
@@ -51,7 +51,7 @@ namespace Entity.DTO
         /// <summary>
         /// Gets or sets the Address
         /// </summary>
-        public string ADDRESS { get; set; }
+        ///public string ADDRESS { get; set; }
 
         /// <summary>
         /// Gets or sets the Phone
@@ -66,11 +66,11 @@ namespace Entity.DTO
         /// <summary>
         /// Gets or sets the Status
         /// </summary>
-        public Int16 STATUS { get; set; }
+        ///public Int16 STATUS { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether IsDelete
         /// </summary>
-        public Int16 ISDELETE { get; set; }
+        ///public Int16 ISDELETE { get; set; }
     }
 }

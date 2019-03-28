@@ -41,14 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionBUS.cs" />
     <Compile Include="DepartmentBUS.cs" />
+    <Compile Include="RolesActionBUS.cs" />
+    <Compile Include="ActionBUS.cs" />
     <Compile Include="EmployeeBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SalaryBUS.cs" />
+    <Compile Include="RolesBUL.cs" />
     <Compile Include="TaskBus.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj">
+      <Project>{f96878e6-0a71-4f23-b308-ae36a81380da}</Project>
+      <Name>CommonLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
       <Project>{23e1a25d-d4ed-4f86-857e-cf840837f584}</Project>
       <Name>DataAccessLayer</Name>

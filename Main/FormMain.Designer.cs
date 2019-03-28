@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.pnTop = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnProfile = new System.Windows.Forms.PictureBox();
             this.picLogout = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -45,7 +47,9 @@
             this.btnSalary = new System.Windows.Forms.Button();
             this.pnMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bunifuElipseMain = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnMenu.SuspendLayout();
@@ -56,6 +60,7 @@
             // 
             this.pnTop.BackColor = System.Drawing.Color.LightCyan;
             this.pnTop.Controls.Add(this.label2);
+            this.pnTop.Controls.Add(this.btnProfile);
             this.pnTop.Controls.Add(this.picLogout);
             this.pnTop.Controls.Add(this.label1);
             this.pnTop.Controls.Add(this.pictureBox1);
@@ -75,12 +80,23 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Test v1.0.1";
             // 
+            // btnProfile
+            // 
+            this.btnProfile.Image = ((System.Drawing.Image)(resources.GetObject("btnProfile.Image")));
+            this.btnProfile.Location = new System.Drawing.Point(934, 8);
+            this.btnProfile.Name = "btnProfile";
+            this.btnProfile.Size = new System.Drawing.Size(29, 28);
+            this.btnProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnProfile.TabIndex = 0;
+            this.btnProfile.TabStop = false;
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
+            // 
             // picLogout
             // 
             this.picLogout.Image = ((System.Drawing.Image)(resources.GetObject("picLogout.Image")));
-            this.picLogout.Location = new System.Drawing.Point(978, 8);
+            this.picLogout.Location = new System.Drawing.Point(979, 8);
             this.picLogout.Name = "picLogout";
-            this.picLogout.Size = new System.Drawing.Size(38, 36);
+            this.picLogout.Size = new System.Drawing.Size(29, 27);
             this.picLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picLogout.TabIndex = 0;
             this.picLogout.TabStop = false;
@@ -245,7 +261,6 @@
             this.pnMain.Name = "pnMain";
             this.pnMain.Size = new System.Drawing.Size(809, 614);
             this.pnMain.TabIndex = 2;
-            this.pnMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnMain_Paint);
             // 
             // panel1
             // 
@@ -255,6 +270,11 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(809, 26);
             this.panel1.TabIndex = 1;
+            // 
+            // bunifuElipseMain
+            // 
+            this.bunifuElipseMain.ElipseRadius = 15;
+            this.bunifuElipseMain.TargetControl = this;
             // 
             // FormMain
             // 
@@ -274,6 +294,7 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.pnTop.ResumeLayout(false);
             this.pnTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnMenu.ResumeLayout(false);
@@ -299,5 +320,7 @@
         private System.Windows.Forms.Button btnSalary;
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox btnProfile;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipseMain;
     }
 }
