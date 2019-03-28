@@ -1,32 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Threading.Tasks;
 using DataAccessLayer.Helpers;
 using Oracle.ManagedDataAccess.Client;
 using CommonLibrary.Model;
 using log4net;
+using Entity;
 
 namespace DataAccessLayer
 {
+    /// <summary>
+    /// interface for Task
+    /// </summary>
     interface ITaskDao
     {
-
+        //Get All Task
         DataTable GetAll();
+        /// <summary>
+        /// Search task
+        /// </summary>
+        /// <param name="taskName"></param>
+        /// <param name="department"></param>
+        /// <param name="dueDate"></param>
+        /// <returns></returns>
         DataTable Filter(string taskName, int department, string dueDate);
+
+        // get all Department
         DataTable LoadDepartment();
+        // get employee follow department
         DataTable LoadEmployeeByDpt(int departmentId);
+        // insert task
         int Insert(Entity.Task objTask);
+        // get all employees
         DataTable GetAllEmployee();
+        // get priority
         List<Level> GetAlLevel();
+        //delete task
         int Delete(int id);
+        /// <summary>
+        /// update task
+        /// </summary>
+        /// <param name="taskId"></param>
+        /// <param name="taskName"></param>
+        /// <param name="assign"></param>
+        /// <param name="dueDate"></param>
+        /// <param name="priority"></param>
+        /// <param name="file"></param>
+        /// <param name="status"></param>
+        /// <param name="isDelete"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
         int Update(int taskId, string taskName, int assign, string dueDate, int priority, string file, int status, int isDelete, string description);
     }
+    /// <summary>
+    /// class TaskDao inheritance interface ITaskDao
+    /// </summary>
     public class TaskDao : ITaskDao
     {
-        private readonly SqlHelpers<Task> objSqlHelpers = new SqlHelpers<Task>();
+        private readonly SqlHelpers<Entity.Task> objSqlHelpers = new SqlHelpers<Entity.Task>();
         protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public DataTable GetAll()
         {
             try
@@ -54,6 +91,13 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="taskName"></param>
+        /// <param name="department"></param>
+        /// <param name="dueDate"></param>
+        /// <returns></returns>
         public DataTable Filter(string taskName, int department, string dueDate)
         {
             try
@@ -74,6 +118,10 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns> DataTable</returns>
         public DataTable LoadDepartment()
         {
             try
@@ -101,7 +149,11 @@ namespace DataAccessLayer
             }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="departmentId"></param>
+        /// <returns> DataTable</returns>
         public DataTable LoadEmployeeByDpt(int departmentId)
         {
             try
@@ -115,7 +167,9 @@ namespace DataAccessLayer
             }
             catch (Exception e)
             {
+                logger.Debug(e);
                 return null;
+
             }
             finally
             {
@@ -123,7 +177,11 @@ namespace DataAccessLayer
             }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="objTask"></param>
+        /// <returns>number</returns>
         public int Insert(Entity.Task objTask)
         {
             try
@@ -151,7 +209,10 @@ namespace DataAccessLayer
                 Connection.GetConnection.Close();
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>DataTable</returns>
         public DataTable GetAllEmployee()
         {
             OracleParameter[] listParameters = new OracleParameter[]
@@ -161,7 +222,10 @@ namespace DataAccessLayer
             return objSqlHelpers.ExcuteQuery("Employee_GetAll", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>list priority</returns>
         public List<Level> GetAlLevel()
         {
             List<Level> list = new List<Level>
@@ -172,7 +236,11 @@ namespace DataAccessLayer
             };
             return list;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>number</returns>
         public int Delete(int id)
         {
             try
@@ -198,7 +266,19 @@ namespace DataAccessLayer
             }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="taskId"></param>
+        /// <param name="taskName"></param>
+        /// <param name="assign"></param>
+        /// <param name="dueDate"></param>
+        /// <param name="priority"></param>
+        /// <param name="file"></param>
+        /// <param name="status"></param>
+        /// <param name="isDelete"></param>
+        /// <param name="description"></param>
+        /// <returns>number</returns>
         public int Update(int taskId, string taskName, int assign, string dueDate, int priority, string file, int status, int isDelete, string description)
         {
             try
@@ -222,7 +302,6 @@ namespace DataAccessLayer
                 logger.Debug(e);
                 return 0;
             }
-
         }
     }
 }

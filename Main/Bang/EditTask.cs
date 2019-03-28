@@ -122,6 +122,7 @@ namespace Main.Bang
         {
             try
             {
+                // validate 
                 if (string.Empty.Equals(txtTaskName.Text.Trim()))
                 {
                     MessageBox.Show("Enter Task Name!", "Warning");
@@ -140,15 +141,25 @@ namespace Main.Bang
                 }
                 else
                 {
+                    // assign value for data transfer object
                     TaskDTO.TaskName = txtTaskName.Text.Trim();
                     TaskDTO.Description = txtDescription.Text.Trim();
                     TaskDTO.Assign = Convert.ToInt32(cmbAssign.SelectedValue);
                     TaskDTO.Department = Convert.ToInt32(cmbDepartment.SelectedValue);
                     TaskDTO.Priority = Convert.ToInt32(cmbLevel.SelectedValue);
                     TaskDTO.DueDate = dtpDueDate.Value.ToString("dd/MMM/yyyy");
-                    objTaskBus.Update(TaskDTO.TaskId, TaskDTO.TaskName, TaskDTO.Assign,
-                    TaskDTO.DueDate, TaskDTO.Priority, TaskDTO.Files, TaskDTO.Status, TaskDTO.IsDelete, TaskDTO.Description);
-                    Hide();
+                    //check result
+                    if (objTaskBus.Update(TaskDTO.TaskId, TaskDTO.TaskName, TaskDTO.Assign,
+                        TaskDTO.DueDate, TaskDTO.Priority, TaskDTO.Files, TaskDTO.Status, TaskDTO.IsDelete,
+                        TaskDTO.Description) != 0)
+                    {
+                        MessageBox.Show("Succes", "Status");
+                      Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error!", "Status");
+                    }
                 }
             }
             catch (Exception exception)
@@ -175,7 +186,7 @@ namespace Main.Bang
         /// <param name="e"></param>
         private void btnCacncel_Click(object sender, EventArgs e)
         {
-            Hide();
+            this.Close();
         }
     }
 }

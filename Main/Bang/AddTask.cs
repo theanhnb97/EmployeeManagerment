@@ -12,6 +12,12 @@ namespace Main
     {
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
+        private readonly TaskBus objTaskBus = new TaskBus();
+        protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
@@ -29,18 +35,17 @@ namespace Main
                 this.Close();
             }
         }
-        
 
-
-        TaskBus objTaskBus=new TaskBus();
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
         public AddTask(int id)
         {
             this.RolesID = id;
             InitializeComponent();
         }
-       private readonly TaskBus objTaskBus = new TaskBus();
-       protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// 
         /// </summary>
@@ -64,7 +69,7 @@ namespace Main
         {
             try
             {
-
+                //Validate befor add Task
                 if (string.Empty.Equals(txtTaskName.Text.Trim()))
                 {
                     MessageBox.Show("Enter Task Name!", "Warning");
@@ -81,9 +86,13 @@ namespace Main
                 {
                     MessageBox.Show("Description must more than 2 characters!!", "Warning");
                 }
+                else if(Convert.ToDateTime(dtpDueDate.Value) < DateTime.Now)
+                {
+                    MessageBox.Show("Due Date must ' > ' or ' = ' Today", "Warning");
+                }
                 else
                 {
-
+                    //create new object Task
                     Task objTask = new Task
                     {
                         TaskName = txtTaskName.Text.Trim(),
@@ -94,8 +103,16 @@ namespace Main
                         Status = 1,
                         Priority = Convert.ToInt32(cmbLevel.SelectedValue.ToString()),
                     };
-                    objTaskBus.Insert(objTask);
-                    Hide();
+                    if (objTaskBus.Insert(objTask) != 0)
+                    {
+                        MessageBox.Show("Success!", "Status");
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fail!", "Status");
+                    }
+
                 }
             }
             catch (Exception exception)
@@ -128,35 +145,45 @@ namespace Main
         {
             try
             {
-
-                TaskBus objTaskBus = new TaskBus();
-                cmbDepartment.DataSource = objTaskBus.LoadDepartment();
-
-                if (cmbDepartment.DataSource != null)
+                //check result return must > 0 and different null
+                if (objTaskBus.LoadDepartment().Rows.Count > 0 || objTaskBus.LoadDepartment() != null)
                 {
+                    cmbDepartment.DataSource = objTaskBus.LoadDepartment();
                     cmbDepartment.ValueMember = "DEPARTMENTID";
                     cmbDepartment.DisplayMember = "DEPARTMENTNAME";
+
                 }
                 else
                 {
-                    MessageBox.Show("Department have not data");
+                    MessageBox.Show("Department have not data", "Status");
                 }
 
-
-                cmbAssign.DataSource = objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString()));
-                if (cmbAssign.DataSource != null)
+                //check result return must > 0 and different null
+                if (objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString())).Rows.Count > 0
+                    || objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString())) != null)
                 {
+                    cmbAssign.DataSource = objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString()));
+
                     cmbAssign.ValueMember = "EMPLOYEEID";
                     cmbAssign.DisplayMember = "FULLNAME";
                 }
                 else
                 {
-                    MessageBox.Show("Assign have not data");
+                    MessageBox.Show("Assign have not data", "Status");
                 }
 
-                cmbLevel.DataSource = objTaskBus.GetAlLevel();
-                cmbLevel.ValueMember = "Id";
-                cmbLevel.DisplayMember = "Name";
+                ////check result return must > 0 and different null
+                if (objTaskBus.GetAlLevel().Count > 0 || objTaskBus.GetAlLevel() != null)
+                {
+                    cmbLevel.DataSource = objTaskBus.GetAlLevel();
+                    cmbLevel.ValueMember = "Id";
+                    cmbLevel.DisplayMember = "Name";
+
+                }
+                else
+                {
+                    MessageBox.Show("Priority have not data","Status");
+                }
             }
             catch (Exception exception)
             {
@@ -180,7 +207,6 @@ namespace Main
             catch
             {
             }
-
         }
     }
 }
