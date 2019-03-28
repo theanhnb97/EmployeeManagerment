@@ -46,6 +46,7 @@ namespace Main
         Employees ucEmployees;
         UcTask ucTask;
         UcDepartment ucDepartment;
+        private UcUpdateProfile ucUpdateProfile;
 
         private void LoadUC()
         {
@@ -67,12 +68,19 @@ namespace Main
             pnMain.Controls.Add(ucDepartment);
             ucDepartment.Dock = DockStyle.Fill;
 
+            pnMain.Controls.Add(ucUpdateProfile);
+            ucUpdateProfile.Dock = DockStyle.Fill;
+
+
+
         }
 
-
-        public FormMain(int rolesId)
+        private string userName;
+        public FormMain(int rolesId,string username)
         {
             this.RolesID = rolesId;
+            this.userName = username;
+            ucUpdateProfile=new UcUpdateProfile(username);
             ucActionManagement = new ActionManagement(RolesID);
             ucRoles = new UcRoles(RolesID);
             ucRolesAction = new UcRolesAction(RolesID);
@@ -187,7 +195,7 @@ namespace Main
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
-
+            ucUpdateProfile.BringToFront();
         }
     }
 }

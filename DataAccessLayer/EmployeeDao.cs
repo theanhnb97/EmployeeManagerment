@@ -250,6 +250,14 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public int Login(string username, string password)
         {
             using (OracleConnection con = Connection.GetConnection)
@@ -274,6 +282,36 @@ namespace DataAccessLayer
                 
             }
         }
-       
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
+        public Employee GetByUsername(string username)
+        {
+            Employee employee = new Employee();
+            try
+            {
+                using (OracleConnection oracleConnection = Connection.GetConnection)
+                {
+                    string storeName = "EMPLOYEE_GETBYUSERNAME";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("usernames",username),
+                        new OracleParameter("cursor",OracleDbType.RefCursor,ParameterDirection.Output)
+                    };
+                    DataTable data = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                    employee = TranferDataTableToEmployeeList(data)[0];
+                }
+            }
+            catch (Exception e)
+            {
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+            }
+            return employee;
+        }
+
     }
 }

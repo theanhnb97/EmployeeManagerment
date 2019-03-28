@@ -48,5 +48,10 @@ namespace BusinessLayer
         {
             return myEmployeeDao.GetByEmployeeId(employeeId);
         }
+
+        public Employee GetByUsername(string username)
+        {
+            return myEmployeeDao.GetByUsername(username);
+        }
     }
 }

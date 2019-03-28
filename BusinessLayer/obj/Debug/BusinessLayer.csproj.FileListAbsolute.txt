@@ -1,0 +1,17 @@
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\DataAccessLayer.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\Entity.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\log4net.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\DataAccessLayer.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\DataAccessLayer.dll.config
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\Entity.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\log4net.xml
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.pdb

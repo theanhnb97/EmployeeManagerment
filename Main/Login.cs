@@ -24,7 +24,7 @@ namespace Main
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            lblExit_Click(lblExit, e);
         }
 
         private void lblExit_Click(object sender, EventArgs e)
@@ -49,6 +49,7 @@ namespace Main
             result = myEmployeeBus.Login(txtUserName.Text.Trim(), txtPassword.Text.Trim());
             if (result!=0)
             {
+
                 Thread threadMainForm = new Thread(new ThreadStart(ShowFormMain));
                 threadMainForm.Start();
                 Application.Exit();
@@ -63,29 +64,29 @@ namespace Main
         }
         private void ShowFormMain()
         {
-            FormMain f = new FormMain(result);
+            FormMain f = new FormMain(result, txtUserName.Text.Trim());
             f.ShowDialog();
         }
 
 
-        private void textBox_Leave(object sender, EventArgs e)
-        {
-            BunifuMaterialTextbox myTextBox = (BunifuMaterialTextbox)sender;
-            if (myTextBox.Text == "")
-            {
-                myTextBox.Text = "Username";
-                myTextBox.ForeColor = Color.Silver;
-            }
-        }
-        private void textBox_Enter(object sender, EventArgs e)
-        {
-            BunifuMaterialTextbox myTextBox = (BunifuMaterialTextbox)sender;
-            if (myTextBox.Text == "Username")
-            {
-                myTextBox.Text = "";
-                myTextBox.ForeColor = Color.Black;
-            }
-        }
+        //private void textBox_Leave(object sender, EventArgs e)
+        //{
+        //    BunifuMaterialTextbox myTextBox = (BunifuMaterialTextbox)sender;
+        //    if (myTextBox.Text == "")
+        //    {
+        //        myTextBox.Text = "Username";
+        //        myTextBox.ForeColor = Color.Silver;
+        //    }
+        //}
+        //private void textBox_Enter(object sender, EventArgs e)
+        //{
+        //    BunifuMaterialTextbox myTextBox = (BunifuMaterialTextbox)sender;
+        //    if (myTextBox.Text == "Username")
+        //    {
+        //        myTextBox.Text = "";
+        //        myTextBox.ForeColor = Color.Black;
+        //    }
+        //}
         private void login_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
