@@ -44,7 +44,7 @@ namespace Main
         UcRolesAction ucRolesAction;
 
         Employees ucEmployees=new Employees();
-        UcTask ucTask =new UcTask();
+        UcTask ucTask;
         
 
         private void LoadUC()
@@ -74,6 +74,7 @@ namespace Main
             ucActionManagement = new ActionManagement(RolesID);
             ucRoles = new UcRoles(RolesID);
             ucRolesAction = new UcRolesAction(RolesID);
+            ucTask = new UcTask(RolesID);
 
             InitializeComponent();
             btnMenuButtons = new List<Button>();

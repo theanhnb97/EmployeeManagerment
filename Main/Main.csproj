@@ -54,6 +54,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bang\AddTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bang\AddTask.designer.cs">
+      <DependentUpon>AddTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bang\EditTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bang\EditTask.designer.cs">
+      <DependentUpon>EditTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bang\UcTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Bang\UcTask.designer.cs">
+      <DependentUpon>UcTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="TheAnh\Role_Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,12 +83,6 @@
     </Compile>
     <Compile Include="TheAnh\Action_Add.Designer.cs">
       <DependentUpon>Action_Add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Bang\UcTask.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Bang\UcTask.designer.cs">
-      <DependentUpon>UcTask.cs</DependentUpon>
     </Compile>
     <Compile Include="Hai\Employee.cs">
       <SubType>Form</SubType>
@@ -116,14 +128,20 @@
     <Compile Include="TheAnh\UcRolesAction.Designer.cs">
       <DependentUpon>UcRolesAction.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Bang\AddTask.resx">
+      <DependentUpon>AddTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bang\EditTask.resx">
+      <DependentUpon>EditTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bang\UcTask.resx">
+      <DependentUpon>UcTask.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TheAnh\Role_Add.resx">
       <DependentUpon>Role_Add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TheAnh\Action_Add.resx">
       <DependentUpon>Action_Add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Bang\UcTask.resx">
-      <DependentUpon>UcTask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hai\Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>
@@ -177,6 +195,10 @@
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
       <Project>{10b61d6b-b964-4241-9980-72e66da7d18c}</Project>
       <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj">
+      <Project>{f96878e6-0a71-4f23-b308-ae36a81380da}</Project>
+      <Name>CommonLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entity\Entity.csproj">
       <Project>{37e750de-ecd8-440b-b490-564347f70f46}</Project>

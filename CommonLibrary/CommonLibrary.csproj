@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataTable2List.cs" />
+    <Compile Include="Model\Level.cs" />
+    <Compile Include="Model\TaskDTO.cs" />
     <Compile Include="Paging\PagingGridView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
