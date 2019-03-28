@@ -37,6 +37,7 @@ namespace Main
         }
 
         private int result = 0;
+        private string username;
         private void btnOk_Click(object sender, EventArgs e)
         {
             if (txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "")
@@ -49,7 +50,7 @@ namespace Main
             result = myEmployeeBus.Login(txtUserName.Text.Trim(), txtPassword.Text.Trim());
             if (result!=0)
             {
-
+                username = txtUserName.Text.Trim();
                 Thread threadMainForm = new Thread(new ThreadStart(ShowFormMain));
                 threadMainForm.Start();
                 Application.Exit();
@@ -64,7 +65,7 @@ namespace Main
         }
         private void ShowFormMain()
         {
-            FormMain f = new FormMain(result, txtUserName.Text.Trim());
+            FormMain f = new FormMain(result,username);
             f.ShowDialog();
         }
 

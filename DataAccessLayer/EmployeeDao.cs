@@ -313,5 +313,37 @@ namespace DataAccessLayer
             return employee;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        public int UpdateProfile(Employee employee)
+        {
+            try
+            {
+                using (OracleConnection oracleConnection = Connection.GetConnection)
+                {
+                    string storeName = "Employee_UpdateByUserName";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("userNames",employee.UserName),
+                        new OracleParameter("fullNames",employee.FullName),
+                        new OracleParameter("identitys",employee.Identity),
+                        new OracleParameter("addresss",employee.Address),
+                        new OracleParameter("phones",employee.Phone),
+                        new OracleParameter("emails",employee.Email),
+                    };
+                    return sql.ExcuteNonQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                }
+            }
+            catch (Exception e)
+            {
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+                return 0;
+            }
+        }
+
     }
 }

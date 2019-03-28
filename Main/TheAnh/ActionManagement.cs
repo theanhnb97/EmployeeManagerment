@@ -133,7 +133,6 @@ namespace Main
                             myActionAdd.ActionName = item.Name;
                             myActionAdd.Description = item.Name;
                             myActionAdd.IsDelete = 0;
-                            bool result = false;
                             myAction.Add(myActionAdd);
                         }
                     }
@@ -141,5 +140,6 @@ namespace Main
             }
             
         }
+
     }
 }

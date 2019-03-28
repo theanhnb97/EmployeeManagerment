@@ -13,12 +13,7 @@ namespace BusinessLayer
     public class EmployeeBus
     {
         private readonly EmployeeDao myEmployeeDao=new EmployeeDao();
-
-        public int Login(string UserName, string Password)
-        {
-            return myEmployeeDao.Login(UserName, Password);
-        }
-
+        
         public List<EmployeeDTO> GetAll()
         {
             return myEmployeeDao.GetAll();
@@ -49,9 +44,26 @@ namespace BusinessLayer
             return myEmployeeDao.GetByEmployeeId(employeeId);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="UserName"></param>
+        /// <param name="Password"></param>
+        /// <returns></returns>
+
+        public int Login(string UserName, string Password)
+        {
+            return myEmployeeDao.Login(UserName, Password);
+        }
         public Employee GetByUsername(string username)
         {
             return myEmployeeDao.GetByUsername(username);
+        }
+
+        public int UpdateProfile(Employee employee)
+        {
+            return myEmployeeDao.UpdateProfile(employee);
         }
     }
 }
