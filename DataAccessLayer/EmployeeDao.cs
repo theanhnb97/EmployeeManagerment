@@ -12,13 +12,11 @@ using Entity;
 using Entity.DTO;
 using log4net;
 using Oracle.ManagedDataAccess.Client;
-
 namespace DataAccessLayer
 {
     interface IEmployee:IEntities<Employee>
     {
-        bool Login(string UserName, string Password);
-
+        int Login(string UserName, string Password);
         List<EmployeeDTO> GetAll();
 
         List<EmployeeDTO> Search(Employee employee);
@@ -120,7 +118,7 @@ namespace DataAccessLayer
                         new OracleParameter("IsDelete", employee.IsDelete)
 
                     };
-                    result = sql.ExcuteNonQuery(storeName,CommandType.StoredProcedure,oracleConnection, oracleParameters);
+                    result = sql.ExcuteNonQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
                 }
             }
             catch (Exception e)
@@ -131,21 +129,6 @@ namespace DataAccessLayer
             return result;
         }
 
-        public bool Login(string username, string password)
-        {
-            using (OracleConnection con = Connection.GetConnection)
-            {
-                String cmd = "Select login(:usernames,:passwords) from dual";
-                OracleParameter[] myParameters = new OracleParameter[]
-                {
-                    new OracleParameter("usernames",username),
-                    new OracleParameter("passwords",password),
-                };
-                DataTable dt = sql.ExcuteQuery(cmd, CommandType.Text, con, myParameters);
-                bool a= dt.Rows[0][0].ToString()!="";
-                return a;
-            }
-        }
 
         public List<EmployeeDTO> GetAll()
         {
@@ -201,7 +184,7 @@ namespace DataAccessLayer
         }
 
         public Employee GetByEmployeeId(int employeeId)
-        {  
+        {
             Employee employee = new Employee();
             try
             {
@@ -266,5 +249,31 @@ namespace DataAccessLayer
         {
             throw new NotImplementedException();
         }
+
+        public int Login(string username, string password)
+        {
+            using (OracleConnection con = Connection.GetConnection)
+            {
+                try
+                {
+                    String cmd = "Loginn";
+                    OracleParameter[] myParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("usernames",username),
+                        new OracleParameter("passwords",password),
+                        new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
+                    };
+                    DataTable dt = sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                    int a = int.Parse(dt.Rows[0][1].ToString());
+                    return a;
+                }
+                catch (Exception e)
+                {
+                    return 0;
+                }
+                
+            }
+        }
+       
     }
 }
