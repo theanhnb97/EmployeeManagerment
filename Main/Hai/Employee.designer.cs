@@ -255,6 +255,7 @@
             // 
             // cbbRank
             // 
+            this.cbbRank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbRank.FormattingEnabled = true;
             this.cbbRank.Location = new System.Drawing.Point(149, 429);
             this.cbbRank.Name = "cbbRank";
@@ -263,6 +264,7 @@
             // 
             // cbbDepartment
             // 
+            this.cbbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbDepartment.FormattingEnabled = true;
             this.cbbDepartment.Location = new System.Drawing.Point(150, 389);
             this.cbbDepartment.Name = "cbbDepartment";
@@ -271,6 +273,7 @@
             // 
             // cbbStatus
             // 
+            this.cbbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbStatus.FormattingEnabled = true;
             this.cbbStatus.Location = new System.Drawing.Point(150, 349);
             this.cbbStatus.Name = "cbbStatus";

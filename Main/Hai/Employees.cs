@@ -16,9 +16,11 @@ namespace Main
     {
         private readonly EmployeeBus employeeBus = new EmployeeBus();
 
-        private  EmployeeMapper mapper = new EmployeeMapper();
+        private readonly EmployeeMapper mapper = new EmployeeMapper();
 
         public static Entity.Employee employeeForUpdate = new Entity.Employee();
+
+        public static Entity.Employee employeeForSearch = new Entity.Employee();
 
         public static bool IsCreated;
 
@@ -61,6 +63,9 @@ namespace Main
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            txtIdentity_Search.Text = "";
+            txtFullName_Search.Text = "";
+            txtUserName_Search.Text = "";
             dgv_employee.DataSource = employeeBus.GetAll();
         }
 
@@ -86,7 +91,17 @@ namespace Main
 
         private void btnLoadData_Click(object sender, EventArgs e)
         {
+            employeeForSearch.FullName = txtFullName_Search.Text.Trim();
+            employeeForSearch.UserName = txtUserName_Search.Text.Trim();
+            employeeForSearch.Identity = txtIdentity_Search.Text.Trim();
+            // sau này sửa lấy department từ danh sách, thì chỗ này là cbb.selected value == 0
+            // ccb.departmentId = cbb.selected value
+            if (cbbDepartment_Search.Text == "")
+            {
+                employeeForSearch.DepartmentId = 0;
+            }
 
+            dgv_employee.DataSource = employeeBus.Search(employeeForSearch);
         }
     }
 }

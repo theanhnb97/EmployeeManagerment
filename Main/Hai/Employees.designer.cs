@@ -49,14 +49,14 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtFullName_Search = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtUserName_Search = new System.Windows.Forms.TextBox();
+            this.cbbDepartment_Search = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIdentity_Search = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbbDepartment_Search = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtUserName_Search = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtFullName_Search = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_employee)).BeginInit();
@@ -273,37 +273,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm kiếm";
             // 
-            // label6
+            // cbbDepartment_Search
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(72, 41);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Họ tên";
-            // 
-            // txtFullName_Search
-            // 
-            this.txtFullName_Search.Location = new System.Drawing.Point(147, 34);
-            this.txtFullName_Search.Name = "txtFullName_Search";
-            this.txtFullName_Search.Size = new System.Drawing.Size(204, 20);
-            this.txtFullName_Search.TabIndex = 11;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(433, 91);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Phòng Ban";
-            // 
-            // txtUserName_Search
-            // 
-            this.txtUserName_Search.Location = new System.Drawing.Point(512, 34);
-            this.txtUserName_Search.Name = "txtUserName_Search";
-            this.txtUserName_Search.Size = new System.Drawing.Size(204, 20);
-            this.txtUserName_Search.TabIndex = 17;
+            this.cbbDepartment_Search.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbDepartment_Search.FormattingEnabled = true;
+            this.cbbDepartment_Search.Location = new System.Drawing.Point(512, 82);
+            this.cbbDepartment_Search.Name = "cbbDepartment_Search";
+            this.cbbDepartment_Search.Size = new System.Drawing.Size(204, 21);
+            this.cbbDepartment_Search.TabIndex = 20;
             // 
             // label2
             // 
@@ -330,13 +307,37 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Tên TK";
             // 
-            // cbbDepartment_Search
+            // label3
             // 
-            this.cbbDepartment_Search.FormattingEnabled = true;
-            this.cbbDepartment_Search.Location = new System.Drawing.Point(512, 84);
-            this.cbbDepartment_Search.Name = "cbbDepartment_Search";
-            this.cbbDepartment_Search.Size = new System.Drawing.Size(204, 21);
-            this.cbbDepartment_Search.TabIndex = 20;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(433, 91);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Phòng Ban";
+            // 
+            // txtUserName_Search
+            // 
+            this.txtUserName_Search.Location = new System.Drawing.Point(512, 34);
+            this.txtUserName_Search.Name = "txtUserName_Search";
+            this.txtUserName_Search.Size = new System.Drawing.Size(204, 20);
+            this.txtUserName_Search.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(72, 41);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Họ tên";
+            // 
+            // txtFullName_Search
+            // 
+            this.txtFullName_Search.Location = new System.Drawing.Point(147, 34);
+            this.txtFullName_Search.Name = "txtFullName_Search";
+            this.txtFullName_Search.Size = new System.Drawing.Size(204, 20);
+            this.txtFullName_Search.TabIndex = 11;
             // 
             // Employees
             // 
@@ -389,7 +390,7 @@
         private System.Windows.Forms.TextBox txtIdentity_Search;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtUserName_Search;
-        private System.Windows.Forms.ComboBox cbbDepartment_Search;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbbDepartment_Search;
     }
 }

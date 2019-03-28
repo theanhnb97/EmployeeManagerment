@@ -18,7 +18,10 @@ namespace DataAccessLayer
     interface IEmployee:IEntities<Employee>
     {
         bool Login(string UserName, string Password);
+
         List<EmployeeDTO> GetAll();
+
+        List<EmployeeDTO> Search(Employee employee);
     }
 
     public class EmployeeDao : IEmployee
@@ -166,13 +169,40 @@ namespace DataAccessLayer
                     oraP.Direction = System.Data.ParameterDirection.Output;
                     OracleParameter[] myParameters = new OracleParameter[1];
                     myParameters[0] = oraP;
-                    //dt = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, myParameters);
                     employees = sqlHelpersDto.ExcuteQueryList(storeName, CommandType.StoredProcedure, oracleConnection, myParameters);
 
                 }
             }
             catch (Exception e)
             {
+                logger.Debug(e.Message);
+            }
+            return employees;
+        }
+
+        public List<EmployeeDTO> Search(Employee employee)
+        {
+            List<EmployeeDTO> employees = new List<EmployeeDTO>();
+            try
+            {
+                using (OracleConnection oracleConnection = Connection.GetConnection)
+                {
+                    string storeName = "EMPLOYEE_SEARCH";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("cursor",OracleDbType.RefCursor,ParameterDirection.Output),
+                        new OracleParameter("departmentIdPara",employee.DepartmentId),
+                        new OracleParameter("fullNamePara",employee.FullName),
+                        new OracleParameter("userNamePara",employee.UserName),
+                        new OracleParameter("identityPara",employee.Identity),
+
+                    };
+                    employees = sqlHelpersDto.ExcuteQueryList(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                }
+            }
+            catch (Exception e)
+            {
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
                 logger.Debug(e.Message);
             }
             return employees;

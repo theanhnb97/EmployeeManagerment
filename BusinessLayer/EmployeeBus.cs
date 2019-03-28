@@ -38,5 +38,10 @@ namespace BusinessLayer
         {
             return employeeDao.Delete(employeeId);
         }
+
+        public List<EmployeeDTO> Search(Employee employee)
+        {
+            return employeeDao.Search(employee);
+        }
     }
 }
