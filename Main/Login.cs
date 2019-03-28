@@ -57,6 +57,8 @@ namespace Main
             {
                 lblNotify.Text = "UserName or Password is not correct.";
                 lblNotify.Visible = true;
+                txtPassword.Focus();
+                txtPassword.Text="";
             }
         }
         private void ShowFormMain()

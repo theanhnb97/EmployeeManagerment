@@ -49,6 +49,44 @@ namespace Main
             obj.ForeColor = SystemColors.HotTrack;
             return obj;
         }
+
+        /*BunifuFlatButton GetButton(String Text)
+        {
+            BunifuFlatButton btnReturn=new BunifuFlatButton();
+            btnReturn.Activecolor = Color.SteelBlue;
+            btnReturn.BackColor = Color.SteelBlue;
+            btnReturn.BackgroundImageLayout = ImageLayout.Stretch;
+            btnReturn.BorderRadius = 0;
+            btnReturn.ButtonText = Text;
+            btnReturn.Cursor = Cursors.Hand;
+            btnReturn.DisabledColor = Color.Gray;
+            btnReturn.Iconcolor = Color.Transparent;
+            btnReturn.Iconimage = null;
+            btnReturn.Iconimage_right = null;
+            btnReturn.Iconimage_right_Selected = null;
+            btnReturn.Iconimage_Selected = null;
+            btnReturn.IconMarginLeft = 0;
+            btnReturn.IconMarginRight = 0;
+            btnReturn.IconRightVisible = true;
+            btnReturn.IconRightZoom = 0D;
+            btnReturn.IconVisible = true;
+            btnReturn.IconZoom = 90D;
+            btnReturn.IsTab = false;
+            btnReturn.Location = new Point(729, 544);
+            btnReturn.Name = "btnReturn";
+            btnReturn.Normalcolor = Color.SteelBlue;
+            btnReturn.OnHovercolor = Color.SteelBlue;
+            btnReturn.OnHoverTextColor = Color.White;
+            btnReturn.selected = false;
+            btnReturn.Size = new Size(71, 36);
+            btnReturn.TabIndex = 11;
+            btnReturn.Text = Text;
+            btnReturn.TextAlign = ContentAlignment.MiddleCenter;
+            btnReturn.Textcolor = Color.White;
+            btnReturn.TextFont = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            return btnReturn;
+        }*/
+
         void LoadForm()
         {
             tlpnData.Controls.Clear();
@@ -68,7 +106,7 @@ namespace Main
             foreach (DataRow item in rolesTable.Rows)
             {
                 start++;
-                Label rolesName = Getlabel(item["ROLESNAME"].ToString());
+                var rolesName = Getlabel(item["ROLESNAME"].ToString());
                 tlpnData.Controls.Add(rolesName, start, 0);
             }
 
@@ -76,7 +114,7 @@ namespace Main
             foreach (DataRow item in actionTable.Rows)
             {
                 start++;
-                Label obj = Getlabel(item["ACTIONNAME"].ToString());
+                var obj = Getlabel(item["ACTIONNAME"].ToString());
                 tlpnData.Controls.Add(obj, 0, start);
             }
 
@@ -119,13 +157,13 @@ namespace Main
                 MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (myDialogResult == DialogResult.Yes)
             {
-                List<RolesAction> myArray =new List<RolesAction>();
+                List<RolesAction> myArray = new List<RolesAction>();
                 List<BunifuiOSSwitch> myList = tlpnData.Controls.OfType<BunifuiOSSwitch>().ToList();
                 foreach (BunifuiOSSwitch item in myList)
                 {
-                    RolesAction temp= new RolesAction();
+                    RolesAction temp = new RolesAction();
                     temp.ID = int.Parse(item.Text);
-                    if(item.Value)
+                    if (item.Value)
                         temp.IsTrue = 1;
                     else
                         temp.IsTrue = 0;
