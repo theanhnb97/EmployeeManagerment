@@ -168,7 +168,7 @@
             this.dgvDepartment.Name = "dgvDepartment";
             this.dgvDepartment.ReadOnly = true;
             this.dgvDepartment.RowHeadersWidth = 50;
-            this.dgvDepartment.Size = new System.Drawing.Size(745, 252);
+            this.dgvDepartment.Size = new System.Drawing.Size(745, 238);
             this.dgvDepartment.TabIndex = 9;
             this.dgvDepartment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentClick);
             this.dgvDepartment.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentDoubleClick);

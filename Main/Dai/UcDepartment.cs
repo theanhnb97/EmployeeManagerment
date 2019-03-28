@@ -13,13 +13,17 @@ using log4net;
 
 namespace Main.Dai
 {
-   
+    
     public partial class UcDepartment : UserControl
     {
         int cusPage = 1;
         
+        
+
+
         public UcDepartment()
         {
+           
             InitializeComponent();
         }
 
@@ -27,12 +31,13 @@ namespace Main.Dai
         {
             
             DepartmentBUS departmentBus = new DepartmentBUS();
-            //dgvDepartment.DataSource = departmentBus.GetAll();
+            
             int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
-           
+            int pageSize = (departmentBus.GetAll().Rows.Count) /item+1 ;
+
             dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);
 
-                lblPage.Text = cusPage.ToString() + '/' + 10;
+                lblPage.Text = cusPage.ToString() + '/' + pageSize;
 
         }
 
@@ -98,10 +103,8 @@ namespace Main.Dai
                 else
                 {
                     return;
-                }
-        
+                } 
 }
-
         private void btnDepartment_Click(object sender, EventArgs e)
         {
             DepartmentAdd frAdd = new DepartmentAdd();
@@ -112,23 +115,25 @@ namespace Main.Dai
         {
             DepartmentBUS departmentBus = new DepartmentBUS();
             int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
+            int pageSize = (departmentBus.GetAll().Rows.Count) / item+1;
             dgvDepartment.DataSource = departmentBus.GetAllPage(1,item,20);
+            lblPage.Text =  "1/" + pageSize;
         }
       
     private void btnNext_Click(object sender, EventArgs e)
     {
         int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
-
             DepartmentBUS departmentBus=new DepartmentBUS();
-        if (cusPage < 10)
+            int pageSize = (departmentBus.GetAll().Rows.Count) / item+1;
+            if (cusPage < pageSize)
         {
             cusPage++;
-            lblPage.Text = cusPage.ToString() + '/' + 10;
+            lblPage.Text = cusPage.ToString() + '/' + pageSize;
             dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);
             }
         else
         {
-            lblPage.Text = "10/10";
+            lblPage.Text = pageSize+"/"+pageSize;
         }
 
     }
@@ -142,17 +147,18 @@ namespace Main.Dai
         {
             DepartmentBUS departmentBus = new DepartmentBUS();
             int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
+            int pageSize = (departmentBus.GetAll().Rows.Count) / item+1;
 
             if (cusPage>=1)
             {
                 cusPage--;
-                lblPage.Text = cusPage.ToString() + '/' + 10;
+                lblPage.Text = cusPage.ToString() + '/' + pageSize;
                 dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);
             } 
             if(cusPage<1)
             {
                 cusPage = 1;
-                lblPage.Text = "1/" + 10;
+                lblPage.Text = "1/" + pageSize;
                 dgvDepartment.DataSource = departmentBus.GetAllPage(1, item, 20);
             }
 
