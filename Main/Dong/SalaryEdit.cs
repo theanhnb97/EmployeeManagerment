@@ -60,8 +60,8 @@ namespace Main.Dong
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Salary salary = new Salary();  
-            
+            Salary salary = new Salary();
+            salary.SalaryId = SalaryManagement.salaryForEdit.SalaryId;
             salary.BasicSalary = int.Parse(cbbBasic.Text);
             salary.BussinessSalary = int.Parse(cbbBussiness.Text);
             salary.Coefficient = float.Parse(cbbCoefficient.Text);
@@ -73,7 +73,7 @@ namespace Main.Dong
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            
+            this.Close();
         }
 
         private void cbbBasic_SelectedIndexChanged(object sender, EventArgs e)

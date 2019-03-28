@@ -73,7 +73,7 @@ namespace Main.Dong
                 cbbIdentity.DataSource = salaryBUS.GetByDeptIdAndRank(int.Parse(DeptNo), selectedRankKey);
                 cbbIdentity.ValueMember = "EmployeeId";
                 cbbIdentity.DisplayMember = "Identity";
-                cbbIdentity.SelectedItem = null;
+                cbbIdentity.SelectedIndex = -1;
                 //Combobox FullName Datasource
                 cbbName.DataSource = salaryBUS.GetByDeptIdAndRank(int.Parse(DeptNo), selectedRankKey);
                 cbbName.ValueMember = "EmployeeId";
@@ -84,16 +84,16 @@ namespace Main.Dong
 
         private void cbbIdentity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbbIdentity.SelectedItem != null)
+            if(int.Parse(cbbIdentity.SelectedIndex.ToString()) != -1)
             {
-                int selectedIdentKey = int.Parse(cbbRank.SelectedValue.ToString());
-                cbbName.SelectedIndex = cbbIdentity.SelectedIndex;
+                //int selectedIdentKey = int.Parse(cbbRank.SelectedValue.ToString());
+                cbbName.SelectedIndex = int.Parse(cbbIdentity.SelectedIndex.ToString());
             }
         }
 
         private void cbbName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbbName.SelectedItem != null)
+            if(int.Parse(cbbName.SelectedIndex.ToString()) != -1)
             {
                
             }

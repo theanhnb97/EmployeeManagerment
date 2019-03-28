@@ -97,7 +97,24 @@ namespace Main
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("You Want Delete?", "Warning", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if (!string.Empty.Equals(dgvSalary.CurrentRow.Cells[8].Value.ToString()) && Convert.ToInt32(dgvSalary.CurrentRow.Cells[8].Value.ToString()) >= 0)
+                {
+                    int id = Convert.ToInt32(dgvSalary.CurrentRow.Cells[8].Value.ToString());
+                    if (salary.Delete(id) != 0)
+                    {
+                        MessageBox.Show("Success");
+                        dgvSalary.DataSource = salary.GetData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error!");
+                    }
+                }
 
+            }
         }
 
     }
