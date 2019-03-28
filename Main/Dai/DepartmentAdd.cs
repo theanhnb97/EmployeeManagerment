@@ -53,7 +53,7 @@ namespace Main.Department
                 }
                 else
                 {
-                    txtMessager.Text = "You can enter data";
+                    MessageBox.Show("You can enter data");
                 }
             }
             catch (Exception ex)

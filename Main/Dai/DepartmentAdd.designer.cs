@@ -64,14 +64,14 @@
             // 
             this.txtDepartmentName.Location = new System.Drawing.Point(129, 51);
             this.txtDepartmentName.Name = "txtDepartmentName";
-            this.txtDepartmentName.Size = new System.Drawing.Size(222, 20);
+            this.txtDepartmentName.Size = new System.Drawing.Size(231, 20);
             this.txtDepartmentName.TabIndex = 4;
             // 
             // cbStatus
             // 
             this.cbStatus.AutoSize = true;
             this.cbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbStatus.Location = new System.Drawing.Point(129, 146);
+            this.cbStatus.Location = new System.Drawing.Point(129, 133);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(66, 19);
             this.cbStatus.TabIndex = 5;
@@ -82,7 +82,7 @@
             // 
             this.rdbIsDelete.AutoSize = true;
             this.rdbIsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbIsDelete.Location = new System.Drawing.Point(282, 146);
+            this.rdbIsDelete.Location = new System.Drawing.Point(282, 133);
             this.rdbIsDelete.Name = "rdbIsDelete";
             this.rdbIsDelete.Size = new System.Drawing.Size(78, 19);
             this.rdbIsDelete.TabIndex = 6;
@@ -95,7 +95,7 @@
             this.txtDescription.Location = new System.Drawing.Point(129, 213);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(222, 103);
+            this.txtDescription.Size = new System.Drawing.Size(231, 103);
             this.txtDescription.TabIndex = 7;
             // 
             // btnAdd
