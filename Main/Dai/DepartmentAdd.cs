@@ -44,7 +44,7 @@ namespace Main.Department
                 int check = departmentBus.Add(department);
                 if (check == -1)
                 {
-                    MessageBox.Show("Add Suscess");
+                    MessageBox.Show("You have successfully updated the refresh to change");
 
                 }
                 else

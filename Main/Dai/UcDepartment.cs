@@ -91,7 +91,7 @@ namespace Main.Dai
                     int checkDelete = departmentBus.DeleteNoRemove(id);
                     if (checkDelete == -1)
                     {
-                        MessageBox.Show("Delete Complete");
+                        MessageBox.Show("Delete Complete","Delete Message",MessageBoxButtons.OK);
                         int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
                     dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage,item,20);
                     }
@@ -193,6 +193,11 @@ namespace Main.Dai
                 }
 
             }
+        }
+
+        private void btnCannel_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

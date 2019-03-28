@@ -79,6 +79,7 @@
             this.btnCannel.TabIndex = 13;
             this.btnCannel.Text = "Cannel";
             this.btnCannel.UseVisualStyleBackColor = true;
+            this.btnCannel.Click += new System.EventHandler(this.btnCannel_Click);
             // 
             // btnDelete
             // 
