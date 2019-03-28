@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using BusinessLayer;
 using Entity;
+using log4net;
 
 namespace Main
 {
@@ -37,6 +38,8 @@ namespace Main
             this.RolesID = id;
             InitializeComponent();
         }
+       private readonly TaskBus objTaskBus = new TaskBus();
+       protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         /// <summary>
         /// 
         /// </summary>
@@ -60,13 +63,13 @@ namespace Main
         {
             try
             {
-                TaskBus objTaskBus = new TaskBus();
+                
                 Task objTask = new Task
                 {
-                    TaskName = txtTaskName.Text,
+                    TaskName = txtTaskName.Text.Trim(),
                     Assign = Convert.ToInt32(cmbAssign.SelectedValue.ToString()),
                     DueDate = Convert.ToDateTime(dtpDueDate.Value).ToString("dd/MMM/yyyy"),
-                    Description = txtDescription.Text,
+                    Description = txtDescription.Text.Trim(),
                     Files = "",
                     Status = 1,
                     Priority = Convert.ToInt32(cmbLevel.SelectedValue.ToString()),
@@ -74,9 +77,10 @@ namespace Main
                 objTaskBus.Insert(objTask);
                 Hide();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
                 MessageBox.Show("Some thing wrong");
+                logger.Debug(exception);
             }
 
 
@@ -135,7 +139,8 @@ namespace Main
             }
             catch (Exception exception)
             {
-                MessageBox.Show("some thing wrong" + exception);
+                MessageBox.Show("some thing wrong");
+                logger.Debug(exception);
             }
         }
         /// <summary>
@@ -147,7 +152,6 @@ namespace Main
         {
             try
             {
-                TaskBus objTaskBus = new TaskBus();
                 cmbAssign.DataSource = objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString()));
                 cmbAssign.ValueMember = "EMPLOYEEID";
                 cmbAssign.DisplayMember = "FULLNAME";

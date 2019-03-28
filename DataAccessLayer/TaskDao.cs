@@ -60,8 +60,8 @@ namespace DataAccessLayer
             {
                 OracleParameter[] listParameters = new OracleParameter[]
                   {
-                           new OracleParameter("departments", OracleDbType.Int32,department, ParameterDirection.Input),
                             new OracleParameter("taskNames", OracleDbType.NVarchar2,taskName,ParameterDirection.Input),
+                            new OracleParameter("departments", OracleDbType.Int32,department, ParameterDirection.Input),
                             new OracleParameter("dueDates", OracleDbType.Varchar2,dueDate, ParameterDirection.Input),
                             new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output)
                  };

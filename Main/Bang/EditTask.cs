@@ -5,8 +5,6 @@ using System.Windows.Forms;
 using BusinessLayer;
 using CommonLibrary.Model;
 using log4net;
-using log4net.Core;
-using log4net.Repository.Hierarchy;
 
 namespace Main.Bang
 {
@@ -31,14 +29,6 @@ namespace Main.Bang
                 this.Close();
             }
         }
-
-
-
-
-
-
-
-
 
 
         public frmEditTask(int id)
