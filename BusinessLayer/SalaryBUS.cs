@@ -18,6 +18,7 @@ namespace BusinessLayer
         int Delete(int id);
         int Update(Salary obj);
         Salary GetById(int id);
+        List<Employee> GetByDeptIdAndRank(int id, int rank);
     }
     public class SalaryBUS : ISalaryBUS
     {
@@ -30,6 +31,11 @@ namespace BusinessLayer
         public int Delete(int id)
         {
             return SalaryDAO.Delete(id);
+        }
+
+        public List<Employee> GetByDeptIdAndRank(int id, int rank)
+        {
+            return SalaryDAO.GetByIdDeptAndRank(id, rank);
         }
 
         public Salary GetById(int id)

@@ -141,6 +141,7 @@ namespace DataAccessLayer
         public Employee GetById(int id)
         {
             Employee result = new Employee();
+            string Connect = "DATA SOURCE=192.168.35.210:1521/orcl;PASSWORD=theanh;PERSIST SECURITY INFO=True;USER ID=GDP";
             using (OracleConnection objConn = new OracleConnection(Connect))
             {
                 OracleCommand Ocmd = new OracleCommand();
@@ -155,17 +156,21 @@ namespace DataAccessLayer
                     OracleDataReader objReader = Ocmd.ExecuteReader();
                     while (objReader.Read())
                     {
-                        salary.EmployeeId = int.Parse(objReader["EMPID"].ToString());
-                        salary.CreateDate = DateTime.Parse(objReader["CREATEDATE"].ToString());
-                        salary.BasicSalary = int.Parse(objReader["BASIC"].ToString());
-                        salary.BussinessSalary = int.Parse(objReader["BUSSINESS"].ToString());
-                        salary.Coefficient = float.Parse(objReader["COEFFI"].ToString());
-                        salary.IsDelete = bool.Parse(objReader["ISDELETE"].ToString());
+                        result.EmployeeId = int.Parse(objReader["EMPID"].ToString());
+                        result.Address = objReader["EMPID"].ToString();
+                        result.DepartmentId = int.Parse(objReader["DEPARTMENTID"].ToString());
+                        result.Email = objReader["EMAIL"].ToString();
+                        result.FullName = objReader["FULLNAME"].ToString();
+                        result.Identity = objReader["IDENTITY"].ToString();
+                        result.IsDelete = Convert.ToInt16(objReader["ISDELETE"].ToString());
+                        result.Status = Convert.ToInt16(objReader["STATUS"].ToString());
+                        result.Phone = objReader["PHONE"].ToString();                            
                     }
                 }
-                catch
+                catch(Exception e)
                 {
-                    return null;
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
                 }
                 objConn.Close();
             }

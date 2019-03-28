@@ -75,7 +75,7 @@ namespace DataAccessLayer
             OracleParameter[] listParameters = new OracleParameter[]
             {
                 new OracleParameter("IDS", OracleDbType.Int32,departmentId,ParameterDirection.Input),
-                new OracleParameter("cursorParam", OracleDbType.RefCursor,ParameterDirection.Output),
+                new OracleParameter("CURSORPARAM", OracleDbType.RefCursor,ParameterDirection.Output),
             };
             return objSqlHelpers.ExcuteQuery("DEPARTMENT_GETEMPLOYEEBYDEPARTMENT", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
 

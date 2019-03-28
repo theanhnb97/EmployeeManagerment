@@ -83,6 +83,7 @@
             this.cbbName.Name = "cbbName";
             this.cbbName.Size = new System.Drawing.Size(215, 21);
             this.cbbName.TabIndex = 84;
+            this.cbbName.SelectedIndexChanged += new System.EventHandler(this.cbbName_SelectedIndexChanged);
             // 
             // cbbIdentity
             // 
@@ -92,6 +93,7 @@
             this.cbbIdentity.Name = "cbbIdentity";
             this.cbbIdentity.Size = new System.Drawing.Size(215, 21);
             this.cbbIdentity.TabIndex = 83;
+            this.cbbIdentity.SelectedIndexChanged += new System.EventHandler(this.cbbIdentity_SelectedIndexChanged);
             // 
             // cbbRank
             // 

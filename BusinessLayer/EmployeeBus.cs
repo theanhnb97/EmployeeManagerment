@@ -38,5 +38,9 @@ namespace BusinessLayer
         {
             return employeeDao.Delete(employeeId);
         }
+        public Employee GetBId(int id)
+        {
+            return employeeDao.GetById(id);
+        }
     }
 }

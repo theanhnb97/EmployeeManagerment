@@ -17,7 +17,7 @@ namespace Main.Dong
     {
         DepartmentBUS departmentBUS = new DepartmentBUS();
         SalaryBUS salaryBUS = new SalaryBUS();
-        TaskBus taskBUS = new TaskBus();
+        EmployeeBus employeeBus = new EmployeeBus();
         public SalaryAdd()
         {
 
@@ -67,17 +67,36 @@ namespace Main.Dong
             {
                 cbbName.Enabled = true;
                 cbbIdentity.Enabled = true;
-                //Combobox Identity Datasource
                 string DeptNo = cbbDept.SelectedValue.ToString();
-                cbbIdentity.DataSource = taskBUS.LoadEmployeeByDpt(int.Parse(DeptNo));
-                cbbIdentity.ValueMember = "IDENTITY";
-                cbbIdentity.DisplayMember = "IDENTITY";
+                int selectedRankKey = int.Parse(cbbRank.SelectedValue.ToString());               
+                //Combobox Identity Datasource
+                cbbIdentity.DataSource = salaryBUS.GetByDeptIdAndRank(int.Parse(DeptNo), selectedRankKey);
+                cbbIdentity.ValueMember = "EmployeeId";
+                cbbIdentity.DisplayMember = "Identity";
+                cbbIdentity.SelectedItem = null;
                 //Combobox FullName Datasource
-                cbbName.DataSource = taskBUS.LoadEmployeeByDpt(int.Parse(DeptNo));
-                cbbName.ValueMember = "EMPLOYEEID";
-                cbbName.DisplayMember = "FULLNAME";
+                cbbName.DataSource = salaryBUS.GetByDeptIdAndRank(int.Parse(DeptNo), selectedRankKey);
+                cbbName.ValueMember = "EmployeeId";
+                cbbName.DisplayMember = "FullName";
+                cbbName.SelectedItem = null;
             }
+        }
 
+        private void cbbIdentity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbbIdentity.SelectedItem != null)
+            {
+                int selectedIdentKey = int.Parse(cbbRank.SelectedValue.ToString());
+                cbbName.SelectedIndex = cbbIdentity.SelectedIndex;
+            }
+        }
+
+        private void cbbName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbbName.SelectedItem != null)
+            {
+               
+            }
         }
     }
 

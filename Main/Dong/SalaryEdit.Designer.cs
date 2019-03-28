@@ -43,7 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblDept = new System.Windows.Forms.Label();
             this.lblRank = new System.Windows.Forms.Label();
-            this.lblIdentity = new System.Windows.Forms.Label();
+            this.lblIdent = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -126,6 +126,7 @@
             this.btnCancel.TabIndex = 76;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -136,6 +137,7 @@
             this.btnSave.TabIndex = 74;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label4
             // 
@@ -167,34 +169,38 @@
             // lblDept
             // 
             this.lblDept.AutoSize = true;
-            this.lblDept.Location = new System.Drawing.Point(166, 73);
+            this.lblDept.Location = new System.Drawing.Point(159, 73);
             this.lblDept.Name = "lblDept";
-            this.lblDept.Size = new System.Drawing.Size(0, 13);
-            this.lblDept.TabIndex = 88;
+            this.lblDept.Size = new System.Drawing.Size(58, 13);
+            this.lblDept.TabIndex = 96;
+            this.lblDept.Text = "DeptName";
             // 
             // lblRank
             // 
             this.lblRank.AutoSize = true;
-            this.lblRank.Location = new System.Drawing.Point(166, 110);
+            this.lblRank.Location = new System.Drawing.Point(159, 110);
             this.lblRank.Name = "lblRank";
-            this.lblRank.Size = new System.Drawing.Size(0, 13);
-            this.lblRank.TabIndex = 89;
+            this.lblRank.Size = new System.Drawing.Size(33, 13);
+            this.lblRank.TabIndex = 97;
+            this.lblRank.Text = "Rank";
             // 
-            // lblIdentity
+            // lblIdent
             // 
-            this.lblIdentity.AutoSize = true;
-            this.lblIdentity.Location = new System.Drawing.Point(166, 147);
-            this.lblIdentity.Name = "lblIdentity";
-            this.lblIdentity.Size = new System.Drawing.Size(0, 13);
-            this.lblIdentity.TabIndex = 90;
+            this.lblIdent.AutoSize = true;
+            this.lblIdent.Location = new System.Drawing.Point(159, 147);
+            this.lblIdent.Name = "lblIdent";
+            this.lblIdent.Size = new System.Drawing.Size(31, 13);
+            this.lblIdent.TabIndex = 98;
+            this.lblIdent.Text = "Ident";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(166, 185);
+            this.lblName.Location = new System.Drawing.Point(159, 185);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(0, 13);
-            this.lblName.TabIndex = 91;
+            this.lblName.Size = new System.Drawing.Size(51, 13);
+            this.lblName.TabIndex = 99;
+            this.lblName.Text = "FullName";
             // 
             // SalaryEdit
             // 
@@ -202,7 +208,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 433);
             this.Controls.Add(this.lblName);
-            this.Controls.Add(this.lblIdentity);
+            this.Controls.Add(this.lblIdent);
             this.Controls.Add(this.lblRank);
             this.Controls.Add(this.lblDept);
             this.Controls.Add(this.cbbCoefficient);
@@ -220,6 +226,7 @@
             this.Controls.Add(this.label1);
             this.Name = "SalaryEdit";
             this.Text = "SalaryEdit";
+            this.Load += new System.EventHandler(this.Edit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,7 +249,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblDept;
         private System.Windows.Forms.Label lblRank;
-        private System.Windows.Forms.Label lblIdentity;
+        private System.Windows.Forms.Label lblIdent;
         private System.Windows.Forms.Label lblName;
     }
 }

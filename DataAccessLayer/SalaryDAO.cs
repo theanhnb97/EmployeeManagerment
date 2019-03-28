@@ -41,9 +41,10 @@ namespace DataAccessLayer
                     objConn.Open();
                     Ocmd.ExecuteNonQuery();
                 }
-                catch
+                catch (Exception e)
                 {
-                    return 0;
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
                 }
                 objConn.Close();
             }
@@ -64,9 +65,10 @@ namespace DataAccessLayer
                     objConn.Open();
                     Ocmd.ExecuteNonQuery();
                 }
-                catch
+                catch (Exception e)
                 {
-                    return 0;
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
                 }
                 objConn.Close();
             }
@@ -101,9 +103,10 @@ namespace DataAccessLayer
                     }
                     objReader.Close();
                 }
-                catch
+                catch (Exception e)
                 {
-                    return null;
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
                 }
                 objConn.Close();
             }
@@ -127,9 +130,10 @@ namespace DataAccessLayer
                     objConn.Open();
                     Ocmd.ExecuteNonQuery();
                 }
-                catch
+                catch (Exception e)
                 {
-                    return 0;
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
                 }
                 objConn.Close();
             }
@@ -169,9 +173,10 @@ namespace DataAccessLayer
                     }
                     objReader.Close();
                 }
-                catch
+                catch (Exception e)
                 {
-                    return null;
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
                 }
                 objConn.Close();
             }
@@ -202,16 +207,56 @@ namespace DataAccessLayer
                         salary.IsDelete = bool.Parse(objReader["ISDELETE"].ToString());
                     }
                 }
-                catch
+                catch (Exception e)
                 {
-                    return null;
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
                 }
                 objConn.Close();
             }
             return salary;
         }
-
-        public List<Salary> Search(string keyword)
+        public List<Employee> GetByIdDeptAndRank(int id, int rank)
+        {
+            List<Employee> result = new List<Employee>();
+            using (OracleConnection objConn = new OracleConnection(Connect))
+            {
+                OracleCommand Ocmd = new OracleCommand();
+                Ocmd.Connection = objConn;
+                Ocmd.CommandText = "EMPLOYEE_GETBYDEPTID_ANDRANK";
+                Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
+                Ocmd.Parameters.Add("IDS", OracleDbType.Decimal).Value = id;
+                Ocmd.Parameters.Add("RANK", OracleDbType.Decimal).Value = rank;
+                Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
+                try
+                {
+                    objConn.Open();
+                    OracleDataReader objReader = Ocmd.ExecuteReader();
+                    while (objReader.Read())
+                    {
+                        Employee employee = new Employee();
+                        employee.EmployeeId = int.Parse(objReader["EMPLOYEEID"].ToString());
+                        employee.Address = objReader["ADDRESS"].ToString();
+                        employee.DepartmentId = int.Parse(objReader["DEPARTMENTID"].ToString());
+                        employee.Email = objReader["EMAIL"].ToString();
+                        employee.FullName = objReader["FULLNAME"].ToString();
+                        employee.Identity = objReader["IDENTITY"].ToString();
+                        employee.IsDelete = Convert.ToInt16(objReader["ISDELETE"].ToString());
+                        employee.Status = Convert.ToInt16(objReader["STATUS"].ToString());
+                        employee.Phone = objReader["PHONE"].ToString();
+                        result.Add(employee);
+                    }
+                }
+                catch (Exception e)
+                {
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
+                }
+                objConn.Close();
+            }
+            return result;
+        }
+            public List<Salary> Search(string keyword)
         {
             throw new NotImplementedException();
         }

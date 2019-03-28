@@ -10,12 +10,15 @@ using System.Windows.Forms;
 using BusinessLayer;
 using Main.Dong;
 using System.Threading;
+using Entity.DTO;
 
 namespace Main
 {
     
+    
     public partial class SalaryManagement : UserControl
     {
+        public static SalaryView salaryForEdit = new SalaryView();      
         SalaryBUS salary = new SalaryBUS();
         public SalaryManagement()
         {
@@ -38,6 +41,7 @@ namespace Main
                 dgvSalary.Columns[5].HeaderCell.Value = "Bussiness";
                 dgvSalary.Columns[6].HeaderCell.Value = "Coefficient";
                 dgvSalary.Columns[7].HeaderCell.Value = "Total";
+                dgvSalary.Columns[8].HeaderCell.Value = "EmpId";
             }
         }
 
@@ -68,7 +72,20 @@ namespace Main
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-           
+            foreach (DataGridViewRow row in dgvSalary.Rows)
+            {
+                if (row.Selected)
+                {
+                    salaryForEdit.FullName = row.Cells[0].ToString();
+                    salaryForEdit.Identity = row.Cells[1].ToString();
+                    salaryForEdit.Rank = int.Parse(row.Cells[2].ToString());
+                    salaryForEdit.Dept = row.Cells[3].ToString();
+                    salaryForEdit.Basic = int.Parse(row.Cells[4].ToString());
+                    salaryForEdit.Bussiness= int.Parse(row.Cells[5].ToString());
+                    salaryForEdit.Coefficient= float.Parse(row.Cells[6].ToString());
+                }
+            }
+
             SalaryEdit salaryEdit = new SalaryEdit();
             salaryEdit.ShowDialog();
         }
