@@ -1,0 +1,6 @@
+
+*.cache
+*.exe
+*.pdb
+.vs
+*.lock
