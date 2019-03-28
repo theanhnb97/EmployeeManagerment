@@ -48,7 +48,7 @@ namespace Main.Dai
                 dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword);
                 txtDepartmentName.Text = "";
             }
-            cbStatus.Checked = false; 
+            
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -168,6 +168,23 @@ namespace Main.Dai
                         break;
                     case "0":
                         e.Value = "NoStatus";
+                        break;
+
+                }
+
+            }
+            if (e.ColumnIndex == 3)
+            {
+                e.FormattingApplied = true; // <===VERY, VERY important tell it you've taken care of it.
+                string temp1 = dgvDepartment.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                switch (temp1)
+                {
+
+                    case "1":
+                        e.Value = "No Delete";
+                        break;
+                    case "0":
+                        e.Value = "Delete";
                         break;
 
                 }
