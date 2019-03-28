@@ -16,10 +16,28 @@ namespace Main.Dai
     
     public partial class UcDepartment : UserControl
     {
-        int cusPage = 1;
-        public UcDepartment()
+        private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+        protected int RolesID { get; set; }
+        protected override void OnLoad(EventArgs e)
         {
-           
+            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            bool result = RolesID == 1;
+            string ucName = base.Name + ".";
+            string Action = "";
+            foreach (DataRow item in myDataTable.Rows)
+                Action += item["ACTIONNAME"].ToString().Trim() + ".";
+            if (Action.Contains(ucName)) result = true;
+            if (result)
+                base.OnLoad(e);
+            else
+                this.Hide();
+        }
+
+
+        int cusPage = 1;
+        public UcDepartment(int id)
+        {
+            this.RolesID = id;
             InitializeComponent();
         }
         private void UcDepartment_Load(object sender, EventArgs e)
@@ -48,7 +66,7 @@ namespace Main.Dai
                 dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword);
                 txtDepartmentName.Text = "";
             }
-            
+            cbStatus.Checked = false; 
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -60,7 +78,7 @@ namespace Main.Dai
             department.IsDelete = int.Parse(dgvDepartment.Rows[index].Cells[3].Value.ToString());
             department.Description = dgvDepartment.Rows[index].Cells[4].Value.ToString();
 
-            DepartmentUpdate frUpdate = new DepartmentUpdate();
+            DepartmentUpdate frUpdate = new DepartmentUpdate(RolesID);
 
             frUpdate.Department = department;
 
@@ -96,7 +114,7 @@ namespace Main.Dai
 }
         private void btnDepartment_Click(object sender, EventArgs e)
         {
-            DepartmentAdd frAdd = new DepartmentAdd();
+            DepartmentAdd frAdd = new DepartmentAdd(RolesID);
             frAdd.ShowDialog();
         }
 
@@ -168,23 +186,6 @@ namespace Main.Dai
                         break;
                     case "0":
                         e.Value = "NoStatus";
-                        break;
-
-                }
-
-            }
-            if (e.ColumnIndex == 3)
-            {
-                e.FormattingApplied = true; // <===VERY, VERY important tell it you've taken care of it.
-                string temp1 = dgvDepartment.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                switch (temp1)
-                {
-
-                    case "1":
-                        e.Value = "No Delete";
-                        break;
-                    case "0":
-                        e.Value = "Delete";
                         break;
 
                 }

@@ -10,10 +10,24 @@ namespace BusinessLayer
 {
     public class ActionBUS
     {
-        AtionDAL myAtionDal=new AtionDAL();  
+        ActionDAL myAtionDal=new ActionDAL();  
         public DataTable Get()
         {
             return myAtionDal.Get();
+        }
+
+        public int Add(Entity.Action obj)
+        {
+            return myAtionDal.Add(obj);
+        }
+        public int Delete(int id)
+        {
+            return myAtionDal.Delete(id);
+        }
+
+        public int Update(Entity.Action obj)
+        {
+            return myAtionDal.Update(obj);
         }
     }
 }

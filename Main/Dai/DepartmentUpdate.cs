@@ -15,6 +15,29 @@ namespace Main.Department
 {
     public partial class DepartmentUpdate : Form
     {
+        private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+        protected int RolesID { get; set; }
+        protected override void OnLoad(EventArgs e)
+        {
+            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            bool result = RolesID == 1;
+            string formName = base.Name + ".";
+            string Action = "";
+            foreach (DataRow item in myDataTable.Rows)
+                Action += item["ACTIONNAME"].ToString().Trim() + ".";
+            if (Action.Contains(formName)) result = true;
+            if (result)
+                base.OnLoad(e);
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào hành động này!");
+                this.Close();
+            }
+        }
+
+
+
+
         private Entity.Department department;
         public Entity.Department Department
         {
@@ -23,8 +46,9 @@ namespace Main.Department
         }
 
 
-        public DepartmentUpdate()
+        public DepartmentUpdate(int id)
         {
+            this.RolesID = id;
             InitializeComponent();
         }
 
