@@ -58,7 +58,6 @@ namespace Main
 
             pnMain.Controls.Add(ucTask);
             ucTask.Dock = DockStyle.Fill;
-
             pnMain.Controls.Add(salary);
             salary.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucRoles);
@@ -82,7 +81,7 @@ namespace Main
             ucTask = new UcTask(RolesID);
             ucEmployees = new Employees(RolesID);
             ucDepartment = new UcDepartment(RolesID);
-
+            salary = new SalaryManagement(RolesID);
 
             InitializeComponent();
             btnMenuButtons = new List<Button>();

@@ -272,31 +272,7 @@ namespace DataAccessLayer
             }
         }
 
-        public List<EmployeeDTO> GetAll()
-        {
-            List<EmployeeDTO> employees = new List<EmployeeDTO>();
-            try
-            {
 
-                using (OracleConnection oracleConnection = Connection.GetConnection)
-                {
-                    string storeName = "EMPLOYEE_GETALL";
-                    OracleParameter oraP = new OracleParameter();
-                    oraP.OracleDbType = OracleDbType.RefCursor;
-                    oraP.Direction = System.Data.ParameterDirection.Output;
-                    OracleParameter[] myParameters = new OracleParameter[1];
-                    myParameters[0] = oraP;
-                    //dt = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, myParameters);
-                    employees = sqlHelpersDto.ExcuteQueryList(storeName, CommandType.StoredProcedure, oracleConnection, myParameters);
-
-                }
-            }
-            catch (Exception e)
-            {
-                logger.Debug(e.Message);
-            }
-            return employees;
-        }
         public Employee GetById(int id)
         {
             Employee result = new Employee();
@@ -336,5 +312,9 @@ namespace DataAccessLayer
             return result;
         }
 
+        public DataTable Search(string keyword)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

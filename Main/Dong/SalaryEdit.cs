@@ -67,8 +67,6 @@ namespace Main.Dong
             salary.Coefficient = float.Parse(cbbCoefficient.Text);
             salaryBUS.Update(salary);
             this.Close();
-            SalaryManagement salaryManagement = new SalaryManagement();
-            salaryManagement.Show();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

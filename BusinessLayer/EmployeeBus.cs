@@ -12,7 +12,7 @@ namespace BusinessLayer
 {
     public class EmployeeBus
     {
-        private readonly EmployeeDao myEmployeeDao=new EmployeeDao();
+        private readonly EmployeeDao employeeDao=new EmployeeDao();
 
         public int Login(string UserName, string Password)
         {
@@ -43,34 +43,15 @@ namespace BusinessLayer
             return employeeDao.GetById(id);
         }
 
-        public List<EmployeeDTO> GetAll()
-        {
-            return myEmployeeDao.GetAll();
-        }
-
-        public int Insert(Employee employee)
-        {
-            return myEmployeeDao.Add(employee);
-        }
-
-        public int Update(Employee employee)
-        {
-            return myEmployeeDao.Update(employee);
-        }
-
-        public int Delete(int employeeId)
-        {
-            return myEmployeeDao.Delete(employeeId);
-        }
 
         public List<EmployeeDTO> Search(Employee employee)
         {
-            return myEmployeeDao.Search(employee);
+            return employeeDao.Search(employee);
         }
 
         public Employee GetByEmployeeId(int employeeId)
         {
-            return myEmployeeDao.GetByEmployeeId(employeeId);
+            return employeeDao.GetByEmployeeId(employeeId);
         }
     }
 }

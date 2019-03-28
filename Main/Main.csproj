@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="Dong\SalaryManagement.designer.cs">
       <DependentUpon>SalaryManagement.cs</DependentUpon>
+      </Compile>
     <Compile Include="Bang\AddTask.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -78,11 +78,7 @@ namespace BusinessLayer
             return objTaskDao.Update(taskId, taskName, assign, dueDate, priority, file, status, isDelete, description);
         }
 
-        public DataTable LoadEmployeeByDpt(int departmentId)
-        {
-            TaskDao objTaskDao = new TaskDao();
-            return objTaskDao.LoadEmployeeByDpt(departmentId);
-        }
+
     }
 
 }

@@ -19,9 +19,11 @@ namespace Main
     public partial class SalaryManagement : UserControl
     {
         public static SalaryView salaryForEdit = new SalaryView();
+        protected int RolesID { get; set; }
         SalaryBUS salary = new SalaryBUS();
-        public SalaryManagement()
+        public SalaryManagement(int id)
         {
+            this.RolesID = id;
             InitializeComponent();
         }
         private void Salary_Load(object sender, EventArgs e)
