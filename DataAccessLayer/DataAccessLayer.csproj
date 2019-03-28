@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="AtionDAL.cs" />
     <Compile Include="EmployeeDao.cs" />
+    <Compile Include="Enum\Enumeration.cs" />
     <Compile Include="Helpers\Connection.cs" />
     <Compile Include="IEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

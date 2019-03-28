@@ -72,18 +72,6 @@
     <Compile Include="Bang\UcTask.designer.cs">
       <DependentUpon>UcTask.cs</DependentUpon>
     </Compile>
-    <Compile Include="TheAnh\Role_Add.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TheAnh\Role_Add.Designer.cs">
-      <DependentUpon>Role_Add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TheAnh\Action_Add.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TheAnh\Action_Add.Designer.cs">
-      <DependentUpon>Action_Add.cs</DependentUpon>
-    </Compile>
     <Compile Include="Hai\Employee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +83,18 @@
     </Compile>
     <Compile Include="Hai\Employees.designer.cs">
       <DependentUpon>Employees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheAnh\Role_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheAnh\Role_Add.Designer.cs">
+      <DependentUpon>Role_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheAnh\Action_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheAnh\Action_Add.Designer.cs">
+      <DependentUpon>Action_Add.cs</DependentUpon>
     </Compile>
     <Compile Include="TheAnh\ActionManagement.cs">
       <SubType>UserControl</SubType>
@@ -137,17 +137,17 @@
     <EmbeddedResource Include="Bang\UcTask.resx">
       <DependentUpon>UcTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TheAnh\Role_Add.resx">
-      <DependentUpon>Role_Add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TheAnh\Action_Add.resx">
-      <DependentUpon>Action_Add.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Hai\Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hai\Employees.resx">
       <DependentUpon>Employees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheAnh\Role_Add.resx">
+      <DependentUpon>Role_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheAnh\Action_Add.resx">
+      <DependentUpon>Action_Add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TheAnh\ActionManagement.resx">
       <DependentUpon>ActionManagement.cs</DependentUpon>
@@ -199,6 +199,10 @@
     <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj">
       <Project>{f96878e6-0a71-4f23-b308-ae36a81380da}</Project>
       <Name>CommonLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{23e1a25d-d4ed-4f86-857e-cf840837f584}</Project>
+      <Name>DataAccessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entity\Entity.csproj">
       <Project>{37e750de-ecd8-440b-b490-564347f70f46}</Project>
