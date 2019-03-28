@@ -108,7 +108,7 @@ namespace DataAccessLayer
                     new OracleParameter("passwords",password),
                 };
                 DataTable dt = sql.ExcuteQuery(cmd, CommandType.Text, con, myParameters);
-                bool a= dt.Rows[0][0].ToString()!="";
+                bool a = dt.Rows[0][0].ToString()!=" ";
                 return a;
             }
         }
@@ -141,7 +141,7 @@ namespace DataAccessLayer
         public Employee GetById(int id)
         {
             Employee result = new Employee();
-            string Connect = "DATA SOURCE=192.168.35.210:1521/orcl;PASSWORD=theanh;PERSIST SECURITY INFO=True;USER ID=GDP";
+            string Connect = "DATA SOURCE=192.168.35.114:1521/orcl;PASSWORD=theanh;PERSIST SECURITY INFO=True;USER ID=GDP";
             using (OracleConnection objConn = new OracleConnection(Connect))
             {
                 OracleCommand Ocmd = new OracleCommand();

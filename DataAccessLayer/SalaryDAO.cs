@@ -20,7 +20,7 @@ namespace DataAccessLayer
     }
     public class SalaryDAO : IEntities<Salary>, ISalary
     {       
-        string Connect = "DATA SOURCE=192.168.35.210:1521/orcl;PASSWORD=theanh;PERSIST SECURITY INFO=True;USER ID=GDP";
+        string Connect = "DATA SOURCE=192.168.35.114:1521/orcl;PASSWORD=theanh;PERSIST SECURITY INFO=True;USER ID=GDP";
         ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public int Add(Salary obj)
         {
@@ -99,6 +99,7 @@ namespace DataAccessLayer
                         salaryView.Bussiness = int.Parse(objReader["BUSINESSSALARY"].ToString());
                         salaryView.Coefficient = float.Parse(objReader["COEFFICIENT"].ToString());
                         salaryView.Total = double.Parse(objReader["TOTAL"].ToString());
+                        salaryView.SalaryId = int.Parse(objReader["SALARYID"].ToString());
                         salaryViews.Add(salaryView);
                     }
                     objReader.Close();
@@ -126,9 +127,9 @@ namespace DataAccessLayer
                 Ocmd.Parameters.Add("BUSSINESS", OracleDbType.Decimal).Value = obj.BussinessSalary;
                 Ocmd.Parameters.Add("COFFI", OracleDbType.Decimal).Value = obj.Coefficient;
                 try
-                {
+                {                    
                     objConn.Open();
-                    Ocmd.ExecuteNonQuery();
+                    Ocmd.ExecuteNonQuery();                    
                 }
                 catch (Exception e)
                 {

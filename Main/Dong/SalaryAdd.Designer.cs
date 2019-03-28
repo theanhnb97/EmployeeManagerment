@@ -172,6 +172,7 @@
             this.btnCancel.TabIndex = 76;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSaveRefresh
             // 
@@ -182,6 +183,7 @@
             this.btnSaveRefresh.TabIndex = 75;
             this.btnSaveRefresh.Text = "Save and refresh";
             this.btnSaveRefresh.UseVisualStyleBackColor = true;
+            this.btnSaveRefresh.Click += new System.EventHandler(this.btnSaveRefresh_Click);
             // 
             // btnSave
             // 
@@ -192,6 +194,7 @@
             this.btnSave.TabIndex = 74;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label4
             // 

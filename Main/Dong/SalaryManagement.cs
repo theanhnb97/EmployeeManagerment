@@ -14,11 +14,11 @@ using Entity.DTO;
 
 namespace Main
 {
-    
-    
+
+
     public partial class SalaryManagement : UserControl
     {
-        public static SalaryView salaryForEdit = new SalaryView();      
+        public static SalaryView salaryForEdit = new SalaryView();
         SalaryBUS salary = new SalaryBUS();
         public SalaryManagement()
         {
@@ -41,7 +41,8 @@ namespace Main
                 dgvSalary.Columns[5].HeaderCell.Value = "Bussiness";
                 dgvSalary.Columns[6].HeaderCell.Value = "Coefficient";
                 dgvSalary.Columns[7].HeaderCell.Value = "Total";
-                dgvSalary.Columns[8].HeaderCell.Value = "EmpId";
+                dgvSalary.Columns[8].HeaderCell.Value = "SalaryId";
+                dgvSalary.Columns[8].Visible = true;
             }
         }
 
@@ -53,7 +54,7 @@ namespace Main
             string deptSearch = txtDeptFilter.ToString();
             DateTime fDate = DateTime.Parse(dateFDateFilter.ToString());
             DateTime tDate = DateTime.Parse(dateTDateFilter.ToString());
-            dgvSalary.DataSource = salary.SearchSalary(nameSearch,deptSearch,fDate,tDate);
+            dgvSalary.DataSource = salary.SearchSalary(nameSearch, deptSearch, fDate, tDate);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -72,27 +73,26 @@ namespace Main
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dgvSalary.Rows)
-            {
-                if (row.Selected)
-                {
-                    salaryForEdit.FullName = row.Cells[0].ToString();
-                    salaryForEdit.Identity = row.Cells[1].ToString();
-                    salaryForEdit.Rank = int.Parse(row.Cells[2].ToString());
-                    salaryForEdit.Dept = row.Cells[3].ToString();
-                    salaryForEdit.Basic = int.Parse(row.Cells[4].ToString());
-                    salaryForEdit.Bussiness= int.Parse(row.Cells[5].ToString());
-                    salaryForEdit.Coefficient= float.Parse(row.Cells[6].ToString());
-                }
-            }
-
+            int index = int.Parse(dgvSalary.CurrentCell.RowIndex.ToString());
+            salaryForEdit.SalaryId = int.Parse(dgvSalary.Rows[index].Cells[8].Value.ToString());
+            salaryForEdit.Basic = int.Parse(dgvSalary.Rows[index].Cells[4].Value.ToString());
+            salaryForEdit.Bussiness = int.Parse(dgvSalary.Rows[index].Cells[5].Value.ToString());
+            salaryForEdit.Coefficient = float.Parse(dgvSalary.Rows[index].Cells[6].Value.ToString());
+            salaryForEdit.Identity = dgvSalary.Rows[index].Cells[1].Value.ToString();
+            salaryForEdit.FullName = dgvSalary.Rows[index].Cells[0].Value.ToString();
+            salaryForEdit.Dept = dgvSalary.Rows[index].Cells[3].Value.ToString();
+            salaryForEdit.Rank = int.Parse(dgvSalary.Rows[index].Cells[2].Value.ToString());
             SalaryEdit salaryEdit = new SalaryEdit();
             salaryEdit.ShowDialog();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-
+            txtDeptFilter.Clear();
+            txtNameFilter.Clear();
+            dateFDateFilter.Refresh();
+            dateTDateFilter.Refresh();
+            dgvSalary.DataSource = salary.GetData();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

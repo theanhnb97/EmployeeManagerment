@@ -16,5 +16,6 @@ namespace Entity.DTO
         public int Bussiness { get; set; }
         public float Coefficient { get; set; }
         public double Total { get; set; }
+        public int SalaryId { get; set; }
     }
 }

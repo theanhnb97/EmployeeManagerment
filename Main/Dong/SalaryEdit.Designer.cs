@@ -54,6 +54,7 @@
             this.cbbCoefficient.Name = "cbbCoefficient";
             this.cbbCoefficient.Size = new System.Drawing.Size(215, 21);
             this.cbbCoefficient.TabIndex = 87;
+            this.cbbCoefficient.SelectedIndexChanged += new System.EventHandler(this.cbbCoefficient_SelectedIndexChanged);
             // 
             // cbbBussiness
             // 
@@ -62,6 +63,7 @@
             this.cbbBussiness.Name = "cbbBussiness";
             this.cbbBussiness.Size = new System.Drawing.Size(215, 21);
             this.cbbBussiness.TabIndex = 86;
+            this.cbbBussiness.SelectedIndexChanged += new System.EventHandler(this.cbbBussiness_SelectedIndexChanged);
             // 
             // cbbBasic
             // 
@@ -70,6 +72,7 @@
             this.cbbBasic.Name = "cbbBasic";
             this.cbbBasic.Size = new System.Drawing.Size(215, 21);
             this.cbbBasic.TabIndex = 85;
+            this.cbbBasic.SelectedIndexChanged += new System.EventHandler(this.cbbBasic_SelectedIndexChanged);
             // 
             // label7
             // 

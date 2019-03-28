@@ -14,3 +14,4 @@ C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Release\Bus
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Release\BusinessLayer.csproj.CopyComplete
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Release\BusinessLayer.dll
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\obj\Release\BusinessLayer.pdb
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\BusinessLayer\bin\Release\DataAccessLayer.pdb

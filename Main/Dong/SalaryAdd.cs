@@ -98,6 +98,22 @@ namespace Main.Dong
                
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSaveRefresh_Click(object sender, EventArgs e)
+        {
+
+            
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLayer;
+using Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,7 @@ namespace Main.Dong
 {
     public partial class SalaryEdit : Form
     {
+        private readonly SalaryBUS salaryBUS = new SalaryBUS();
         public SalaryEdit()
         {
             InitializeComponent();
@@ -57,10 +60,33 @@ namespace Main.Dong
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            Salary salary = new Salary();  
+            
+            salary.BasicSalary = int.Parse(cbbBasic.Text);
+            salary.BussinessSalary = int.Parse(cbbBussiness.Text);
+            salary.Coefficient = float.Parse(cbbCoefficient.Text);
+            salaryBUS.Update(salary);
+            this.Close();
+            SalaryManagement salaryManagement = new SalaryManagement();
+            salaryManagement.Show();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbbBasic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbBussiness_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbCoefficient_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
