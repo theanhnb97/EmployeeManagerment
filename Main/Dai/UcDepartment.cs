@@ -28,23 +28,11 @@ namespace Main.Dai
             
             DepartmentBUS departmentBus = new DepartmentBUS();
             //dgvDepartment.DataSource = departmentBus.GetAll();
-            
-            dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, 10, 20);
+            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
            
+            dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);
 
                 lblPage.Text = cusPage.ToString() + '/' + 10;
-                for (int i = 1; i < dgvDepartment.Rows.Count; i++)
-                {
-                    int item = int.Parse(dgvDepartment.Rows[i].Cells[2].Value.ToString());
-                    if (item == 1)
-                    {
-                        string status = "Status";
-                        var s = dgvDepartment.Rows[i].Cells[2].Value.ToString();
-                        s = status;
-
-                    }
-                }
-
 
         }
 
@@ -64,7 +52,7 @@ namespace Main.Dai
             
             
             cbStatus.Checked = false;
-            rdbIsDelete.Checked = false;
+            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -87,7 +75,7 @@ namespace Main.Dai
         private void btnDelete_Click(object sender, EventArgs e)
         {
             
-                DepartmentBUS departmentBus = new DepartmentBUS();
+            DepartmentBUS departmentBus = new DepartmentBUS();
                 int index = dgvDepartment.CurrentCell.RowIndex;
                 int id = int.Parse(dgvDepartment.Rows[index].Cells[0].Value.ToString());
 
@@ -99,7 +87,8 @@ namespace Main.Dai
                     if (checkDelete == -1)
                     {
                         MessageBox.Show("Delete Complete");
-                        dgvDepartment.DataSource = departmentBus.GetAll();
+                        int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
+                    dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage,item,20);
                     }
                     else
                     {
@@ -177,6 +166,27 @@ namespace Main.Dai
         private void dgvDepartment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dgvDepartment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 2)
+            {
+                e.FormattingApplied = true; // <===VERY, VERY important tell it you've taken care of it.
+                string temp1 = dgvDepartment.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                switch (temp1)
+                {
+
+                    case "1":
+                        e.Value = "Status";
+                        break;
+                    case "0":
+                        e.Value = "NoStatus";
+                        break;
+
+                }
+
+            }
         }
     }
 }
