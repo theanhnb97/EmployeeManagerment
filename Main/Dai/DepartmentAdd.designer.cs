@@ -36,6 +36,7 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCannel = new System.Windows.Forms.Button();
+            this.txtMessager = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -70,7 +71,7 @@
             // 
             this.cbStatus.AutoSize = true;
             this.cbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbStatus.Location = new System.Drawing.Point(129, 133);
+            this.cbStatus.Location = new System.Drawing.Point(129, 146);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(66, 19);
             this.cbStatus.TabIndex = 5;
@@ -81,7 +82,7 @@
             // 
             this.rdbIsDelete.AutoSize = true;
             this.rdbIsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbIsDelete.Location = new System.Drawing.Point(287, 133);
+            this.rdbIsDelete.Location = new System.Drawing.Point(282, 146);
             this.rdbIsDelete.Name = "rdbIsDelete";
             this.rdbIsDelete.Size = new System.Drawing.Size(78, 19);
             this.rdbIsDelete.TabIndex = 6;
@@ -119,11 +120,20 @@
             this.btnCannel.UseVisualStyleBackColor = true;
             this.btnCannel.Click += new System.EventHandler(this.btnCannel_Click);
             // 
+            // txtMessager
+            // 
+            this.txtMessager.AutoSize = true;
+            this.txtMessager.Location = new System.Drawing.Point(129, 91);
+            this.txtMessager.Name = "txtMessager";
+            this.txtMessager.Size = new System.Drawing.Size(0, 13);
+            this.txtMessager.TabIndex = 10;
+            // 
             // DepartmentAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(416, 450);
+            this.Controls.Add(this.txtMessager);
             this.Controls.Add(this.btnCannel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtDescription);
@@ -150,5 +160,6 @@
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCannel;
+        private System.Windows.Forms.Label txtMessager;
     }
 }

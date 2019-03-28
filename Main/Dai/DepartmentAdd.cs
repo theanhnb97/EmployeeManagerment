@@ -24,12 +24,10 @@ namespace Main.Department
         {
 
         }
-
         private void DepartmentAdd_Load(object sender, EventArgs e)
         {
 
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -40,32 +38,31 @@ namespace Main.Department
                 department.Status = cbStatus.Checked ? 1 : 0;
                 department.IsDelete = rdbIsDelete.Checked ? 1 : 0;
                 department.Description = txtDescription.Text;
-
-                int check = departmentBus.Add(department);
-                if (check == -1)
+                if (txtDepartmentName.Text != "" && txtDescription.Text != "")
                 {
-                    MessageBox.Show("You have successfully updated the refresh to change");
+                    int check = departmentBus.Add(department);
+                    if (check == -1)
+                    {
+                        MessageBox.Show("You have successfully updated the refresh to change");
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Add No Suscess");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Add No Suscess");
+                    txtMessager.Text = "You can enter data";
                 }
-
             }
             catch (Exception ex)
             {
                 ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
                 logger.Debug(ex.Message);
-                
+
             }
-
-            
-
-
-
         }
-
         private void btnCannel_Click(object sender, EventArgs e)
         {
             this.Close();
