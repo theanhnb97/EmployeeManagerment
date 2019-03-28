@@ -22,7 +22,7 @@ namespace Entity
         /// <summary>
         /// 
         /// </summary>
-        public DateTime DueDate { get; set; }
+        public string DueDate { get; set; }
 
         /// <summary>
         /// 
@@ -37,12 +37,12 @@ namespace Entity
         /// <summary>
         /// 
         /// </summary>
-        public byte Status { get; set; }
+        public int Status { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public bool IsDelete { get; set; }
+        public int IsDelete { get; set; }
 
         /// <summary>
         /// 

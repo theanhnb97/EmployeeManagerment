@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessLayer;
 using Main.Dai;
 
 
@@ -15,11 +16,36 @@ namespace Main
 {
     public partial class FormMain : Form
     {
+
+        private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+        protected int RolesID { get; set; }
+        protected override void OnLoad(EventArgs e)
+        {
+            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            bool result = RolesID == 1;
+            string formName = base.Name+".";
+            string Action = "";
+            foreach (DataRow item in myDataTable.Rows)
+                Action += item["ACTIONNAME"].ToString().Trim() + ".";
+            if (Action.Contains(formName)) result = true;
+            if (result)
+                base.OnLoad(e);
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào Hệ thống này!");
+                //picLogout_Click(picLogout, e);
+            }
+        }
+
+
+
         private List<Button> btnMenuButtons;
-        ActionManagement ucActionManagement=new ActionManagement();
-        Employees ucEmployees=new Employees();
-        UcTask ucTask =new UcTask();
-        UcDepartment ucDepartment=new UcDepartment();
+        ActionManagement ucActionManagement;
+        UcRoles ucRoles;
+        UcRolesAction ucRolesAction;
+        Employees ucEmployees;
+        UcTask ucTask;
+        UcDepartment ucDepartment;
 
         private void LoadUC()
         {
@@ -31,17 +57,34 @@ namespace Main
 
             pnMain.Controls.Add(ucTask);
             ucTask.Dock = DockStyle.Fill;
-            pnMain.Controls.Add(ucDepartment);
-            ucTask.Dock = DockStyle.Fill;
 
+            pnMain.Controls.Add(ucRoles);
+            ucRoles.Dock = DockStyle.Fill;
+
+            pnMain.Controls.Add(ucRolesAction);
+            ucRolesAction.Dock = DockStyle.Fill;
+
+            pnMain.Controls.Add(ucDepartment);
+            ucDepartment.Dock = DockStyle.Fill;
 
         }
 
-        public FormMain()
+
+        public FormMain(int rolesId)
         {
+            this.RolesID = rolesId;
+            ucActionManagement = new ActionManagement(RolesID);
+            ucRoles = new UcRoles(RolesID);
+            ucRolesAction = new UcRolesAction(RolesID);
+            ucTask = new UcTask(RolesID);
+            ucEmployees = new Employees(RolesID);
+            ucDepartment = new UcDepartment(RolesID);
+
+
             InitializeComponent();
             btnMenuButtons = new List<Button>();
         }
+
         private void FormMain_Load(object sender, EventArgs e)
         {
             btnSalary.BackColor = pnSlide.BackColor;
@@ -63,12 +106,13 @@ namespace Main
                 MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (myDialogResult == DialogResult.Yes)
             {
-                Thread threadMainForm = new Thread(new ThreadStart(ShowFormMain));
+                Thread threadMainForm = new Thread(new ThreadStart(ShowFormLogin));
                 threadMainForm.Start();
                 Application.Exit();
             }
         }
-        private void ShowFormMain()
+
+        private void ShowFormLogin()
         {
             Login f = new Login();
             f.ShowDialog();
@@ -103,11 +147,13 @@ namespace Main
         private void btnPhanQuyen_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender,e);
+            ucRolesAction.BringToFront();
         }
 
         private void btnRole_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
+            ucRoles.BringToFront();
         }
 
         private void btnAction_Click(object sender, EventArgs e)
@@ -130,8 +176,7 @@ namespace Main
         private void btnDepartment_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
-            
-           ucDepartment.BringToFront();
+            ucDepartment.BringToFront();
         }
 
         private void btnEmployee_Click(object sender, EventArgs e)
@@ -140,7 +185,7 @@ namespace Main
             ucEmployees.BringToFront();
         }
 
-        private void pnMain_Paint(object sender, PaintEventArgs e)
+        private void btnProfile_Click(object sender, EventArgs e)
         {
 
         }

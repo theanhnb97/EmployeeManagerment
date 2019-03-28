@@ -1,4 +1,6 @@
-﻿namespace Entity
+﻿using System;
+
+namespace Entity
 {
     /// <summary>
     /// Defines the <see cref="Employee" />
@@ -8,22 +10,22 @@
         /// <summary>
         /// Gets or sets the EmployeeId
         /// </summary>
-        public int EmployeeId { get; set; }
+        public Int64 EmployeeId { get; set; }
 
         /// <summary>
         /// Gets or sets the RolesId
         /// </summary>
-        public int RolesId { get; set; }
+        public Int64 RolesId { get; set; }
 
         /// <summary>
         /// Gets or sets the DepartmentId
         /// </summary>
-        public int DepartmentId { get; set; }
+        public Int64 DepartmentId { get; set; }
 
         /// <summary>
         /// Gets or sets the Rank
         /// </summary>
-        public byte Rank { get; set; }
+        public Int16 Rank { get; set; }
 
         /// <summary>
         /// Gets or sets the FullName
@@ -63,11 +65,11 @@
         /// <summary>
         /// Gets or sets the Status
         /// </summary>
-        public byte Status { get; set; }
+        public Int16 Status { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether IsDelete
         /// </summary>
-        public bool IsDelete { get; set; }
+        public Int16 IsDelete { get; set; }
     }
 }

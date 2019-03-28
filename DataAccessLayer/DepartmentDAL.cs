@@ -17,7 +17,7 @@ namespace DataAccessLayer
         {
             try
             {
-                SqlHelpers<Department> sqlHelp=new SqlHelpers<Department>();
+                SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
                 using (OracleConnection connection = Connection.GetConnection)
                 {
 
@@ -58,7 +58,7 @@ namespace DataAccessLayer
                     OracleParameter[] parameters = new OracleParameter[]
                     {
                         new OracleParameter("p_departmentID",id),
-                        
+
 
                     };
 
@@ -164,7 +164,7 @@ namespace DataAccessLayer
                     CommandType conCommandType = CommandType.StoredProcedure;
                     OracleParameter[] parameters = new OracleParameter[]
                     {
-                        new OracleParameter("p_departmentID",department.DepartmentID), 
+                        new OracleParameter("p_departmentID",department.DepartmentID),
                         new OracleParameter("p_departmentName",department.DepartmentName),
                         new OracleParameter("p_status",department.Status),
                         new OracleParameter("p_isDelete",department.IsDelete),
@@ -247,7 +247,7 @@ namespace DataAccessLayer
                 return 0;
             }
         }
-        public DataTable GetAllPage(int currPage,int recodperpage,int Pagesize)
+        public DataTable GetAllPage(int currPage, int recodperpage, int Pagesize)
         {
             try
             {
@@ -259,7 +259,7 @@ namespace DataAccessLayer
 
                     cmd = new OracleCommand("Department_Page", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    
+
                     cmd.Parameters.Add("currPage", currPage);
                     cmd.Parameters.Add("recodperpage", recodperpage);
                     cmd.Parameters.Add("Pagesize", Pagesize);
@@ -273,15 +273,15 @@ namespace DataAccessLayer
 
                 }
 
-        }
+            }
             catch (Exception e)
             {
                 ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        logger.Debug(e.Message);
+                logger.Debug(e.Message);
                 return null;
 
             }
-}
+        }
         DataTable IEntities<Department>.Get()
         {
             throw new NotImplementedException();
