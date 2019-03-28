@@ -15,8 +15,30 @@ namespace Main
 {
     public partial class UcRoles : UserControl
     {
-        public UcRoles()
+        private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+        protected int RolesID { get; set; }
+        protected override void OnLoad(EventArgs e)
         {
+            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            bool result = RolesID == 1;
+            string ucName = base.Name + ".";
+            string Action = "";
+            foreach (DataRow item in myDataTable.Rows)
+                Action += item["ACTIONNAME"].ToString().Trim() + ".";
+            if (Action.Contains(ucName)) result = true;
+            if (result)
+                base.OnLoad(e);
+            else
+                this.Hide();
+        }
+
+
+
+
+
+        public UcRoles(int id)
+        {
+            this.RolesID = id;
             InitializeComponent();
         }
         RolesBUL myBus = new RolesBUL();
@@ -32,7 +54,7 @@ namespace Main
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Role_Add formAdd = new Role_Add();
+            Role_Add formAdd = new Role_Add(RolesID);
             formAdd.ShowDialog();
         }
         private void btnEdit_Click(object sender, EventArgs e)
@@ -47,7 +69,7 @@ namespace Main
             myObject.RolesID = int.Parse(dgvData.Rows[index].Cells[0].Value.ToString());
             myObject.RolesName = dgvData.Rows[index].Cells[1].Value.ToString();
             myObject.Description = dgvData.Rows[index].Cells[3].Value.ToString();
-            Role_Add formAdd = new Role_Add(myObject);
+            Role_Add formAdd = new Role_Add(myObject,RolesID);
             formAdd.ShowDialog();
         }
 

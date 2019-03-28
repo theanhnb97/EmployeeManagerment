@@ -16,12 +16,33 @@ namespace Main
 {
     public partial class UcRolesAction : UserControl
     {
+        private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+        protected int RolesID { get; set; }
+        protected override void OnLoad(EventArgs e)
+        {
+            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            bool result = RolesID == 1;
+            string ucName = base.Name + ".";
+            string Action = "";
+            foreach (DataRow item in myDataTable.Rows)
+                Action += item["ACTIONNAME"].ToString().Trim() + ".";
+            if (Action.Contains(ucName)) result = true;
+            if (result)
+                base.OnLoad(e);
+            else
+                this.Hide();
+        }
+
+
+        
+
+
         RolesBUL myRoles = new RolesBUL();
         ActionBUS myAction = new ActionBUS();
-        RolesActionBUS myRolesActionBus = new RolesActionBUS();
         private TableLayoutPanel tlpnData;
-        public UcRolesAction()
+        public UcRolesAction(int id)
         {
+            this.RolesID = id;
             CreateTable();
             InitializeComponent();
             this.Controls.Add(tlpnData);

@@ -37,6 +37,7 @@
             this.btnDelete = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnEdit = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnAdd = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnScan = new Bunifu.Framework.UI.BunifuFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -206,11 +207,47 @@
             this.btnAdd.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnScan
+            // 
+            this.btnScan.Activecolor = System.Drawing.Color.SteelBlue;
+            this.btnScan.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnScan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnScan.BorderRadius = 0;
+            this.btnScan.ButtonText = "Quét hệ thống";
+            this.btnScan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnScan.DisabledColor = System.Drawing.Color.Gray;
+            this.btnScan.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnScan.Iconimage = null;
+            this.btnScan.Iconimage_right = null;
+            this.btnScan.Iconimage_right_Selected = null;
+            this.btnScan.Iconimage_Selected = null;
+            this.btnScan.IconMarginLeft = 0;
+            this.btnScan.IconMarginRight = 0;
+            this.btnScan.IconRightVisible = true;
+            this.btnScan.IconRightZoom = 0D;
+            this.btnScan.IconVisible = true;
+            this.btnScan.IconZoom = 90D;
+            this.btnScan.IsTab = false;
+            this.btnScan.Location = new System.Drawing.Point(541, 19);
+            this.btnScan.Name = "btnScan";
+            this.btnScan.Normalcolor = System.Drawing.Color.SteelBlue;
+            this.btnScan.OnHovercolor = System.Drawing.Color.SteelBlue;
+            this.btnScan.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnScan.selected = false;
+            this.btnScan.Size = new System.Drawing.Size(98, 36);
+            this.btnScan.TabIndex = 6;
+            this.btnScan.Text = "Quét hệ thống";
+            this.btnScan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnScan.Textcolor = System.Drawing.Color.White;
+            this.btnScan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
+            // 
             // ActionManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnScan);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
@@ -238,5 +275,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ACTIONNAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPTION;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISDELETE;
+        private Bunifu.Framework.UI.BunifuFlatButton btnScan;
     }
 }

@@ -15,13 +15,36 @@ namespace Main
 {
     public partial class Action_Add : Form
     {
+
+        private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+        protected int RolesID { get; set; }
+        protected override void OnLoad(EventArgs e)
+        {
+            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            bool result = RolesID == 1;
+            string formName = base.Name + ".";
+            string Action = "";
+            foreach (DataRow item in myDataTable.Rows)
+                Action += item["ACTIONNAME"].ToString().Trim() + ".";
+            if (Action.Contains(formName)) result = true;
+            if (result)
+                base.OnLoad(e);
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào hành động này!");
+                this.Close();
+            }
+        }
+
+
+
         private Entity.Action myActionEdit;
-        public Action_Add(Action myActionEdit)
+        public Action_Add(Action myActionEdit,int id)
         {
             this.myActionEdit = myActionEdit;
             InitializeComponent();
         }
-        public Action_Add()
+        public Action_Add(int id)
         {
             this.myActionEdit = new Action();
             InitializeComponent();
@@ -46,7 +69,7 @@ namespace Main
         {
             if (IsValid())
             {
-                Entity.Action myActionAdd=new Entity.Action();
+                Action myActionAdd=new Action();
                 myActionAdd.ActionID = myActionEdit.ActionID;
                 myActionAdd.ActionName = txtName.Text;
                 myActionAdd.Description = txtDescription.Text;

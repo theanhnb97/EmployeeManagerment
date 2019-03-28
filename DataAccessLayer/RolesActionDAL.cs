@@ -15,6 +15,7 @@ namespace DataAccessLayer
     interface IRolesAction : IEntities<RolesAction>
     {
         DataTable GetAllTrue(int id);
+        int DeleteAll();
     }
     public class RolesActionDAL : IRolesAction
     {
@@ -35,6 +36,14 @@ namespace DataAccessLayer
             }
         }
 
+        public int DeleteAll()
+        {
+            using (OracleConnection con = Connection.GetConnection)
+            {
+                String cmd = "RolesAction_Scan";
+                return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, null);
+            }
+        }
 
 
         public DataTable Get()

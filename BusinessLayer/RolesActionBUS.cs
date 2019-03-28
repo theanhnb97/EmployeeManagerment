@@ -34,5 +34,10 @@ namespace BusinessLayer
         {
             return myDal.Update(obj);
         }
+
+        public int DeleteAll()
+        {
+            return myDal.DeleteAll();
+        }
     }
 }

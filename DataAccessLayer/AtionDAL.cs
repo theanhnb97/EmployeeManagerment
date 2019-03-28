@@ -40,11 +40,11 @@ namespace DataAccessLayer
                 String cmd = "Action_Get";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("names",name), 
+                    new OracleParameter("names",name),
                     new OracleParameter("listAction",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
-                DataTable myList= sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
-                if (myList.Rows.Count<1)
+                DataTable myList = sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                if (myList.Rows.Count < 1)
                     return null;
                 return new Action
                 {
@@ -95,38 +95,39 @@ namespace DataAccessLayer
             using (OracleConnection con = Connection.GetConnection)
             {
                 //OracleTransaction transaction = con.BeginTransaction();
-                    String cmd = "Action_Insert";
-                    OracleParameter[] myParameters = new OracleParameter[]
+
+                String cmd = "Action_Insert";
+                OracleParameter[] myParameters = new OracleParameter[]
+                {
+                        new OracleParameter("actionnames", obj.ActionName),
+                        new OracleParameter("isdeletes", obj.IsDelete),
+                        new OracleParameter("descriptions", obj.Description)
+                };
+                sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                Action newActionAdd = GetByName(obj.ActionName);
+                DataTable listRoles = new DataTable();
+                RolesDAL myRoles = new RolesDAL();
+                RolesActionDAL myRolesAction = new RolesActionDAL();
+                listRoles = myRoles.Get();
+                foreach (DataRow item in listRoles.Rows)
+                {
+                    RolesAction myRolesActionAdd = new RolesAction
                     {
-                        new OracleParameter("actionnames",obj.ActionName),
-                        new OracleParameter("isdeletes",obj.IsDelete),
-                        new OracleParameter("descriptions",obj.Description)
+                        ID = 0,
+                        ActionID = newActionAdd.ActionID,
+                        IsTrue = 0,
+                        RolesID = int.Parse(item[0].ToString())
                     };
-                    sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
-                    Action newActionAdd = GetByName(obj.ActionName);
-                    DataTable listRoles = new DataTable();
-                    RolesDAL myRoles = new RolesDAL();
-                    RolesActionDAL myRolesAction = new RolesActionDAL();
-                    listRoles = myRoles.Get();
-                    foreach (DataRow item in listRoles.Rows)
+                    if (myRolesAction.Add(myRolesActionAdd) != -1)
                     {
-                        RolesAction myRolesActionAdd=new RolesAction
-                        {
-                            ID =0,
-                            ActionID = newActionAdd.ActionID,
-                            IsTrue = 0,
-                            RolesID = int.Parse(item[0].ToString())
-                        };
-                        if (myRolesAction.Add(myRolesActionAdd) != -1)
-                        {
-                            //transaction.Rollback();
-                            return 0;
-                        }
+                        //transaction.Rollback();
+                        return 0;
                     }
+                }
                 //transaction.Commit();
                 return -1;
             }
-            
+
         }
     }
 }

@@ -14,15 +14,41 @@ namespace Main
 {
     public partial class Role_Add : Form
     {
+        private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+        protected int RolesID { get; set; }
+        protected override void OnLoad(EventArgs e)
+        {
+            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            bool result = RolesID == 1;
+            string formName = base.Name + ".";
+            string Action = "";
+            foreach (DataRow item in myDataTable.Rows)
+                Action += item["ACTIONNAME"].ToString().Trim() + ".";
+            if (Action.Contains(formName)) result = true;
+            if (result)
+                base.OnLoad(e);
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào hành động này!");
+                this.Close();
+            }
+        }
+
+
+
+
+
+
+
         private RolesBUL myBul=new RolesBUL();
         private Roles myObjectEdit;
-        public Role_Add()
+        public Role_Add(int id)
         {
             myObjectEdit=new Roles();
             InitializeComponent();
         }
 
-        public Role_Add(Roles myObjectEdit)
+        public Role_Add(Roles myObjectEdit,int id)
         {
             InitializeComponent();
             this.myObjectEdit = myObjectEdit;
