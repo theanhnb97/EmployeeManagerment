@@ -4,7 +4,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommonLibrary.Enumerator;
 using DataAccessLayer;
+using DataAccessLayer.Enum;
 using Entity;
 using Entity.DTO;
 
@@ -21,7 +23,8 @@ namespace BusinessLayer
 
         public List<EmployeeDTO> GetAll()
         {
-            return myEmployeeDao.GetAll();
+
+            return MapperEmployeeDtos(myEmployeeDao.GetAll());
         }
 
         public int Insert(Employee employee)
@@ -48,5 +51,16 @@ namespace BusinessLayer
         {
             return myEmployeeDao.GetByEmployeeId(employeeId);
         }
+
+        public List<EmployeeDTO> MapperEmployeeDtos(List<EmployeeDTO> employeeDtos)
+        {
+            foreach (var employeeDto in employeeDtos)
+            {
+                employeeDto.RankName = Enumerator.GetDescription((Enumeration.Rank) employeeDto.RANK);
+            }
+
+            return employeeDtos;
+        }
+        
     }
 }
