@@ -16,8 +16,6 @@ namespace Main
     {
         private readonly EmployeeBus employeeBus = new EmployeeBus();
 
-        private readonly EmployeeMapper mapper = new EmployeeMapper();
-
         public static Entity.Employee employeeForUpdate = new Entity.Employee();
 
         public static bool IsCreated;
