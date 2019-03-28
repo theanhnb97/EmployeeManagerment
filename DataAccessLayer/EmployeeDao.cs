@@ -22,6 +22,8 @@ namespace DataAccessLayer
         List<EmployeeDTO> GetAll();
 
         List<EmployeeDTO> Search(Employee employee);
+
+        Employee GetByEmployeeId(int employeeId);
     }
 
     public class EmployeeDao : IEmployee
@@ -30,16 +32,6 @@ namespace DataAccessLayer
         protected SqlHelpers<EmployeeDTO> sqlHelpersDto = new SqlHelpers<EmployeeDTO>();
 
         protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        public DataTable Get()
-        {
-            throw new NotImplementedException();
-        }
-
-        public DataTable Search(string keyword)
-        {
-            throw new NotImplementedException();
-        }
 
         public int Delete(int employeeId)
         {
@@ -206,6 +198,73 @@ namespace DataAccessLayer
                 logger.Debug(e.Message);
             }
             return employees;
+        }
+
+        public Employee GetByEmployeeId(int employeeId)
+        {  
+            Employee employee = new Employee();
+            try
+            {
+                using (OracleConnection oracleConnection = Connection.GetConnection)
+                {
+                    string storeName = "EMPLOYEE_GETBYEMPLOYEEID";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("employeeIdInput",employeeId),
+                        new OracleParameter("cursor",OracleDbType.RefCursor,ParameterDirection.Output)
+                    };
+                    DataTable data = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                    employee = TranferDataTableToEmployeeList(data)[0];
+                }
+            }
+            catch (Exception e)
+            {
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+            }
+            return employee;
+        }
+
+        public List<Employee> TranferDataTableToEmployeeList(DataTable dataTable)
+        {
+            List<Employee> employees = new List<Employee>();
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                try
+                {
+                    Employee employee = new Employee();
+                    employee.RolesId = Convert.ToInt32(dr[0].ToString());
+                    employee.DepartmentId = Convert.ToInt32(dr[1].ToString());
+                    employee.Rank = Convert.ToInt16(dr[2].ToString());
+                    employee.FullName = dr[3].ToString();
+                    employee.UserName = dr[4].ToString();
+                    employee.Password = dr[5].ToString();
+                    employee.Identity = dr[6].ToString();
+                    employee.Address = dr[7].ToString();
+                    employee.Phone = dr[8].ToString();
+                    employee.Email = dr[9].ToString();
+                    employee.Status = Convert.ToInt16(dr[10].ToString());
+                    employee.IsDelete = Convert.ToInt16(dr[11].ToString());
+                    employee.EmployeeId = Convert.ToInt32(dr[12].ToString());
+                    employees.Add(employee);
+                }
+                catch (Exception e)
+                {
+                    logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
+                }
+            }
+            return employees;
+        }
+
+        public DataTable Get()
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataTable Search(string keyword)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -44,7 +44,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
-            this.txtRole = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtIdentity = new System.Windows.Forms.TextBox();
@@ -54,6 +53,7 @@
             this.cbbRank = new System.Windows.Forms.ComboBox();
             this.cbbDepartment = new System.Windows.Forms.ComboBox();
             this.cbbStatus = new System.Windows.Forms.ComboBox();
+            this.cbbRole = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label7
@@ -79,14 +79,14 @@
             this.txtUserName.Location = new System.Drawing.Point(149, 95);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(215, 20);
-            this.txtUserName.TabIndex = 59;
+            this.txtUserName.TabIndex = 1;
             // 
             // txtFullName
             // 
             this.txtFullName.Location = new System.Drawing.Point(149, 57);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(215, 20);
-            this.txtFullName.TabIndex = 58;
+            this.txtFullName.TabIndex = 0;
             // 
             // label2
             // 
@@ -111,14 +111,14 @@
             this.txtAddress.Location = new System.Drawing.Point(149, 273);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(215, 20);
-            this.txtAddress.TabIndex = 55;
+            this.txtAddress.TabIndex = 6;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(149, 235);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(215, 20);
-            this.txtEmail.TabIndex = 54;
+            this.txtEmail.TabIndex = 5;
             // 
             // lblTitle
             // 
@@ -136,7 +136,7 @@
             this.btnCancel.Location = new System.Drawing.Point(298, 482);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 51;
+            this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -147,7 +147,7 @@
             this.btnAddAndCreate.Location = new System.Drawing.Point(178, 482);
             this.btnAddAndCreate.Name = "btnAddAndCreate";
             this.btnAddAndCreate.Size = new System.Drawing.Size(112, 23);
-            this.btnAddAndCreate.TabIndex = 50;
+            this.btnAddAndCreate.TabIndex = 12;
             this.btnAddAndCreate.Text = "Save and refresh";
             this.btnAddAndCreate.UseVisualStyleBackColor = true;
             // 
@@ -157,7 +157,7 @@
             this.btnAdd.Location = new System.Drawing.Point(94, 482);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 49;
+            this.btnAdd.TabIndex = 11;
             this.btnAdd.Text = "Save";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -170,6 +170,7 @@
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 42;
             this.label4.Text = "Group role";
+            this.label4.Visible = false;
             // 
             // label3
             // 
@@ -194,21 +195,14 @@
             this.txtPhone.Location = new System.Drawing.Point(149, 203);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(215, 20);
-            this.txtPhone.TabIndex = 47;
-            // 
-            // txtRole
-            // 
-            this.txtRole.Location = new System.Drawing.Point(149, 166);
-            this.txtRole.Name = "txtRole";
-            this.txtRole.Size = new System.Drawing.Size(215, 20);
-            this.txtRole.TabIndex = 46;
+            this.txtPhone.TabIndex = 4;
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(149, 128);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(215, 20);
-            this.txtPassword.TabIndex = 45;
+            this.txtPassword.TabIndex = 2;
             // 
             // label5
             // 
@@ -224,7 +218,7 @@
             this.txtIdentity.Location = new System.Drawing.Point(149, 313);
             this.txtIdentity.Name = "txtIdentity";
             this.txtIdentity.Size = new System.Drawing.Size(215, 20);
-            this.txtIdentity.TabIndex = 61;
+            this.txtIdentity.TabIndex = 7;
             // 
             // label9
             // 
@@ -243,6 +237,7 @@
             this.label10.Size = new System.Drawing.Size(62, 13);
             this.label10.TabIndex = 60;
             this.label10.Text = "Department";
+            this.label10.Visible = false;
             // 
             // label11
             // 
@@ -260,7 +255,7 @@
             this.cbbRank.Location = new System.Drawing.Point(149, 429);
             this.cbbRank.Name = "cbbRank";
             this.cbbRank.Size = new System.Drawing.Size(215, 21);
-            this.cbbRank.TabIndex = 62;
+            this.cbbRank.TabIndex = 10;
             // 
             // cbbDepartment
             // 
@@ -269,7 +264,8 @@
             this.cbbDepartment.Location = new System.Drawing.Point(150, 389);
             this.cbbDepartment.Name = "cbbDepartment";
             this.cbbDepartment.Size = new System.Drawing.Size(215, 21);
-            this.cbbDepartment.TabIndex = 62;
+            this.cbbDepartment.TabIndex = 9;
+            this.cbbDepartment.Visible = false;
             // 
             // cbbStatus
             // 
@@ -278,13 +274,24 @@
             this.cbbStatus.Location = new System.Drawing.Point(150, 349);
             this.cbbStatus.Name = "cbbStatus";
             this.cbbStatus.Size = new System.Drawing.Size(215, 21);
-            this.cbbStatus.TabIndex = 62;
+            this.cbbStatus.TabIndex = 8;
+            // 
+            // cbbRole
+            // 
+            this.cbbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbRole.FormattingEnabled = true;
+            this.cbbRole.Location = new System.Drawing.Point(150, 165);
+            this.cbbRole.Name = "cbbRole";
+            this.cbbRole.Size = new System.Drawing.Size(215, 21);
+            this.cbbRole.TabIndex = 3;
+            this.cbbRole.Visible = false;
             // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 531);
+            this.Controls.Add(this.cbbRole);
             this.Controls.Add(this.cbbStatus);
             this.Controls.Add(this.cbbDepartment);
             this.Controls.Add(this.cbbRank);
@@ -309,7 +316,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPhone);
-            this.Controls.Add(this.txtRole);
             this.Controls.Add(this.txtPassword);
             this.Name = "Employee";
             this.Text = "Employee";
@@ -337,7 +343,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.TextBox txtRole;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtIdentity;
@@ -347,5 +352,6 @@
         private System.Windows.Forms.ComboBox cbbRank;
         private System.Windows.Forms.ComboBox cbbDepartment;
         private System.Windows.Forms.ComboBox cbbStatus;
+        private System.Windows.Forms.ComboBox cbbRole;
     }
 }

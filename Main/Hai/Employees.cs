@@ -20,8 +20,6 @@ namespace Main
 
         public static Entity.Employee employeeForUpdate = new Entity.Employee();
 
-        public static Entity.Employee employeeForSearch = new Entity.Employee();
-
         public static bool IsCreated;
 
         public Employees()
@@ -51,12 +49,8 @@ namespace Main
         private void dgv_employee_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dgv_employee.CurrentCell.RowIndex;
-            List<EmployeeDTO> employeeDtos = dgv_employee.DataSource as List<EmployeeDTO>;
-            List<Entity.Employee> employees = mapper.CreateMappingList(employeeDtos);
-            if (employees!= null)
-            {
-                employeeForUpdate = employees[index];
-            }
+            int employeeId = Convert.ToInt32(dgv_employee.Rows[index].Cells["ID"].Value.ToString());
+            employeeForUpdate = employeeBus.GetByEmployeeId(employeeId);
             btnDelete.Enabled = true;
             btnEdit.Enabled = true;
         }
@@ -72,7 +66,7 @@ namespace Main
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int index = dgv_employee.CurrentCell.RowIndex;
-            int employeeId = Convert.ToInt32(dgv_employee.Rows[index].Cells["EMPLOYEEID"].Value.ToString());
+            int employeeId = Convert.ToInt32(dgv_employee.Rows[index].Cells["ID"].Value.ToString());
             var confirm = MessageBox.Show("Are you sure to delete this employee?", "Notification",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (confirm == DialogResult.OK)
@@ -91,9 +85,12 @@ namespace Main
 
         private void btnLoadData_Click(object sender, EventArgs e)
         {
-            employeeForSearch.FullName = txtFullName_Search.Text.Trim();
-            employeeForSearch.UserName = txtUserName_Search.Text.Trim();
-            employeeForSearch.Identity = txtIdentity_Search.Text.Trim();
+            Entity.Employee employeeForSearch = new Entity.Employee
+            {
+                FullName = txtFullName_Search.Text.Trim(),
+                UserName = txtUserName_Search.Text.Trim(),
+                Identity = txtIdentity_Search.Text.Trim()
+            };
             // sau này sửa lấy department từ danh sách, thì chỗ này là cbb.selected value == 0
             // ccb.departmentId = cbb.selected value
             if (cbbDepartment_Search.Text == "")

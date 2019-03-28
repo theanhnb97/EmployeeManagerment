@@ -34,12 +34,13 @@ namespace Main
                     Entity.Employee employee = new Entity.Employee();
                     employee.FullName = txtFullName.Text;
                     employee.Address = txtAddress.Text;
-                    //employee.DepartmentId = Convert.ToInt64(txtDepartment.Text);
+                    // tạm fix =1 vì chưa merge department functions
                     employee.DepartmentId = 1;
                     employee.Email = txtEmail.Text;
                     employee.Identity = txtIdentity.Text;
                     employee.Password = txtPassword.Text;
-                    employee.RolesId = Convert.ToInt64(txtRole.Text);
+                    // tạm fix =1 vì chưa merge role functions
+                    employee.RolesId = 1;
                     employee.Phone = txtPhone.Text;
                     employee.UserName = txtUserName.Text;
                     employee.IsDelete = 0;
@@ -100,7 +101,7 @@ namespace Main
                 txtEmail.Text = Employees.employeeForUpdate.Email;
                 txtIdentity.Text = Employees.employeeForUpdate.Identity;
                 txtPassword.Text = Employees.employeeForUpdate.Password;
-                txtRole.Text = Employees.employeeForUpdate.RolesId.ToString();
+                //txtRole.Text = Employees.employeeForUpdate.RolesId.ToString();
                 txtPhone.Text = Employees.employeeForUpdate.Phone;
                 txtUserName.Text = Employees.employeeForUpdate.UserName;
                 cbbStatus.SelectedIndex = cbbStatus.FindString(Enumerator.GetDescription((Enumeration.Status)Employees.employeeForUpdate.Status));

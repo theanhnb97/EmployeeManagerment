@@ -43,5 +43,10 @@ namespace BusinessLayer
         {
             return employeeDao.Search(employee);
         }
+
+        public Employee GetByEmployeeId(int employeeId)
+        {
+            return employeeDao.GetByEmployeeId(employeeId);
+        }
     }
 }
