@@ -41,27 +41,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(67, 61);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(41, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.Size = new System.Drawing.Size(120, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "DepartmentName";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(67, 273);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.Size = new System.Drawing.Size(80, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "Description";
             // 
             // cbStatus
             // 
             this.cbStatus.AutoSize = true;
+            this.cbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbStatus.Location = new System.Drawing.Point(70, 163);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(56, 17);
+            this.cbStatus.Size = new System.Drawing.Size(66, 19);
             this.cbStatus.TabIndex = 2;
             this.cbStatus.Text = "Status";
             this.cbStatus.UseVisualStyleBackColor = true;
@@ -69,9 +72,10 @@
             // rdbIsDelete
             // 
             this.rdbIsDelete.AutoSize = true;
+            this.rdbIsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbIsDelete.Location = new System.Drawing.Point(325, 163);
             this.rdbIsDelete.Name = "rdbIsDelete";
-            this.rdbIsDelete.Size = new System.Drawing.Size(64, 17);
+            this.rdbIsDelete.Size = new System.Drawing.Size(78, 19);
             this.rdbIsDelete.TabIndex = 3;
             this.rdbIsDelete.TabStop = true;
             this.rdbIsDelete.Text = "IsDelete";
@@ -79,7 +83,7 @@
             // 
             // txtDepartmentName
             // 
-            this.txtDepartmentName.Location = new System.Drawing.Point(172, 58);
+            this.txtDepartmentName.Location = new System.Drawing.Point(172, 61);
             this.txtDepartmentName.Name = "txtDepartmentName";
             this.txtDepartmentName.Size = new System.Drawing.Size(264, 20);
             this.txtDepartmentName.TabIndex = 4;
@@ -94,7 +98,8 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(122, 402);
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(150, 392);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 6;
@@ -104,7 +109,8 @@
             // 
             // btnCannel
             // 
-            this.btnCannel.Location = new System.Drawing.Point(335, 402);
+            this.btnCannel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCannel.Location = new System.Drawing.Point(263, 392);
             this.btnCannel.Name = "btnCannel";
             this.btnCannel.Size = new System.Drawing.Size(75, 23);
             this.btnCannel.TabIndex = 7;

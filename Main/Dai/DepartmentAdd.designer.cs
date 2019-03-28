@@ -41,9 +41,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 51);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.Size = new System.Drawing.Size(120, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "DepartmentName";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -51,15 +52,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 213);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(28, 253);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 13);
+            this.label4.Size = new System.Drawing.Size(80, 15);
             this.label4.TabIndex = 3;
             this.label4.Text = "Description";
             // 
             // txtDepartmentName
             // 
-            this.txtDepartmentName.Location = new System.Drawing.Point(129, 48);
+            this.txtDepartmentName.Location = new System.Drawing.Point(129, 51);
             this.txtDepartmentName.Name = "txtDepartmentName";
             this.txtDepartmentName.Size = new System.Drawing.Size(222, 20);
             this.txtDepartmentName.TabIndex = 4;
@@ -67,9 +69,10 @@
             // cbStatus
             // 
             this.cbStatus.AutoSize = true;
+            this.cbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbStatus.Location = new System.Drawing.Point(129, 133);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(56, 17);
+            this.cbStatus.Size = new System.Drawing.Size(66, 19);
             this.cbStatus.TabIndex = 5;
             this.cbStatus.Text = "Status";
             this.cbStatus.UseVisualStyleBackColor = true;
@@ -77,9 +80,10 @@
             // rdbIsDelete
             // 
             this.rdbIsDelete.AutoSize = true;
+            this.rdbIsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbIsDelete.Location = new System.Drawing.Point(287, 133);
             this.rdbIsDelete.Name = "rdbIsDelete";
-            this.rdbIsDelete.Size = new System.Drawing.Size(64, 17);
+            this.rdbIsDelete.Size = new System.Drawing.Size(78, 19);
             this.rdbIsDelete.TabIndex = 6;
             this.rdbIsDelete.TabStop = true;
             this.rdbIsDelete.Text = "IsDelete";
@@ -95,7 +99,8 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(89, 374);
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(120, 374);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 8;
@@ -105,7 +110,8 @@
             // 
             // btnCannel
             // 
-            this.btnCannel.Location = new System.Drawing.Point(258, 374);
+            this.btnCannel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCannel.Location = new System.Drawing.Point(241, 374);
             this.btnCannel.Name = "btnCannel";
             this.btnCannel.Size = new System.Drawing.Size(75, 23);
             this.btnCannel.TabIndex = 9;

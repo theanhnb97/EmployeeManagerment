@@ -17,16 +17,11 @@ namespace Main.Dai
     public partial class UcDepartment : UserControl
     {
         int cusPage = 1;
-        
-        
-
-
         public UcDepartment()
         {
            
             InitializeComponent();
         }
-
         private void UcDepartment_Load(object sender, EventArgs e)
         {
             
@@ -40,7 +35,6 @@ namespace Main.Dai
                 lblPage.Text = cusPage.ToString() + '/' + pageSize;
 
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string keyword = txtDepartmentName.Text;
@@ -54,12 +48,8 @@ namespace Main.Dai
                 dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword);
                 txtDepartmentName.Text = "";
             }
-            
-            
-            cbStatus.Checked = false;
-            
+            cbStatus.Checked = false; 
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Entity.Department department = new Entity.Department();
@@ -76,7 +66,6 @@ namespace Main.Dai
 
             frUpdate.ShowDialog();
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             
@@ -164,16 +153,7 @@ namespace Main.Dai
 
         }
 
-        private void dgvDepartment_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dgvDepartment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+       
         private void dgvDepartment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == 2)
@@ -199,5 +179,15 @@ namespace Main.Dai
         {
             
         }
+        private void dgvDepartment_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvDepartment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
     }
 }
