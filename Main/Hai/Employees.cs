@@ -14,6 +14,29 @@ namespace Main
 {
     public partial class Employees : UserControl
     {
+        private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+        protected int RolesID { get; set; }
+        protected override void OnLoad(EventArgs e)
+        {
+            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            bool result = RolesID == 1;
+            string ucName = base.Name + ".";
+            string Action = "";
+            foreach (DataRow item in myDataTable.Rows)
+                Action += item["ACTIONNAME"].ToString().Trim() + ".";
+            if (Action.Contains(ucName)) result = true;
+            if (result)
+                base.OnLoad(e);
+            else
+                this.Hide();
+        }
+
+        public Employees(int id)
+        {
+            this.RolesID = id;
+            InitializeComponent();
+        }
+
         private readonly EmployeeBus employeeBus = new EmployeeBus();
 
         private readonly EmployeeMapper mapper = new EmployeeMapper();
@@ -22,10 +45,7 @@ namespace Main
 
         public static bool IsCreated;
 
-        public Employees()
-        {
-            InitializeComponent();
-        }
+        
 
         private void Employees_Load(object sender, EventArgs e)
         {
@@ -35,14 +55,14 @@ namespace Main
         private void btnAdd_Click(object sender, EventArgs e)
         {
             IsCreated = true;
-            Employee formEmployee = new Employee();
+            Employee formEmployee = new Employee(RolesID);
             formEmployee.Show();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             IsCreated = false;
-            Employee frmEmployee = new Employee();
+            Employee frmEmployee = new Employee(RolesID);
             frmEmployee.ShowDialog();
         }
 

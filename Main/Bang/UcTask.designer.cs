@@ -41,7 +41,7 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmbDepartment = new Bunifu.Framework.UI.BunifuDropdown();
+            this.cmbDepartment = new System.Windows.Forms.ComboBox();
             this.dtpDeuDateFilter = new System.Windows.Forms.DateTimePicker();
             this.lbDepartment = new System.Windows.Forms.Label();
             this.lbDueDate = new System.Windows.Forms.Label();
@@ -83,6 +83,7 @@
             this.btnEdit.TabIndex = 13;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -93,6 +94,7 @@
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
@@ -104,6 +106,7 @@
             this.btnDelete.TabIndex = 14;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnLoadData
             // 
@@ -111,7 +114,7 @@
             this.btnLoadData.Location = new System.Drawing.Point(472, 85);
             this.btnLoadData.Name = "btnLoadData";
             this.btnLoadData.Size = new System.Drawing.Size(75, 23);
-            this.btnLoadData.TabIndex = 10;
+            this.btnLoadData.TabIndex = 4;
             this.btnLoadData.Text = "Search";
             this.btnLoadData.UseVisualStyleBackColor = true;
             this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
@@ -122,9 +125,10 @@
             this.btnClear.Location = new System.Drawing.Point(603, 85);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 11;
+            this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Refresh";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // groupBox1
             // 
@@ -156,13 +160,21 @@
             // 
             // dgvTask
             // 
+            this.dgvTask.AllowUserToAddRows = false;
+            this.dgvTask.AllowUserToDeleteRows = false;
+            this.dgvTask.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTask.BackgroundColor = System.Drawing.Color.White;
             this.dgvTask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTask.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvTask.GridColor = System.Drawing.Color.DarkGray;
             this.dgvTask.Location = new System.Drawing.Point(3, 16);
+            this.dgvTask.MultiSelect = false;
             this.dgvTask.Name = "dgvTask";
-            this.dgvTask.ReadOnly = true;
+            this.dgvTask.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTask.Size = new System.Drawing.Size(803, 340);
             this.dgvTask.TabIndex = 0;
+            this.dgvTask.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTask_CellClick);
+            this.dgvTask.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTask_CellFormatting);
             // 
             // btnNext
             // 
@@ -205,24 +217,25 @@
             // 
             // cmbDepartment
             // 
-            this.cmbDepartment.BackColor = System.Drawing.Color.Transparent;
-            this.cmbDepartment.BorderRadius = 3;
-            this.cmbDepartment.ForeColor = System.Drawing.Color.White;
-            this.cmbDepartment.Items = new string[0];
-            this.cmbDepartment.Location = new System.Drawing.Point(519, 26);
+            this.cmbDepartment.AutoCompleteCustomSource.AddRange(new string[] {
+            "Choose"});
+            this.cmbDepartment.BackColor = System.Drawing.Color.White;
+            this.cmbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDepartment.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbDepartment.FormattingEnabled = true;
+            this.cmbDepartment.Location = new System.Drawing.Point(512, 27);
             this.cmbDepartment.Name = "cmbDepartment";
-            this.cmbDepartment.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.cmbDepartment.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.cmbDepartment.selectedIndex = -1;
-            this.cmbDepartment.Size = new System.Drawing.Size(159, 20);
-            this.cmbDepartment.TabIndex = 15;
+            this.cmbDepartment.Size = new System.Drawing.Size(150, 21);
+            this.cmbDepartment.TabIndex = 3;
             // 
             // dtpDeuDateFilter
             // 
+            this.dtpDeuDateFilter.CustomFormat = "dd/MM/yyyy";
+            this.dtpDeuDateFilter.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDeuDateFilter.Location = new System.Drawing.Point(171, 81);
             this.dtpDeuDateFilter.Name = "dtpDeuDateFilter";
             this.dtpDeuDateFilter.Size = new System.Drawing.Size(204, 20);
-            this.dtpDeuDateFilter.TabIndex = 14;
+            this.dtpDeuDateFilter.TabIndex = 2;
             // 
             // lbDepartment
             // 
@@ -256,7 +269,7 @@
             this.txtNameFilter.Location = new System.Drawing.Point(171, 26);
             this.txtNameFilter.Name = "txtNameFilter";
             this.txtNameFilter.Size = new System.Drawing.Size(204, 20);
-            this.txtNameFilter.TabIndex = 11;
+            this.txtNameFilter.TabIndex = 1;
             // 
             // UcTask
             // 
@@ -298,7 +311,7 @@
         private System.Windows.Forms.Label lbDueDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNameFilter;
-        private Bunifu.Framework.UI.BunifuDropdown cmbDepartment;
         private System.Windows.Forms.Label lbDepartment;
+        private System.Windows.Forms.ComboBox cmbDepartment;
     }
 }
