@@ -15,6 +15,7 @@ namespace Main.Department
 {
     public partial class DepartmentAdd : Form
     {
+        //Created by The anh (28/3/2019)
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
         protected override void OnLoad(EventArgs e)
@@ -50,6 +51,7 @@ namespace Main.Department
         {
 
         }
+        //Button add event click
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -62,7 +64,7 @@ namespace Main.Department
                 department.Description = txtDescription.Text;
                 if (txtDepartmentName.Text != "" && txtDescription.Text != "")
                 {
-                    int check = departmentBus.Add(department);
+                    int check = departmentBus.Add(department);// check add
                     if (check == -1)
                     {
                         MessageBox.Show("You have successfully updated the refresh to change");
@@ -85,6 +87,7 @@ namespace Main.Department
 
             }
         }
+        //Button cannel event click
         private void btnCannel_Click(object sender, EventArgs e)
         {
             this.Close();

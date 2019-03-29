@@ -153,11 +153,11 @@
             this.dgvDepartment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDepartment.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvDepartment.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvDepartment.Location = new System.Drawing.Point(29, 209);
+            this.dgvDepartment.Location = new System.Drawing.Point(29, 175);
             this.dgvDepartment.Name = "dgvDepartment";
             this.dgvDepartment.ReadOnly = true;
             this.dgvDepartment.RowHeadersWidth = 50;
-            this.dgvDepartment.Size = new System.Drawing.Size(745, 238);
+            this.dgvDepartment.Size = new System.Drawing.Size(745, 272);
             this.dgvDepartment.TabIndex = 9;
             this.dgvDepartment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentClick);
             this.dgvDepartment.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentDoubleClick);

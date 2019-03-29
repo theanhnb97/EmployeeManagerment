@@ -40,19 +40,20 @@ namespace Main.Dai
             this.RolesID = id;
             InitializeComponent();
         }
+        //Load form Department
         private void UcDepartment_Load(object sender, EventArgs e)
         {
-            
+           
             DepartmentBUS departmentBus = new DepartmentBUS();
             
-            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
+            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));// get item page combobox
             int pageSize = (departmentBus.GetAll().Rows.Count) /item+1 ;
-
-            dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);
+           dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);//get datagridview 
 
                 lblPage.Text = cusPage.ToString() + '/' + pageSize;
 
         }
+        //Button search event click
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string keyword = txtDepartmentName.Text;
@@ -68,6 +69,7 @@ namespace Main.Dai
             }
             
         }
+        //Button update event click
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Entity.Department department = new Entity.Department();
@@ -84,6 +86,7 @@ namespace Main.Dai
 
             frUpdate.ShowDialog();
         }
+        //Button delete event click
         private void btnDelete_Click(object sender, EventArgs e)
         {
             
@@ -95,7 +98,7 @@ namespace Main.Dai
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.OK)
                 {
-                    int checkDelete = departmentBus.DeleteNoRemove(id);
+                    int checkDelete = departmentBus.DeleteNoRemove(id);// check delete
                     if (checkDelete == -1)
                     {
                         MessageBox.Show("Delete Complete","Delete Message",MessageBoxButtons.OK);
@@ -117,16 +120,17 @@ namespace Main.Dai
             DepartmentAdd frAdd = new DepartmentAdd(RolesID);
             frAdd.ShowDialog();
         }
-
+        //Button Refresh event click
         private void btnClean_Click(object sender, EventArgs e)
         {
+            
             DepartmentBUS departmentBus = new DepartmentBUS();
             int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
             int pageSize = (departmentBus.GetAll().Rows.Count) / item+1;
             dgvDepartment.DataSource = departmentBus.GetAllPage(1,item,20);
             lblPage.Text =  "1/" + pageSize;
         }
-      
+      // Button next event click
     private void btnNext_Click(object sender, EventArgs e)
     {
         int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
@@ -149,7 +153,7 @@ namespace Main.Dai
         {
 
         }
-
+        //Button Previous
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             DepartmentBUS departmentBus = new DepartmentBUS();
@@ -171,7 +175,7 @@ namespace Main.Dai
 
         }
 
-       
+       //Format form Depaert ment cells Status,isDelete
         private void dgvDepartment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == 2)
