@@ -40,7 +40,6 @@ namespace Main
         private string username;
         private void btnOk_Click(object sender, EventArgs e)
         {
-
             if (txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "")
             {
                 lblNotify.Text = "Please input username/password.";
