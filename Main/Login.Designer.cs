@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.pnLeft = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -39,6 +40,7 @@
             this.btnOk = new Bunifu.Framework.UI.BunifuFlatButton();
             this.txtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.txtUserName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnRight.SuspendLayout();
@@ -94,11 +96,11 @@
             // lblExit
             // 
             this.lblExit.AutoSize = true;
-            this.lblExit.Font = new System.Drawing.Font("Colonna MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExit.Font = new System.Drawing.Font("Colonna MT", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExit.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblExit.Location = new System.Drawing.Point(408, 9);
+            this.lblExit.Location = new System.Drawing.Point(411, 4);
             this.lblExit.Name = "lblExit";
-            this.lblExit.Size = new System.Drawing.Size(25, 22);
+            this.lblExit.Size = new System.Drawing.Size(30, 28);
             this.lblExit.TabIndex = 4;
             this.lblExit.Text = "X";
             this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
@@ -225,6 +227,11 @@
             this.txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.login_KeyDown);
             // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 15;
+            this.bunifuElipse1.TargetControl = this;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,9 +240,9 @@
             this.Controls.Add(this.pnRight);
             this.Controls.Add(this.pnLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.pnLeft.ResumeLayout(false);
@@ -258,5 +265,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnCancel;
         private System.Windows.Forms.Label lblExit;
         private System.Windows.Forms.Label lblNotify;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
     }
 }

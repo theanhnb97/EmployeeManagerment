@@ -1,7 +1,4 @@
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\log4net.config
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\Main.exe.config
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\Main.exe
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\Main.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\Bunifu_UI_v1.52.dll
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\BusinessLayer.dll
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\CommonLibrary.dll
@@ -36,8 +33,6 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcRolesAction.resourc
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csproj.GenerateResource.cache
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csproj.CoreCompileInputs.cache
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csproj.CopyComplete
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.exe
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\CommonLibrary.dll.config
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Dong.SalaryAdd.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Dong.SalaryEdit.resources
@@ -86,3 +81,8 @@ C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.csproj.Cop
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.exe
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\App.config
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\Employee Management.exe.config
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\Employee Management.exe
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\Employee Management.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Employee Management.exe
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Employee Management.pdb

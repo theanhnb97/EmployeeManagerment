@@ -143,6 +143,8 @@ namespace Main
         /// <param name="e"></param>
         private void AddTask_Load(object sender, EventArgs e)
         {
+            
+
             try
             {
                 //check result return must > 0 and different null
@@ -212,6 +214,28 @@ namespace Main
             }
             //   MessageBox.Show(cmbDepartment.SelectedIndex.ToString() + " : " + cmbDepartment.SelectedValue.ToString());
 
+        }
+
+        private void btnSelectFile_Click(object sender, EventArgs e)
+        {
+            // Config Open file
+            using (OpenFileDialog openFileUpload = new OpenFileDialog())
+            {
+                openFileUpload.InitialDirectory = @"C:\";
+                openFileUpload.RestoreDirectory = true;
+                openFileUpload.Title = "Chọn file";
+                openFileUpload.Filter = "Excel file|*xlsx|txt file (*.txt)|*.txt|Word file|*doc";
+                openFileUpload.DefaultExt = "xlsx";
+                openFileUpload.CheckFileExists = true;
+                openFileUpload.Multiselect = false;
+                openFileUpload.ShowDialog();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            
         }
     }
 }

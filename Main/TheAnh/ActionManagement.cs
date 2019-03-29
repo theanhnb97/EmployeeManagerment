@@ -58,7 +58,8 @@ namespace Main
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Action_Add formAdd = new Action_Add(RolesID);
-            formAdd.ShowDialog();
+            if (formAdd.ShowDialog() == DialogResult.OK)
+                Loadd();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -95,24 +96,9 @@ namespace Main
             myActionEdit.ActionName = dgvData.Rows[index].Cells[1].Value.ToString();
             myActionEdit.Description = dgvData.Rows[index].Cells[3].Value.ToString();
             Action_Add formAdd = new Action_Add(myActionEdit,RolesID);
-            formAdd.ShowDialog();
+            if (formAdd.ShowDialog() == DialogResult.OK)
+                Loadd();
         }
-
-        private void ActionManagement_Click(object sender, EventArgs e)
-        {
-            Loadd();
-        }
-
-        private void ActionManagement_Enter(object sender, EventArgs e)
-        {
-            Loadd();
-        }
-
-        private void dgvData_Enter(object sender, EventArgs e)
-        {
-            Loadd();
-        }
-
         private void btnScan_Click(object sender, EventArgs e)
         {
             DialogResult myDialogResult = MessageBox.Show("Bạn có thực sự muốn quét lại chức năng của hệ thống?", "Nguy hiểm",
@@ -153,7 +139,8 @@ namespace Main
             myActionEdit.ActionName = dgvData.Rows[index].Cells[1].Value.ToString();
             myActionEdit.Description = dgvData.Rows[index].Cells[3].Value.ToString();
             Action_Add formAdd = new Action_Add(myActionEdit, RolesID);
-            formAdd.ShowDialog();
+            if (formAdd.ShowDialog() == DialogResult.OK)
+                Loadd();
         }
     }
 }

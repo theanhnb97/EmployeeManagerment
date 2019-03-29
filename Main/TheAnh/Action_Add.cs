@@ -86,7 +86,7 @@ namespace Main
                 {
                     MessageBox.Show("Thành công!");
                     lblNotify.Visible = false;
-                    this.Close();
+                    this.DialogResult = DialogResult.OK;
                 }
                 else
                     MessageBox.Show("Thất bại!");

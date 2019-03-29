@@ -82,7 +82,8 @@ namespace Main
         {
             this.RolesID = rolesId;
             this.userName = username;
-            ucUpdateProfile=new UcUpdateProfile(username);
+            InitializeComponent();
+            ucUpdateProfile = new UcUpdateProfile(username);
             ucActionManagement = new ActionManagement(RolesID);
             ucRoles = new UcRoles(RolesID);
             ucRolesAction = new UcRolesAction(RolesID);
@@ -90,8 +91,6 @@ namespace Main
             ucEmployees = new Employees(RolesID);
             ucDepartment = new UcDepartment(RolesID);
             salary = new SalaryManagement(RolesID);
-
-            InitializeComponent();
             btnMenuButtons = new List<Button>();
         }
 

@@ -29,7 +29,7 @@ namespace Main
 
         private void lblExit_Click(object sender, EventArgs e)
         {
-            DialogResult myDialogResult = MessageBox.Show("Do you want exit?", "Question",
+            DialogResult myDialogResult = MessageBox.Show("Bạn có muốn thoát chương trình?", "Thoát?",
                 MessageBoxButtons.YesNoCancel,
                 MessageBoxIcon.Question,MessageBoxDefaultButton.Button3);
             if (myDialogResult == DialogResult.Yes)
@@ -69,25 +69,6 @@ namespace Main
             f.ShowDialog();
         }
 
-
-        //private void textBox_Leave(object sender, EventArgs e)
-        //{
-        //    BunifuMaterialTextbox myTextBox = (BunifuMaterialTextbox)sender;
-        //    if (myTextBox.Text == "")
-        //    {
-        //        myTextBox.Text = "Username";
-        //        myTextBox.ForeColor = Color.Silver;
-        //    }
-        //}
-        //private void textBox_Enter(object sender, EventArgs e)
-        //{
-        //    BunifuMaterialTextbox myTextBox = (BunifuMaterialTextbox)sender;
-        //    if (myTextBox.Text == "Username")
-        //    {
-        //        myTextBox.Text = "";
-        //        myTextBox.ForeColor = Color.Black;
-        //    }
-        //}
         private void login_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
