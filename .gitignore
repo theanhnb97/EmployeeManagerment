@@ -4,3 +4,5 @@
 *.pdb
 .vs
 *.lock
+/BusinessLayer/obj/Debug
+/DataAccessLayer/obj/Debug

@@ -11,8 +11,8 @@ namespace BusinessLayer
     /// </summary>
     interface ITaskBus
     {
-        DataTable GetAll();
-        DataTable Filter(string taskName, Int64 department, string dueDate);
+        DataTable GetAll(int page);
+        DataTable Filter(string taskName, Int64 department, string dueDate,int page);
         DataTable LoadDepartment();
         int Insert(Entity.Task objTask);
         DataTable LoadEmployeeByDpt(Int64 departmentId);
@@ -31,15 +31,14 @@ namespace BusinessLayer
         /// 
         /// </summary>
         /// <returns></returns>
-        public DataTable GetAll()
+        public DataTable GetAll(int page)
         {
-
-            return objTaskDao.GetAll();
+            return objTaskDao.GetAll(page);
         }
 
-        public DataTable Filter(string taskName, Int64 department, string dueDate)
+        public DataTable Filter(string taskName, Int64 department, string dueDate, int page)
         {
-            return objTaskDao.Filter(taskName, department, dueDate);
+            return objTaskDao.Filter(taskName, department, dueDate, page);
         }
 
         public DataTable LoadDepartment()

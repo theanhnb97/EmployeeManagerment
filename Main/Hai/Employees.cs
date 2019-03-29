@@ -18,8 +18,6 @@ namespace Main
 
         private readonly DepartmentBUS departmentBus = new DepartmentBUS();
 
-        private readonly EmployeeMapper mapper = new EmployeeMapper();
-
         public static Entity.Employee employeeForUpdate = new Entity.Employee();
 
         public static bool IsCreated;
@@ -54,6 +52,8 @@ namespace Main
             dgv_employee.DataSource = employeeBus.GetAll();
             dgv_employee.Columns["RANK"].Visible = false;
             dgv_employee.Columns["DEPARTMENTID"].Visible = false;
+            dgv_employee.Columns["PHONE"].Visible = false;
+
 
             cbbDepartment_Search.DataSource = departmentBus.GetDepartmentsForSearch();
             cbbDepartment_Search.DisplayMember = "DepartmentName";

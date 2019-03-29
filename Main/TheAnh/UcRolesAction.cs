@@ -90,11 +90,14 @@ namespace Main
         {
             // Roles List
             // tlpnData.Controls.Add(Getlabel("."), 0, 0);
+            tlpnData.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,200F));
+
             int start = 0;
             foreach (DataRow item in rolesTable.Rows)
             {
                 start++;
-                var rolesName = Getlabel(item["ROLESNAME"].ToString());
+                //var rolesName = Getlabel(item["ROLESNAME"].ToString());
+                var rolesName = Getlabel(item["DESCRIPTION"].ToString());
                 tlpnData.Controls.Add(rolesName, start, 0);
             }
 
