@@ -22,14 +22,10 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcTask.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Department.DepartmentAdd.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Department.DepartmentUpdate.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Dai.UcDepartment.resources
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcUpdateProfile.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Employee.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Employees.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Role_Add.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Action_Add.resources
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.ActionManagement.resources
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.FormMain.resources
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Login.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Properties.Resources.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcRoles.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcRolesAction.resources
@@ -87,3 +83,7 @@ C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.exe
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\App.config
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\bin\Debug\App.config
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.FormMain_.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Login_.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcAction.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcUpdateProfile_.resources
