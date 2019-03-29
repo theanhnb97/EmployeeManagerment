@@ -42,7 +42,7 @@ namespace BusinessLayer
         }
         public Employee GetBId(int id)
         {
-            return employeeDao.GetById(id);
+            return employeeDao.GetByEmployeeId(id);
         }
 
 

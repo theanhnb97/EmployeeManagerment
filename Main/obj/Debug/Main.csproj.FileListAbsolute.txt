@@ -39,3 +39,6 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csproj.CopyComplete
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.exe
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\CommonLibrary.dll.config
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Dong.SalaryAdd.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Dong.SalaryEdit.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.SalaryManagement.resources
