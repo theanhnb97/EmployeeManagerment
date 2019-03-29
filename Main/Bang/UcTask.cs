@@ -219,8 +219,23 @@ namespace Main
         /// <param name="e"></param>
         private void dgvTask_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnDelete.Enabled = true;
-            btnEdit.Enabled = true;
+            if (dgvTask.CurrentRow != null && dgvTask.CurrentRow.Cells["STATUS"].Value.ToString() == "1")
+            {
+                btnDelete.Enabled = true;
+                btnEdit.Enabled = true;
+            }
+            else if (dgvTask.CurrentRow != null && dgvTask.CurrentRow.Cells["STATUS"].Value.ToString() == "2")
+            {
+                btnDelete.Enabled = true;
+                btnEdit.Enabled = true;
+            }
+            else
+            {
+                btnDelete.Enabled = false;
+                btnEdit.Enabled = false;
+            }
+
+
         }
         /// <summary>
         /// 
