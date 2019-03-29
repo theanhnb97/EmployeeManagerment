@@ -309,7 +309,7 @@
             this.FullName.HeaderText = "Họ tên";
             this.FullName.Name = "FullName";
             this.FullName.ReadOnly = true;
-            this.FullName.Width = 130;
+            this.FullName.Width = 150;
             // 
             // UserName
             // 
@@ -317,6 +317,7 @@
             this.UserName.HeaderText = "Tên TK";
             this.UserName.Name = "UserName";
             this.UserName.ReadOnly = true;
+            this.UserName.Width = 120;
             // 
             // Identity
             // 
@@ -324,6 +325,7 @@
             this.Identity.HeaderText = "CMTND";
             this.Identity.Name = "Identity";
             this.Identity.ReadOnly = true;
+            this.Identity.Width = 90;
             // 
             // Email
             // 
@@ -331,6 +333,7 @@
             this.Email.HeaderText = "Email";
             this.Email.Name = "Email";
             this.Email.ReadOnly = true;
+            this.Email.Width = 127;
             // 
             // Phone
             // 
@@ -346,6 +349,7 @@
             this.DepartmentName.HeaderText = "Phòng";
             this.DepartmentName.Name = "DepartmentName";
             this.DepartmentName.ReadOnly = true;
+            this.DepartmentName.Width = 120;
             // 
             // Rank
             // 
