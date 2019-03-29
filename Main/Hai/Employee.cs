@@ -71,32 +71,51 @@ namespace Main
                         employee.Status = Convert.ToInt16(cbbStatus.SelectedValue);
                         employee.Rank = Convert.ToInt16(cbbRank.SelectedValue);
 
-                        //create employee
-                        if (Employees.IsCreated)
+                        if (CheckValidUserName(Convert.ToInt32(employee.EmployeeId), Employees.IsCreated,
+                            employee.UserName))
                         {
-                            if (employeeBus.Insert(employee) == -1)
+                            if (CheckValidIdentity(Convert.ToInt32(employee.EmployeeId), Employees.IsCreated,
+                                employee.Identity))
                             {
-                                MessageBox.Show("Thêm nhân viên thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                //create employee
+                                if (Employees.IsCreated)
+                                {
+                                    if (employeeBus.Insert(employee) == -1)
+                                    {
+                                        MessageBox.Show("Thêm nhân viên thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Lỗi.Thêm nhân viên không thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+
+                                // update employee
+                                else
+                                {
+                                    employee.EmployeeId = Employees.employeeForUpdate.EmployeeId;
+                                    if (employeeBus.Update(employee) == -1)
+                                    {
+                                        MessageBox.Show("Cập nhật thông tin nhân viên thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Lỗi. Cập nhật thông tin nhân viên không thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Lỗi.Thêm nhân viên không thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
+                                MessageBox.Show("Lỗi. Số CMTND đã tồn tại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
-                        // update employee
+                            }
+
+                        }
                         else
                         {
-                            employee.EmployeeId = Employees.employeeForUpdate.EmployeeId;
-                            if (employeeBus.Update(employee) == -1)
-                            {
-                                MessageBox.Show("Cập nhật thông tin nhân viên thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Lỗi. Cập nhật thông tin nhân viên không thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            MessageBox.Show("Lỗi. Tên tài khoản đã tồn tại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
+
                     }
                     else
                     {
@@ -160,13 +179,47 @@ namespace Main
             return regex.IsMatch(email);
         }
 
-        public bool CheckValidIdentity(string identity)
+        public bool CheckValidIdentity(int employeeId,bool isCreated,string identity)
         {
+            Entity.Employee employee = employeeBus.GetByIdentity(identity);
+            if (isCreated == true && employee != null)
+            {
+                return false;
+            }
+
+            if (isCreated == false && employee != null)
+            {
+                if (employee.EmployeeId == employeeId)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
             return true;
         }
 
-        public bool CheckValidUserName(string userName)
+        public bool CheckValidUserName(int employeeId,bool isCreated, string userName)
         {
+            Entity.Employee employee = employeeBus.GetByIdentity(userName);
+            if (isCreated == true && employee != null)
+            {
+                return false;
+            }
+
+            if (isCreated == false && employee != null)
+            {
+                if (employee.EmployeeId == employeeId)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
             return true;
         }
 
