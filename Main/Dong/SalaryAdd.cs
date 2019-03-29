@@ -39,8 +39,7 @@ namespace Main.Dong
             cbbDept.DataSource = departmentBUS.GetAll();
             cbbDept.ValueMember = "DEPARTMENTID";
             cbbDept.DisplayMember = "DEPARTMENTNAME";
-            cbbDept.SelectedItem = null;
-            
+            cbbDept.SelectedItem = null;          
             //Combobox Rank Source
             Dictionary<int, string> cbbRankItems = new Dictionary<int, string>();
             cbbRankItems.Add(1, "Giam Doc");

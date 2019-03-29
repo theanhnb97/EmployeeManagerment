@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Oracle.ManagedDataAccess.Client;
 using Entity.DTO;
 using System.Data;
+using System.Configuration;
 
 namespace DataAccessLayer
 {
@@ -20,7 +21,7 @@ namespace DataAccessLayer
     }
     public class SalaryDAO : IEntities<Salary>, ISalary
     {       
-        string Connect = "DATA SOURCE=192.168.35.114:1521/orcl;PASSWORD=theanh;PERSIST SECURITY INFO=True;USER ID=GDP";
+        string Connect = ConfigurationManager.ConnectionStrings["ConnectString"].ConnectionString;       
         ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public int Add(Salary obj)
         {
