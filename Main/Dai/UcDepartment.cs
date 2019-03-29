@@ -278,5 +278,19 @@ namespace Main.Dai
             DepartmentBUS departmentBus = new DepartmentBUS();
             dgvDepartment.DataSource=departmentBus.GetDepartmentAll();
         }
+
+        private void cbPage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbPage_SelectedValueChanged(object sender, EventArgs e)
+        {
+            DepartmentBUS departmentBus = new DepartmentBUS();
+            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));//get Item combobox Page
+            int pageSize = (departmentBus.GetAll().Rows.Count) / item + 1;//get Pagesize
+            dgvDepartment.DataSource = departmentBus.GetAllPage(1, item, 20);
+            lblPage.Text = "1/" + pageSize;
+        }
     }
 }

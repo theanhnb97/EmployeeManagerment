@@ -27,7 +27,6 @@ E:\News\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll.config
 E:\News\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll
 E:\News\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.pdb
 E:\News\EmployeeManagerment\CommonLibrary\bin\Debug\Oracle.ManagedDataAccess.dll
-E:\News\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
 E:\News\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
 E:\News\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
 E:\News\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll

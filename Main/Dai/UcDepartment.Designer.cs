@@ -141,13 +141,13 @@
             this.dgvDepartment.AllowUserToAddRows = false;
             this.dgvDepartment.AllowUserToDeleteRows = false;
             this.dgvDepartment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDepartment.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvDepartment.BackgroundColor = System.Drawing.Color.White;
             this.dgvDepartment.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvDepartment.Location = new System.Drawing.Point(29, 175);
+            this.dgvDepartment.Location = new System.Drawing.Point(29, 152);
             this.dgvDepartment.Name = "dgvDepartment";
             this.dgvDepartment.ReadOnly = true;
             this.dgvDepartment.RowHeadersWidth = 50;
-            this.dgvDepartment.Size = new System.Drawing.Size(745, 272);
+            this.dgvDepartment.Size = new System.Drawing.Size(745, 315);
             this.dgvDepartment.TabIndex = 9;
             this.dgvDepartment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentClick);
             this.dgvDepartment.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentDoubleClick);
@@ -200,6 +200,8 @@
             this.cbPage.Size = new System.Drawing.Size(121, 23);
             this.cbPage.TabIndex = 21;
             this.cbPage.Text = "5";
+            this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
+            this.cbPage.SelectedValueChanged += new System.EventHandler(this.cbPage_SelectedValueChanged);
             // 
             // label2
             // 
