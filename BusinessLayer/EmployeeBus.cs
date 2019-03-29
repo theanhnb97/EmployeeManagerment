@@ -57,6 +57,7 @@ namespace BusinessLayer
             foreach (var employeeDto in employeeDtos)
             {
                 employeeDto.RankName = Enumerator.GetDescription((Enumeration.Rank) employeeDto.RANK);
+
             }
 
             return employeeDtos;
