@@ -134,6 +134,7 @@ namespace Main
             if (e.KeyCode == Keys.Enter)
             {
                 btnAdd_Click(btnAdd, e);
+                this.Close();
             }
         }
         /// <summary>

@@ -181,6 +181,7 @@ namespace Main.Bang
             if (e.KeyCode == Keys.Enter)
             {
                 btnUpdate_Click(btnUpdate, e);
+                this.Close();
             }
         }
         /// <summary>
