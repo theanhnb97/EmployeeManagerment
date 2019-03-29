@@ -273,5 +273,10 @@ namespace Main.Dai
 
         }
 
+        private void btFillall_Click(object sender, EventArgs e)
+        {
+            DepartmentBUS departmentBus = new DepartmentBUS();
+            dgvDepartment.DataSource=departmentBus.GetDepartmentAll();
+        }
     }
 }

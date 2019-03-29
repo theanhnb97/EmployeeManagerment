@@ -57,5 +57,10 @@ namespace BusinessLayer
             return departmentDal.GetAllPage(currPage, recodperpage, Pagesize);
         }
 
+        public DataTable GetDepartmentAll()
+        {
+            return departmentDal.GetDepartmentAll();
+        }
+
     }
 }

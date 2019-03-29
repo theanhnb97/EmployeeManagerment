@@ -356,6 +356,43 @@ namespace DataAccessLayer
 
             }
         }
+        public DataTable GetDepartmentAll()
+        {
+            try
+            {
+                SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
+                using (OracleConnection connection = Connection.GetConnection)
+                {
+                    OracleParameter[] parameters = new OracleParameter[]
+                    {
+                      
+                        new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output),
+                    };
+                    return sqlHelp.ExcuteQuery("Department_GetAll", CommandType.StoredProcedure, connection,
+                        parameters);
+                    //OracleDataAdapter da = new OracleDataAdapter();
+                    //OracleCommand cmd = new OracleCommand();
+
+                    //cmd = new OracleCommand("Department_GetAllDeltete", connection);
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.Add("p_isDelete", 1);
+                    //cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    //da.SelectCommand = cmd;
+                    //DataTable dt = new DataTable();
+                    //da.Fill(dt);
+                    //return dt;
+                }
+
+            }
+            catch (Exception e)
+            {
+                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+                return null;
+
+            }
+        }
         // Created by (BuiCongDai) – (25/3/2019)
         DataTable IEntities<Department>.Get()
         {
