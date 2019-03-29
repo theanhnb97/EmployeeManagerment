@@ -43,6 +43,12 @@
             this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
             this.cmbAssign = new System.Windows.Forms.ComboBox();
             this.cmbLevel = new System.Windows.Forms.ComboBox();
+            this.lbTaskName = new System.Windows.Forms.Label();
+            this.lbDescription = new System.Windows.Forms.Label();
+            this.lbAssign = new System.Windows.Forms.Label();
+            this.lbDate = new System.Windows.Forms.Label();
+            this.lbDepartment = new System.Windows.Forms.Label();
+            this.lbLevel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtTaskName
@@ -51,6 +57,8 @@
             this.txtTaskName.Name = "txtTaskName";
             this.txtTaskName.Size = new System.Drawing.Size(203, 20);
             this.txtTaskName.TabIndex = 0;
+            this.txtTaskName.TextChanged += new System.EventHandler(this.txtTaskName_TextChanged);
+            this.txtTaskName.Leave += new System.EventHandler(this.txtTaskName_Leave);
             // 
             // label1
             // 
@@ -121,14 +129,16 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(203, 68);
-            this.txtDescription.TabIndex = 11;
+            this.txtDescription.TabIndex = 4;
+            this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
+            this.txtDescription.Leave += new System.EventHandler(this.txtDescription_Leave);
             // 
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(118, 450);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 15;
+            this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -138,7 +148,7 @@
             this.btnReset.Location = new System.Drawing.Point(246, 450);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 16;
+            this.btnReset.TabIndex = 8;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -150,7 +160,7 @@
             this.cmbDepartment.Location = new System.Drawing.Point(118, 129);
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(203, 21);
-            this.cmbDepartment.TabIndex = 17;
+            this.cmbDepartment.TabIndex = 1;
             this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbDepartment_SelectedIndexChanged);
             // 
             // dtpDueDate
@@ -160,7 +170,9 @@
             this.dtpDueDate.Location = new System.Drawing.Point(118, 210);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.Size = new System.Drawing.Size(200, 20);
-            this.dtpDueDate.TabIndex = 18;
+            this.dtpDueDate.TabIndex = 3;
+            this.dtpDueDate.ValueChanged += new System.EventHandler(this.dtpDueDate_ValueChanged);
+            this.dtpDueDate.Leave += new System.EventHandler(this.dtpDueDate_Leave);
             // 
             // cmbAssign
             // 
@@ -169,7 +181,7 @@
             this.cmbAssign.Location = new System.Drawing.Point(118, 172);
             this.cmbAssign.Name = "cmbAssign";
             this.cmbAssign.Size = new System.Drawing.Size(203, 21);
-            this.cmbAssign.TabIndex = 19;
+            this.cmbAssign.TabIndex = 2;
             // 
             // cmbLevel
             // 
@@ -183,8 +195,68 @@
             this.cmbLevel.Location = new System.Drawing.Point(115, 345);
             this.cmbLevel.Name = "cmbLevel";
             this.cmbLevel.Size = new System.Drawing.Size(203, 21);
-            this.cmbLevel.TabIndex = 20;
+            this.cmbLevel.TabIndex = 5;
             this.cmbLevel.ValueMember = "1,2,3";
+            // 
+            // lbTaskName
+            // 
+            this.lbTaskName.AutoSize = true;
+            this.lbTaskName.ForeColor = System.Drawing.Color.Red;
+            this.lbTaskName.Location = new System.Drawing.Point(340, 84);
+            this.lbTaskName.Name = "lbTaskName";
+            this.lbTaskName.Size = new System.Drawing.Size(17, 13);
+            this.lbTaskName.TabIndex = 9;
+            this.lbTaskName.Text = "(*)";
+            // 
+            // lbDescription
+            // 
+            this.lbDescription.AutoSize = true;
+            this.lbDescription.ForeColor = System.Drawing.Color.Red;
+            this.lbDescription.Location = new System.Drawing.Point(340, 283);
+            this.lbDescription.Name = "lbDescription";
+            this.lbDescription.Size = new System.Drawing.Size(17, 13);
+            this.lbDescription.TabIndex = 10;
+            this.lbDescription.Text = "(*)";
+            // 
+            // lbAssign
+            // 
+            this.lbAssign.AutoSize = true;
+            this.lbAssign.ForeColor = System.Drawing.Color.Red;
+            this.lbAssign.Location = new System.Drawing.Point(340, 177);
+            this.lbAssign.Name = "lbAssign";
+            this.lbAssign.Size = new System.Drawing.Size(17, 13);
+            this.lbAssign.TabIndex = 11;
+            this.lbAssign.Text = "(*)";
+            // 
+            // lbDate
+            // 
+            this.lbDate.AutoSize = true;
+            this.lbDate.ForeColor = System.Drawing.Color.Red;
+            this.lbDate.Location = new System.Drawing.Point(340, 215);
+            this.lbDate.Name = "lbDate";
+            this.lbDate.Size = new System.Drawing.Size(17, 13);
+            this.lbDate.TabIndex = 12;
+            this.lbDate.Text = "(*)";
+            // 
+            // lbDepartment
+            // 
+            this.lbDepartment.AutoSize = true;
+            this.lbDepartment.ForeColor = System.Drawing.Color.Red;
+            this.lbDepartment.Location = new System.Drawing.Point(340, 134);
+            this.lbDepartment.Name = "lbDepartment";
+            this.lbDepartment.Size = new System.Drawing.Size(17, 13);
+            this.lbDepartment.TabIndex = 13;
+            this.lbDepartment.Text = "(*)";
+            // 
+            // lbLevel
+            // 
+            this.lbLevel.AutoSize = true;
+            this.lbLevel.ForeColor = System.Drawing.Color.Red;
+            this.lbLevel.Location = new System.Drawing.Point(340, 345);
+            this.lbLevel.Name = "lbLevel";
+            this.lbLevel.Size = new System.Drawing.Size(17, 13);
+            this.lbLevel.TabIndex = 14;
+            this.lbLevel.Text = "(*)";
             // 
             // AddTask
             // 
@@ -192,6 +264,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(398, 497);
+            this.Controls.Add(this.lbLevel);
+            this.Controls.Add(this.lbDepartment);
+            this.Controls.Add(this.lbDate);
+            this.Controls.Add(this.lbAssign);
+            this.Controls.Add(this.lbDescription);
+            this.Controls.Add(this.lbTaskName);
             this.Controls.Add(this.cmbLevel);
             this.Controls.Add(this.cmbAssign);
             this.Controls.Add(this.dtpDueDate);
@@ -235,5 +313,11 @@
         private System.Windows.Forms.DateTimePicker dtpDueDate;
         private System.Windows.Forms.ComboBox cmbAssign;
         private System.Windows.Forms.ComboBox cmbLevel;
+        private System.Windows.Forms.Label lbTaskName;
+        private System.Windows.Forms.Label lbDescription;
+        private System.Windows.Forms.Label lbAssign;
+        private System.Windows.Forms.Label lbDate;
+        private System.Windows.Forms.Label lbDepartment;
+        private System.Windows.Forms.Label lbLevel;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Main
 {
-    partial class FormMain
+    partial class FormMain_
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain_));
             this.pnTop = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnProfile = new System.Windows.Forms.PictureBox();
@@ -276,7 +276,7 @@
             this.bunifuElipseMain.ElipseRadius = 15;
             this.bunifuElipseMain.TargetControl = this;
             // 
-            // FormMain
+            // FormMain_
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -288,7 +288,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(637, 417);
-            this.Name = "FormMain";
+            this.Name = "FormMain_";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee Management";
             this.Load += new System.EventHandler(this.FormMain_Load);

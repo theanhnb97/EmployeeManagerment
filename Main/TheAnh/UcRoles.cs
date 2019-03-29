@@ -55,7 +55,8 @@ namespace Main
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Role_Add formAdd = new Role_Add(RolesID);
-            formAdd.ShowDialog();
+            if (formAdd.ShowDialog() == DialogResult.OK)
+                Loadd();
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -70,7 +71,8 @@ namespace Main
             myObject.RolesName = dgvData.Rows[index].Cells[1].Value.ToString();
             myObject.Description = dgvData.Rows[index].Cells[3].Value.ToString();
             Role_Add formAdd = new Role_Add(myObject,RolesID);
-            formAdd.ShowDialog();
+            if (formAdd.ShowDialog() == DialogResult.OK)
+                Loadd();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -93,20 +95,32 @@ namespace Main
                 Loadd();
             }
         }
-
-        private void UcRoles_Click(object sender, EventArgs e)
+        
+        private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Loadd();
+            int index = dgvData.CurrentCell.RowIndex;
+            Roles myObject = new Roles();
+            myObject.RolesID = int.Parse(dgvData.Rows[index].Cells[0].Value.ToString());
+            myObject.RolesName = dgvData.Rows[index].Cells[1].Value.ToString();
+            myObject.Description = dgvData.Rows[index].Cells[3].Value.ToString();
+            Role_Add formAdd = new Role_Add(myObject, RolesID);
+            if(formAdd.ShowDialog()==DialogResult.OK)
+                Loadd();
         }
 
-        private void dgvData_Enter(object sender, EventArgs e)
+        private void dgvData_KeyDown(object sender, KeyEventArgs e)
         {
-            Loadd();
-        }
-
-        private void UcRoles_Enter(object sender, EventArgs e)
-        {
-            Loadd();
+            if (e.KeyCode == Keys.Enter)
+            {
+                int index = dgvData.CurrentCell.RowIndex;
+                Roles myObject = new Roles();
+                myObject.RolesID = int.Parse(dgvData.Rows[index].Cells[0].Value.ToString());
+                myObject.RolesName = dgvData.Rows[index].Cells[1].Value.ToString();
+                myObject.Description = dgvData.Rows[index].Cells[3].Value.ToString();
+                Role_Add formAdd = new Role_Add(myObject, RolesID);
+                if (formAdd.ShowDialog() == DialogResult.OK)
+                    Loadd();
+            }
         }
     }
 }

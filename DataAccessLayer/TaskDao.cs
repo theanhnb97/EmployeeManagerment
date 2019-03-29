@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using DataAccessLayer.Helpers;
 using Oracle.ManagedDataAccess.Client;
@@ -15,7 +16,7 @@ namespace DataAccessLayer
     interface ITaskDao
     {
         //Get All Task
-        DataTable GetAll();
+        DataTable GetAll(int page);
         /// <summary>
         /// Search task
         /// </summary>
@@ -23,7 +24,7 @@ namespace DataAccessLayer
         /// <param name="department"></param>
         /// <param name="dueDate"></param>
         /// <returns></returns>
-        DataTable Filter(string taskName, Int64 department, string dueDate);
+        DataTable Filter(string taskName, Int64 department, string dueDate,int page);
 
         // get all Department
         DataTable LoadDepartment();
@@ -64,7 +65,7 @@ namespace DataAccessLayer
         /// 
         /// </summary>
         /// <returns></returns>
-        public DataTable GetAll()
+        public DataTable GetAll(int page)
         {
             try
             {
@@ -72,8 +73,18 @@ namespace DataAccessLayer
                 {
                     new OracleParameter("cursorParam", OracleDbType.RefCursor, ParameterDirection.Output)
                 };
-
-                return objSqlHelpers.ExcuteQuery("TASK_GETALL", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
+                if (page != 0)
+                {
+                    int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
+                    listParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("numberpage",page),
+                        new OracleParameter("pagesize",pageSize),
+                        new OracleParameter("cursorParam", OracleDbType.RefCursor, ParameterDirection.Output)
+                    };
+                    return objSqlHelpers.ExcuteQuery("TASK_GETALL", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
+                }
+                return objSqlHelpers.ExcuteQuery("TASK_GETALL1", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
             }
             catch (OracleException e)
             {
@@ -98,12 +109,14 @@ namespace DataAccessLayer
         /// <param name="department"></param>
         /// <param name="dueDate"></param>
         /// <returns></returns>
-        public DataTable Filter(string taskName, Int64 department, string dueDate)
+        public DataTable Filter(string taskName, Int64 department, string dueDate, int page)
         {
             try
             {
+                int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
                 OracleParameter[] listParameters = new OracleParameter[]
                   {
+
                             new OracleParameter("taskNames", OracleDbType.NVarchar2,taskName,ParameterDirection.Input),
                             new OracleParameter("departments", OracleDbType.Int32,department, ParameterDirection.Input),
                             new OracleParameter("dueDates", OracleDbType.Varchar2,dueDate, ParameterDirection.Input),
