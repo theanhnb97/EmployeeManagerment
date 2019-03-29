@@ -15,3 +15,12 @@ C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\Common
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll.config
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.pdb
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\bin\Debug\Oracle.ManagedDataAccess.dll
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
+E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb

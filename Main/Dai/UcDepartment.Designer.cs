@@ -53,7 +53,7 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(570, 34);
+            this.btnSearch.Location = new System.Drawing.Point(596, 34);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(84, 30);
             this.btnSearch.TabIndex = 16;
@@ -131,9 +131,9 @@
             // 
             // txtDepartmentName
             // 
-            this.txtDepartmentName.Location = new System.Drawing.Point(175, 39);
+            this.txtDepartmentName.Location = new System.Drawing.Point(157, 39);
             this.txtDepartmentName.Name = "txtDepartmentName";
-            this.txtDepartmentName.Size = new System.Drawing.Size(220, 21);
+            this.txtDepartmentName.Size = new System.Drawing.Size(200, 21);
             this.txtDepartmentName.TabIndex = 1;
             // 
             // label1
@@ -153,11 +153,11 @@
             this.dgvDepartment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDepartment.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvDepartment.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvDepartment.Location = new System.Drawing.Point(29, 175);
+            this.dgvDepartment.Location = new System.Drawing.Point(29, 209);
             this.dgvDepartment.Name = "dgvDepartment";
             this.dgvDepartment.ReadOnly = true;
             this.dgvDepartment.RowHeadersWidth = 50;
-            this.dgvDepartment.Size = new System.Drawing.Size(745, 272);
+            this.dgvDepartment.Size = new System.Drawing.Size(745, 238);
             this.dgvDepartment.TabIndex = 9;
             this.dgvDepartment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentClick);
             this.dgvDepartment.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentDoubleClick);

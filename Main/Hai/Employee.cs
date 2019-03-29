@@ -112,7 +112,7 @@ namespace Main
         {
             cbbStatus.DataSource = Enumerator.BindEnumToCombobox<Enumeration.Status>(cbbStatus, Enumeration.Status.AMember);
             cbbRank.DataSource = Enumerator.BindEnumToCombobox<Enumeration.Rank>(cbbRank, Enumeration.Rank.AMember);
-            cbbDepartment.DataSource = departmentBus.GetDepartmentByStatusAndIsDelete(1, 0);
+           // cbbDepartment.DataSource = departmentBus.GetDepartmentByStatusAndIsDelete(1, 0);
             cbbDepartment.DisplayMember = "DEPARTMENTNAME";
             cbbDepartment.ValueMember = "DEPARTMENTID";
 
