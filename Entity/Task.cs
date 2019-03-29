@@ -7,7 +7,7 @@ namespace Entity
         /// <summary>
         /// 
         /// </summary>
-        public int  TaskId { get; set; }    
+        public Int64  TaskId { get; set; }    
 
         /// <summary>
         /// 

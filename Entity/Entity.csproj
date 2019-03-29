@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\SalaryView.cs" />
+    <Compile Include="Salary.cs" />
     <Compile Include="Action.cs" />
     <Compile Include="Department.cs" />
     <Compile Include="DTO\EmployeeDTO.cs" />

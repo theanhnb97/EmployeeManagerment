@@ -149,6 +149,7 @@ namespace DataAccessLayer
         /// Created by (BuiCongDai) – (25/3/2019)
         ///Modified by (BuiCongDai) – (28/3/2019 , 1)
         /// <remarks></remarks>
+
         public DataTable GetById(int id)
         {
             try
@@ -365,6 +366,26 @@ namespace DataAccessLayer
         DataTable IEntities<Department>.Search(string keyword)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Department> TranferDataTableToDepartmentList(DataTable dataTable)
+        {
+            List<Department> employees = new List<Department>();
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                try
+                {
+                    Department department = new Department();
+                    department.DepartmentName = dr["DEPARTMENTNAME"].ToString();
+                    employees.Add(department);
+                }
+                catch (Exception e)
+                {
+                    //logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    //logger.Debug(e.Message);
+                }
+            }
+            return employees;
         }
     }
 }

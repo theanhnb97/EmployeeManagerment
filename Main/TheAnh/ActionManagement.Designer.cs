@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.ACTIONID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ACTIONNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,7 +46,17 @@
             // 
             this.dgvData.AllowUserToAddRows = false;
             this.dgvData.AllowUserToDeleteRows = false;
+            this.dgvData.AllowUserToResizeColumns = false;
+            this.dgvData.AllowUserToResizeRows = false;
             this.dgvData.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ACTIONID,
@@ -54,9 +65,12 @@
             this.ISDELETE});
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvData.Location = new System.Drawing.Point(0, 91);
+            this.dgvData.MultiSelect = false;
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
             this.dgvData.RowHeadersVisible = false;
+            this.dgvData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvData.Size = new System.Drawing.Size(809, 497);
             this.dgvData.TabIndex = 0;
             this.dgvData.Enter += new System.EventHandler(this.dgvData_Enter);
@@ -64,7 +78,7 @@
             // ACTIONID
             // 
             this.ACTIONID.DataPropertyName = "ACTIONID";
-            this.ACTIONID.HeaderText = "Mã hành động";
+            this.ACTIONID.HeaderText = "Mã";
             this.ACTIONID.Name = "ACTIONID";
             this.ACTIONID.ReadOnly = true;
             // 
@@ -271,10 +285,10 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnDelete;
         private Bunifu.Framework.UI.BunifuFlatButton btnEdit;
         private Bunifu.Framework.UI.BunifuFlatButton btnAdd;
+        private Bunifu.Framework.UI.BunifuFlatButton btnScan;
         private System.Windows.Forms.DataGridViewTextBoxColumn ACTIONID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ACTIONNAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPTION;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISDELETE;
-        private Bunifu.Framework.UI.BunifuFlatButton btnScan;
     }
 }
