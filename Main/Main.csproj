@@ -76,7 +76,7 @@
     </Compile>
     <Compile Include="Dong\SalaryManagement.designer.cs">
       <DependentUpon>SalaryManagement.cs</DependentUpon>
-      </Compile>
+    </Compile>
     <Compile Include="Bang\AddTask.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +112,12 @@
     </Compile>
     <Compile Include="Dai\UcDepartment.designer.cs">
       <DependentUpon>UcDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheAnh\UcUpdateProfile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TheAnh\UcUpdateProfile.Designer.cs">
+      <DependentUpon>UcUpdateProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="Hai\Employee.cs">
       <SubType>Form</SubType>
@@ -196,6 +202,9 @@
     <EmbeddedResource Include="Dai\UcDepartment.resx">
       <DependentUpon>UcDepartment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TheAnh\UcUpdateProfile.resx">
+      <DependentUpon>UcUpdateProfile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hai\Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,7 +257,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">

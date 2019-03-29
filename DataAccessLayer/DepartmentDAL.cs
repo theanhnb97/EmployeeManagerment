@@ -114,6 +114,38 @@ namespace DataAccessLayer
             }
         }
 
+        public DataTable GetDepartmentByStatusAndIsDelete(int status, int isDeleted)
+        {
+            try
+            {
+                using (OracleConnection connection = Connection.GetConnection)
+                {
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    OracleCommand cmd = new OracleCommand();
+
+                    cmd = new OracleCommand("Department_GetByStatusAndIsDelete", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("isDeletePara", isDeleted);
+                    cmd.Parameters.Add("statusPara", status);
+                    cmd.Parameters.Add("CURSOR_", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    da.SelectCommand = cmd;
+                    DataTable data = new DataTable();
+                    da.Fill(data);
+                    return data;
+                }
+
+            }
+            catch (Exception e)
+            {
+                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+                return null;
+
+            }
+        }
+
+
         public DataTable GetById(int id)
         {
             try
@@ -301,12 +333,16 @@ namespace DataAccessLayer
                 {
                     Department department = new Department();
                     department.DepartmentName = dr["DEPARTMENTNAME"].ToString();
+                    department.DepartmentID = Convert.ToInt32(dr["DEPARTMENTID"].ToString());
+                    department.Description = dr["DESCRIPTION"].ToString();
+                    department.Status = Convert.ToInt32(dr["STATUS"].ToString());
+                    department.IsDelete = Convert.ToInt32(dr["ISDELETE"].ToString());
                     employees.Add(department);
                 }
                 catch (Exception e)
                 {
-                    //logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                    //logger.Debug(e.Message);
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
                 }
             }
             return employees;

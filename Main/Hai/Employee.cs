@@ -18,6 +18,10 @@ namespace Main
     public partial class Employee : Form
     {
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+        private readonly DepartmentBUS departmentBus = new DepartmentBUS();
+        private readonly EmployeeBus employeeBus = new EmployeeBus();
+        private readonly RolesBUL rolesBul = new RolesBUL();
+
         protected int RolesID { get; set; }
         protected override void OnLoad(EventArgs e)
         {
@@ -37,12 +41,6 @@ namespace Main
             }
         }
 
-
-
-
-
-        EmployeeBus employeeBus = new EmployeeBus();
-
         public Employee(int id)
         {
             RolesID = id;
@@ -59,13 +57,11 @@ namespace Main
                     Entity.Employee employee = new Entity.Employee();
                     employee.FullName = txtFullName.Text;
                     employee.Address = txtAddress.Text;
-                    // tạm fix =1 vì chưa merge department functions
-                    employee.DepartmentId = 1;
+                    employee.DepartmentId = Convert.ToInt64(cbbDepartment.SelectedValue);
                     employee.Email = txtEmail.Text;
                     employee.Identity = txtIdentity.Text;
                     employee.Password = txtPassword.Text;
-                    // tạm fix =1 vì chưa merge role functions
-                    employee.RolesId = 1;
+                    employee.RolesId = Convert.ToInt64(cbbRole.SelectedValue);
                     employee.Phone = txtPhone.Text;
                     employee.UserName = txtUserName.Text;
                     employee.IsDelete = 0;
@@ -116,27 +112,33 @@ namespace Main
         {
             cbbStatus.DataSource = Enumerator.BindEnumToCombobox<Enumeration.Status>(cbbStatus, Enumeration.Status.AMember);
             cbbRank.DataSource = Enumerator.BindEnumToCombobox<Enumeration.Rank>(cbbRank, Enumeration.Rank.AMember);
+            cbbDepartment.DataSource = departmentBus.GetDepartmentByStatusAndIsDelete(1, 0);
+            cbbDepartment.DisplayMember = "DEPARTMENTNAME";
+            cbbDepartment.ValueMember = "DEPARTMENTID";
+            cbbRole.DataSource = rolesBul.Get();
+            cbbRole.DisplayMember = "ROLESNAME";
+            cbbRole.ValueMember = "ROLESID";
 
             // for update employee
             if (Employees.IsCreated == false && Employees.employeeForUpdate.EmployeeId != 0)
             {
                 txtFullName.Text = Employees.employeeForUpdate.FullName;
                 txtAddress.Text = Employees.employeeForUpdate.Address;
-                //txtDepartment.Text = Employees.employeeForUpdate.DepartmentId.ToString();
                 txtEmail.Text = Employees.employeeForUpdate.Email;
                 txtIdentity.Text = Employees.employeeForUpdate.Identity;
                 txtPassword.Text = Employees.employeeForUpdate.Password;
-                //txtRole.Text = Employees.employeeForUpdate.RolesId.ToString();
                 txtPhone.Text = Employees.employeeForUpdate.Phone;
                 txtUserName.Text = Employees.employeeForUpdate.UserName;
                 cbbStatus.SelectedIndex = cbbStatus.FindString(Enumerator.GetDescription((Enumeration.Status)Employees.employeeForUpdate.Status));
                 cbbRank.SelectedIndex = cbbRank.FindString(Enumerator.GetDescription((Enumeration.Rank)Employees.employeeForUpdate.Rank));
+                cbbDepartment.SelectedValue = Employees.employeeForUpdate.DepartmentId;
+                cbbRole.SelectedValue = Employees.employeeForUpdate.RolesId;
             }
         }
 
         public bool CheckValidForm()
         {
-            if (txtFullName.Text.Trim() == "" || txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "")
+            if (txtFullName.Text.Trim() == "" || txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "" ||txtPassword.Text.Trim()=="" || txtEmail.Text.Trim()=="")
             {
                 return false;
             }

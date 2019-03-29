@@ -19,11 +19,8 @@ namespace BusinessLayer
         private  readonly DepartmentDAL departmentDal = new DepartmentDAL();
 
 
-        public int Login(string UserName, string Password)
-        {
-            return myEmployeeDao.Login(UserName, Password);
-        }
-
+        private readonly EmployeeDao myEmployeeDao=new EmployeeDao();
+        
         public List<EmployeeDTO> GetAll()
         {
             return MapperEmployeeDtos(employeeDao.GetAll());
@@ -31,48 +28,27 @@ namespace BusinessLayer
 
         public int Insert(Employee employee)
         {
-            return myEmployeeDao.Add(employee);
+            return employeeDao.Add(employee);
         }
 
         public int Update(Employee employee)
         {
-            return myEmployeeDao.Update(employee);
+            return employeeDao.Update(employee);
         }
 
         public int Delete(int employeeId)
         {
-            return myEmployeeDao.Delete(employeeId);
-        }
-
-        public List<EmployeeDTO> Search(Employee employee)
-        {
-            return myEmployeeDao.Search(employee);
-        }
-
-        public Employee GetByEmployeeId(int employeeId)
-        {
-            return myEmployeeDao.GetByEmployeeId(employeeId);
-        }
-
-        public List<EmployeeDTO> MapperEmployeeDtos(List<EmployeeDTO> employeeDtos)
-        {
-            foreach (var employeeDto in employeeDtos)
-            {
-                employeeDto.RankName = Enumerator.GetDescription((Enumeration.Rank) employeeDto.RANK);
-
-            }
-
-            return employeeDtos;
+            return employeeDao.Delete(employeeId);
         }
         public Employee GetBId(int id)
         {
-            return employeeDao.GetById(id);
+            return employeeDao.GetByEmployeeId(id);
         }
 
 
         public List<EmployeeDTO> Search(Employee employee)
         {
-            return employeeDao.Search(employee);
+            return MapperEmployeeDtos(employeeDao.Search(employee));
         }
 
         public Employee GetByEmployeeId(int employeeId)
@@ -91,6 +67,28 @@ namespace BusinessLayer
             }
 
             return employeeDtos;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="UserName"></param>
+        /// <param name="Password"></param>
+        /// <returns></returns>
+
+        public int Login(string UserName, string Password)
+        {
+            return myEmployeeDao.Login(UserName, Password);
+        }
+        public Employee GetByUsername(string username)
+        {
+            return myEmployeeDao.GetByUsername(username);
+        }
+
+        public int UpdateProfile(Employee employee)
+        {
+            return myEmployeeDao.UpdateProfile(employee);
         }
     }
 }

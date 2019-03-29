@@ -52,35 +52,35 @@ namespace Main.Bang
             try
             {
 
-                cmbDepartment.DataSource = objTaskBus.LoadDepartment();
+                var departTable = objTaskBus.LoadDepartment();
 
-                if (cmbDepartment.DataSource != null)
+                if (departTable.Rows.Count > 0)
                 {
+                    cmbDepartment.DataSource = departTable;
                     cmbDepartment.ValueMember = "DEPARTMENTID";
                     cmbDepartment.DisplayMember = "DEPARTMENTNAME";
+
                 }
                 else
                 {
-                    MessageBox.Show("Department have not data");
+                    MessageBox.Show("Department have not data", "Status");
                 }
 
 
-                cmbAssign.DataSource = objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString()));
-                if (cmbAssign.DataSource != null)
+                var levels = objTaskBus.GetAlLevel();
+                if (levels.Count > 0)
                 {
-                    cmbAssign.ValueMember = "EMPLOYEEID";
-                    cmbAssign.DisplayMember = "FULLNAME";
+                    cmbLevel.DataSource = levels;
+                    cmbLevel.ValueMember = "Id";
+                    cmbLevel.DisplayMember = "Name";
+
                 }
                 else
                 {
-                    MessageBox.Show("Assign have not data");
+                    MessageBox.Show("Priority have not data", "Status");
                 }
 
-                cmbLevel.DataSource = objTaskBus.GetAlLevel();
-                cmbLevel.ValueMember = "Id";
-                cmbLevel.DisplayMember = "Name";
-
-
+                //assign file from data transfer object
                 txtTaskName.Text = TaskDTO.TaskName;
                 txtDescription.Text = TaskDTO.Description;
                 cmbAssign.SelectedValue = TaskDTO.Assign;
@@ -122,6 +122,7 @@ namespace Main.Bang
         {
             try
             {
+                // validate 
                 if (string.Empty.Equals(txtTaskName.Text.Trim()))
                 {
                     MessageBox.Show("Enter Task Name!", "Warning");
@@ -138,17 +139,31 @@ namespace Main.Bang
                 {
                     MessageBox.Show("Description must more than 2 characters!!", "Warning");
                 }
+                else if (Convert.ToDateTime(dtpDueDate.Value) < DateTime.Today)
+                {
+                    MessageBox.Show("Due Date must ' > ' or ' = ' Today", "Warning");
+                }
                 else
                 {
+                    // assign value for data transfer object
                     TaskDTO.TaskName = txtTaskName.Text.Trim();
                     TaskDTO.Description = txtDescription.Text.Trim();
                     TaskDTO.Assign = Convert.ToInt32(cmbAssign.SelectedValue);
                     TaskDTO.Department = Convert.ToInt32(cmbDepartment.SelectedValue);
                     TaskDTO.Priority = Convert.ToInt32(cmbLevel.SelectedValue);
                     TaskDTO.DueDate = dtpDueDate.Value.ToString("dd/MMM/yyyy");
-                    objTaskBus.Update(TaskDTO.TaskId, TaskDTO.TaskName, TaskDTO.Assign,
-                    TaskDTO.DueDate, TaskDTO.Priority, TaskDTO.Files, TaskDTO.Status, TaskDTO.IsDelete, TaskDTO.Description);
-                    Hide();
+                    //check result
+                    if (objTaskBus.Update(TaskDTO.TaskId, TaskDTO.TaskName, TaskDTO.Assign,
+                        TaskDTO.DueDate, TaskDTO.Priority, TaskDTO.Files, TaskDTO.Status, TaskDTO.IsDelete,
+                        TaskDTO.Description) != 0)
+                    {
+                        MessageBox.Show("Succes", "Status");
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error!", "Status");
+                    }
                 }
             }
             catch (Exception exception)
@@ -166,6 +181,7 @@ namespace Main.Bang
             if (e.KeyCode == Keys.Enter)
             {
                 btnUpdate_Click(btnUpdate, e);
+                this.Close();
             }
         }
         /// <summary>
@@ -175,7 +191,7 @@ namespace Main.Bang
         /// <param name="e"></param>
         private void btnCacncel_Click(object sender, EventArgs e)
         {
-            Hide();
+            this.Close();
         }
     }
 }

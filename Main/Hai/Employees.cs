@@ -14,8 +14,20 @@ namespace Main
 {
     public partial class Employees : UserControl
     {
+        private readonly EmployeeBus employeeBus = new EmployeeBus();
+
+        private readonly DepartmentBUS departmentBus = new DepartmentBUS();
+
+        private readonly EmployeeMapper mapper = new EmployeeMapper();
+
+        public static Entity.Employee employeeForUpdate = new Entity.Employee();
+
+        public static bool IsCreated;
+
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+
         protected int RolesID { get; set; }
+
         protected override void OnLoad(EventArgs e)
         {
             DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
@@ -37,22 +49,17 @@ namespace Main
             InitializeComponent();
         }
 
-        private readonly EmployeeBus employeeBus = new EmployeeBus();
-
-        private readonly EmployeeMapper mapper = new EmployeeMapper();
-
-        public static Entity.Employee employeeForUpdate = new Entity.Employee();
-
-        public static bool IsCreated;
-
-        
-
         private void Employees_Load(object sender, EventArgs e)
         {
             dgv_employee.DataSource = employeeBus.GetAll();
             dgv_employee.Columns["RANK"].Visible = false;
             dgv_employee.Columns["DEPARTMENTID"].Visible = false;
-            
+
+            cbbDepartment_Search.DataSource = departmentBus.GetDepartmentsForSearch();
+            cbbDepartment_Search.DisplayMember = "DepartmentName";
+            cbbDepartment_Search.ValueMember = "DepartmentID";
+            cbbDepartment_Search.SelectedValue = 0;
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -114,12 +121,7 @@ namespace Main
                 UserName = txtUserName_Search.Text.Trim(),
                 Identity = txtIdentity_Search.Text.Trim()
             };
-            // sau này sửa lấy department từ danh sách, thì chỗ này là cbb.selected value == 0
-            // ccb.departmentId = cbb.selected value
-            if (cbbDepartment_Search.Text == "")
-            {
-                employeeForSearch.DepartmentId = 0;
-            }
+
 
             dgv_employee.DataSource = employeeBus.Search(employeeForSearch);
         }

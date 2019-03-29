@@ -41,11 +41,13 @@ namespace Main
         private Entity.Action myActionEdit;
         public Action_Add(Action myActionEdit,int id)
         {
+            this.RolesID = id;
             this.myActionEdit = myActionEdit;
             InitializeComponent();
         }
         public Action_Add(int id)
         {
+            this.RolesID = id;
             this.myActionEdit = new Action();
             InitializeComponent();
         }
@@ -56,6 +58,7 @@ namespace Main
             if (myActionEdit.ActionID != 0)
             {
                 txtName.Text = myActionEdit.ActionName;
+                txtName.Enabled = false;
                 txtDescription.Text = myActionEdit.Description;
             }
         }

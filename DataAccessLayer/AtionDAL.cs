@@ -21,6 +21,19 @@ namespace DataAccessLayer
         protected SqlHelpers<Action> sql = new SqlHelpers<Action>();
         protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        public List<Action> GetList()
+        {
+            using (OracleConnection con = Connection.GetConnection)
+            {
+                String cmd = "Action_GetAll";
+                OracleParameter[] myParameters = new OracleParameter[]
+                {
+                    new OracleParameter("listAction",OracleDbType.RefCursor,ParameterDirection.Output)
+                };
+                return sql.ExcuteQueryDataReader(cmd, CommandType.StoredProcedure, con, myParameters);
+            }
+        }
+
         public DataTable Get()
         {
             using (OracleConnection con = Connection.GetConnection)
@@ -43,16 +56,10 @@ namespace DataAccessLayer
                     new OracleParameter("names",name),
                     new OracleParameter("listAction",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
-                DataTable myList = sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
-                if (myList.Rows.Count < 1)
-                    return null;
-                return new Action
-                {
-                    ActionID = int.Parse(myList.Rows[0][0].ToString()),
-                    ActionName = myList.Rows[0][1].ToString(),
-                    IsDelete = int.Parse(myList.Rows[0][2].ToString()),
-                    Description = myList.Rows[0][3].ToString()
-                };
+                List<Action> myList= sql.ExcuteQueryDataReader(cmd, CommandType.StoredProcedure, con, myParameters);
+                if (myList != null)
+                    return myList[0];
+                return null;
             }
         }
 
@@ -94,38 +101,42 @@ namespace DataAccessLayer
         {
             using (OracleConnection con = Connection.GetConnection)
             {
-                //OracleTransaction transaction = con.BeginTransaction();
-
-                String cmd = "Action_Insert";
-                OracleParameter[] myParameters = new OracleParameter[]
+                try
                 {
+                    String cmd = "Action_Insert";
+                    OracleParameter[] myParameters = new OracleParameter[]
+                    {
                         new OracleParameter("actionnames", obj.ActionName),
                         new OracleParameter("isdeletes", obj.IsDelete),
                         new OracleParameter("descriptions", obj.Description)
-                };
-                sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
-                Action newActionAdd = GetByName(obj.ActionName);
-                DataTable listRoles = new DataTable();
-                RolesDAL myRoles = new RolesDAL();
-                RolesActionDAL myRolesAction = new RolesActionDAL();
-                listRoles = myRoles.Get();
-                foreach (DataRow item in listRoles.Rows)
-                {
-                    RolesAction myRolesActionAdd = new RolesAction
-                    {
-                        ID = 0,
-                        ActionID = newActionAdd.ActionID,
-                        IsTrue = 0,
-                        RolesID = int.Parse(item[0].ToString())
                     };
-                    if (myRolesAction.Add(myRolesActionAdd) != -1)
+                    sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                    Action newActionAdd = GetByName(obj.ActionName);
+                    DataTable listRoles = new DataTable();
+                    RolesDAL myRoles = new RolesDAL();
+                    RolesActionDAL myRolesAction = new RolesActionDAL();
+                    listRoles = myRoles.Get();
+                    foreach (DataRow item in listRoles.Rows)
                     {
-                        //transaction.Rollback();
-                        return 0;
+                        RolesAction myRolesActionAdd = new RolesAction
+                        {
+                            ID = 0,
+                            ActionID = newActionAdd.ActionID,
+                            IsTrue = 0,
+                            RolesID = int.Parse(item[0].ToString())
+                        };
+                        if (myRolesAction.Add(myRolesActionAdd) != -1)
+                        {
+                            return 0;
+                        }
                     }
+                    return -1;
                 }
-                //transaction.Commit();
-                return -1;
+                catch (Exception e)
+                {
+                    logger.Debug(e.Message);
+                    return 0;
+                }
             }
 
         }
