@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using BusinessLayer;
@@ -59,6 +60,10 @@ namespace Main.Bang
                     cmbDepartment.DataSource = departTable;
                     cmbDepartment.ValueMember = "DEPARTMENTID";
                     cmbDepartment.DisplayMember = "DEPARTMENTNAME";
+                    if (Convert.ToInt64(cmbDepartment.SelectedValue) > 0)
+                    {
+                        lbDepartment.ForeColor = Color.DarkGreen;
+                    }
 
                 }
                 else
@@ -73,6 +78,10 @@ namespace Main.Bang
                     cmbLevel.DataSource = levels;
                     cmbLevel.ValueMember = "Id";
                     cmbLevel.DisplayMember = "Name";
+                    if (Convert.ToInt64(cmbLevel.SelectedValue) > 0)
+                    {
+                        lbLevel.ForeColor = Color.DarkGreen;
+                    }
 
                 }
                 else
@@ -105,12 +114,27 @@ namespace Main.Bang
         {
             try
             {
-                cmbAssign.DataSource = objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString()));
-                cmbAssign.ValueMember = "EMPLOYEEID";
-                cmbAssign.DisplayMember = "FULLNAME";
+                DataTable dtDepartment = new DataTable();
+                dtDepartment = objTaskBus.LoadEmployeeByDpt(Convert.ToInt32(cmbDepartment.SelectedValue));
+                if (dtDepartment.Rows.Count > 0)
+                {
+                    cmbAssign.ValueMember = "EMPLOYEEID";
+                    cmbAssign.DisplayMember = "FULLNAME";
+                    cmbAssign.DataSource = dtDepartment;
+                    lbAssign.ForeColor = Color.DarkGreen;
+
+                }
+                else
+                {
+                    cmbAssign.DataSource = dtDepartment;
+                    lbAssign.ForeColor = Color.Red;
+                    MessageBox.Show("Assign have not data", "Status");
+
+                }
             }
             catch
             {
+                //
             }
         }
         /// <summary>
@@ -192,6 +216,97 @@ namespace Main.Bang
         private void btnCacncel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtTaskName_TextChanged(object sender, EventArgs e)
+        {
+            if (string.Empty.Equals(txtTaskName.Text.Trim()) ||
+                Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,}") == false)
+            {
+                lbTaskName.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbTaskName.ForeColor = Color.DarkGreen;
+            }
+        }
+
+        private void txtTaskName_Leave(object sender, EventArgs e)
+        {
+            if (string.Empty.Equals(txtTaskName.Text.Trim()))
+            {
+                MessageBox.Show("Enter Task Name!", "Warning");
+                txtTaskName.Focus();
+            }
+            else if (Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,}") == false)
+            {
+                MessageBox.Show(" Task Name must more than 2 characters!", "Warning");
+                txtTaskName.Focus();
+            }
+            else
+            {
+                lbTaskName.ForeColor = Color.DarkGreen;
+            }
+        }
+
+        private void txtDescription_TextChanged(object sender, EventArgs e)
+        {
+            if (string.Empty.Equals(txtDescription.Text.Trim()) ||
+                Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,}") == false)
+            {
+                lbDescription.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbDescription.ForeColor = Color.DarkGreen;
+            }
+        }
+
+        private void txtDescription_Leave(object sender, EventArgs e)
+        {
+            if (string.Empty.Equals(txtDescription.Text.Trim()))
+            {
+                MessageBox.Show("Enter Description!", "Warning");
+                txtDescription.Focus();
+            }
+            else if (Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,}") == false)
+            {
+                MessageBox.Show(" Description must more than 2 characters!", "Warning");
+                txtDescription.Focus();
+            }
+            else
+            {
+                lbDescription.ForeColor = Color.DarkGreen;
+            }
+        }
+
+        private void dtpDueDate_Leave(object sender, EventArgs e)
+        {
+            if (Convert.ToDateTime(dtpDueDate.Value) < DateTime.Today)
+            {
+                MessageBox.Show("Due Date must ' > ' or ' = ' Today", "Warning");
+                dtpDueDate.Focus();
+                lbDate.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbDate.ForeColor = Color.DarkGreen;
+            }
+
+        }
+
+        private void dtpDueDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToDateTime(dtpDueDate.Value) < DateTime.Today)
+            {
+                MessageBox.Show("Due Date must ' > ' or ' = ' Today", "Warning");
+                dtpDueDate.Focus();
+                lbDate.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbDate.ForeColor = Color.DarkGreen;
+            }
         }
     }
 }

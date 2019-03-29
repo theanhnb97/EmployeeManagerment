@@ -35,22 +35,24 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnLoadData = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grbTaskList = new System.Windows.Forms.GroupBox();
             this.lblPage = new System.Windows.Forms.Label();
             this.dgvTask = new System.Windows.Forms.DataGridView();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grbFiler = new System.Windows.Forms.GroupBox();
             this.cmbDepartment = new System.Windows.Forms.ComboBox();
             this.dtpDeuDateFilter = new System.Windows.Forms.DateTimePicker();
             this.lbDepartment = new System.Windows.Forms.Label();
             this.lbDueDate = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNameFilter = new System.Windows.Forms.TextBox();
+            this.lblCurent = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grbTaskList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTask)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.grbFiler.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -130,33 +132,35 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // groupBox1
+            // grbTaskList
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.btnEdit);
-            this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Controls.Add(this.lblPage);
-            this.groupBox1.Controls.Add(this.btnDelete);
-            this.groupBox1.Controls.Add(this.dgvTask);
-            this.groupBox1.Controls.Add(this.btnNext);
-            this.groupBox1.Controls.Add(this.btnPrevious);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 195);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(809, 393);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Employee list";
+            this.grbTaskList.BackColor = System.Drawing.Color.White;
+            this.grbTaskList.Controls.Add(this.label2);
+            this.grbTaskList.Controls.Add(this.lblCurent);
+            this.grbTaskList.Controls.Add(this.btnEdit);
+            this.grbTaskList.Controls.Add(this.btnAdd);
+            this.grbTaskList.Controls.Add(this.lblPage);
+            this.grbTaskList.Controls.Add(this.btnDelete);
+            this.grbTaskList.Controls.Add(this.dgvTask);
+            this.grbTaskList.Controls.Add(this.btnNext);
+            this.grbTaskList.Controls.Add(this.btnPrevious);
+            this.grbTaskList.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.grbTaskList.Location = new System.Drawing.Point(0, 195);
+            this.grbTaskList.Name = "grbTaskList";
+            this.grbTaskList.Size = new System.Drawing.Size(809, 393);
+            this.grbTaskList.TabIndex = 3;
+            this.grbTaskList.TabStop = false;
+            this.grbTaskList.Text = "Task List";
             // 
             // lblPage
             // 
             this.lblPage.AutoSize = true;
             this.lblPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPage.Location = new System.Drawing.Point(736, 365);
+            this.lblPage.Location = new System.Drawing.Point(751, 366);
             this.lblPage.Name = "lblPage";
-            this.lblPage.Size = new System.Drawing.Size(37, 15);
+            this.lblPage.Size = new System.Drawing.Size(21, 15);
             this.lblPage.TabIndex = 5;
-            this.lblPage.Text = "1 / 10";
+            this.lblPage.Text = "10";
             // 
             // dgvTask
             // 
@@ -170,6 +174,7 @@
             this.dgvTask.Location = new System.Drawing.Point(3, 16);
             this.dgvTask.MultiSelect = false;
             this.dgvTask.Name = "dgvTask";
+            this.dgvTask.ReadOnly = true;
             this.dgvTask.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTask.Size = new System.Drawing.Size(803, 340);
             this.dgvTask.TabIndex = 0;
@@ -185,35 +190,37 @@
             this.btnNext.TabIndex = 3;
             this.btnNext.Text = ">";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPrevious
             // 
             this.btnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrevious.Location = new System.Drawing.Point(699, 362);
+            this.btnPrevious.Location = new System.Drawing.Point(685, 363);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(27, 23);
             this.btnPrevious.TabIndex = 4;
             this.btnPrevious.Text = "<";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
-            // groupBox2
+            // grbFiler
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.cmbDepartment);
-            this.groupBox2.Controls.Add(this.dtpDeuDateFilter);
-            this.groupBox2.Controls.Add(this.lbDepartment);
-            this.groupBox2.Controls.Add(this.btnClear);
-            this.groupBox2.Controls.Add(this.btnLoadData);
-            this.groupBox2.Controls.Add(this.lbDueDate);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.txtNameFilter);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 57);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(809, 138);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filter area";
+            this.grbFiler.BackColor = System.Drawing.Color.White;
+            this.grbFiler.Controls.Add(this.cmbDepartment);
+            this.grbFiler.Controls.Add(this.dtpDeuDateFilter);
+            this.grbFiler.Controls.Add(this.lbDepartment);
+            this.grbFiler.Controls.Add(this.btnClear);
+            this.grbFiler.Controls.Add(this.btnLoadData);
+            this.grbFiler.Controls.Add(this.lbDueDate);
+            this.grbFiler.Controls.Add(this.label6);
+            this.grbFiler.Controls.Add(this.txtNameFilter);
+            this.grbFiler.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grbFiler.Location = new System.Drawing.Point(0, 57);
+            this.grbFiler.Name = "grbFiler";
+            this.grbFiler.Size = new System.Drawing.Size(809, 138);
+            this.grbFiler.TabIndex = 4;
+            this.grbFiler.TabStop = false;
+            this.grbFiler.Text = "Filter area";
             // 
             // cmbDepartment
             // 
@@ -271,23 +278,43 @@
             this.txtNameFilter.Size = new System.Drawing.Size(204, 20);
             this.txtNameFilter.TabIndex = 1;
             // 
+            // lblCurent
+            // 
+            this.lblCurent.AutoSize = true;
+            this.lblCurent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurent.Location = new System.Drawing.Point(724, 366);
+            this.lblCurent.Name = "lblCurent";
+            this.lblCurent.Size = new System.Drawing.Size(14, 15);
+            this.lblCurent.TabIndex = 15;
+            this.lblCurent.Text = "1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(740, 366);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(10, 15);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "/";
+            // 
             // UcTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grbFiler);
+            this.Controls.Add(this.grbTaskList);
             this.Controls.Add(this.panel1);
             this.Name = "UcTask";
             this.Size = new System.Drawing.Size(809, 588);
             this.Load += new System.EventHandler(this.Task_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grbTaskList.ResumeLayout(false);
+            this.grbTaskList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTask)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grbFiler.ResumeLayout(false);
+            this.grbFiler.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -301,17 +328,19 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnLoadData;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grbTaskList;
         private System.Windows.Forms.Label lblPage;
         private System.Windows.Forms.DataGridView dgvTask;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grbFiler;
         private System.Windows.Forms.DateTimePicker dtpDeuDateFilter;
         private System.Windows.Forms.Label lbDueDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNameFilter;
         private System.Windows.Forms.Label lbDepartment;
         private System.Windows.Forms.ComboBox cmbDepartment;
+        private System.Windows.Forms.Label lblCurent;
+        private System.Windows.Forms.Label label2;
     }
 }
