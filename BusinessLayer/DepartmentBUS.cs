@@ -26,6 +26,7 @@ namespace BusinessLayer
 
         }
         //Delete phòng ban
+
         public int Delete(int id)
         {
             return departmentDal.Delete(id);

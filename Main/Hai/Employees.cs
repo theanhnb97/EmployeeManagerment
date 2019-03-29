@@ -50,6 +50,9 @@ namespace Main
         private void Employees_Load(object sender, EventArgs e)
         {
             dgv_employee.DataSource = employeeBus.GetAll();
+            dgv_employee.Columns["RANK"].Visible = false;
+            dgv_employee.Columns["DEPARTMENTID"].Visible = false;
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

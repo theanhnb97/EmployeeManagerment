@@ -40,9 +40,14 @@
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +59,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dong\SalaryAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dong\SalaryAdd.Designer.cs">
+      <DependentUpon>SalaryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dong\SalaryEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dong\SalaryEdit.Designer.cs">
+      <DependentUpon>SalaryEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dong\SalaryManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dong\SalaryManagement.designer.cs">
+      <DependentUpon>SalaryManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bang\AddTask.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +112,12 @@
     </Compile>
     <Compile Include="Dai\UcDepartment.designer.cs">
       <DependentUpon>UcDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheAnh\UcUpdateProfile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TheAnh\UcUpdateProfile.Designer.cs">
+      <DependentUpon>UcUpdateProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="Hai\Employee.cs">
       <SubType>Form</SubType>
@@ -155,6 +184,15 @@
     <EmbeddedResource Include="Bang\UcTask.resx">
       <DependentUpon>UcTask.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dong\SalaryAdd.resx">
+      <DependentUpon>SalaryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dong\SalaryEdit.resx">
+      <DependentUpon>SalaryEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dong\SalaryManagement.resx">
+      <DependentUpon>SalaryManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dai\DepartmentAdd.resx">
       <DependentUpon>DepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dai\UcDepartment.resx">
       <DependentUpon>UcDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheAnh\UcUpdateProfile.resx">
+      <DependentUpon>UcUpdateProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hai\Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>
@@ -216,7 +257,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
@@ -247,9 +290,7 @@
     <Content Include="Image\Material\baseline-lock_open-24px.svg" />
     <Content Include="Image\Material\icons8-shutdown-24.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dong\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
