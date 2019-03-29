@@ -81,7 +81,11 @@ namespace Main
             dgvTask.DataSource = objTaskBus.Filter(txtNameFilter.Text, Convert.ToInt32(cmbDepartment.SelectedValue),
                cvDueDate);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtNameFilter.Text = "";
@@ -117,6 +121,8 @@ namespace Main
         /// <param name="e"></param>
         private void dgvTask_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+
+            //set value of column Priority
             if (e.ColumnIndex == 5)
             {
                 e.FormattingApplied = true; // <===VERY, VERY important tell it you've taken care of it.
@@ -137,6 +143,7 @@ namespace Main
 
             }
 
+            //set  value of column Status
             if (e.ColumnIndex == 8)
             {
                 e.FormattingApplied = true; // <===VERY, VERY important tell it you've taken care of it.
@@ -157,14 +164,15 @@ namespace Main
 
             }
 
+            // format date column DueDate is day/month/year
             if (e.ColumnIndex == 4)
             {
                 e.FormattingApplied = true; // <===VERY, VERY important tell it you've taken care of it.
                 var temp = dgvTask.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                string cvdate = DateTime.Parse(temp).ToString("dd/MM/yyyy");
+                string cvDate = DateTime.Parse(temp).ToString("dd/MM/yyyy");
                 for (int i = 0; i < temp.Length; i++)
                 {
-                    e.Value = cvdate;
+                    e.Value = cvDate;
                 }
             }
         }
@@ -180,13 +188,21 @@ namespace Main
             DialogResult result = MessageBox.Show("You Want Delete?", "Warning", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                if (!string.Empty.Equals(dgvTask.CurrentRow.Cells["ID"].Value.ToString()) || Convert.ToInt32(dgvTask.CurrentRow.Cells["ID"].Value.ToString()) <= 0)
+                //check null, space, id <=0
+                if (dgvTask.CurrentRow != null && (!string.Empty.Equals(dgvTask.CurrentRow.Cells["ID"].Value.ToString()) || Convert.ToInt32(dgvTask.CurrentRow.Cells["ID"].Value.ToString()) <= 0))
                 {
                     int id = Convert.ToInt32(dgvTask.CurrentRow.Cells["ID"].Value.ToString());
                     if (objTaskBus.Delete(id) != 0)
                     {
-                        MessageBox.Show("Success");
-                        objTaskBus.GetAll();
+                        MessageBox.Show("Success", "Status");
+                        if (objTaskBus.GetAll().Rows.Count > 0 && objTaskBus.GetAll() != null)
+                        {
+                            dgvTask.DataSource = objTaskBus.GetAll();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Fail!", "Status");
+                        }
                     }
                     else
                     {
@@ -196,7 +212,11 @@ namespace Main
 
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvTask_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnDelete.Enabled = true;
@@ -211,16 +231,6 @@ namespace Main
         {
             if (dgvTask.CurrentRow != null)
             {
-                int taskId;
-                string taskName;
-                int assign;
-                int status;
-                string files;
-                string dueDate;
-                int priority;
-                string description;
-                int department;
-                int isDelete;
 
                 if (Convert.ToInt32(dgvTask.CurrentRow.Cells["ID"].Value.ToString()) <= 0)
                 {
@@ -230,7 +240,8 @@ namespace Main
                 {
                     MessageBox.Show("Task name not exist!");
                 }
-                else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["EMPLOYEEID"].Value.ToString()) <= 0 || string.Empty.Equals(dgvTask.CurrentRow.Cells["EMPLOYEEID"].Value.ToString().Trim()))
+                else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["EMPLOYEEID"].Value.ToString()) <= 0
+                         || string.Empty.Equals(dgvTask.CurrentRow.Cells["EMPLOYEEID"].Value.ToString().Trim()))
                 {
                     MessageBox.Show("Employee not exist!");
                 }
@@ -246,7 +257,8 @@ namespace Main
                 {
                     MessageBox.Show("DUEDATE empty!");
                 }
-                else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["PRIORITY"].Value.ToString().Trim()) || Convert.ToInt32(dgvTask.CurrentRow.Cells["PRIORITY"].Value.ToString()) <= 0)
+                else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["PRIORITY"].Value.ToString().Trim())
+                         || Convert.ToInt32(dgvTask.CurrentRow.Cells["PRIORITY"].Value.ToString()) <= 0)
                 {
                     MessageBox.Show("PRIORITY Fail!");
                 }
@@ -254,24 +266,26 @@ namespace Main
                 {
                     MessageBox.Show("DESCRIPTION empty!");
                 }
-                else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString()) <= 0 || string.Empty.Equals(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString().Trim()))
+                else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString()) <= 0
+                         || string.Empty.Equals(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString().Trim()))
                 {
 
                 }
                 else
                 {
-                    taskId = Convert.ToInt32(dgvTask.CurrentRow.Cells["ID"].Value.ToString());
-                    taskName = dgvTask.CurrentRow.Cells["TASKNAME"].Value.ToString().Trim();
-                    assign = Convert.ToInt32(dgvTask.CurrentRow.Cells["EMPLOYEEID"].Value.ToString());
-                    status = Convert.ToInt32(dgvTask.CurrentRow.Cells["STATUS"].Value.ToString());
-                    files = dgvTask.CurrentRow.Cells["FILES"].Value.ToString();
-                    dueDate = DateTime.Parse(dgvTask.CurrentRow.Cells["DUEDATE"].Value.ToString()).ToString("dd/MMM/yyyy");
-                    priority = Convert.ToInt32(dgvTask.CurrentRow.Cells["PRIORITY"].Value.ToString());
-                    description = dgvTask.CurrentRow.Cells["DESCRIPTION"].Value.ToString();
-                    department = Convert.ToInt32(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString());
-                    isDelete = 0;
+                    //assign value for variable 
+                    int taskId = Convert.ToInt32(dgvTask.CurrentRow.Cells["ID"].Value.ToString());
+                    string taskName = dgvTask.CurrentRow.Cells["TASKNAME"].Value.ToString().Trim();
+                    int assign = Convert.ToInt32(dgvTask.CurrentRow.Cells["EMPLOYEEID"].Value.ToString());
+                    int status = Convert.ToInt32(dgvTask.CurrentRow.Cells["STATUS"].Value.ToString());
+                    string files = dgvTask.CurrentRow.Cells["FILES"].Value.ToString();
+                    string dueDate = DateTime.Parse(dgvTask.CurrentRow.Cells["DUEDATE"].Value.ToString()).ToString("dd/MMM/yyyy");
+                    int priority = Convert.ToInt32(dgvTask.CurrentRow.Cells["PRIORITY"].Value.ToString());
+                    string description = dgvTask.CurrentRow.Cells["DESCRIPTION"].Value.ToString();
+                    int department = Convert.ToInt32(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString());
+                    int isDelete = 0;
 
-                    //
+                    // assign value for data transfer object 
                     TaskDTO.TaskId = taskId;
                     TaskDTO.TaskName = taskName;
                     TaskDTO.Assign = assign;
@@ -283,7 +297,7 @@ namespace Main
                     TaskDTO.Department = department;
                     TaskDTO.IsDelete = isDelete;
 
-                    //
+                    //call frm follow roles
                     frmEditTask objFrmEditTask = new frmEditTask(RolesID);
                     objFrmEditTask.ShowDialog();
                 }

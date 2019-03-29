@@ -1,11 +1,13 @@
-﻿namespace CommonLibrary.Model
+﻿using System;
+
+namespace CommonLibrary.Model
 {
     public static class TaskDTO
     {
         /// <summary>
         /// 
         /// </summary>
-        public static int TaskId { get; set; }
+        public static Int64 TaskId { get; set; }
 
         /// <summary>
         /// 
@@ -15,7 +17,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public static int Assign { get; set; }
+        public static Int64 Assign { get; set; }
 
         /// <summary>
         /// 
