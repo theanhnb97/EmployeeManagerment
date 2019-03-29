@@ -15,3 +15,4 @@ C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\Common
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
