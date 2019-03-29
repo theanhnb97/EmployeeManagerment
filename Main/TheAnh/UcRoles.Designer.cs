@@ -187,7 +187,8 @@
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvData.Size = new System.Drawing.Size(809, 497);
             this.dgvData.TabIndex = 6;
-            this.dgvData.Enter += new System.EventHandler(this.dgvData_Enter);
+            this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
+            this.dgvData.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvData_KeyDown);
             // 
             // ROLESID
             // 
@@ -233,8 +234,6 @@
             this.Name = "UcRoles";
             this.Size = new System.Drawing.Size(809, 588);
             this.Load += new System.EventHandler(this.UcRoles_Load);
-            this.Click += new System.EventHandler(this.UcRoles_Click);
-            this.Enter += new System.EventHandler(this.UcRoles_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

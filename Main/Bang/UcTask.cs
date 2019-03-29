@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
 using BusinessLayer;
@@ -33,6 +34,8 @@ namespace Main
                 this.Hide();
         }
 
+
+        private int pageSize;
         public UcTask(int id)
         {
             this.RolesID = id;
@@ -45,11 +48,18 @@ namespace Main
         /// <param name="e"></param>
         private void Task_Load(object sender, EventArgs e)
         {
-            if (objTaskBus.GetAll().Rows.Count > 0 && objTaskBus.GetAll() != null)
+            pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"].ToString());
+            DataTable allData = objTaskBus.GetAll(0);
+            DataTable firstPage = objTaskBus.GetAll(1);
+
+            if (firstPage.Rows.Count > 0)
             {
-                dgvTask.DataSource = objTaskBus.GetAll();
+                dgvTask.DataSource = firstPage;
                 dgvTask.Columns[9].Visible = false;
                 dgvTask.Columns[10].Visible = false;
+                lblPage.Text = (allData.Rows.Count % pageSize == 0)
+                    ? (allData.Rows.Count / pageSize).ToString()
+                    : ((allData.Rows.Count / pageSize) + 1).ToString();
             }
             else
             {
@@ -78,8 +88,11 @@ namespace Main
         {
 
             string cvDueDate = Convert.ToDateTime(dtpDeuDateFilter.Value).ToString("dd/MMM/yyyy");
-            dgvTask.DataSource = objTaskBus.Filter(txtNameFilter.Text, Convert.ToInt32(cmbDepartment.SelectedValue),
-               cvDueDate);
+            DataTable allData = objTaskBus.Filter(txtNameFilter.Text, Convert.ToInt32(cmbDepartment.SelectedValue),
+                cvDueDate, 0);
+            DataTable firstPage = objTaskBus.Filter(txtNameFilter.Text, Convert.ToInt32(cmbDepartment.SelectedValue),
+                cvDueDate, 1);
+            pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
         }
         /// <summary>
         /// 
@@ -91,9 +104,10 @@ namespace Main
             txtNameFilter.Text = "";
             dtpDeuDateFilter.Value = DateTime.Now;
             cmbDepartment.SelectedValue = 1;
-            if (objTaskBus.GetAll().Rows.Count > 0 && objTaskBus.GetAll() != null)
+            DataTable list = objTaskBus.GetAll(1);
+            if (list.Rows.Count > 0)
             {
-                dgvTask.DataSource = objTaskBus.GetAll();
+                dgvTask.DataSource = list;
                 dgvTask.Columns[9].Visible = false;
                 dgvTask.Columns[10].Visible = false;
             }
@@ -122,58 +136,67 @@ namespace Main
         private void dgvTask_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
-            //set value of column Priority
-            if (e.ColumnIndex == 5)
+            try
             {
-                e.FormattingApplied = true; // <===VERY, VERY important tell it you've taken care of it.
-                string temp1 = dgvTask.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                switch (temp1)
-                {
 
-                    case "1":
-                        e.Value = "High";
-                        break;
-                    case "2":
-                        e.Value = "Medium";
-                        break;
-                    case "3":
-                        e.Value = "Low";
-                        break;
+
+                //set value of column Priority
+                if (e.ColumnIndex == 5)
+                {
+                    e.FormattingApplied = true; // <===VERY, VERY important tell it you've taken care of it.
+                    string temp1 = dgvTask.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                    switch (temp1)
+                    {
+
+                        case "1":
+                            e.Value = "High";
+                            break;
+                        case "2":
+                            e.Value = "Medium";
+                            break;
+                        case "3":
+                            e.Value = "Low";
+                            break;
+                    }
+
                 }
 
+                //set  value of column Status
+                if (e.ColumnIndex == 8)
+                {
+                    e.FormattingApplied = true; // <===VERY, VERY important tell it you've taken care of it.
+                    string temp = dgvTask.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                    switch (temp)
+                    {
+
+                        case "1":
+                            e.Value = "Todo";
+                            break;
+                        case "2":
+                            e.Value = "Process";
+                            break;
+                        case "3":
+                            e.Value = "Done";
+                            break;
+                    }
+
+                }
+
+                // format date column DueDate is day/month/year
+                if (e.ColumnIndex == 4)
+                {
+                    e.FormattingApplied = true; // <===VERY, VERY important tell it you've taken care of it.
+                    var temp = dgvTask.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                    string cvDate = DateTime.Parse(temp).ToString("dd/MM/yyyy");
+                    for (int i = 0; i < temp.Length; i++)
+                    {
+                        e.Value = cvDate;
+                    }
+                }
             }
-
-            //set  value of column Status
-            if (e.ColumnIndex == 8)
+            catch (Exception exception)
             {
-                e.FormattingApplied = true; // <===VERY, VERY important tell it you've taken care of it.
-                string temp = dgvTask.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                switch (temp)
-                {
-
-                    case "1":
-                        e.Value = "Todo";
-                        break;
-                    case "2":
-                        e.Value = "Process";
-                        break;
-                    case "3":
-                        e.Value = "Done";
-                        break;
-                }
-
-            }
-
-            // format date column DueDate is day/month/year
-            if (e.ColumnIndex == 4)
-            {
-                e.FormattingApplied = true; // <===VERY, VERY important tell it you've taken care of it.
-                var temp = dgvTask.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                string cvDate = DateTime.Parse(temp).ToString("dd/MM/yyyy");
-                for (int i = 0; i < temp.Length; i++)
-                {
-                    e.Value = cvDate;
-                }
+                logger.Debug(exception);
             }
         }
 
@@ -195,9 +218,9 @@ namespace Main
                     if (objTaskBus.Delete(id) != 0)
                     {
                         MessageBox.Show("Success", "Status");
-                        if (objTaskBus.GetAll().Rows.Count > 0 && objTaskBus.GetAll() != null)
+                        if (objTaskBus.GetAll(0).Rows.Count > 0 && objTaskBus.GetAll(0) != null)
                         {
-                            dgvTask.DataSource = objTaskBus.GetAll();
+                            dgvTask.DataSource = objTaskBus.GetAll(0);
                         }
                         else
                         {
@@ -219,8 +242,23 @@ namespace Main
         /// <param name="e"></param>
         private void dgvTask_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnDelete.Enabled = true;
-            btnEdit.Enabled = true;
+            if (dgvTask.CurrentRow != null && dgvTask.CurrentRow.Cells["Tiến Độ"].Value.ToString() == "1")
+            {
+                btnDelete.Enabled = true;
+                btnEdit.Enabled = true;
+            }
+            else if (dgvTask.CurrentRow != null && dgvTask.CurrentRow.Cells["Tiến Độ"].Value.ToString() == "2")
+            {
+                btnDelete.Enabled = true;
+                btnEdit.Enabled = true;
+            }
+            else
+            {
+                btnDelete.Enabled = false;
+                btnEdit.Enabled = false;
+            }
+
+
         }
         /// <summary>
         /// 
@@ -302,6 +340,31 @@ namespace Main
                     objFrmEditTask.ShowDialog();
                 }
             }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            int page = int.Parse(lblCurent.Text);
+            page--;
+            if (page > 0)
+            {
+                lblCurent.Text = page.ToString();
+                dgvTask.DataSource = objTaskBus.GetAll(page);
+                if (page != 0)
+                    dgvTask.Columns["RN"].Visible = false;
+            }
+
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int page = int.Parse(lblCurent.Text);
+            int max = int.Parse(lblPage.Text);
+            page++;
+            if (page > max) return;
+            lblCurent.Text = page.ToString();
+            dgvTask.DataSource = objTaskBus.GetAll(page);
+            dgvTask.Columns["RN"].Visible = false;
         }
     }
 }
