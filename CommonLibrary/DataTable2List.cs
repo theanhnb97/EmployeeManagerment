@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Oracle.ManagedDataAccess.Client;
 
 namespace CommonLibrary
 {
@@ -24,8 +25,24 @@ namespace CommonLibrary
         {
             Type temp = typeof(T);
             T obj = Activator.CreateInstance<T>();
-
             foreach (DataColumn column in dr.Table.Columns)
+            {
+                foreach (PropertyInfo pro in temp.GetProperties())
+                {
+                    if (pro.Name == column.ColumnName)
+                        pro.SetValue(obj, dr[column.ColumnName], null);
+                    else
+                        continue;
+                }
+            }
+            return obj;
+        }
+
+        public T GetItem<T>(OracleDataReader dr)
+        {
+            Type temp = typeof(T);
+            T obj = Activator.CreateInstance<T>();
+            foreach (DataColumn column in dr)
             {
                 foreach (PropertyInfo pro in temp.GetProperties())
                 {

@@ -23,6 +23,11 @@ namespace BusinessLayer
 
         }
 
+        public DataTable GetDepartmentByStatusAndIsDelete(int status, int isDeleted)
+        {
+            return departmentDal.GetDepartmentByStatusAndIsDelete(status,isDeleted);
+        }
+
         public int Delete(int id)
         {
             return departmentDal.Delete(id);

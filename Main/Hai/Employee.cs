@@ -18,6 +18,9 @@ namespace Main
     public partial class Employee : Form
     {
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+        private readonly DepartmentBUS departmentBus = new DepartmentBUS();
+        private readonly EmployeeBus employeeBus = new EmployeeBus();
+
         protected int RolesID { get; set; }
         protected override void OnLoad(EventArgs e)
         {
@@ -37,12 +40,6 @@ namespace Main
             }
         }
 
-
-
-
-
-        EmployeeBus employeeBus = new EmployeeBus();
-
         public Employee(int id)
         {
             RolesID = id;
@@ -59,8 +56,7 @@ namespace Main
                     Entity.Employee employee = new Entity.Employee();
                     employee.FullName = txtFullName.Text;
                     employee.Address = txtAddress.Text;
-                    // tạm fix =1 vì chưa merge department functions
-                    employee.DepartmentId = 1;
+                    employee.DepartmentId = Convert.ToInt64(cbbDepartment.SelectedValue);
                     employee.Email = txtEmail.Text;
                     employee.Identity = txtIdentity.Text;
                     employee.Password = txtPassword.Text;
@@ -116,13 +112,15 @@ namespace Main
         {
             cbbStatus.DataSource = Enumerator.BindEnumToCombobox<Enumeration.Status>(cbbStatus, Enumeration.Status.AMember);
             cbbRank.DataSource = Enumerator.BindEnumToCombobox<Enumeration.Rank>(cbbRank, Enumeration.Rank.AMember);
+            cbbDepartment.DataSource = departmentBus.GetDepartmentByStatusAndIsDelete(1, 0);
+            cbbDepartment.DisplayMember = "DEPARTMENTNAME";
+            cbbDepartment.ValueMember = "DEPARTMENTID";
 
             // for update employee
             if (Employees.IsCreated == false && Employees.employeeForUpdate.EmployeeId != 0)
             {
                 txtFullName.Text = Employees.employeeForUpdate.FullName;
                 txtAddress.Text = Employees.employeeForUpdate.Address;
-                //txtDepartment.Text = Employees.employeeForUpdate.DepartmentId.ToString();
                 txtEmail.Text = Employees.employeeForUpdate.Email;
                 txtIdentity.Text = Employees.employeeForUpdate.Identity;
                 txtPassword.Text = Employees.employeeForUpdate.Password;
@@ -131,6 +129,7 @@ namespace Main
                 txtUserName.Text = Employees.employeeForUpdate.UserName;
                 cbbStatus.SelectedIndex = cbbStatus.FindString(Enumerator.GetDescription((Enumeration.Status)Employees.employeeForUpdate.Status));
                 cbbRank.SelectedIndex = cbbRank.FindString(Enumerator.GetDescription((Enumeration.Rank)Employees.employeeForUpdate.Rank));
+                cbbDepartment.SelectedValue = Employees.employeeForUpdate.DepartmentId;
             }
         }
 
