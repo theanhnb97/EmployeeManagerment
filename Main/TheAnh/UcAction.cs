@@ -13,7 +13,7 @@ using Action = Entity.Action;
 
 namespace Main
 {
-    public partial class ActionManagement:UserControl
+    public partial class UcAction : UserControl
     {
 
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
@@ -22,7 +22,7 @@ namespace Main
         {
             DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
             bool result = RolesID == 1;
-            string ucName = base.Name+ ".";
+            string ucName = base.Name + ".";
             string Action = "";
             foreach (DataRow item in myDataTable.Rows)
                 Action += item["ACTIONNAME"].ToString().Trim() + ".";
@@ -33,12 +33,12 @@ namespace Main
                 this.Hide();
         }
 
-        
 
 
 
-       
-        public ActionManagement(int id)
+
+
+        public UcAction(int id)
         {
             this.RolesID = id;
             InitializeComponent();
@@ -58,7 +58,8 @@ namespace Main
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Action_Add formAdd = new Action_Add(RolesID);
-            formAdd.ShowDialog();
+            if (formAdd.ShowDialog() == DialogResult.OK)
+                Loadd();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -70,8 +71,7 @@ namespace Main
             }
             int index = int.Parse(dgvData.Rows[dgvData.CurrentCell.RowIndex].Cells[0].Value.ToString());
             DialogResult myDialogResult = MessageBox.Show("Bạn thực sự muốn xoá Action này?", "Nhắc nhở",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (myDialogResult == DialogResult.Yes)
             {
                 if (myAction.Delete(index) == -1)
@@ -94,25 +94,10 @@ namespace Main
             myActionEdit.ActionID = int.Parse(dgvData.Rows[index].Cells[0].Value.ToString());
             myActionEdit.ActionName = dgvData.Rows[index].Cells[1].Value.ToString();
             myActionEdit.Description = dgvData.Rows[index].Cells[3].Value.ToString();
-            Action_Add formAdd = new Action_Add(myActionEdit,RolesID);
-            formAdd.ShowDialog();
+            Action_Add formAdd = new Action_Add(myActionEdit, RolesID);
+            if (formAdd.ShowDialog() == DialogResult.OK)
+                Loadd();
         }
-
-        private void ActionManagement_Click(object sender, EventArgs e)
-        {
-            Loadd();
-        }
-
-        private void ActionManagement_Enter(object sender, EventArgs e)
-        {
-            Loadd();
-        }
-
-        private void dgvData_Enter(object sender, EventArgs e)
-        {
-            Loadd();
-        }
-
         private void btnScan_Click(object sender, EventArgs e)
         {
             DialogResult myDialogResult = MessageBox.Show("Bạn có thực sự muốn quét lại chức năng của hệ thống?", "Nguy hiểm",
@@ -120,26 +105,59 @@ namespace Main
                 MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (myDialogResult == DialogResult.Yes)
             {
-                myRolesActionBus.DeleteAll();
-                Type formType = typeof(Form);
-                Type ucType = typeof(UserControl);
-                foreach (Type item in Assembly.GetExecutingAssembly().GetTypes())
+                if (myRolesActionBus.DeleteAll() != 0)
                 {
-                    if (formType.IsAssignableFrom(item) || ucType.IsAssignableFrom(item))
+                    Type formType = typeof(Form);
+                    Type ucType = typeof(UserControl);
+                    foreach (Type item in Assembly.GetExecutingAssembly().GetTypes())
                     {
+                        if (formType.IsAssignableFrom(item) || ucType.IsAssignableFrom(item))
                         {
-                            Action myActionAdd = new Action();
-                            myActionAdd.ActionID = 0;
-                            myActionAdd.ActionName = item.Name;
-                            myActionAdd.Description = item.Name;
-                            myActionAdd.IsDelete = 0;
-                            myAction.Add(myActionAdd);
+                            //if (!item.Name.Contains("_"))
+                            {
+                                Action myActionAdd = new Action();
+                                myActionAdd.ActionID = 0;
+                                myActionAdd.ActionName = item.Name;
+                                myActionAdd.Description = item.Name;
+                                myActionAdd.IsDelete = 0;
+                                myAction.Add(myActionAdd);
+                            }
                         }
                     }
                 }
             }
-            
         }
 
+        private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvData.RowCount < 1)
+            {
+                MessageBox.Show("Chọn 1 trong số các Action để thực hiện sửa!");
+                return;
+            }
+            int index = dgvData.CurrentCell.RowIndex;
+            Action myActionEdit = new Action();
+            myActionEdit.ActionID = int.Parse(dgvData.Rows[index].Cells[0].Value.ToString());
+            myActionEdit.ActionName = dgvData.Rows[index].Cells[1].Value.ToString();
+            myActionEdit.Description = dgvData.Rows[index].Cells[3].Value.ToString();
+            Action_Add formAdd = new Action_Add(myActionEdit, RolesID);
+            if (formAdd.ShowDialog() == DialogResult.OK)
+                Loadd();
+        }
+
+        private void dgvData_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                int index = dgvData.CurrentCell.RowIndex;
+                Action myActionEdit = new Action();
+                myActionEdit.ActionID = int.Parse(dgvData.Rows[index].Cells[0].Value.ToString());
+                myActionEdit.ActionName = dgvData.Rows[index].Cells[1].Value.ToString();
+                myActionEdit.Description = dgvData.Rows[index].Cells[3].Value.ToString();
+                Action_Add formAdd = new Action_Add(myActionEdit, RolesID);
+                if (formAdd.ShowDialog() == DialogResult.OK)
+                    Loadd();
+            }
+        }
     }
 }
