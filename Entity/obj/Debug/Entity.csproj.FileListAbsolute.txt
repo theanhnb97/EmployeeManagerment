@@ -9,3 +9,9 @@ C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\obj\Debug\Entity.dll
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
+E:\newclone2\EmployeeManagerment\Entity\bin\Debug\Entity.dll
+E:\newclone2\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
+E:\newclone2\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+E:\newclone2\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+E:\newclone2\EmployeeManagerment\Entity\obj\Debug\Entity.dll
+E:\newclone2\EmployeeManagerment\Entity\obj\Debug\Entity.pdb

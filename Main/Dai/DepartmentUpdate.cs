@@ -79,18 +79,23 @@ namespace Main.Department
                 department.Status = cbStatus.Checked ? 1 : 0;
                 department.IsDelete = rdbIsDelete.Checked ? 1 : 0;
                 department.Description = txtDescription.Text;
-               
-                int check = departmentBus.Update(department);
-                if (check == -1)
+                if (txtDepartmentName.Text != "" && txtDescription.Text != "")
                 {
-                    MessageBox.Show("You have successfully updated the refresh to change");
-                    
+                    int check = departmentBus.Update(department);
+                    if (check == -1)
+                    {
+                        MessageBox.Show("You have successfully updated the refresh to change");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Update No Suscess");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Update No Suscess");
+                    MessageBox.Show("You can enter data");
                 }
-
             }
             catch (Exception ex)
             {

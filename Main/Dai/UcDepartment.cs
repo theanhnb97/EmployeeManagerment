@@ -66,7 +66,7 @@ namespace Main.Dai
                 dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword);
                 txtDepartmentName.Text = "";
             }
-            cbStatus.Checked = false; 
+            
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -207,5 +207,20 @@ namespace Main.Dai
 
         }
 
+        private void cbPage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DepartmentBUS departmentBus = new DepartmentBUS();
+            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
+            int pageSize = (departmentBus.GetAll().Rows.Count) / item + 1;
+            dgvDepartment.DataSource = departmentBus.GetAllPage(1, item, 20);
+            lblPage.Text = "1/" + pageSize;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DepartmentBUS departmentBus = new DepartmentBUS();
+            departmentBus.GetAll();
+        }
     }
 }
