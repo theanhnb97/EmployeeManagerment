@@ -47,6 +47,8 @@
             this.lbDueDate = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNameFilter = new System.Windows.Forms.TextBox();
+            this.lblCurent = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.grbTaskList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTask)).BeginInit();
@@ -133,6 +135,8 @@
             // grbTaskList
             // 
             this.grbTaskList.BackColor = System.Drawing.Color.White;
+            this.grbTaskList.Controls.Add(this.label2);
+            this.grbTaskList.Controls.Add(this.lblCurent);
             this.grbTaskList.Controls.Add(this.btnEdit);
             this.grbTaskList.Controls.Add(this.btnAdd);
             this.grbTaskList.Controls.Add(this.lblPage);
@@ -152,11 +156,11 @@
             // 
             this.lblPage.AutoSize = true;
             this.lblPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPage.Location = new System.Drawing.Point(736, 365);
+            this.lblPage.Location = new System.Drawing.Point(751, 366);
             this.lblPage.Name = "lblPage";
-            this.lblPage.Size = new System.Drawing.Size(37, 15);
+            this.lblPage.Size = new System.Drawing.Size(21, 15);
             this.lblPage.TabIndex = 5;
-            this.lblPage.Text = "1 / 10";
+            this.lblPage.Text = "10";
             // 
             // dgvTask
             // 
@@ -186,16 +190,18 @@
             this.btnNext.TabIndex = 3;
             this.btnNext.Text = ">";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPrevious
             // 
             this.btnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrevious.Location = new System.Drawing.Point(699, 362);
+            this.btnPrevious.Location = new System.Drawing.Point(685, 363);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(27, 23);
             this.btnPrevious.TabIndex = 4;
             this.btnPrevious.Text = "<";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // grbFiler
             // 
@@ -272,6 +278,26 @@
             this.txtNameFilter.Size = new System.Drawing.Size(204, 20);
             this.txtNameFilter.TabIndex = 1;
             // 
+            // lblCurent
+            // 
+            this.lblCurent.AutoSize = true;
+            this.lblCurent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurent.Location = new System.Drawing.Point(724, 366);
+            this.lblCurent.Name = "lblCurent";
+            this.lblCurent.Size = new System.Drawing.Size(14, 15);
+            this.lblCurent.TabIndex = 15;
+            this.lblCurent.Text = "1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(740, 366);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(10, 15);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "/";
+            // 
             // UcTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -314,5 +340,7 @@
         private System.Windows.Forms.TextBox txtNameFilter;
         private System.Windows.Forms.Label lbDepartment;
         private System.Windows.Forms.ComboBox cmbDepartment;
+        private System.Windows.Forms.Label lblCurent;
+        private System.Windows.Forms.Label label2;
     }
 }
