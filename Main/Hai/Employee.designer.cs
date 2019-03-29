@@ -59,20 +59,20 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(82, 102);
+            this.label7.Location = new System.Drawing.Point(71, 102);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.Size = new System.Drawing.Size(73, 13);
             this.label7.TabIndex = 56;
-            this.label7.Text = "User name";
+            this.label7.Text = "Tên tài khoản";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(82, 64);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
+            this.label8.Size = new System.Drawing.Size(39, 13);
             this.label8.TabIndex = 57;
-            this.label8.Text = "Full name";
+            this.label8.Text = "Họ tên";
             // 
             // txtUserName
             // 
@@ -93,9 +93,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(82, 280);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 52;
-            this.label2.Text = "Address";
+            this.label2.Text = "Địa chỉ";
             // 
             // label6
             // 
@@ -137,7 +137,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 13;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -148,7 +148,7 @@
             this.btnAddAndCreate.Name = "btnAddAndCreate";
             this.btnAddAndCreate.Size = new System.Drawing.Size(112, 23);
             this.btnAddAndCreate.TabIndex = 12;
-            this.btnAddAndCreate.Text = "Save and refresh";
+            this.btnAddAndCreate.Text = "Lưu và tạo mới";
             this.btnAddAndCreate.UseVisualStyleBackColor = true;
             // 
             // btnAdd
@@ -158,7 +158,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 11;
-            this.btnAdd.Text = "Save";
+            this.btnAdd.Text = "Lưu";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -167,9 +167,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(82, 173);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 42;
-            this.label4.Text = "Group role";
+            this.label4.Text = "Quyền";
             this.label4.Visible = false;
             // 
             // label3
@@ -177,18 +177,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(82, 210);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 43;
-            this.label3.Text = "Phone";
+            this.label3.Text = "SĐT";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(82, 135);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 44;
-            this.label1.Text = "Password";
+            this.label1.Text = "Mật khẩu";
             // 
             // txtPhone
             // 
@@ -209,9 +209,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(82, 320);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.Size = new System.Drawing.Size(62, 13);
             this.label5.TabIndex = 60;
-            this.label5.Text = "Identity";
+            this.label5.Text = "Số CMTND";
             // 
             // txtIdentity
             // 
@@ -225,28 +225,27 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(82, 357);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.Size = new System.Drawing.Size(55, 13);
             this.label9.TabIndex = 52;
-            this.label9.Text = "Status";
+            this.label9.Text = "Trạng thái";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(82, 397);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.Size = new System.Drawing.Size(59, 13);
             this.label10.TabIndex = 60;
-            this.label10.Text = "Department";
-            this.label10.Visible = false;
+            this.label10.Text = "Phòng ban";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(82, 437);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(33, 13);
+            this.label11.Size = new System.Drawing.Size(47, 13);
             this.label11.TabIndex = 60;
-            this.label11.Text = "Rank";
+            this.label11.Text = "Chức vụ";
             // 
             // cbbRank
             // 
@@ -265,7 +264,6 @@
             this.cbbDepartment.Name = "cbbDepartment";
             this.cbbDepartment.Size = new System.Drawing.Size(215, 21);
             this.cbbDepartment.TabIndex = 9;
-            this.cbbDepartment.Visible = false;
             // 
             // cbbStatus
             // 
