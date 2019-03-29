@@ -99,7 +99,7 @@ namespace DataAccessLayer
         /// <summary>/// Hiển thị danh sách phòng ban.
         /// </summary>
         /// <param name=”p_isDelete”>Mã phòng ban</param>
-        /// <param name=”cursorParam”>Bảng tạm danh sách phòng ban</param>
+        /// <param name=”cursorParam”>Cursor</param>
         /// Created by (BuiCongDai) – (25/3/2019)
         ///Modified by (BuiCongDai) – (28/3/2019 , 1)
         /// <remarks></remarks>
@@ -143,7 +143,7 @@ namespace DataAccessLayer
         /// <summary>/// Hiển thị danh sách phòng ban theo mã phòng ban.
         /// </summary>
         /// <param name=”p_departmentID”>Mã phòng ban</param>
-        /// <param name=”cursorParam”>Bảng tạm danh sách phòng ban</param>
+        /// <param name=”cursorParam”>Cursor</param>
         /// Created by (BuiCongDai) – (25/3/2019)
         /// <remarks></remarks>
         /// Created by (BuiCongDai) – (25/3/2019)
@@ -193,13 +193,13 @@ namespace DataAccessLayer
         /// <summary>/// Sửa phòng ban.
         /// </summary>
         /// <param name=”p_departmentID”>Mã phòng ban</param>
-        /// <param name=”p_departmentName”>Bảng tạm danh sách phòng ban</param>
-        /// <param name=”p_status"”>Bảng tạm danh sách phòng ban</param>
-        /// <param name=”p_isDelete”>Bảng tạm danh sách phòng ban</param>
-        /// <param name=”p_description”>Bảng tạm danh sách phòng ban</param>
+        /// <param name=”p_departmentName”>Tên phòng ban</param>
+        /// <param name=”p_status"”>Status</param>
+        /// <param name=”p_isDelete”>isDelete</param>
+        /// <param name=”p_description”>Cursor</param>
         /// Created by (BuiCongDai) – (25/3/2019)
         /// <remarks></remarks>
-        
+
         public int Update(Department department)
         {
             try
@@ -235,13 +235,13 @@ namespace DataAccessLayer
         /// <summary>/// Tìm kiếm phòng ban.
         /// </summary>
         /// <param name=”p_departmentID”>Mã phòng ban</param>
-        /// <param name=”p_departmentName”>Bảng tạm danh sách phòng ban</param>
-        /// <param name=”p_status"”>Bảng tạm danh sách phòng ban</param>
-        /// <param name=”p_isDelete”>Bảng tạm danh sách phòng ban</param>
-        /// <param name=”p_description”>Bảng tạm danh sách phòng ban</param>
+        /// <param name=”p_departmentName”>Tên phòng ban</param>
+        /// <param name=”p_status"”>Status</param>
+        /// <param name=”p_isDelete”>isDelete</param>
+        /// <param name=”p_description”>Mô tả phòng ban</param>
         /// Created by (BuiCongDai) – (25/3/2019)
         /// <remarks></remarks>
-       
+
         public DataTable SearchDepartment(string keyword)
         {
             try
@@ -275,7 +275,7 @@ namespace DataAccessLayer
             }
 
         }
-        /// <summary>///xóa phòng ban danh sách.
+        /// <summary>///Xóa phòng ban danh sách.
         /// </summary>
         /// <param name=”p_departmentID”>Mã phòng ban</param>
         /// <param name=”p_isDelete”>isDelete</param>
@@ -318,7 +318,7 @@ namespace DataAccessLayer
         /// <param name=”recodperpage”>Số dòng trên 1 trang</param>
         /// <param name=”Pagesize"”>Trang tối đa</param>
         /// <param name=”p_isDelete”>isDelete</param>
-        /// <param name=”cursorParam”>Bảng tạm danh sách phòng ban</param>
+        /// <param name=”cursorParam”>Cursor</param>
         /// Created by (BuiCongDai) – (25/3/2019)
         /// <remarks></remarks>
         public DataTable GetAllPage(int currPage, int recodperpage, int Pagesize)
