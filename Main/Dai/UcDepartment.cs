@@ -70,13 +70,14 @@ namespace Main.Dai
         {
             string keyword = txtDepartmentName.Text;
             DepartmentBUS departmentBus = new DepartmentBUS();
+            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));// get item page combobox
             if (txtDepartmentName.Text == "")
             {
                 MessageBox.Show("You have not entered");
             }
             else
             {
-                dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword);
+                dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword,cusPage,item,20);
                 txtDepartmentName.Text = "";
             }
             

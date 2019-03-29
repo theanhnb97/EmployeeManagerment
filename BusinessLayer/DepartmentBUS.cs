@@ -43,9 +43,9 @@ namespace BusinessLayer
             return departmentDal.Update(department);
         }
         //Tìm kiếm phòng ban
-        public DataTable SearchDepartment(string keyword)
+        public DataTable SearchDepartment(string keyword, int currPage, int recodperpage, int Pagesize)
         {
-            return departmentDal.SearchDepartment(keyword);
+            return departmentDal.SearchDepartment(keyword,currPage,recodperpage,Pagesize);
         }
         //Xóa phòng ban
         public int DeleteNoRemove(int id)

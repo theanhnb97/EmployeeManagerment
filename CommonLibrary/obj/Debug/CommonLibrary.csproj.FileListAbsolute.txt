@@ -31,3 +31,4 @@ E:\News\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCom
 E:\News\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
 E:\News\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
 E:\News\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb
+E:\News\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache

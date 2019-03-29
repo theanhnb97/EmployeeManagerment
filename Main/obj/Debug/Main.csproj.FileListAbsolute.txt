@@ -174,3 +174,4 @@ E:\News\EmployeeManagerment\Main\obj\Debug\Main.csproj.CoreCompileInputs.cache
 E:\News\EmployeeManagerment\Main\obj\Debug\Main.csproj.CopyComplete
 E:\News\EmployeeManagerment\Main\obj\Debug\Main.exe
 E:\News\EmployeeManagerment\Main\obj\Debug\Main.pdb
+E:\News\EmployeeManagerment\Main\bin\Debug\Oracle.ManagedDataAccess.dll

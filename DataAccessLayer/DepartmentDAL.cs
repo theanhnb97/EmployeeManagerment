@@ -243,7 +243,7 @@ namespace DataAccessLayer
         /// Created by (BuiCongDai) – (25/3/2019)
         /// <remarks></remarks>
 
-        public DataTable SearchDepartment(string keyword)
+        public DataTable SearchDepartment(string keyword,int currPage,int recodperpage,int Pagesize)
         {
             try
             {
@@ -253,16 +253,19 @@ namespace DataAccessLayer
                     OracleDataAdapter da = new OracleDataAdapter();
                     OracleCommand cmd = new OracleCommand();
 
-                    cmd = new OracleCommand("Department_Search", connection);
+                    cmd = new OracleCommand("Department_Page", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_departmentName", keyword);
+
+                    cmd.Parameters.Add("currPage", currPage);
+                    cmd.Parameters.Add("recodperpage", recodperpage);
+                    cmd.Parameters.Add("Pagesize", Pagesize);
+                    
                     cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
                     da.SelectCommand = cmd;
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     return dt;
-
 
                 }
 
