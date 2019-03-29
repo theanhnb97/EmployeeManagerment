@@ -1,6 +1,0 @@
-C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\bin\Release\Entity.dll
-C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\bin\Release\Entity.pdb
-C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Release\Entity.csprojAssemblyReference.cache
-C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Release\Entity.csproj.CoreCompileInputs.cache
-C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Release\Entity.dll
-C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Release\Entity.pdb

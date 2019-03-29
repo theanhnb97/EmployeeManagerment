@@ -1,6 +1,0 @@
-C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll
-C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.pdb
-C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
-C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
-C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
-C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb
