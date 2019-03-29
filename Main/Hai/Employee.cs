@@ -20,6 +20,7 @@ namespace Main
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         private readonly DepartmentBUS departmentBus = new DepartmentBUS();
         private readonly EmployeeBus employeeBus = new EmployeeBus();
+        private readonly RolesBUL rolesBul = new RolesBUL();
 
         protected int RolesID { get; set; }
         protected override void OnLoad(EventArgs e)
@@ -60,8 +61,7 @@ namespace Main
                     employee.Email = txtEmail.Text;
                     employee.Identity = txtIdentity.Text;
                     employee.Password = txtPassword.Text;
-                    // tạm fix =1 vì chưa merge role functions
-                    employee.RolesId = 1;
+                    employee.RolesId = Convert.ToInt64(cbbRole.SelectedValue);
                     employee.Phone = txtPhone.Text;
                     employee.UserName = txtUserName.Text;
                     employee.IsDelete = 0;
@@ -115,6 +115,9 @@ namespace Main
             cbbDepartment.DataSource = departmentBus.GetDepartmentByStatusAndIsDelete(1, 0);
             cbbDepartment.DisplayMember = "DEPARTMENTNAME";
             cbbDepartment.ValueMember = "DEPARTMENTID";
+            cbbRole.DataSource = rolesBul.Get();
+            cbbRole.DisplayMember = "ROLESNAME";
+            cbbRole.ValueMember = "ROLESID";
 
             // for update employee
             if (Employees.IsCreated == false && Employees.employeeForUpdate.EmployeeId != 0)
@@ -124,18 +127,18 @@ namespace Main
                 txtEmail.Text = Employees.employeeForUpdate.Email;
                 txtIdentity.Text = Employees.employeeForUpdate.Identity;
                 txtPassword.Text = Employees.employeeForUpdate.Password;
-                //txtRole.Text = Employees.employeeForUpdate.RolesId.ToString();
                 txtPhone.Text = Employees.employeeForUpdate.Phone;
                 txtUserName.Text = Employees.employeeForUpdate.UserName;
                 cbbStatus.SelectedIndex = cbbStatus.FindString(Enumerator.GetDescription((Enumeration.Status)Employees.employeeForUpdate.Status));
                 cbbRank.SelectedIndex = cbbRank.FindString(Enumerator.GetDescription((Enumeration.Rank)Employees.employeeForUpdate.Rank));
                 cbbDepartment.SelectedValue = Employees.employeeForUpdate.DepartmentId;
+                cbbRole.SelectedValue = Employees.employeeForUpdate.RolesId;
             }
         }
 
         public bool CheckValidForm()
         {
-            if (txtFullName.Text.Trim() == "" || txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "")
+            if (txtFullName.Text.Trim() == "" || txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "" ||txtPassword.Text.Trim()=="" || txtEmail)
             {
                 return false;
             }
