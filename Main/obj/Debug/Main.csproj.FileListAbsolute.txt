@@ -38,3 +38,4 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csproj.CoreCompileInp
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csproj.CopyComplete
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.exe
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\CommonLibrary.dll.config

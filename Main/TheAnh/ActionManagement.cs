@@ -51,7 +51,7 @@ namespace Main
 
         public void Loadd()
         {
-            dgvData.DataSource = myAction.Get();
+            dgvData.DataSource = myAction.GetList();
             dgvData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 

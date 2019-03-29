@@ -40,6 +40,7 @@ namespace Main
         RolesBUL myRoles = new RolesBUL();
         ActionBUS myAction = new ActionBUS();
         private TableLayoutPanel tlpnData;
+
         public UcRolesAction(int id)
         {
             this.RolesID = id;
@@ -87,7 +88,6 @@ namespace Main
         }
         void LoadDataTable()
         {
-
             // Roles List
             // tlpnData.Controls.Add(Getlabel("."), 0, 0);
             int start = 0;

@@ -4,3 +4,6 @@ D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csp
 D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
 D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
 D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll.config
+D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
