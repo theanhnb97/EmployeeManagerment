@@ -138,8 +138,22 @@ namespace Main
                     }
                 }
             }
-            
         }
 
+        private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvData.RowCount < 1)
+            {
+                MessageBox.Show("Chọn 1 trong số các Action để thực hiện sửa!");
+                return;
+            }
+            int index = dgvData.CurrentCell.RowIndex;
+            Action myActionEdit = new Action();
+            myActionEdit.ActionID = int.Parse(dgvData.Rows[index].Cells[0].Value.ToString());
+            myActionEdit.ActionName = dgvData.Rows[index].Cells[1].Value.ToString();
+            myActionEdit.Description = dgvData.Rows[index].Cells[3].Value.ToString();
+            Action_Add formAdd = new Action_Add(myActionEdit, RolesID);
+            formAdd.ShowDialog();
+        }
     }
 }

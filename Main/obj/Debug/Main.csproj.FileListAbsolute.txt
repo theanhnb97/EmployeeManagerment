@@ -85,3 +85,4 @@ C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\bin\Debug\log4net.xml
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.csproj.CopyComplete
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.exe
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\App.config

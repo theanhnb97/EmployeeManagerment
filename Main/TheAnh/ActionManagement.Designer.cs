@@ -73,6 +73,7 @@
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvData.Size = new System.Drawing.Size(809, 497);
             this.dgvData.TabIndex = 0;
+            this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
             this.dgvData.Enter += new System.EventHandler(this.dgvData_Enter);
             // 
             // ACTIONID
