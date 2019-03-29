@@ -46,6 +46,7 @@
     <Compile Include="ActionBUS.cs" />
     <Compile Include="EmployeeBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalaryBUS.cs" />
     <Compile Include="RolesBUL.cs" />
     <Compile Include="TaskBus.cs" />
   </ItemGroup>

@@ -23,8 +23,7 @@ namespace DataAccessLayer
         /// <param name=”isDelete”>isDelete</param>
 
         /// <param name=”description”>Mô tả phòng ban</param>
-        /// Created by (BuiCongDai) – (25/3/2019)
-        /// <remarks></remarks>
+        ///  <remarks></remarks>
         public int Add(Department department)
         {
             try
@@ -140,6 +139,7 @@ namespace DataAccessLayer
 
             }
         }
+
         /// <summary>/// Hiển thị danh sách phòng ban theo mã phòng ban.
         /// </summary>
         /// <param name=”p_departmentID”>Mã phòng ban</param>
@@ -149,6 +149,41 @@ namespace DataAccessLayer
         /// Created by (BuiCongDai) – (25/3/2019)
         ///Modified by (BuiCongDai) – (28/3/2019 , 1)
         /// <remarks></remarks>
+
+
+        public DataTable GetDepartmentByStatusAndIsDelete(int status, int isDeleted)
+        {
+            try
+            {
+                using (OracleConnection connection = Connection.GetConnection)
+                {
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    OracleCommand cmd = new OracleCommand();
+
+                    cmd = new OracleCommand("Department_GetByStatusAndIsDelete", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("isDeletePara", isDeleted);
+                    cmd.Parameters.Add("statusPara", status);
+                    cmd.Parameters.Add("CURSOR_", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    da.SelectCommand = cmd;
+                    DataTable data = new DataTable();
+                    da.Fill(data);
+                    return data;
+                }
+
+            }
+            catch (Exception e)
+            {
+                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+                return null;
+
+            }
+        }
+
+
+
         public DataTable GetById(int id)
         {
             try
@@ -365,6 +400,26 @@ namespace DataAccessLayer
         DataTable IEntities<Department>.Search(string keyword)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Department> TranferDataTableToDepartmentList(DataTable dataTable)
+        {
+            List<Department> employees = new List<Department>();
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                try
+                {
+                    Department department = new Department();
+                    department.DepartmentName = dr["DEPARTMENTNAME"].ToString();
+                    employees.Add(department);
+                }
+                catch (Exception e)
+                {
+                    //logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    //logger.Debug(e.Message);
+                }
+            }
+            return employees;
         }
     }
 }

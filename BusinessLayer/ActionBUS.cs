@@ -15,6 +15,11 @@ namespace BusinessLayer
         {
             return myAtionDal.Get();
         }
+        public List<Entity.Action> GetList()
+        {
+            return myAtionDal.GetList();
+        }
+
 
         public int Add(Entity.Action obj)
         {
@@ -29,5 +34,6 @@ namespace BusinessLayer
         {
             return myAtionDal.Update(obj);
         }
+
     }
 }
