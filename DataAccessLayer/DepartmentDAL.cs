@@ -11,8 +11,20 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace DataAccessLayer
 {
+    
     public class DepartmentDAL : Connection, IEntities<Department>
     {
+        /// <summary>/// Hàm thêm mới phòng ban.
+        /// </summary>
+        /// <param name=”departmentName”>Tên phòng ban</param>
+
+        /// <param name=”status”>Status</param>
+
+        /// <param name=”isDelete”>isDelete</param>
+
+        /// <param name=”description”>Mô tae phòng ban</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         public int Add(Department department)
         {
             try
@@ -44,7 +56,11 @@ namespace DataAccessLayer
                 return 0;
             }
         }
-
+        /// <summary>/// Xóa phòng ban.
+        /// </summary>
+        /// <param name=”p_departmentID”>Mã phòng ban</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         public int Delete(int id)
         {
             try
@@ -75,12 +91,17 @@ namespace DataAccessLayer
             }
 
         }
-
+        
         public List<Department> Get()
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>/// Hiển thị danh sách phòng ban.
+        /// </summary>
+        /// <param name=”p_isDelete”>Mã phòng ban</param>
+        /// <param name=”cursorParam”>Bảng tạm danh sách phòng ban</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         public DataTable GetAll()
         {
             try
@@ -88,20 +109,25 @@ namespace DataAccessLayer
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
                 using (OracleConnection connection = Connection.GetConnection)
                 {
-                    OracleDataAdapter da = new OracleDataAdapter();
-                    OracleCommand cmd = new OracleCommand();
+                    OracleParameter[] parameters=new OracleParameter[]
+                    {
+                        new OracleParameter("p_isDelete",1), 
+                        new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output), 
+                    };
+                    return sqlHelp.ExcuteQuery("Department_GetAllDeltete", CommandType.StoredProcedure, connection,
+                        parameters);
+                    //OracleDataAdapter da = new OracleDataAdapter();
+                    //OracleCommand cmd = new OracleCommand();
 
-                    cmd = new OracleCommand("Department_GetAllDeltete", connection);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_isDelete", 1);
-                    cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                    //cmd = new OracleCommand("Department_GetAllDeltete", connection);
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.Add("p_isDelete", 1);
+                    //cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-                    da.SelectCommand = cmd;
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    return dt;
-
-
+                    //da.SelectCommand = cmd;
+                    //DataTable dt = new DataTable();
+                    //da.Fill(dt);
+                    //return dt;
                 }
 
             }
@@ -113,7 +139,14 @@ namespace DataAccessLayer
 
             }
         }
-
+        /// <summary>/// Hiển thị danh sách phòng ban theo mã phòng ban.
+        /// </summary>
+        /// <param name=”p_departmentID”>Mã phòng ban</param>
+        /// <param name=”cursorParam”>Bảng tạm danh sách phòng ban</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        ///Modified by (BuiCongDai) – (28/3/2019 , 1)
         public DataTable GetById(int id)
         {
             try
@@ -121,20 +154,24 @@ namespace DataAccessLayer
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
                 using (OracleConnection connection = Connection.GetConnection)
                 {
-                    OracleDataAdapter da = new OracleDataAdapter();
-                    OracleCommand cmd = new OracleCommand();
+                    OracleParameter[] parameters=new OracleParameter[]
+                    {
+                        new OracleParameter("p_departmentID",id),
+                        new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output), 
+                    };
+                    return sqlHelp.ExcuteQuery("Department_GetById", CommandType.StoredProcedure, connection, parameters);
+                    //OracleDataAdapter da = new OracleDataAdapter();
+                    //OracleCommand cmd = new OracleCommand();
 
-                    cmd = new OracleCommand("Department_GetById", connection);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_departmentID", id);
-                    cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                    //cmd = new OracleCommand("Department_GetById", connection);
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.Add("p_departmentID", id);
+                    //cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-                    da.SelectCommand = cmd;
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    return dt;
-
-
+                    //da.SelectCommand = cmd;
+                    //DataTable dt = new DataTable();
+                    //da.Fill(dt);
+                    //return dt;
                 }
 
             }
@@ -146,12 +183,21 @@ namespace DataAccessLayer
 
             }
         }
-
+       
         public List<Department> Search(string keyword)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>/// Sửa phòng ban.
+        /// </summary>
+        /// <param name=”p_departmentID”>Mã phòng ban</param>
+        /// <param name=”p_departmentName”>Bảng tạm danh sách phòng ban</param>
+        /// <param name=”p_status"”>Bảng tạm danh sách phòng ban</param>
+        /// <param name=”p_isDelete”>Bảng tạm danh sách phòng ban</param>
+        /// <param name=”p_description”>Bảng tạm danh sách phòng ban</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
+        
         public int Update(Department department)
         {
             try
@@ -184,6 +230,16 @@ namespace DataAccessLayer
                 return 0;
             }
         }
+        /// <summary>/// Tìm kiếm phòng ban.
+        /// </summary>
+        /// <param name=”p_departmentID”>Mã phòng ban</param>
+        /// <param name=”p_departmentName”>Bảng tạm danh sách phòng ban</param>
+        /// <param name=”p_status"”>Bảng tạm danh sách phòng ban</param>
+        /// <param name=”p_isDelete”>Bảng tạm danh sách phòng ban</param>
+        /// <param name=”p_description”>Bảng tạm danh sách phòng ban</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
+       
         public DataTable SearchDepartment(string keyword)
         {
             try
@@ -217,6 +273,13 @@ namespace DataAccessLayer
             }
 
         }
+        /// <summary>///xóa phòng ban danh sách.
+        /// </summary>
+        /// <param name=”p_departmentID”>Mã phòng ban</param>
+        /// <param name=”p_isDelete”>isDelete</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
+
         public int DeleteNoRemove(int id)
         {
             try
@@ -247,6 +310,15 @@ namespace DataAccessLayer
                 return 0;
             }
         }
+        /// <summary>/// Tìm kiếm phòng ban.
+        /// </summary>
+        /// <param name=”currPage”>Thứ tự trang</param>
+        /// <param name=”recodperpage”>Số dòng trên 1 trang</param>
+        /// <param name=”Pagesize"”>Trang tối đa</param>
+        /// <param name=”p_isDelete”>isDelete</param>
+        /// <param name=”cursorParam”>Bảng tạm danh sách phòng ban</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         public DataTable GetAllPage(int currPage, int recodperpage, int Pagesize)
         {
             try
@@ -282,6 +354,7 @@ namespace DataAccessLayer
 
             }
         }
+        // Created by (BuiCongDai) – (25/3/2019)
         DataTable IEntities<Department>.Get()
         {
             throw new NotImplementedException();
