@@ -147,7 +147,7 @@ namespace Main
 
         public bool CheckValidForm()
         {
-            if (txtFullName.Text.Trim() == "" || txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "" || txtPassword.Text.Trim() == "" || txtEmail.Text.Trim() == "")
+            if (txtFullName.Text.Trim() == "" || txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "" || txtPassword.Text.Trim() == "" || txtEmail.Text.Trim() == "" || txtPhone.Text.Trim()=="" || txtAddress.Text.Trim()=="")
             {
                 return false;
             }
