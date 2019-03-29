@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Schema;
@@ -54,50 +55,58 @@ namespace Main
                 //check valid form
                 if (CheckValidForm())
                 {
-                    Entity.Employee employee = new Entity.Employee();
-                    employee.FullName = txtFullName.Text;
-                    employee.Address = txtAddress.Text;
-                    employee.DepartmentId = Convert.ToInt64(cbbDepartment.SelectedValue);
-                    employee.Email = txtEmail.Text;
-                    employee.Identity = txtIdentity.Text;
-                    employee.Password = txtPassword.Text;
-                    employee.RolesId = Convert.ToInt64(cbbRole.SelectedValue);
-                    employee.Phone = txtPhone.Text;
-                    employee.UserName = txtUserName.Text;
-                    employee.IsDelete = 0;
-                    employee.Status = Convert.ToInt16(cbbStatus.SelectedValue);
-                    employee.Rank = Convert.ToInt16(cbbRank.SelectedValue);
-
-                    //create employee
-                    if (Employees.IsCreated)
+                    if (CheckValidEmail(txtEmail.Text))
                     {
-                        if (employeeBus.Insert(employee) == -1)
+                        Entity.Employee employee = new Entity.Employee();
+                        employee.FullName = txtFullName.Text;
+                        employee.Address = txtAddress.Text;
+                        employee.DepartmentId = Convert.ToInt64(cbbDepartment.SelectedValue);
+                        employee.Email = txtEmail.Text;
+                        employee.Identity = txtIdentity.Text;
+                        employee.Password = txtPassword.Text;
+                        employee.RolesId = Convert.ToInt64(cbbRole.SelectedValue);
+                        employee.Phone = txtPhone.Text;
+                        employee.UserName = txtUserName.Text;
+                        employee.IsDelete = 0;
+                        employee.Status = Convert.ToInt16(cbbStatus.SelectedValue);
+                        employee.Rank = Convert.ToInt16(cbbRank.SelectedValue);
+
+                        //create employee
+                        if (Employees.IsCreated)
                         {
-                            MessageBox.Show("Add employee successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (employeeBus.Insert(employee) == -1)
+                            {
+                                MessageBox.Show("Thêm nhân viên thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Lỗi.Thêm nhân viên không thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
+
+                        // update employee
                         else
                         {
-                            MessageBox.Show("Error. Add employee unsuccessfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            employee.EmployeeId = Employees.employeeForUpdate.EmployeeId;
+                            if (employeeBus.Update(employee) == -1)
+                            {
+                                MessageBox.Show("Cập nhật thông tin nhân viên thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Lỗi. Cập nhật thông tin nhân viên không thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
-
-                    // update employee
                     else
                     {
-                        employee.EmployeeId = Employees.employeeForUpdate.EmployeeId;
-                        if (employeeBus.Update(employee) == -1)
-                        {
-                            MessageBox.Show("Update employee successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error. Update employee unsuccessfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("Định dạng email không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
+
                 }
                 else
                 {
-                    MessageBox.Show("Error. All field is required!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Các trường thông tin với (*) là bắt buộc nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
 
             }
@@ -138,10 +147,26 @@ namespace Main
 
         public bool CheckValidForm()
         {
-            if (txtFullName.Text.Trim() == "" || txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "" ||txtPassword.Text.Trim()=="" || txtEmail.Text.Trim()=="")
+            if (txtFullName.Text.Trim() == "" || txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "" || txtPassword.Text.Trim() == "" || txtEmail.Text.Trim() == "")
             {
                 return false;
             }
+            return true;
+        }
+
+        public bool CheckValidEmail(string email)
+        {
+            var regex = new Regex(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+            return regex.IsMatch(email);
+        }
+
+        public bool CheckValidIdentity(string identity)
+        {
+            return true;
+        }
+
+        public bool CheckValidUserName(string userName)
+        {
             return true;
         }
 
@@ -153,6 +178,31 @@ namespace Main
         private void label12_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtIdentity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            //    (e.KeyChar != '.'))
+            // cho phép nhập .
+            // only allow one decimal point
+            //if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

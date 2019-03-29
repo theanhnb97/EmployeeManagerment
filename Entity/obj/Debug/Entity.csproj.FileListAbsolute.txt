@@ -9,3 +9,9 @@ C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\obj\Debug\Entity.dll
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.pdb
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll.config
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CopyComplete

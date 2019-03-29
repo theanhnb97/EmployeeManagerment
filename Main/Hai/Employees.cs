@@ -18,8 +18,6 @@ namespace Main
 
         private readonly DepartmentBUS departmentBus = new DepartmentBUS();
 
-        private readonly EmployeeMapper mapper = new EmployeeMapper();
-
         public static Entity.Employee employeeForUpdate = new Entity.Employee();
 
         public static bool IsCreated;

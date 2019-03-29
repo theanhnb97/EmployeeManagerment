@@ -86,3 +86,4 @@ C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.csproj.Cop
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.exe
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\App.config
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\bin\Debug\App.config
