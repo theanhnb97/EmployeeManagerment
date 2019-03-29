@@ -213,15 +213,27 @@ namespace Main.Dai
             }
 
         }
-
-        
+        /// <summary>/// cbPage_SelectedValueChanged
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
+        private void cbPage_SelectedValueChanged(object sender, EventArgs e)
+        {
+            DepartmentBUS departmentBus = new DepartmentBUS();
+            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));//get Item combobox Page
+            int pageSize = (departmentBus.GetAll().Rows.Count) / item + 1;//get Pagesize
+            dgvDepartment.DataSource = departmentBus.GetAllPage(1, item, 20);
+            lblPage.Text = "1/" + pageSize;
+        }
         /// <summary>/// Format form Depaert ment cells Status,isDelete
         /// </summary>
         /// <param name=”sender”>sender</param>
         /// <param name=”e”>e</param>
         /// Created by (BuiCongDai) – (25/3/2019)
         /// <remarks></remarks>
-        private void dgvDepartment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void dgvDepartment_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == 2)
             {
@@ -258,10 +270,14 @@ namespace Main.Dai
 
             }
         }
+        private void dgvDepartment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+        }
 
         private void btnCannel_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void dgvDepartment_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

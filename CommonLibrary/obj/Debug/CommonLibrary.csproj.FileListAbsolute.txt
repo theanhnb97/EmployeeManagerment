@@ -19,7 +19,6 @@ E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll
 E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll
 E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.pdb
 E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\bin\Debug\Oracle.ManagedDataAccess.dll
-E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
 E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
 E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
 E:\ProjectEmployee\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
