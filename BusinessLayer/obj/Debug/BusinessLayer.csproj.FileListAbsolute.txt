@@ -16,3 +16,6 @@ D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csp
 D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.dll
 D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.dll.config
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.dll
