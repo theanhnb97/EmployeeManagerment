@@ -115,6 +115,7 @@ namespace DataAccessLayer
             }
             catch (Exception e)
             {
+                logger.Debug(e);
                 return null;
             }
             finally

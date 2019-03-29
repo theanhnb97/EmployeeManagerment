@@ -113,6 +113,12 @@
     <Compile Include="Dai\UcDepartment.designer.cs">
       <DependentUpon>UcDepartment.cs</DependentUpon>
     </Compile>
+    <Compile Include="TheAnh\UcUpdateProfile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TheAnh\UcUpdateProfile.Designer.cs">
+      <DependentUpon>UcUpdateProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hai\Employee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dai\UcDepartment.resx">
       <DependentUpon>UcDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheAnh\UcUpdateProfile.resx">
+      <DependentUpon>UcUpdateProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hai\Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>

@@ -19,11 +19,8 @@ namespace BusinessLayer
         private  readonly DepartmentDAL departmentDal = new DepartmentDAL();
 
 
-        public int Login(string UserName, string Password)
-        {
-            return employeeDao.Login(UserName, Password);
-        }
-
+        private readonly EmployeeDao myEmployeeDao=new EmployeeDao();
+        
         public List<EmployeeDTO> GetAll()
         {
             return MapperEmployeeDtos(employeeDao.GetAll());
@@ -70,6 +67,28 @@ namespace BusinessLayer
             }
 
             return employeeDtos;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="UserName"></param>
+        /// <param name="Password"></param>
+        /// <returns></returns>
+
+        public int Login(string UserName, string Password)
+        {
+            return myEmployeeDao.Login(UserName, Password);
+        }
+        public Employee GetByUsername(string username)
+        {
+            return myEmployeeDao.GetByUsername(username);
+        }
+
+        public int UpdateProfile(Employee employee)
+        {
+            return myEmployeeDao.UpdateProfile(employee);
         }
     }
 }
