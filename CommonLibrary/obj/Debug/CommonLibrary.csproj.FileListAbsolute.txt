@@ -1,9 +1,0 @@
-D:\v1\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll.config
-D:\v1\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll
-D:\v1\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.pdb
-D:\v1\EmployeeManagerment\CommonLibrary\bin\Debug\Oracle.ManagedDataAccess.dll
-D:\v1\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
-D:\v1\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
-D:\v1\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
-D:\v1\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
-D:\v1\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb
