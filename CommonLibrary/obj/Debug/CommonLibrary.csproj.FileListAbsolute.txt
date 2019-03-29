@@ -37,3 +37,6 @@ C:\Users\Dell\Documents\GitHub\EmployeeManagerment\CommonLibrary\obj\Debug\Commo
 D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll.config
 D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\bin\Debug\Oracle.ManagedDataAccess.dll
 D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll.config
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\CommonLibrary\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete

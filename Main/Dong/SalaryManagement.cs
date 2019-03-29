@@ -33,15 +33,18 @@ namespace Main
         }
         private void Salary_Load(object sender, EventArgs e)
         {
-            this.currentPage = 0;          
+            this.currentPage = 0;
+            // Set 5 records per page
+            this.size = 5;
 
             if (salary.GetData().Count % size == 0)
             {
                 this.lastPage = salary.GetData().Count / size - 1;
             }
             else this.lastPage = salary.GetData().Count / size;
-
-            dgvSalary.DataSource = salary.Paging(5, 0);
+            lblPagingSalaryIndex.Text = (currentPage + 1).ToString();
+            lblAllPageSalary.Text = (lastPage+1).ToString();
+            dgvSalary.DataSource = salary.Paging(size, 0);
             if (dgvSalary.DataSource == null)
             {
                 MessageBox.Show("Data Not Found!");
@@ -138,6 +141,7 @@ namespace Main
             {
                 currentPage = currentPage - 1;
                 dgvSalary.DataSource = salary.Paging(this.size, currentPage);
+                lblPagingSalaryIndex.Text = (currentPage+1).ToString();
             }
         }
 
@@ -147,6 +151,7 @@ namespace Main
             {
                 currentPage = currentPage + 1;
                 dgvSalary.DataSource = salary.Paging(this.size, currentPage);
+                lblPagingSalaryIndex.Text = (currentPage+1).ToString();
             }
         }
     }
