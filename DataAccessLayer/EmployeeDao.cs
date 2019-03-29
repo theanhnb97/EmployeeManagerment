@@ -246,10 +246,7 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-   
-
-
-
+  
         /// <summary>
         /// 
         /// </summary>
@@ -282,7 +279,6 @@ namespace DataAccessLayer
         }
 
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -312,6 +308,34 @@ namespace DataAccessLayer
             }
             return employee;
         }
+
+
+        public Employee GetByIdentity(string identity)
+        {
+            Employee employee = new Employee();
+            try
+            {
+                using (OracleConnection oracleConnection = Connection.GetConnection)
+                {
+                    string storeName = "EMPLOYEE_GETBYIDENTITY";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("identityPara",identity),
+                        new OracleParameter("cursor",OracleDbType.RefCursor,ParameterDirection.Output)
+                    };
+                    DataTable data = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                    employee = TranferDataTableToEmployeeList(data)[0];
+                }
+            }
+            catch (Exception e)
+            {
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+            }
+            return employee;
+        }
+
+
 
         /// <summary>
         /// 

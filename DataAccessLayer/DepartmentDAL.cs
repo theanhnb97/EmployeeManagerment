@@ -333,12 +333,16 @@ namespace DataAccessLayer
                 {
                     Department department = new Department();
                     department.DepartmentName = dr["DEPARTMENTNAME"].ToString();
+                    department.DepartmentID = Convert.ToInt32(dr["DEPARTMENTID"].ToString());
+                    department.Description = dr["DESCRIPTION"].ToString();
+                    department.Status = Convert.ToInt32(dr["STATUS"].ToString());
+                    department.IsDelete = Convert.ToInt32(dr["ISDELETE"].ToString());
                     employees.Add(department);
                 }
                 catch (Exception e)
                 {
-                    //logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                    //logger.Debug(e.Message);
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
                 }
             }
             return employees;
