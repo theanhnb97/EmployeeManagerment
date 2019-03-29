@@ -35,8 +35,10 @@
             this.btnDepartment = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbStatus = new System.Windows.Forms.CheckBox();
             this.txtDepartmentName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.dgvDepartment = new System.Windows.Forms.DataGridView();
             this.lblPage = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
@@ -53,7 +55,11 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            this.btnSearch.Location = new System.Drawing.Point(155, 152);
+
             this.btnSearch.Location = new System.Drawing.Point(655, 34);
+
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(84, 30);
             this.btnSearch.TabIndex = 16;
@@ -107,8 +113,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbStatus);
             this.groupBox1.Controls.Add(this.txtDepartmentName);
             this.groupBox1.Controls.Add(this.label1);
+
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.btnClean);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -119,11 +127,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fillter";
             // 
+            // cbStatus
+            // 
+            this.cbStatus.AutoSize = true;
+            this.cbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbStatus.Location = new System.Drawing.Point(531, 42);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(66, 19);
+            this.cbStatus.TabIndex = 2;
+            this.cbStatus.Text = "Status";
+            this.cbStatus.UseVisualStyleBackColor = true;
+            // 
             // txtDepartmentName
             // 
-            this.txtDepartmentName.Location = new System.Drawing.Point(175, 39);
+            this.txtDepartmentName.Location = new System.Drawing.Point(157, 39);
             this.txtDepartmentName.Name = "txtDepartmentName";
-            this.txtDepartmentName.Size = new System.Drawing.Size(220, 21);
+            this.txtDepartmentName.Size = new System.Drawing.Size(155, 21);
             this.txtDepartmentName.TabIndex = 1;
             // 
             // label1
@@ -136,6 +155,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "DepartmentName";
             // 
+            // btnFilter
+            // 
+            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.Location = new System.Drawing.Point(303, 152);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(84, 30);
+            this.btnFilter.TabIndex = 17;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            // 
             // dgvDepartment
             // 
             this.dgvDepartment.AllowUserToAddRows = false;
@@ -143,11 +172,19 @@
             this.dgvDepartment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDepartment.BackgroundColor = System.Drawing.Color.White;
             this.dgvDepartment.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+
+            this.dgvDepartment.Location = new System.Drawing.Point(29, 209);
+            this.dgvDepartment.Name = "dgvDepartment";
+            this.dgvDepartment.ReadOnly = true;
+            this.dgvDepartment.RowHeadersWidth = 50;
+            this.dgvDepartment.Size = new System.Drawing.Size(745, 238);
+
             this.dgvDepartment.Location = new System.Drawing.Point(29, 152);
             this.dgvDepartment.Name = "dgvDepartment";
             this.dgvDepartment.ReadOnly = true;
             this.dgvDepartment.RowHeadersWidth = 50;
             this.dgvDepartment.Size = new System.Drawing.Size(745, 315);
+>
             this.dgvDepartment.TabIndex = 9;
             this.dgvDepartment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentClick);
             this.dgvDepartment.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentDoubleClick);
@@ -234,10 +271,16 @@
             this.Controls.Add(this.lblPage);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
+
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.btnClean);
+            this.Controls.Add(this.btnCannel);
+
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDepartment);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.dgvDepartment);
             this.Name = "UcDepartment";
             this.Size = new System.Drawing.Size(809, 588);
@@ -259,8 +302,10 @@
         private System.Windows.Forms.Button btnDepartment;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox cbStatus;
         private System.Windows.Forms.TextBox txtDepartmentName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.DataGridView dgvDepartment;
         private System.Windows.Forms.Label lblPage;
         private System.Windows.Forms.Button btnNext;
