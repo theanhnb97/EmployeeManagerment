@@ -416,10 +416,11 @@ namespace DataAccessLayer
                     department.DepartmentName = dr["DEPARTMENTNAME"].ToString();
                     employees.Add(department);
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    //logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                    //logger.Debug(e.Message);
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(ex.Message);
+                    return null;
                 }
             }
             return employees;

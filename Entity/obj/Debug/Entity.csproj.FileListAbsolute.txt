@@ -15,3 +15,9 @@ E:\ProjectEmployee\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompil
 E:\ProjectEmployee\EmployeeManagerment\Entity\obj\Debug\Entity.dll
 E:\ProjectEmployee\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
 E:\ProjectEmployee\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+E:\News\EmployeeManagerment\Entity\bin\Debug\Entity.dll
+E:\News\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
+E:\News\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+E:\News\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+E:\News\EmployeeManagerment\Entity\obj\Debug\Entity.dll
+E:\News\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
