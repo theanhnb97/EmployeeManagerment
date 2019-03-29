@@ -84,7 +84,7 @@ namespace DataAccessLayer
                     };
                     return objSqlHelpers.ExcuteQuery("TASK_GETALL", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
                 }
-                return objSqlHelpers.ExcuteQuery("TASK_GETALL", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
+                return objSqlHelpers.ExcuteQuery("TASK_GETALL1", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
             }
             catch (OracleException e)
             {
