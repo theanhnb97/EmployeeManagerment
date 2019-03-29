@@ -87,7 +87,9 @@ namespace Main
         }
         void LoadDataTable()
         {
-            //tlpnData.Controls.Add(Getlabel("."), 0, 0);
+
+            // Roles List
+            // tlpnData.Controls.Add(Getlabel("."), 0, 0);
             int start = 0;
             foreach (DataRow item in rolesTable.Rows)
             {
@@ -96,14 +98,17 @@ namespace Main
                 tlpnData.Controls.Add(rolesName, start, 0);
             }
 
+            // Action List
             start = 0;
             foreach (DataRow item in actionTable.Rows)
             {
                 start++;
-                var obj = Getlabel(item["ACTIONNAME"].ToString());
+                //var obj = Getlabel(item["ACTIONNAME"].ToString());
+                var obj = Getlabel(item["DESCRIPTION"].ToString());
                 tlpnData.Controls.Add(obj, 0, start);
             }
 
+            // Load Data
             int hang = 1, cot = 0;
             for (int i = 0; i < x; i++)
             {

@@ -58,6 +58,7 @@ namespace Main
             if (myActionEdit.ActionID != 0)
             {
                 txtName.Text = myActionEdit.ActionName;
+                txtName.Enabled = false;
                 txtDescription.Text = myActionEdit.Description;
             }
         }
