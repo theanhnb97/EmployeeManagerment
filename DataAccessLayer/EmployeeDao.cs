@@ -17,6 +17,7 @@ namespace DataAccessLayer
     interface IEmployee:IEntities<Employee>
     {
         int Login(string UserName, string Password);
+
         List<EmployeeDTO> GetAll();
 
         List<EmployeeDTO> Search(Employee employee);

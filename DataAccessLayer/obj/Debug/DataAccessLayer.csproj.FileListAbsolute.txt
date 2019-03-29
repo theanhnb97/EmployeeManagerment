@@ -19,3 +19,16 @@ C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\obj\Debug\Data
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\bin\Debug\CommonLibrary.dll
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\bin\Debug\Entity.dll
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\bin\Debug\log4net.dll
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\bin\Debug\Oracle.DataAccess.dll
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\bin\Debug\CommonLibrary.pdb
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\bin\Debug\CommonLibrary.dll.config
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\bin\Debug\Entity.pdb
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\bin\Debug\log4net.xml
+C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
