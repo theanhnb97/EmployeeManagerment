@@ -22,7 +22,7 @@ namespace DataAccessLayer
 
         /// <param name=”isDelete”>isDelete</param>
 
-        /// <param name=”description”>Mô tae phòng ban</param>
+        /// <param name=”description”>Mô tả phòng ban</param>
         /// Created by (BuiCongDai) – (25/3/2019)
         /// <remarks></remarks>
         public int Add(Department department)
