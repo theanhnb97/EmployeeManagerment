@@ -40,12 +40,14 @@ namespace Main
 
 
         private List<Button> btnMenuButtons;
+        SalaryManagement salary;
         ActionManagement ucActionManagement;
         UcRoles ucRoles;
         UcRolesAction ucRolesAction;
         Employees ucEmployees;
         UcTask ucTask;
         UcDepartment ucDepartment;
+        private UcUpdateProfile ucUpdateProfile;
 
         private void LoadUC()
         {
@@ -57,7 +59,8 @@ namespace Main
 
             pnMain.Controls.Add(ucTask);
             ucTask.Dock = DockStyle.Fill;
-
+            pnMain.Controls.Add(salary);
+            salary.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucRoles);
             ucRoles.Dock = DockStyle.Fill;
 
@@ -67,19 +70,26 @@ namespace Main
             pnMain.Controls.Add(ucDepartment);
             ucDepartment.Dock = DockStyle.Fill;
 
+            pnMain.Controls.Add(ucUpdateProfile);
+            ucUpdateProfile.Dock = DockStyle.Fill;
+
+
+
         }
 
-
-        public FormMain(int rolesId)
+        private string userName;
+        public FormMain(int rolesId,string username)
         {
             this.RolesID = rolesId;
+            this.userName = username;
+            ucUpdateProfile=new UcUpdateProfile(username);
             ucActionManagement = new ActionManagement(RolesID);
             ucRoles = new UcRoles(RolesID);
             ucRolesAction = new UcRolesAction(RolesID);
             ucTask = new UcTask(RolesID);
             ucEmployees = new Employees(RolesID);
             ucDepartment = new UcDepartment(RolesID);
-
+            salary = new SalaryManagement(RolesID);
 
             InitializeComponent();
             btnMenuButtons = new List<Button>();
@@ -165,6 +175,7 @@ namespace Main
         private void btnSalary_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
+            salary.BringToFront();
         }
 
         private void btnTask_Click(object sender, EventArgs e)
@@ -187,7 +198,7 @@ namespace Main
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
-
+            ucUpdateProfile.BringToFront();
         }
     }
 }

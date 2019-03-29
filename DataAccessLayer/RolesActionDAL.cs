@@ -32,6 +32,7 @@ namespace DataAccessLayer
                     new OracleParameter("ids",id),
                     new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
+                List<RolesAction> myList = sql.ExcuteQueryList(cmd, CommandType.StoredProcedure, con, myParameters);
                 return sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
         }
@@ -79,14 +80,13 @@ namespace DataAccessLayer
             String cmd = "RolesAction_Update";
             foreach (RolesAction item in obj)
             {
-
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
                         new OracleParameter("ids",item.ID),
                         new OracleParameter("istrues",item.IsTrue)
                 };
                 using (OracleConnection con = Connection.GetConnection)
-                    sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
             return -1;
         }

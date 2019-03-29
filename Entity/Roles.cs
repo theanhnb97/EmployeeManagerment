@@ -8,7 +8,7 @@ namespace Entity
 {
     public class Roles
     {
-        public int RolesID { get; set; }
+        public Int64 RolesID { get; set; }
         public string RolesName { get; set; }
         public int IsDelete { get; set; }
         public string Description { get; set; }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAdd = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnEdit = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnDelete = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -159,7 +160,18 @@
             // 
             this.dgvData.AllowUserToAddRows = false;
             this.dgvData.AllowUserToDeleteRows = false;
+            this.dgvData.AllowUserToOrderColumns = true;
+            this.dgvData.AllowUserToResizeColumns = false;
+            this.dgvData.AllowUserToResizeRows = false;
             this.dgvData.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ROLESID,
@@ -168,9 +180,11 @@
             this.ISDELETE});
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvData.Location = new System.Drawing.Point(0, 91);
+            this.dgvData.MultiSelect = false;
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
             this.dgvData.RowHeadersVisible = false;
+            this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvData.Size = new System.Drawing.Size(809, 497);
             this.dgvData.TabIndex = 6;
             this.dgvData.Enter += new System.EventHandler(this.dgvData_Enter);

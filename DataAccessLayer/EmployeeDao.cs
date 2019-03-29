@@ -245,11 +245,16 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        public DataTable Search(string keyword)
-        {
-            throw new NotImplementedException();
-        }
+   
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public int Login(string username, string password)
         {
             using (OracleConnection con = Connection.GetConnection)
@@ -274,6 +279,70 @@ namespace DataAccessLayer
                 
             }
         }
-       
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
+        public Employee GetByUsername(string username)
+        {
+            Employee employee = new Employee();
+            try
+            {
+                using (OracleConnection oracleConnection = Connection.GetConnection)
+                {
+                    string storeName = "EMPLOYEE_GETBYUSERNAME";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("usernames",username),
+                        new OracleParameter("cursor",OracleDbType.RefCursor,ParameterDirection.Output)
+                    };
+                    DataTable data = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                    employee = TranferDataTableToEmployeeList(data)[0];
+                }
+            }
+            catch (Exception e)
+            {
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+            }
+            return employee;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        public int UpdateProfile(Employee employee)
+        {
+            try
+            {
+                using (OracleConnection oracleConnection = Connection.GetConnection)
+                {
+                    string storeName = "Employee_UpdateByUserName";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("userNames",employee.UserName),
+                        new OracleParameter("fullNames",employee.FullName),
+                        new OracleParameter("identitys",employee.Identity),
+                        new OracleParameter("addresss",employee.Address),
+                        new OracleParameter("phones",employee.Phone),
+                        new OracleParameter("emails",employee.Email),
+                    };
+                    return sql.ExcuteNonQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                }
+            }
+            catch (Exception e)
+            {
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+                return 0;
+            }
+        }
+
     }
 }

@@ -51,7 +51,7 @@ namespace Main
 
         public void Loadd()
         {
-            dgvData.DataSource = myAction.Get();
+            dgvData.DataSource = myAction.GetList();
             dgvData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
@@ -133,7 +133,6 @@ namespace Main
                             myActionAdd.ActionName = item.Name;
                             myActionAdd.Description = item.Name;
                             myActionAdd.IsDelete = 0;
-                            bool result = false;
                             myAction.Add(myActionAdd);
                         }
                     }
@@ -141,5 +140,6 @@ namespace Main
             }
             
         }
+
     }
 }

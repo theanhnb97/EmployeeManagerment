@@ -120,7 +120,7 @@
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.BorderRadius = 0;
-            this.btnCancel.ButtonText = "Cancel";
+            this.btnCancel.ButtonText = "Thoát";
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.DisabledColor = System.Drawing.Color.Gray;
             this.btnCancel.Iconcolor = System.Drawing.Color.Transparent;
@@ -143,7 +143,7 @@
             this.btnCancel.selected = false;
             this.btnCancel.Size = new System.Drawing.Size(119, 36);
             this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Thoát";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnCancel.Textcolor = System.Drawing.Color.White;
             this.btnCancel.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -155,7 +155,7 @@
             this.btnOk.BackColor = System.Drawing.Color.SteelBlue;
             this.btnOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOk.BorderRadius = 0;
-            this.btnOk.ButtonText = "Login";
+            this.btnOk.ButtonText = "Đăng nhập";
             this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOk.DisabledColor = System.Drawing.Color.Gray;
             this.btnOk.Iconcolor = System.Drawing.Color.Transparent;
@@ -178,7 +178,7 @@
             this.btnOk.selected = false;
             this.btnOk.Size = new System.Drawing.Size(116, 36);
             this.btnOk.TabIndex = 2;
-            this.btnOk.Text = "Login";
+            this.btnOk.Text = "Đăng nhập";
             this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnOk.Textcolor = System.Drawing.Color.White;
             this.btnOk.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -201,11 +201,9 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(327, 42);
             this.txtPassword.TabIndex = 1;
-            this.txtPassword.Text = "Username";
+            this.txtPassword.Text = "123456";
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtPassword.Enter += new System.EventHandler(this.textBox_Enter);
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.login_KeyDown);
-            this.txtPassword.Leave += new System.EventHandler(this.textBox_Leave);
             // 
             // txtUserName
             // 
@@ -213,7 +211,7 @@
             this.txtUserName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txtUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtUserName.HintForeColor = System.Drawing.Color.Empty;
-            this.txtUserName.HintText = "";
+            this.txtUserName.HintText = "Tên tài khoản";
             this.txtUserName.isPassword = false;
             this.txtUserName.LineFocusedColor = System.Drawing.Color.Blue;
             this.txtUserName.LineIdleColor = System.Drawing.Color.Gray;
@@ -224,11 +222,8 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(327, 42);
             this.txtUserName.TabIndex = 0;
-            this.txtUserName.Text = "Username";
             this.txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtUserName.Enter += new System.EventHandler(this.textBox_Enter);
             this.txtUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.login_KeyDown);
-            this.txtUserName.Leave += new System.EventHandler(this.textBox_Leave);
             // 
             // Login
             // 

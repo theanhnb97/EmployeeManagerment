@@ -12,6 +12,7 @@ namespace Main
     {
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
+        private TaskBus objTaskBus = new TaskBus();
         protected override void OnLoad(EventArgs e)
         {
             DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
@@ -31,8 +32,6 @@ namespace Main
         }
         
 
-
-        TaskBus objTaskBus=new TaskBus();
 
         public AddTask(int id)
         {
