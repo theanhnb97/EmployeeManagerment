@@ -12,14 +12,14 @@ namespace BusinessLayer
     interface ITaskBus
     {
         DataTable GetAll();
-        DataTable Filter(string taskName, int department, string dueDate);
+        DataTable Filter(string taskName, Int64 department, string dueDate);
         DataTable LoadDepartment();
         int Insert(Entity.Task objTask);
-        DataTable LoadEmployeeByDpt(int departmentId);
+        DataTable LoadEmployeeByDpt(Int64 departmentId);
         DataTable GetAllEmployee();
         List<Level> GetAlLevel();
-        int Delete(int id);
-        int Update(int taskId, string taskName, int assign, string dueDate, int priority, string file, int status, int isDelete, string description);
+        int Delete(Int64 id);
+        int Update(Int64 taskId, string taskName, Int64 assign, string dueDate, int priority, string file, int status, int isDelete, string description);
     }
     /// <summary>
     /// 
@@ -37,7 +37,7 @@ namespace BusinessLayer
             return objTaskDao.GetAll();
         }
 
-        public DataTable Filter(string taskName, int department, string dueDate)
+        public DataTable Filter(string taskName, Int64 department, string dueDate)
         {
             return objTaskDao.Filter(taskName, department, dueDate);
         }
@@ -52,7 +52,7 @@ namespace BusinessLayer
             return objTaskDao.Insert(objTask);
         }
 
-        public DataTable LoadEmployeeByDpt(int departmentId)
+        public DataTable LoadEmployeeByDpt(Int64 departmentId)
         {
             return objTaskDao.LoadEmployeeByDpt(departmentId);
         }
@@ -67,12 +67,12 @@ namespace BusinessLayer
             return objTaskDao.GetAlLevel();
         }
 
-        public int Delete(int id)
+        public int Delete(Int64 id)
         {
             return objTaskDao.Delete(id);
         }
 
-        public int Update(int taskId, string taskName, int assign, string dueDate,
+        public int Update(Int64 taskId, string taskName, Int64 assign, string dueDate,
             int priority, string file, int status, int isDelete, string description)
         {
             return objTaskDao.Update(taskId, taskName, assign, dueDate, priority, file, status, isDelete, description);

@@ -86,7 +86,7 @@ namespace Main
                 {
                     MessageBox.Show("Description must more than 2 characters!!", "Warning");
                 }
-                else if(Convert.ToDateTime(dtpDueDate.Value) < DateTime.Now)
+                else if (Convert.ToDateTime(dtpDueDate.Value) < DateTime.Today)
                 {
                     MessageBox.Show("Due Date must ' > ' or ' = ' Today", "Warning");
                 }
@@ -146,9 +146,11 @@ namespace Main
             try
             {
                 //check result return must > 0 and different null
-                if (objTaskBus.LoadDepartment().Rows.Count > 0 || objTaskBus.LoadDepartment() != null)
+                var departTable = objTaskBus.LoadDepartment();
+
+                if (departTable.Rows.Count > 0)
                 {
-                    cmbDepartment.DataSource = objTaskBus.LoadDepartment();
+                    cmbDepartment.DataSource = departTable;
                     cmbDepartment.ValueMember = "DEPARTMENTID";
                     cmbDepartment.DisplayMember = "DEPARTMENTNAME";
 
@@ -158,31 +160,19 @@ namespace Main
                     MessageBox.Show("Department have not data", "Status");
                 }
 
-                //check result return must > 0 and different null
-                if (objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString())).Rows.Count > 0
-                    || objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString())) != null)
+            
+              //  check result return must > 0 and different null
+                var levels = objTaskBus.GetAlLevel();
+                if (levels.Count > 0)
                 {
-                    cmbAssign.DataSource = objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString()));
-
-                    cmbAssign.ValueMember = "EMPLOYEEID";
-                    cmbAssign.DisplayMember = "FULLNAME";
-                }
-                else
-                {
-                    MessageBox.Show("Assign have not data", "Status");
-                }
-
-                ////check result return must > 0 and different null
-                if (objTaskBus.GetAlLevel().Count > 0 || objTaskBus.GetAlLevel() != null)
-                {
-                    cmbLevel.DataSource = objTaskBus.GetAlLevel();
+                    cmbLevel.DataSource = levels;
                     cmbLevel.ValueMember = "Id";
                     cmbLevel.DisplayMember = "Name";
 
                 }
                 else
                 {
-                    MessageBox.Show("Priority have not data","Status");
+                    MessageBox.Show("Priority have not data", "Status");
                 }
             }
             catch (Exception exception)
@@ -200,13 +190,28 @@ namespace Main
         {
             try
             {
-                cmbAssign.DataSource = objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString()));
-                cmbAssign.ValueMember = "EMPLOYEEID";
-                cmbAssign.DisplayMember = "FULLNAME";
+                //DataRowView id = (DataRowView)cmbDepartment.SelectedValue;
+                //DataRowView i = (DataRowView)cmbDepartment.SelectedValue;
+                //var tempid = (DataRowView)cmbDepartment.SelectedValue;
+                //int id = Convert.ToInt32(tempid.Row[0].ToString());
+                var employeeById = objTaskBus.LoadEmployeeByDpt(Convert.ToInt32(cmbDepartment.SelectedValue));
+                if (employeeById.Rows.Count > 0)
+                {
+                    cmbAssign.ValueMember = "EMPLOYEEID";
+                    cmbAssign.DisplayMember = "FULLNAME";
+                    cmbAssign.DataSource = employeeById;
+                }
+                else
+                {
+                    MessageBox.Show("Assign have not data", "Status");
+                }
             }
             catch
             {
+              //  throw;
             }
+            //   MessageBox.Show(cmbDepartment.SelectedIndex.ToString() + " : " + cmbDepartment.SelectedValue.ToString());
+
         }
     }
 }

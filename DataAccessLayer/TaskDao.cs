@@ -23,12 +23,12 @@ namespace DataAccessLayer
         /// <param name="department"></param>
         /// <param name="dueDate"></param>
         /// <returns></returns>
-        DataTable Filter(string taskName, int department, string dueDate);
+        DataTable Filter(string taskName, Int64 department, string dueDate);
 
         // get all Department
         DataTable LoadDepartment();
         // get employee follow department
-        DataTable LoadEmployeeByDpt(int departmentId);
+        DataTable LoadEmployeeByDpt(Int64 departmentId);
         // insert task
         int Insert(Entity.Task objTask);
         // get all employees
@@ -36,7 +36,7 @@ namespace DataAccessLayer
         // get priority
         List<Level> GetAlLevel();
         //delete task
-        int Delete(int id);
+        int Delete(Int64 id);
         /// <summary>
         /// update task
         /// </summary>
@@ -50,7 +50,7 @@ namespace DataAccessLayer
         /// <param name="isDelete"></param>
         /// <param name="description"></param>
         /// <returns></returns>
-        int Update(int taskId, string taskName, int assign, string dueDate, int priority, string file, int status, int isDelete, string description);
+        int Update(Int64 taskId, string taskName, Int64 assign, string dueDate, int priority, string file, int status, int isDelete, string description);
     }
     /// <summary>
     /// class TaskDao inheritance interface ITaskDao
@@ -98,7 +98,7 @@ namespace DataAccessLayer
         /// <param name="department"></param>
         /// <param name="dueDate"></param>
         /// <returns></returns>
-        public DataTable Filter(string taskName, int department, string dueDate)
+        public DataTable Filter(string taskName, Int64 department, string dueDate)
         {
             try
             {
@@ -119,7 +119,7 @@ namespace DataAccessLayer
         }
 
         /// <summary>
-        /// 
+        /// get all department
         /// </summary>
         /// <returns> DataTable</returns>
         public DataTable LoadDepartment()
@@ -154,13 +154,13 @@ namespace DataAccessLayer
         /// </summary>
         /// <param name="departmentId"></param>
         /// <returns> DataTable</returns>
-        public DataTable LoadEmployeeByDpt(int departmentId)
+        public DataTable LoadEmployeeByDpt(Int64 departmentId)
         {
             try
             {
                 OracleParameter[] listParameters = new OracleParameter[]
                 {
-                    new OracleParameter("IDS", OracleDbType.Int32,departmentId,ParameterDirection.Input),
+                    new OracleParameter("IDS", OracleDbType.Int64,departmentId,ParameterDirection.Input),
                     new OracleParameter("cursorParam", OracleDbType.RefCursor,ParameterDirection.Output),
                 };
                 return objSqlHelpers.ExcuteQuery("DEPARTMENT_GETEMPLOYEEBYDEPARTMENT", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
@@ -189,7 +189,7 @@ namespace DataAccessLayer
                 OracleParameter[] listParameters = new OracleParameter[]
                           {
                 new OracleParameter("taskNames",OracleDbType.NVarchar2,objTask.TaskName,ParameterDirection.Input),
-                new OracleParameter("assigns",OracleDbType.Int32,objTask.Assign,ParameterDirection.Input),
+                new OracleParameter("assigns",OracleDbType.Int64,objTask.Assign,ParameterDirection.Input),
                 new OracleParameter("dueDates",OracleDbType.Varchar2, objTask.DueDate,ParameterDirection.Input),
                 new OracleParameter("priorities", OracleDbType.Int32,objTask.Priority,ParameterDirection.Input),
                 new OracleParameter("filess",OracleDbType.Varchar2,objTask.Files,ParameterDirection.Input),
@@ -241,7 +241,7 @@ namespace DataAccessLayer
         /// </summary>
         /// <param name="id"></param>
         /// <returns>number</returns>
-        public int Delete(int id)
+        public int Delete(Int64 id)
         {
             try
             {
@@ -249,7 +249,7 @@ namespace DataAccessLayer
                 {
                     OracleParameter[] listParameters = new OracleParameter[]
                {
-                            new OracleParameter("ID", OracleDbType.Int32,id,ParameterDirection.Input),
+                            new OracleParameter("ID", OracleDbType.Int64,id,ParameterDirection.Input),
                };
                     return objSqlHelpers.ExcuteNonQuery("Task_Delete", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
                 }
@@ -279,15 +279,15 @@ namespace DataAccessLayer
         /// <param name="isDelete"></param>
         /// <param name="description"></param>
         /// <returns>number</returns>
-        public int Update(int taskId, string taskName, int assign, string dueDate, int priority, string file, int status, int isDelete, string description)
+        public int Update(Int64 taskId, string taskName, Int64 assign, string dueDate, int priority, string file, int status, int isDelete, string description)
         {
             try
             {
                 OracleParameter[] listParameters = new OracleParameter[]
                           {
-                new OracleParameter("ID", OracleDbType.Int32,taskId,ParameterDirection.Input),
+                new OracleParameter("ID", OracleDbType.Int64,taskId,ParameterDirection.Input),
                 new OracleParameter("TaskNames", OracleDbType.NVarchar2,taskName,ParameterDirection.Input),
-                new OracleParameter("Assigns", OracleDbType.Int32,assign,ParameterDirection.Input),
+                new OracleParameter("Assigns", OracleDbType.Int64,assign,ParameterDirection.Input),
                 new OracleParameter("DueDates", OracleDbType.Varchar2,dueDate,ParameterDirection.Input),
                 new OracleParameter("Priorities", OracleDbType.Int32,priority,ParameterDirection.Input),
                 new OracleParameter("Filess", OracleDbType.Varchar2,file,ParameterDirection.Input),
