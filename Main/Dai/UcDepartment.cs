@@ -132,8 +132,8 @@ namespace Main.Dai
             lblPage.Text =  "1/" + pageSize;
         }
       // Button next event click
-    private void btnNext_Click(object sender, EventArgs e)
-    {
+        private void btnNext_Click(object sender, EventArgs e)
+        {
         int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
             DepartmentBUS departmentBus=new DepartmentBUS();
             int pageSize = (departmentBus.GetAll().Rows.Count) / item+1;
@@ -148,7 +148,7 @@ namespace Main.Dai
             lblPage.Text = pageSize+"/"+pageSize;
         }
 
-    }
+        }
 
         private void lblPage_Click(object sender, EventArgs e)
         {
