@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Schema;
@@ -71,7 +72,6 @@ namespace Main
                     employee.IsDelete = 0;
                     employee.Status = Convert.ToInt16(cbbStatus.SelectedValue);
                     employee.Rank = Convert.ToInt16(cbbRank.SelectedValue);
-
                     //create employee
                     if (Employees.IsCreated)
                     {
@@ -135,7 +135,8 @@ namespace Main
         }
 
         public bool CheckValidForm()
-        {
+        { 
+
             if (txtFullName.Text.Trim() == "" || txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "")
             {
                 return false;
@@ -148,5 +149,22 @@ namespace Main
             this.Close();
         }
 
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && (e.KeyChar) != (char) (Keys.Back))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                if (char.IsDigit(e.KeyChar))
+                {
+                    if (txtPhone.Text.Length > 10)
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+        }
     }
 }

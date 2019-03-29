@@ -120,5 +120,10 @@ namespace Main
 
             dgv_employee.DataSource = employeeBus.Search(employeeForSearch);
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
