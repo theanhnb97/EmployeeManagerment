@@ -101,6 +101,7 @@ namespace DataAccessLayer
         /// <param name=”p_isDelete”>Mã phòng ban</param>
         /// <param name=”cursorParam”>Bảng tạm danh sách phòng ban</param>
         /// Created by (BuiCongDai) – (25/3/2019)
+        ///Modified by (BuiCongDai) – (28/3/2019 , 1)
         /// <remarks></remarks>
         public DataTable GetAll()
         {
@@ -147,6 +148,7 @@ namespace DataAccessLayer
         /// <remarks></remarks>
         /// Created by (BuiCongDai) – (25/3/2019)
         ///Modified by (BuiCongDai) – (28/3/2019 , 1)
+        /// <remarks></remarks>
         public DataTable GetById(int id)
         {
             try
