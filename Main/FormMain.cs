@@ -40,6 +40,7 @@ namespace Main
 
 
         private List<Button> btnMenuButtons;
+        SalaryManagement salary;
         ActionManagement ucActionManagement;
         UcRoles ucRoles;
         UcRolesAction ucRolesAction;
@@ -58,7 +59,8 @@ namespace Main
 
             pnMain.Controls.Add(ucTask);
             ucTask.Dock = DockStyle.Fill;
-
+            pnMain.Controls.Add(salary);
+            salary.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucRoles);
             ucRoles.Dock = DockStyle.Fill;
 
@@ -87,7 +89,7 @@ namespace Main
             ucTask = new UcTask(RolesID);
             ucEmployees = new Employees(RolesID);
             ucDepartment = new UcDepartment(RolesID);
-
+            salary = new SalaryManagement(RolesID);
 
             InitializeComponent();
             btnMenuButtons = new List<Button>();
@@ -173,6 +175,7 @@ namespace Main
         private void btnSalary_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
+            salary.BringToFront();
         }
 
         private void btnTask_Click(object sender, EventArgs e)

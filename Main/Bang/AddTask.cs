@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using BusinessLayer;
 using Entity;
+using log4net;
 
 namespace Main
 {
@@ -11,6 +12,7 @@ namespace Main
     {
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
+        private TaskBus objTaskBus = new TaskBus();
         protected override void OnLoad(EventArgs e)
         {
             DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
@@ -31,13 +33,14 @@ namespace Main
         
 
 
-        TaskBus objTaskBus=new TaskBus();
-
         public AddTask(int id)
         {
             this.RolesID = id;
             InitializeComponent();
         }
+       //private readonly TaskBus objTaskBus = new TaskBus();
+
+       protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         /// <summary>
         /// 
         /// </summary>
@@ -95,9 +98,10 @@ namespace Main
                     Hide();
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
                 MessageBox.Show("Some thing wrong");
+                logger.Debug(exception);
             }
 
 
@@ -156,7 +160,8 @@ namespace Main
             }
             catch (Exception exception)
             {
-                MessageBox.Show("some thing wrong" + exception);
+                MessageBox.Show("some thing wrong");
+                logger.Debug(exception);
             }
         }
         /// <summary>
@@ -168,7 +173,6 @@ namespace Main
         {
             try
             {
-                TaskBus objTaskBus = new TaskBus();
                 cmbAssign.DataSource = objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString()));
                 cmbAssign.ValueMember = "EMPLOYEEID";
                 cmbAssign.DisplayMember = "FULLNAME";

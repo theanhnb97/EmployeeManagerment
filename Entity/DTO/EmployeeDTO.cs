@@ -23,10 +23,14 @@ namespace Entity.DTO
         /// </summary>
         public Int64 DEPARTMENTID { get; set; }
 
+        public string DepartmentName { get; set; }
+
         /// <summary>
         /// Gets or sets the Rank
         /// </summary>
         public Int16 RANK { get; set; }
+
+        public string RankName { get; set; }
 
         /// <summary>
         /// Gets or sets the FullName

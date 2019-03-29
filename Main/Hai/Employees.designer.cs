@@ -38,14 +38,6 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.lblPage = new System.Windows.Forms.Label();
             this.dgv_employee = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Identity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartmentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -57,6 +49,14 @@
             this.txtUserName_Search = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtFullName_Search = new System.Windows.Forms.TextBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Identity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartmentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_employee)).BeginInit();
@@ -191,65 +191,6 @@
             this.dgv_employee.TabIndex = 7;
             this.dgv_employee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_employee_CellClick);
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "EMPLOYEEID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 35;
-            // 
-            // FullName
-            // 
-            this.FullName.DataPropertyName = "FULLNAME";
-            this.FullName.HeaderText = "Họ tên";
-            this.FullName.Name = "FullName";
-            this.FullName.ReadOnly = true;
-            this.FullName.Width = 130;
-            // 
-            // UserName
-            // 
-            this.UserName.DataPropertyName = "USERNAME";
-            this.UserName.HeaderText = "Tên TK";
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            // 
-            // Identity
-            // 
-            this.Identity.DataPropertyName = "IDENTITY";
-            this.Identity.HeaderText = "CMTND";
-            this.Identity.Name = "Identity";
-            this.Identity.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "EMAIL";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // Phone
-            // 
-            this.Phone.DataPropertyName = "PHONE";
-            this.Phone.HeaderText = "SĐT";
-            this.Phone.Name = "Phone";
-            this.Phone.ReadOnly = true;
-            this.Phone.Width = 95;
-            // 
-            // DepartmentName
-            // 
-            this.DepartmentName.DataPropertyName = "DEPARTMENTID";
-            this.DepartmentName.HeaderText = "Phòng";
-            this.DepartmentName.Name = "DepartmentName";
-            this.DepartmentName.ReadOnly = true;
-            // 
-            // Rank
-            // 
-            this.Rank.DataPropertyName = "RANK";
-            this.Rank.HeaderText = "Chức vụ";
-            this.Rank.Name = "Rank";
-            this.Rank.ReadOnly = true;
-            // 
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -353,6 +294,65 @@
             this.txtFullName_Search.Name = "txtFullName_Search";
             this.txtFullName_Search.Size = new System.Drawing.Size(204, 20);
             this.txtFullName_Search.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "EMPLOYEEID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 35;
+            // 
+            // FullName
+            // 
+            this.FullName.DataPropertyName = "FULLNAME";
+            this.FullName.HeaderText = "Họ tên";
+            this.FullName.Name = "FullName";
+            this.FullName.ReadOnly = true;
+            this.FullName.Width = 130;
+            // 
+            // UserName
+            // 
+            this.UserName.DataPropertyName = "USERNAME";
+            this.UserName.HeaderText = "Tên TK";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            // 
+            // Identity
+            // 
+            this.Identity.DataPropertyName = "IDENTITY";
+            this.Identity.HeaderText = "CMTND";
+            this.Identity.Name = "Identity";
+            this.Identity.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "EMAIL";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Phone
+            // 
+            this.Phone.DataPropertyName = "PHONE";
+            this.Phone.HeaderText = "SĐT";
+            this.Phone.Name = "Phone";
+            this.Phone.ReadOnly = true;
+            this.Phone.Width = 95;
+            // 
+            // DepartmentName
+            // 
+            this.DepartmentName.DataPropertyName = "DEPARTMENTNAME";
+            this.DepartmentName.HeaderText = "Phòng";
+            this.DepartmentName.Name = "DepartmentName";
+            this.DepartmentName.ReadOnly = true;
+            // 
+            // Rank
+            // 
+            this.Rank.DataPropertyName = "RANKNAME";
+            this.Rank.HeaderText = "Chức vụ";
+            this.Rank.Name = "Rank";
+            this.Rank.ReadOnly = true;
             // 
             // Employees
             // 
