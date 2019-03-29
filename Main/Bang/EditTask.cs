@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using BusinessLayer;
@@ -52,35 +53,43 @@ namespace Main.Bang
             try
             {
 
-                cmbDepartment.DataSource = objTaskBus.LoadDepartment();
+                var departTable = objTaskBus.LoadDepartment();
 
-                if (cmbDepartment.DataSource != null)
+                if (departTable.Rows.Count > 0)
                 {
+                    cmbDepartment.DataSource = departTable;
                     cmbDepartment.ValueMember = "DEPARTMENTID";
                     cmbDepartment.DisplayMember = "DEPARTMENTNAME";
+                    if (Convert.ToInt64(cmbDepartment.SelectedValue) > 0)
+                    {
+                        lbDepartment.ForeColor = Color.DarkGreen;
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("Department have not data");
+                    MessageBox.Show("Department have not data", "Status");
                 }
 
 
-                cmbAssign.DataSource = objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString()));
-                if (cmbAssign.DataSource != null)
+                var levels = objTaskBus.GetAlLevel();
+                if (levels.Count > 0)
                 {
-                    cmbAssign.ValueMember = "EMPLOYEEID";
-                    cmbAssign.DisplayMember = "FULLNAME";
+                    cmbLevel.DataSource = levels;
+                    cmbLevel.ValueMember = "Id";
+                    cmbLevel.DisplayMember = "Name";
+                    if (Convert.ToInt64(cmbLevel.SelectedValue) > 0)
+                    {
+                        lbLevel.ForeColor = Color.DarkGreen;
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("Assign have not data");
+                    MessageBox.Show("Priority have not data", "Status");
                 }
 
-                cmbLevel.DataSource = objTaskBus.GetAlLevel();
-                cmbLevel.ValueMember = "Id";
-                cmbLevel.DisplayMember = "Name";
-
-
+                //assign file from data transfer object
                 txtTaskName.Text = TaskDTO.TaskName;
                 txtDescription.Text = TaskDTO.Description;
                 cmbAssign.SelectedValue = TaskDTO.Assign;
@@ -105,12 +114,27 @@ namespace Main.Bang
         {
             try
             {
-                cmbAssign.DataSource = objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString()));
-                cmbAssign.ValueMember = "EMPLOYEEID";
-                cmbAssign.DisplayMember = "FULLNAME";
+                DataTable dtDepartment = new DataTable();
+                dtDepartment = objTaskBus.LoadEmployeeByDpt(Convert.ToInt32(cmbDepartment.SelectedValue));
+                if (dtDepartment.Rows.Count > 0)
+                {
+                    cmbAssign.ValueMember = "EMPLOYEEID";
+                    cmbAssign.DisplayMember = "FULLNAME";
+                    cmbAssign.DataSource = dtDepartment;
+                    lbAssign.ForeColor = Color.DarkGreen;
+
+                }
+                else
+                {
+                    cmbAssign.DataSource = dtDepartment;
+                    lbAssign.ForeColor = Color.Red;
+                    MessageBox.Show("Assign have not data", "Status");
+
+                }
             }
             catch
             {
+                //
             }
         }
         /// <summary>
@@ -122,6 +146,7 @@ namespace Main.Bang
         {
             try
             {
+                // validate 
                 if (string.Empty.Equals(txtTaskName.Text.Trim()))
                 {
                     MessageBox.Show("Enter Task Name!", "Warning");
@@ -138,17 +163,31 @@ namespace Main.Bang
                 {
                     MessageBox.Show("Description must more than 2 characters!!", "Warning");
                 }
+                else if (Convert.ToDateTime(dtpDueDate.Value) < DateTime.Today)
+                {
+                    MessageBox.Show("Due Date must ' > ' or ' = ' Today", "Warning");
+                }
                 else
                 {
+                    // assign value for data transfer object
                     TaskDTO.TaskName = txtTaskName.Text.Trim();
                     TaskDTO.Description = txtDescription.Text.Trim();
                     TaskDTO.Assign = Convert.ToInt32(cmbAssign.SelectedValue);
                     TaskDTO.Department = Convert.ToInt32(cmbDepartment.SelectedValue);
                     TaskDTO.Priority = Convert.ToInt32(cmbLevel.SelectedValue);
                     TaskDTO.DueDate = dtpDueDate.Value.ToString("dd/MMM/yyyy");
-                    objTaskBus.Update(TaskDTO.TaskId, TaskDTO.TaskName, TaskDTO.Assign,
-                    TaskDTO.DueDate, TaskDTO.Priority, TaskDTO.Files, TaskDTO.Status, TaskDTO.IsDelete, TaskDTO.Description);
-                    Hide();
+                    //check result
+                    if (objTaskBus.Update(TaskDTO.TaskId, TaskDTO.TaskName, TaskDTO.Assign,
+                        TaskDTO.DueDate, TaskDTO.Priority, TaskDTO.Files, TaskDTO.Status, TaskDTO.IsDelete,
+                        TaskDTO.Description) != 0)
+                    {
+                        MessageBox.Show("Succes", "Status");
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error!", "Status");
+                    }
                 }
             }
             catch (Exception exception)
@@ -166,6 +205,7 @@ namespace Main.Bang
             if (e.KeyCode == Keys.Enter)
             {
                 btnUpdate_Click(btnUpdate, e);
+                this.Close();
             }
         }
         /// <summary>
@@ -175,7 +215,98 @@ namespace Main.Bang
         /// <param name="e"></param>
         private void btnCacncel_Click(object sender, EventArgs e)
         {
-            Hide();
+            this.Close();
+        }
+
+        private void txtTaskName_TextChanged(object sender, EventArgs e)
+        {
+            if (string.Empty.Equals(txtTaskName.Text.Trim()) ||
+                Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,}") == false)
+            {
+                lbTaskName.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbTaskName.ForeColor = Color.DarkGreen;
+            }
+        }
+
+        private void txtTaskName_Leave(object sender, EventArgs e)
+        {
+            if (string.Empty.Equals(txtTaskName.Text.Trim()))
+            {
+                MessageBox.Show("Enter Task Name!", "Warning");
+                txtTaskName.Focus();
+            }
+            else if (Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,}") == false)
+            {
+                MessageBox.Show(" Task Name must more than 2 characters!", "Warning");
+                txtTaskName.Focus();
+            }
+            else
+            {
+                lbTaskName.ForeColor = Color.DarkGreen;
+            }
+        }
+
+        private void txtDescription_TextChanged(object sender, EventArgs e)
+        {
+            if (string.Empty.Equals(txtDescription.Text.Trim()) ||
+                Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,}") == false)
+            {
+                lbDescription.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbDescription.ForeColor = Color.DarkGreen;
+            }
+        }
+
+        private void txtDescription_Leave(object sender, EventArgs e)
+        {
+            if (string.Empty.Equals(txtDescription.Text.Trim()))
+            {
+                MessageBox.Show("Enter Description!", "Warning");
+                txtDescription.Focus();
+            }
+            else if (Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,}") == false)
+            {
+                MessageBox.Show(" Description must more than 2 characters!", "Warning");
+                txtDescription.Focus();
+            }
+            else
+            {
+                lbDescription.ForeColor = Color.DarkGreen;
+            }
+        }
+
+        private void dtpDueDate_Leave(object sender, EventArgs e)
+        {
+            if (Convert.ToDateTime(dtpDueDate.Value) < DateTime.Today)
+            {
+                MessageBox.Show("Due Date must ' > ' or ' = ' Today", "Warning");
+                dtpDueDate.Focus();
+                lbDate.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbDate.ForeColor = Color.DarkGreen;
+            }
+
+        }
+
+        private void dtpDueDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToDateTime(dtpDueDate.Value) < DateTime.Today)
+            {
+                MessageBox.Show("Due Date must ' > ' or ' = ' Today", "Warning");
+                dtpDueDate.Focus();
+                lbDate.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbDate.ForeColor = Color.DarkGreen;
+            }
         }
     }
 }

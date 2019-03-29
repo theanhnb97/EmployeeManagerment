@@ -40,6 +40,7 @@ namespace Main
         RolesBUL myRoles = new RolesBUL();
         ActionBUS myAction = new ActionBUS();
         private TableLayoutPanel tlpnData;
+
         public UcRolesAction(int id)
         {
             this.RolesID = id;
@@ -71,42 +72,7 @@ namespace Main
             return obj;
         }
 
-        /*BunifuFlatButton GetButton(String Text)
-        {
-            BunifuFlatButton btnReturn=new BunifuFlatButton();
-            btnReturn.Activecolor = Color.SteelBlue;
-            btnReturn.BackColor = Color.SteelBlue;
-            btnReturn.BackgroundImageLayout = ImageLayout.Stretch;
-            btnReturn.BorderRadius = 0;
-            btnReturn.ButtonText = Text;
-            btnReturn.Cursor = Cursors.Hand;
-            btnReturn.DisabledColor = Color.Gray;
-            btnReturn.Iconcolor = Color.Transparent;
-            btnReturn.Iconimage = null;
-            btnReturn.Iconimage_right = null;
-            btnReturn.Iconimage_right_Selected = null;
-            btnReturn.Iconimage_Selected = null;
-            btnReturn.IconMarginLeft = 0;
-            btnReturn.IconMarginRight = 0;
-            btnReturn.IconRightVisible = true;
-            btnReturn.IconRightZoom = 0D;
-            btnReturn.IconVisible = true;
-            btnReturn.IconZoom = 90D;
-            btnReturn.IsTab = false;
-            btnReturn.Location = new Point(729, 544);
-            btnReturn.Name = "btnReturn";
-            btnReturn.Normalcolor = Color.SteelBlue;
-            btnReturn.OnHovercolor = Color.SteelBlue;
-            btnReturn.OnHoverTextColor = Color.White;
-            btnReturn.selected = false;
-            btnReturn.Size = new Size(71, 36);
-            btnReturn.TabIndex = 11;
-            btnReturn.Text = Text;
-            btnReturn.TextAlign = ContentAlignment.MiddleCenter;
-            btnReturn.Textcolor = Color.White;
-            btnReturn.TextFont = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
-            return btnReturn;
-        }*/
+        
 
         void LoadForm()
         {
@@ -122,23 +88,30 @@ namespace Main
         }
         void LoadDataTable()
         {
-            //tlpnData.Controls.Add(Getlabel("."), 0, 0);
+            // Roles List
+            // tlpnData.Controls.Add(Getlabel("."), 0, 0);
+            tlpnData.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,200F));
+
             int start = 0;
             foreach (DataRow item in rolesTable.Rows)
             {
                 start++;
-                var rolesName = Getlabel(item["ROLESNAME"].ToString());
+                //var rolesName = Getlabel(item["ROLESNAME"].ToString());
+                var rolesName = Getlabel(item["DESCRIPTION"].ToString());
                 tlpnData.Controls.Add(rolesName, start, 0);
             }
 
+            // Action List
             start = 0;
             foreach (DataRow item in actionTable.Rows)
             {
                 start++;
-                var obj = Getlabel(item["ACTIONNAME"].ToString());
+                //var obj = Getlabel(item["ACTIONNAME"].ToString());
+                var obj = Getlabel(item["DESCRIPTION"].ToString());
                 tlpnData.Controls.Add(obj, 0, start);
             }
 
+            // Load Data
             int hang = 1, cot = 0;
             for (int i = 0; i < x; i++)
             {
@@ -150,7 +123,7 @@ namespace Main
                 }
                 BunifuiOSSwitch myOsSwitch = new BunifuiOSSwitch();
                 myOsSwitch.OnColor = SystemColors.HotTrack;
-                myOsSwitch.Text = allData.Rows[i]["ID"].ToString();
+                myOsSwitch.Name = allData.Rows[i]["ID"].ToString();
                 myOsSwitch.Value = allData.Rows[i]["ISTRUE"].ToString() != "0";
                 tlpnData.Controls.Add(myOsSwitch, cot, hang);
             }
@@ -183,7 +156,7 @@ namespace Main
                 foreach (BunifuiOSSwitch item in myList)
                 {
                     RolesAction temp = new RolesAction();
-                    temp.ID = int.Parse(item.Text);
+                    temp.ID = int.Parse(item.Name);
                     if (item.Value)
                         temp.IsTrue = 1;
                     else

@@ -8,9 +8,9 @@ namespace Entity
 {
     public class RolesAction
     {
-        public int ID { get; set; }
-        public int ActionID { get; set; }
-        public int RolesID { get; set; }
-        public int IsTrue { get; set; }
+        public Int64 ID { get; set; }
+        public Int64 ActionID { get; set; }
+        public Int64 RolesID { get; set; }
+        public Int64 IsTrue { get; set; }
     }
 }

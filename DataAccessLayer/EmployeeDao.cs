@@ -17,6 +17,7 @@ namespace DataAccessLayer
     interface IEmployee:IEntities<Employee>
     {
         int Login(string UserName, string Password);
+
         List<EmployeeDTO> GetAll();
 
         List<EmployeeDTO> Search(Employee employee);
@@ -216,19 +217,19 @@ namespace DataAccessLayer
                 try
                 {
                     Employee employee = new Employee();
-                    employee.RolesId = Convert.ToInt32(dr[0].ToString());
-                    employee.DepartmentId = Convert.ToInt32(dr[1].ToString());
-                    employee.Rank = Convert.ToInt16(dr[2].ToString());
-                    employee.FullName = dr[3].ToString();
-                    employee.UserName = dr[4].ToString();
-                    employee.Password = dr[5].ToString();
-                    employee.Identity = dr[6].ToString();
-                    employee.Address = dr[7].ToString();
-                    employee.Phone = dr[8].ToString();
-                    employee.Email = dr[9].ToString();
-                    employee.Status = Convert.ToInt16(dr[10].ToString());
-                    employee.IsDelete = Convert.ToInt16(dr[11].ToString());
-                    employee.EmployeeId = Convert.ToInt32(dr[12].ToString());
+                    employee.RolesId = Convert.ToInt32(dr["ROLESID"].ToString());
+                    employee.DepartmentId = Convert.ToInt32(dr["DEPARTMENTID"].ToString());
+                    employee.Rank = Convert.ToInt16(dr["RANK"].ToString());
+                    employee.FullName = dr["FULLNAME"].ToString();
+                    employee.UserName = dr["USERNAME"].ToString();
+                    employee.Password = dr["PASSWORD"].ToString();
+                    employee.Identity = dr["IDENTITY"].ToString();
+                    employee.Address = dr["ADDRESS"].ToString();
+                    employee.Phone = dr["PHONE"].ToString();
+                    employee.Email = dr["EMAIL"].ToString();
+                    employee.Status = Convert.ToInt16(dr["STATUS"].ToString());
+                    employee.IsDelete = Convert.ToInt16(dr["ISDELETE"].ToString());
+                    employee.EmployeeId = Convert.ToInt32(dr["EMPLOYEEID"].ToString());
                     employees.Add(employee);
                 }
                 catch (Exception e)
@@ -245,8 +246,13 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-   
-
+  
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public int Login(string username, string password)
         {
             using (OracleConnection con = Connection.GetConnection)
@@ -273,48 +279,101 @@ namespace DataAccessLayer
         }
 
 
-        public Employee GetById(int id)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
+        public Employee GetByUsername(string username)
         {
-            Employee result = new Employee();
-            string Connect = "DATA SOURCE=192.168.35.114:1521/orcl;PASSWORD=theanh;PERSIST SECURITY INFO=True;USER ID=GDP";
-            using (OracleConnection objConn = new OracleConnection(Connect))
+            Employee employee = new Employee();
+            try
             {
-                OracleCommand Ocmd = new OracleCommand();
-                Ocmd.Connection = objConn;
-                Ocmd.CommandText = "EMPLOYEE_GETBYID";
-                Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
-                Ocmd.Parameters.Add("ID", OracleDbType.Decimal).Value = id;
-                Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
-                try
+                using (OracleConnection oracleConnection = Connection.GetConnection)
                 {
-                    objConn.Open();
-                    OracleDataReader objReader = Ocmd.ExecuteReader();
-                    while (objReader.Read())
+                    string storeName = "EMPLOYEE_GETBYUSERNAME";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
                     {
-                        result.EmployeeId = int.Parse(objReader["EMPID"].ToString());
-                        result.Address = objReader["EMPID"].ToString();
-                        result.DepartmentId = int.Parse(objReader["DEPARTMENTID"].ToString());
-                        result.Email = objReader["EMAIL"].ToString();
-                        result.FullName = objReader["FULLNAME"].ToString();
-                        result.Identity = objReader["IDENTITY"].ToString();
-                        result.IsDelete = Convert.ToInt16(objReader["ISDELETE"].ToString());
-                        result.Status = Convert.ToInt16(objReader["STATUS"].ToString());
-                        result.Phone = objReader["PHONE"].ToString();                            
-                    }
+                        new OracleParameter("usernames",username),
+                        new OracleParameter("cursor",OracleDbType.RefCursor,ParameterDirection.Output)
+                    };
+                    DataTable data = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                    employee = TranferDataTableToEmployeeList(data)[0];
                 }
-                catch(Exception e)
-                {
-                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                    logger.Debug(e.Message);
-                }
-                objConn.Close();
             }
-            return result;
+            catch (Exception e)
+            {
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+            }
+            return employee;
+        }
+
+
+        public Employee GetByIdentity(string identity)
+        {
+            Employee employee = new Employee();
+            try
+            {
+                using (OracleConnection oracleConnection = Connection.GetConnection)
+                {
+                    string storeName = "EMPLOYEE_GETBYIDENTITY";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("identityPara",identity),
+                        new OracleParameter("cursor",OracleDbType.RefCursor,ParameterDirection.Output)
+                    };
+                    DataTable data = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                    employee = TranferDataTableToEmployeeList(data)[0];
+                }
+            }
+            catch (Exception e)
+            {
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+            }
+            return employee;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        public int UpdateProfile(Employee employee)
+        {
+            try
+            {
+                using (OracleConnection oracleConnection = Connection.GetConnection)
+                {
+                    string storeName = "Employee_UpdateByUserName";
+                    OracleParameter[] oracleParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("userNames",employee.UserName),
+                        new OracleParameter("fullNames",employee.FullName),
+                        new OracleParameter("identitys",employee.Identity),
+                        new OracleParameter("addresss",employee.Address),
+                        new OracleParameter("phones",employee.Phone),
+                        new OracleParameter("emails",employee.Email),
+                    };
+                    return sql.ExcuteNonQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                }
+            }
+            catch (Exception e)
+            {
+                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+                return 0;
+            }
         }
 
         public DataTable Search(string keyword)
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

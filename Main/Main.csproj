@@ -76,7 +76,7 @@
     </Compile>
     <Compile Include="Dong\SalaryManagement.designer.cs">
       <DependentUpon>SalaryManagement.cs</DependentUpon>
-      </Compile>
+    </Compile>
     <Compile Include="Bang\AddTask.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +113,18 @@
     <Compile Include="Dai\UcDepartment.designer.cs">
       <DependentUpon>UcDepartment.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMain_.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain_.designer.cs">
+      <DependentUpon>FormMain_.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login_.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login_.designer.cs">
+      <DependentUpon>Login_.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hai\Employee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,49 +137,43 @@
     <Compile Include="Hai\Employees.designer.cs">
       <DependentUpon>Employees.cs</DependentUpon>
     </Compile>
-    <Compile Include="TheAnh\Role_Add.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TheAnh\Role_Add.Designer.cs">
-      <DependentUpon>Role_Add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TheAnh\Action_Add.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TheAnh\Action_Add.Designer.cs">
-      <DependentUpon>Action_Add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TheAnh\ActionManagement.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="TheAnh\ActionManagement.Designer.cs">
-      <DependentUpon>ActionManagement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TheAnh\Action.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheAnh\Action.designer.cs">
+      <DependentUpon>Action.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheAnh\Role.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheAnh\Role.designer.cs">
+      <DependentUpon>Role.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheAnh\UcAction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TheAnh\UcAction.designer.cs">
+      <DependentUpon>UcAction.cs</DependentUpon>
+    </Compile>
     <Compile Include="TheAnh\UcRoles.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TheAnh\UcRoles.Designer.cs">
+    <Compile Include="TheAnh\UcRoles.designer.cs">
       <DependentUpon>UcRoles.cs</DependentUpon>
     </Compile>
     <Compile Include="TheAnh\UcRolesAction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TheAnh\UcRolesAction.Designer.cs">
+    <Compile Include="TheAnh\UcRolesAction.designer.cs">
       <DependentUpon>UcRolesAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheAnh\UcUpdateProfile_.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TheAnh\UcUpdateProfile_.designer.cs">
+      <DependentUpon>UcUpdateProfile_.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Bang\AddTask.resx">
       <DependentUpon>AddTask.cs</DependentUpon>
@@ -196,26 +202,17 @@
     <EmbeddedResource Include="Dai\UcDepartment.resx">
       <DependentUpon>UcDepartment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMain_.resx">
+      <DependentUpon>FormMain_.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login_.resx">
+      <DependentUpon>Login_.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hai\Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hai\Employees.resx">
       <DependentUpon>Employees.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TheAnh\Role_Add.resx">
-      <DependentUpon>Role_Add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TheAnh\Action_Add.resx">
-      <DependentUpon>Action_Add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TheAnh\ActionManagement.resx">
-      <DependentUpon>ActionManagement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -227,11 +224,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TheAnh\Action.resx">
+      <DependentUpon>Action.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheAnh\Role.resx">
+      <DependentUpon>Role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheAnh\UcAction.resx">
+      <DependentUpon>UcAction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TheAnh\UcRoles.resx">
       <DependentUpon>UcRoles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TheAnh\UcRolesAction.resx">
       <DependentUpon>UcRolesAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheAnh\UcUpdateProfile_.resx">
+      <DependentUpon>UcUpdateProfile_.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -248,7 +257,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
