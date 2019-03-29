@@ -16,6 +16,7 @@ namespace Main.Dai
     
     public partial class UcDepartment : UserControl
     {
+        //Create by the anh (28/3/2019)
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
         protected override void OnLoad(EventArgs e)
