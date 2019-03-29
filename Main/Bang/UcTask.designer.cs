@@ -170,6 +170,7 @@
             this.dgvTask.Location = new System.Drawing.Point(3, 16);
             this.dgvTask.MultiSelect = false;
             this.dgvTask.Name = "dgvTask";
+            this.dgvTask.ReadOnly = true;
             this.dgvTask.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTask.Size = new System.Drawing.Size(803, 340);
             this.dgvTask.TabIndex = 0;

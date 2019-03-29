@@ -122,6 +122,10 @@ namespace Main
         private void dgvTask_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
+            try
+            {
+
+           
             //set value of column Priority
             if (e.ColumnIndex == 5)
             {
@@ -174,6 +178,11 @@ namespace Main
                 {
                     e.Value = cvDate;
                 }
+            }
+            }
+            catch (Exception exception)
+            {
+                logger.Debug(exception);
             }
         }
 
