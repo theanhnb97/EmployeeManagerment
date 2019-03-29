@@ -13,15 +13,16 @@ using System.Configuration;
 
 namespace DataAccessLayer
 {
-    public interface ISalary 
+    public interface ISalary
     {
         List<SalaryView> GetData();
         List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate);
         Salary GetById(int id);
+        List<SalaryView> Paging(int Size, int index);
     }
     public class SalaryDAO : IEntities<Salary>, ISalary
-    {       
-        string Connect = ConfigurationManager.ConnectionStrings["ConnectString"].ConnectionString;       
+    {
+        string Connect = ConfigurationManager.ConnectionStrings["ConnectString"].ConnectionString;
         ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public int Add(Salary obj)
         {
@@ -85,9 +86,9 @@ namespace DataAccessLayer
                 Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
                 Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
                 try
-                { 
+                {
                     objConn.Open();
-                    OracleDataReader objReader = Ocmd.ExecuteReader();                   
+                    OracleDataReader objReader = Ocmd.ExecuteReader();
                     while (objReader.Read())
                     {
                         SalaryView salaryView = new SalaryView();
@@ -127,9 +128,9 @@ namespace DataAccessLayer
                 Ocmd.Parameters.Add("BUSSINESS", OracleDbType.Decimal).Value = obj.BussinessSalary;
                 Ocmd.Parameters.Add("COFFI", OracleDbType.Decimal).Value = obj.Coefficient;
                 try
-                {                    
+                {
                     objConn.Open();
-                    Ocmd.ExecuteNonQuery();                    
+                    Ocmd.ExecuteNonQuery();
                 }
                 catch (Exception e)
                 {
@@ -258,7 +259,50 @@ namespace DataAccessLayer
             }
             return result;
         }
-            public List<Salary> Search(string keyword)
+        public List<SalaryView> Paging(int size, int index)
+        {
+            List<SalaryView> salaryViews = new List<SalaryView>();
+            using (OracleConnection objConn = new OracleConnection(Connect))
+            {
+                OracleCommand Ocmd = new OracleCommand();
+                Ocmd.Connection = objConn;
+                Ocmd.CommandText = "SALARY_PAGING";
+                Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
+                Ocmd.Parameters.Add("PageSize", OracleDbType.Decimal).Value = size;
+                Ocmd.Parameters.Add("PageIndex", OracleDbType.Decimal).Value = index;
+                Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
+                try
+                {
+                    objConn.Open();
+                    OracleDataReader objReader = Ocmd.ExecuteReader();
+                    while (objReader.Read())
+                    {
+                        SalaryView salaryView = new SalaryView();
+                        salaryView.FullName = objReader["FULLNAME"].ToString();
+                        salaryView.Identity = objReader["IDENTITY"].ToString();
+                        salaryView.Rank = int.Parse(objReader["RANK"].ToString());
+                        salaryView.Dept = objReader["DEPARTMENTNAME"].ToString();
+                        salaryView.Basic = int.Parse(objReader["BASICSALARY"].ToString());
+                        salaryView.Bussiness = int.Parse(objReader["BUSINESSSALARY"].ToString());
+                        salaryView.Coefficient = float.Parse(objReader["COEFFICIENT"].ToString());
+                        salaryView.Total = double.Parse(objReader["TOTAL"].ToString());
+                        salaryView.SalaryId = int.Parse(objReader["SALARYID"].ToString());
+                        salaryViews.Add(salaryView);
+                    }
+                    objReader.Close();
+                }
+                catch (Exception e)
+                {
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
+                }
+                objConn.Close();
+            }
+            return salaryViews;
+        }
+
+
+        public List<Salary> Search(string keyword)
         {
             throw new NotImplementedException();
         }

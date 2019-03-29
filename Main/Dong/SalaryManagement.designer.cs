@@ -50,6 +50,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtDeptFilter = new System.Windows.Forms.TextBox();
             this.txtNameFilter = new System.Windows.Forms.TextBox();
+            this.lblPagingSalaryIndex = new System.Windows.Forms.Label();
+            this.btnNextSalary = new System.Windows.Forms.Button();
+            this.btnPreSalary = new System.Windows.Forms.Button();
+            this.lblAllPageSalary = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -78,6 +83,11 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.lblAllPageSalary);
+            this.panel2.Controls.Add(this.lblPagingSalaryIndex);
+            this.panel2.Controls.Add(this.btnNextSalary);
+            this.panel2.Controls.Add(this.btnPreSalary);
             this.panel2.Controls.Add(this.btnEdit);
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Controls.Add(this.btnDelete);
@@ -92,7 +102,7 @@
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(261, 30);
+            this.btnEdit.Location = new System.Drawing.Point(115, 30);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 13;
@@ -103,7 +113,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(168, 30);
+            this.btnAdd.Location = new System.Drawing.Point(22, 30);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 12;
@@ -114,7 +124,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(352, 30);
+            this.btnDelete.Location = new System.Drawing.Point(206, 30);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 14;
@@ -125,7 +135,7 @@
             // btnLoadData
             // 
             this.btnLoadData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadData.Location = new System.Drawing.Point(441, 30);
+            this.btnLoadData.Location = new System.Drawing.Point(295, 30);
             this.btnLoadData.Name = "btnLoadData";
             this.btnLoadData.Size = new System.Drawing.Size(75, 23);
             this.btnLoadData.TabIndex = 10;
@@ -136,7 +146,7 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(534, 30);
+            this.btnClear.Location = new System.Drawing.Point(388, 30);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 11;
@@ -279,6 +289,58 @@
             this.txtNameFilter.Size = new System.Drawing.Size(204, 20);
             this.txtNameFilter.TabIndex = 11;
             // 
+            // lblPagingSalaryIndex
+            // 
+            this.lblPagingSalaryIndex.AutoSize = true;
+            this.lblPagingSalaryIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPagingSalaryIndex.Location = new System.Drawing.Point(704, 10);
+            this.lblPagingSalaryIndex.Name = "lblPagingSalaryIndex";
+            this.lblPagingSalaryIndex.Size = new System.Drawing.Size(17, 15);
+            this.lblPagingSalaryIndex.TabIndex = 15;
+            this.lblPagingSalaryIndex.Text = "1 ";
+            // 
+            // btnNextSalary
+            // 
+            this.btnNextSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNextSalary.Location = new System.Drawing.Point(767, 6);
+            this.btnNextSalary.Name = "btnNextSalary";
+            this.btnNextSalary.Size = new System.Drawing.Size(27, 23);
+            this.btnNextSalary.TabIndex = 17;
+            this.btnNextSalary.Text = ">";
+            this.btnNextSalary.UseVisualStyleBackColor = true;
+            this.btnNextSalary.Click += new System.EventHandler(this.btnNextSalary_Click);
+            // 
+            // btnPreSalary
+            // 
+            this.btnPreSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreSalary.Location = new System.Drawing.Point(666, 6);
+            this.btnPreSalary.Name = "btnPreSalary";
+            this.btnPreSalary.Size = new System.Drawing.Size(27, 23);
+            this.btnPreSalary.TabIndex = 16;
+            this.btnPreSalary.Text = "<";
+            this.btnPreSalary.UseVisualStyleBackColor = true;
+            this.btnPreSalary.Click += new System.EventHandler(this.btnPreSalary_Click);
+            // 
+            // lblAllPageSalary
+            // 
+            this.lblAllPageSalary.AutoSize = true;
+            this.lblAllPageSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAllPageSalary.Location = new System.Drawing.Point(736, 9);
+            this.lblAllPageSalary.Name = "lblAllPageSalary";
+            this.lblAllPageSalary.Size = new System.Drawing.Size(21, 15);
+            this.lblAllPageSalary.TabIndex = 18;
+            this.lblAllPageSalary.Text = "10";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(724, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(10, 15);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "/";
+            // 
             // SalaryManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,6 +355,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalary)).EndInit();
@@ -326,5 +389,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDeptFilter;
         private System.Windows.Forms.TextBox txtNameFilter;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblAllPageSalary;
+        private System.Windows.Forms.Label lblPagingSalaryIndex;
+        private System.Windows.Forms.Button btnNextSalary;
+        private System.Windows.Forms.Button btnPreSalary;
     }
 }

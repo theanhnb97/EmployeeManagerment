@@ -21,6 +21,11 @@ namespace Main
         public static SalaryView salaryForEdit = new SalaryView();
         protected int RolesID { get; set; }
         SalaryBUS salary = new SalaryBUS();
+        
+        private int currentPage { get; set; } 
+        private int lastPage { get; set; }
+        private int size { get; set; }
+
         public SalaryManagement(int id)
         {
             this.RolesID = id;
@@ -28,7 +33,15 @@ namespace Main
         }
         private void Salary_Load(object sender, EventArgs e)
         {
-            dgvSalary.DataSource = salary.GetData();
+            this.currentPage = 0;          
+
+            if (salary.GetData().Count % size == 0)
+            {
+                this.lastPage = salary.GetData().Count / size - 1;
+            }
+            else this.lastPage = salary.GetData().Count / size;
+
+            dgvSalary.DataSource = salary.Paging(5, 0);
             if (dgvSalary.DataSource == null)
             {
                 MessageBox.Show("Data Not Found!");
@@ -119,5 +132,22 @@ namespace Main
             }
         }
 
+        private void btnPreSalary_Click(object sender, EventArgs e)
+        {
+            if(currentPage != 0)
+            {
+                currentPage = currentPage - 1;
+                dgvSalary.DataSource = salary.Paging(this.size, currentPage);
+            }
+        }
+
+        private void btnNextSalary_Click(object sender, EventArgs e)
+        {
+            if(currentPage != lastPage)
+            {
+                currentPage = currentPage + 1;
+                dgvSalary.DataSource = salary.Paging(this.size, currentPage);
+            }
+        }
     }
 }
