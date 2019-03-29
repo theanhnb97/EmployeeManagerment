@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using Entity;
+using Action = Entity.Action;
 
 namespace Main
 {
-    public partial class Role_Add : Form
+    public partial class Action_Add : Form
     {
+
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
         protected override void OnLoad(EventArgs e)
@@ -36,30 +38,28 @@ namespace Main
 
 
 
-
-
-
-
-        private RolesBUL myBul=new RolesBUL();
-        private Roles myObjectEdit;
-        public Role_Add(int id)
+        private Entity.Action myActionEdit;
+        public Action_Add(Action myActionEdit, int id)
         {
-            myObjectEdit=new Roles();
+            this.RolesID = id;
+            this.myActionEdit = myActionEdit;
             InitializeComponent();
         }
-
-        public Role_Add(Roles myObjectEdit,int id)
+        public Action_Add(int id)
         {
+            this.RolesID = id;
+            this.myActionEdit = new Action();
             InitializeComponent();
-            this.myObjectEdit = myObjectEdit;
         }
+        ActionBUS myAction = new ActionBUS();
 
-        private void Role_Add_Load(object sender, EventArgs e)
+        private void Action_Add_Load(object sender, EventArgs e)
         {
-            if (myObjectEdit.RolesID != 0)
+            if (myActionEdit.ActionID != 0)
             {
-                txtName.Text = myObjectEdit.RolesName;
-                txtDescription.Text = myObjectEdit.Description;
+                txtName.Text = myActionEdit.ActionName;
+                txtName.Enabled = false;
+                txtDescription.Text = myActionEdit.Description;
             }
         }
 
@@ -67,36 +67,26 @@ namespace Main
         {
             this.Close();
         }
-        bool IsValid()
-        {
-            if (myObjectEdit.RolesID != 0)
-            {
-                if (txtName.Text == myObjectEdit.RolesName && txtDescription.Text == myObjectEdit.Description)
-                    return false;
-            }
-            if (txtName.Text == "" || txtDescription.Text == "") return false;
-            return true;
-        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (IsValid())
             {
-                Roles myAdd = new Roles();
-                myAdd.RolesID = myObjectEdit.RolesID;
-                myAdd.RolesName = txtName.Text;
-                myAdd.Description = txtDescription.Text;
-                myAdd.IsDelete = 0;
+                Action myActionAdd = new Action();
+                myActionAdd.ActionID = myActionEdit.ActionID;
+                myActionAdd.ActionName = txtName.Text;
+                myActionAdd.Description = txtDescription.Text;
+                myActionAdd.IsDelete = 0;
                 bool result = false;
-                if (myObjectEdit.RolesID == 0)
-                    result = myBul.Add(myAdd) == -1;
+                if (myActionEdit.ActionID == 0)
+                    result = myAction.Add(myActionAdd) == -1;
                 else
-                    result = myBul.Update(myAdd) == -1;
+                    result = myAction.Update(myActionAdd) == -1;
                 if (result)
                 {
                     MessageBox.Show("Thành công!");
                     lblNotify.Visible = false;
-                    this.Close();
+                    this.DialogResult = DialogResult.OK;
                 }
                 else
                     MessageBox.Show("Thất bại!");
@@ -106,6 +96,25 @@ namespace Main
                 lblNotify.Text = "Xin vui lòng xem lại thông tin.";
                 lblNotify.Visible = true;
             }
+        }
+
+        bool IsValid()
+        {
+            if (myActionEdit.ActionID != 0)
+            {
+                if (txtName.Text == myActionEdit.ActionName && txtDescription.Text == myActionEdit.Description)
+                    return false;
+            }
+            if (txtName.Text == "" || txtDescription.Text == "") return false;
+            return true;
+        }
+
+        private void txtDescription_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnAdd_Click(btnAdd, e);
+            if (e.KeyCode == Keys.Escape)
+                this.DialogResult = DialogResult.Cancel;
         }
     }
 }

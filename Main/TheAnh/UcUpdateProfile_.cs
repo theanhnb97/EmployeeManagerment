@@ -13,11 +13,11 @@ using BusinessLayer;
 
 namespace Main
 {
-    public partial class UcUpdateProfile : UserControl
+    public partial class UcUpdateProfile_ : UserControl
     {
         private string userName;
         private EmployeeBus myEmployeeBus;
-        public UcUpdateProfile(string username)
+        public UcUpdateProfile_(string username)
         {
             myEmployeeBus = new EmployeeBus();
             this.userName = username;

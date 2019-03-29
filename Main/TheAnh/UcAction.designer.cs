@@ -1,6 +1,6 @@
 ﻿namespace Main
 {
-    partial class ActionManagement
+    partial class UcAction
     {
         /// <summary> 
         /// Required designer variable.
@@ -73,7 +73,8 @@
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvData.Size = new System.Drawing.Size(809, 497);
             this.dgvData.TabIndex = 0;
-            this.dgvData.Enter += new System.EventHandler(this.dgvData_Enter);
+            this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
+            this.dgvData.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvData_KeyDown);
             // 
             // ACTIONID
             // 
@@ -256,7 +257,7 @@
             this.btnScan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
             // 
-            // ActionManagement
+            // UcAction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -267,11 +268,9 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvData);
-            this.Name = "ActionManagement";
+            this.Name = "UcAction";
             this.Size = new System.Drawing.Size(809, 588);
             this.Load += new System.EventHandler(this.ActionManagement_Load);
-            this.Click += new System.EventHandler(this.ActionManagement_Click);
-            this.Enter += new System.EventHandler(this.ActionManagement_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
