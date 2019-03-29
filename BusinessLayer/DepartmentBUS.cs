@@ -26,10 +26,15 @@ namespace BusinessLayer
 
         }
 
+
         //public DataTable GetDepartmentByStatusAndIsDelete(int status, int isDeleted)
         //{
         //    return departmentDal.GetDepartmentByStatusAndIsDelete(status,isDeleted);
         //}
+
+        //Delete phòng ban
+
+
         public int Delete(int id)
         {
             return departmentDal.Delete(id);
@@ -46,9 +51,9 @@ namespace BusinessLayer
             return departmentDal.Update(department);
         }
         //Tìm kiếm phòng ban
-        public DataTable SearchDepartment(string keyword)
+        public DataTable SearchDepartment(string keyword, int currPage, int recodperpage, int Pagesize)
         {
-            return departmentDal.SearchDepartment(keyword);
+            return departmentDal.SearchDepartment(keyword,currPage,recodperpage,Pagesize);
         }
         //Xóa phòng ban
         public int DeleteNoRemove(int id)
@@ -59,6 +64,11 @@ namespace BusinessLayer
         public DataTable GetAllPage(int currPage, int recodperpage, int Pagesize)
         {
             return departmentDal.GetAllPage(currPage, recodperpage, Pagesize);
+        }
+
+        public DataTable GetDepartmentAll()
+        {
+            return departmentDal.GetDepartmentAll();
         }
 
     }

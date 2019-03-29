@@ -30,7 +30,6 @@
         {
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
-            this.btnCannel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDepartment = new System.Windows.Forms.Button();
@@ -48,6 +47,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.btFillall = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartment)).BeginInit();
             this.SuspendLayout();
@@ -55,7 +55,11 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             this.btnSearch.Location = new System.Drawing.Point(155, 152);
+
+            this.btnSearch.Location = new System.Drawing.Point(655, 34);
+
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(84, 30);
             this.btnSearch.TabIndex = 16;
@@ -66,7 +70,7 @@
             // btnClean
             // 
             this.btnClean.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClean.Location = new System.Drawing.Point(44, 521);
+            this.btnClean.Location = new System.Drawing.Point(526, 34);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(84, 30);
             this.btnClean.TabIndex = 14;
@@ -74,21 +78,10 @@
             this.btnClean.UseVisualStyleBackColor = true;
             this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
-            // btnCannel
-            // 
-            this.btnCannel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCannel.Location = new System.Drawing.Point(684, 521);
-            this.btnCannel.Name = "btnCannel";
-            this.btnCannel.Size = new System.Drawing.Size(84, 30);
-            this.btnCannel.TabIndex = 13;
-            this.btnCannel.Text = "Cannel";
-            this.btnCannel.UseVisualStyleBackColor = true;
-            this.btnCannel.Click += new System.EventHandler(this.btnCannel_Click);
-            // 
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(522, 521);
+            this.btnDelete.Location = new System.Drawing.Point(576, 521);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(84, 30);
             this.btnDelete.TabIndex = 12;
@@ -99,7 +92,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(360, 521);
+            this.btnUpdate.Location = new System.Drawing.Point(428, 521);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(84, 30);
             this.btnUpdate.TabIndex = 11;
@@ -110,7 +103,7 @@
             // btnDepartment
             // 
             this.btnDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDepartment.Location = new System.Drawing.Point(204, 521);
+            this.btnDepartment.Location = new System.Drawing.Point(266, 521);
             this.btnDepartment.Name = "btnDepartment";
             this.btnDepartment.Size = new System.Drawing.Size(84, 30);
             this.btnDepartment.TabIndex = 10;
@@ -123,6 +116,9 @@
             this.groupBox1.Controls.Add(this.cbStatus);
             this.groupBox1.Controls.Add(this.txtDepartmentName);
             this.groupBox1.Controls.Add(this.label1);
+
+            this.groupBox1.Controls.Add(this.btnSearch);
+            this.groupBox1.Controls.Add(this.btnClean);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(29, 41);
             this.groupBox1.Name = "groupBox1";
@@ -174,13 +170,21 @@
             this.dgvDepartment.AllowUserToAddRows = false;
             this.dgvDepartment.AllowUserToDeleteRows = false;
             this.dgvDepartment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDepartment.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvDepartment.BackgroundColor = System.Drawing.Color.White;
             this.dgvDepartment.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+
             this.dgvDepartment.Location = new System.Drawing.Point(29, 209);
             this.dgvDepartment.Name = "dgvDepartment";
             this.dgvDepartment.ReadOnly = true;
             this.dgvDepartment.RowHeadersWidth = 50;
             this.dgvDepartment.Size = new System.Drawing.Size(745, 238);
+
+            this.dgvDepartment.Location = new System.Drawing.Point(29, 152);
+            this.dgvDepartment.Name = "dgvDepartment";
+            this.dgvDepartment.ReadOnly = true;
+            this.dgvDepartment.RowHeadersWidth = 50;
+            this.dgvDepartment.Size = new System.Drawing.Size(745, 315);
+>
             this.dgvDepartment.TabIndex = 9;
             this.dgvDepartment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentClick);
             this.dgvDepartment.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentDoubleClick);
@@ -233,6 +237,8 @@
             this.cbPage.Size = new System.Drawing.Size(121, 23);
             this.cbPage.TabIndex = 21;
             this.cbPage.Text = "5";
+            this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
+            this.cbPage.SelectedValueChanged += new System.EventHandler(this.cbPage_SelectedValueChanged);
             // 
             // label2
             // 
@@ -244,18 +250,32 @@
             this.label2.TabIndex = 22;
             this.label2.Text = "Page";
             // 
+            // btFillall
+            // 
+            this.btFillall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btFillall.Location = new System.Drawing.Point(110, 521);
+            this.btFillall.Name = "btFillall";
+            this.btFillall.Size = new System.Drawing.Size(84, 30);
+            this.btFillall.TabIndex = 23;
+            this.btFillall.Text = "FillAll";
+            this.btFillall.UseVisualStyleBackColor = true;
+            this.btFillall.Click += new System.EventHandler(this.btFillall_Click);
+            // 
             // UcDepartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btFillall);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbPage);
             this.Controls.Add(this.lblPage);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
+
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnClean);
             this.Controls.Add(this.btnCannel);
+
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDepartment);
@@ -277,7 +297,6 @@
 
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnClean;
-        private System.Windows.Forms.Button btnCannel;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDepartment;
@@ -295,5 +314,6 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Label label2;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private System.Windows.Forms.Button btFillall;
     }
 }

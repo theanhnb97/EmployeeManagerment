@@ -139,7 +139,7 @@ namespace DataAccessLayer
 
             }
         }
-
+ 
         /// <summary>/// Hiển thị danh sách phòng ban theo mã phòng ban.
         /// </summary>
         /// <param name=”p_departmentID”>Mã phòng ban</param>
@@ -149,6 +149,7 @@ namespace DataAccessLayer
         /// Created by (BuiCongDai) – (25/3/2019)
         ///Modified by (BuiCongDai) – (28/3/2019 , 1)
         /// <remarks></remarks>
+
 
 
         public DataTable GetDepartmentByStatusAndIsDelete(int status, int isDeleted)
@@ -181,6 +182,7 @@ namespace DataAccessLayer
 
             }
         }
+
 
 
 
@@ -277,7 +279,7 @@ namespace DataAccessLayer
         /// Created by (BuiCongDai) – (25/3/2019)
         /// <remarks></remarks>
 
-        public DataTable SearchDepartment(string keyword)
+        public DataTable SearchDepartment(string keyword,int currPage,int recodperpage,int Pagesize)
         {
             try
             {
@@ -287,16 +289,19 @@ namespace DataAccessLayer
                     OracleDataAdapter da = new OracleDataAdapter();
                     OracleCommand cmd = new OracleCommand();
 
-                    cmd = new OracleCommand("Department_Search", connection);
+                    cmd = new OracleCommand("Department_Page", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_departmentName", keyword);
+
+                    cmd.Parameters.Add("currPage", currPage);
+                    cmd.Parameters.Add("recodperpage", recodperpage);
+                    cmd.Parameters.Add("Pagesize", Pagesize);
+                    
                     cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
                     da.SelectCommand = cmd;
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     return dt;
-
 
                 }
 
@@ -391,6 +396,43 @@ namespace DataAccessLayer
 
             }
         }
+        public DataTable GetDepartmentAll()
+        {
+            try
+            {
+                SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
+                using (OracleConnection connection = Connection.GetConnection)
+                {
+                    OracleParameter[] parameters = new OracleParameter[]
+                    {
+                      
+                        new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output),
+                    };
+                    return sqlHelp.ExcuteQuery("Department_GetAll", CommandType.StoredProcedure, connection,
+                        parameters);
+                    //OracleDataAdapter da = new OracleDataAdapter();
+                    //OracleCommand cmd = new OracleCommand();
+
+                    //cmd = new OracleCommand("Department_GetAllDeltete", connection);
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.Add("p_isDelete", 1);
+                    //cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    //da.SelectCommand = cmd;
+                    //DataTable dt = new DataTable();
+                    //da.Fill(dt);
+                    //return dt;
+                }
+
+            }
+            catch (Exception e)
+            {
+                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+                return null;
+
+            }
+        }
         // Created by (BuiCongDai) – (25/3/2019)
         DataTable IEntities<Department>.Get()
         {
@@ -413,10 +455,11 @@ namespace DataAccessLayer
                     department.DepartmentName = dr["DEPARTMENTNAME"].ToString();
                     employees.Add(department);
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    //logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                    //logger.Debug(e.Message);
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(ex.Message);
+                    return null;
                 }
             }
             return employees;
