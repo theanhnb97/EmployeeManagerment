@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using BusinessLayer;
 using Entity;
+using log4net;
 
 namespace Main
 {
@@ -10,6 +12,7 @@ namespace Main
     {
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
+        private TaskBus objTaskBus = new TaskBus();
         protected override void OnLoad(EventArgs e)
         {
             DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
@@ -30,13 +33,14 @@ namespace Main
         
 
 
-
-
         public AddTask(int id)
         {
             this.RolesID = id;
             InitializeComponent();
         }
+       //private readonly TaskBus objTaskBus = new TaskBus();
+
+       protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         /// <summary>
         /// 
         /// </summary>
@@ -60,23 +64,44 @@ namespace Main
         {
             try
             {
-                TaskBus objTaskBus = new TaskBus();
-                Task objTask = new Task
+
+                if (string.Empty.Equals(txtTaskName.Text.Trim()))
                 {
-                    TaskName = txtTaskName.Text,
-                    Assign = Convert.ToInt32(cmbAssign.SelectedValue.ToString()),
-                    DueDate = Convert.ToDateTime(dtpDueDate.Value).ToString("dd/MMM/yyyy"),
-                    Description = txtDescription.Text,
-                    Files = "",
-                    Status = 1,
-                    Priority = Convert.ToInt32(cmbLevel.SelectedValue.ToString()),
-                };
-                objTaskBus.Insert(objTask);
-                Hide();
+                    MessageBox.Show("Enter Task Name!", "Warning");
+                }
+                else if (string.Empty.Equals(txtDescription.Text.Trim()))
+                {
+                    MessageBox.Show("Enter Description!", "Warning");
+                }
+                else if (Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,}") == false)
+                {
+                    MessageBox.Show(" Task Name must more than 2 characters!", "Warning");
+                }
+                else if (Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,}") == false)
+                {
+                    MessageBox.Show("Description must more than 2 characters!!", "Warning");
+                }
+                else
+                {
+
+                    Task objTask = new Task
+                    {
+                        TaskName = txtTaskName.Text.Trim(),
+                        Assign = Convert.ToInt32(cmbAssign.SelectedValue.ToString()),
+                        DueDate = Convert.ToDateTime(dtpDueDate.Value).ToString("dd/MMM/yyyy"),
+                        Description = txtDescription.Text.Trim(),
+                        Files = "",
+                        Status = 1,
+                        Priority = Convert.ToInt32(cmbLevel.SelectedValue.ToString()),
+                    };
+                    objTaskBus.Insert(objTask);
+                    Hide();
+                }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
                 MessageBox.Show("Some thing wrong");
+                logger.Debug(exception);
             }
 
 
@@ -135,7 +160,8 @@ namespace Main
             }
             catch (Exception exception)
             {
-                MessageBox.Show("some thing wrong" + exception);
+                MessageBox.Show("some thing wrong");
+                logger.Debug(exception);
             }
         }
         /// <summary>
@@ -147,7 +173,6 @@ namespace Main
         {
             try
             {
-                TaskBus objTaskBus = new TaskBus();
                 cmbAssign.DataSource = objTaskBus.LoadEmployeeByDpt(Int32.Parse(cmbDepartment.SelectedValue.ToString()));
                 cmbAssign.ValueMember = "EMPLOYEEID";
                 cmbAssign.DisplayMember = "FULLNAME";

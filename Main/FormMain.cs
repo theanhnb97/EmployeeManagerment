@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
+using Main.Dai;
 
 
 namespace Main
@@ -39,12 +40,13 @@ namespace Main
 
 
         private List<Button> btnMenuButtons;
+        SalaryManagement salary;
         ActionManagement ucActionManagement;
         UcRoles ucRoles;
         UcRolesAction ucRolesAction;
         Employees ucEmployees;
         UcTask ucTask;
-        
+        UcDepartment ucDepartment;
 
         private void LoadUC()
         {
@@ -56,13 +58,16 @@ namespace Main
 
             pnMain.Controls.Add(ucTask);
             ucTask.Dock = DockStyle.Fill;
-
+            pnMain.Controls.Add(salary);
+            salary.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucRoles);
             ucRoles.Dock = DockStyle.Fill;
 
             pnMain.Controls.Add(ucRolesAction);
             ucRolesAction.Dock = DockStyle.Fill;
 
+            pnMain.Controls.Add(ucDepartment);
+            ucDepartment.Dock = DockStyle.Fill;
 
         }
 
@@ -75,6 +80,8 @@ namespace Main
             ucRolesAction = new UcRolesAction(RolesID);
             ucTask = new UcTask(RolesID);
             ucEmployees = new Employees(RolesID);
+            ucDepartment = new UcDepartment(RolesID);
+            salary = new SalaryManagement(RolesID);
 
             InitializeComponent();
             btnMenuButtons = new List<Button>();
@@ -160,6 +167,7 @@ namespace Main
         private void btnSalary_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
+            salary.BringToFront();
         }
 
         private void btnTask_Click(object sender, EventArgs e)
@@ -171,6 +179,7 @@ namespace Main
         private void btnDepartment_Click(object sender, EventArgs e)
         {
             btnMenuItem_Click(sender, e);
+            ucDepartment.BringToFront();
         }
 
         private void btnEmployee_Click(object sender, EventArgs e)

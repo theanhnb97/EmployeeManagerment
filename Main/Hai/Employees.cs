@@ -39,6 +39,8 @@ namespace Main
 
         private readonly EmployeeBus employeeBus = new EmployeeBus();
 
+        private readonly EmployeeMapper mapper = new EmployeeMapper();
+
         public static Entity.Employee employeeForUpdate = new Entity.Employee();
 
         public static bool IsCreated;
@@ -49,8 +51,8 @@ namespace Main
         {
             dgv_employee.DataSource = employeeBus.GetAll();
             dgv_employee.Columns["RANK"].Visible = false;
-            dgv_employee.Columns["DepartmentName"].Visible = false;
-
+            dgv_employee.Columns["DEPARTMENTID"].Visible = false;
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
