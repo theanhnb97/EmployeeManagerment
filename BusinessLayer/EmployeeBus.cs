@@ -48,7 +48,7 @@ namespace BusinessLayer
 
         public List<EmployeeDTO> Search(Employee employee)
         {
-            return employeeDao.Search(employee);
+            return MapperEmployeeDtos(employeeDao.Search(employee));
         }
 
         public Employee GetByEmployeeId(int employeeId)
