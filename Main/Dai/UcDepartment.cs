@@ -41,7 +41,13 @@ namespace Main.Dai
             this.RolesID = id;
             InitializeComponent();
         }
-        //Load form Department
+        /// <summary>/// Load form Department
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
+
         private void UcDepartment_Load(object sender, EventArgs e)
         {
            
@@ -54,7 +60,12 @@ namespace Main.Dai
                 lblPage.Text = cusPage.ToString() + '/' + pageSize;
 
         }
-        //Button search event click
+        /// <summary>/// Button search event click
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string keyword = txtDepartmentName.Text;
@@ -70,7 +81,12 @@ namespace Main.Dai
             }
             
         }
-        //Button update event click
+        /// <summary>/// Button update event click
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Entity.Department department = new Entity.Department();
@@ -87,7 +103,12 @@ namespace Main.Dai
 
             frUpdate.ShowDialog();
         }
-        //Button delete event click
+        /// <summary>/// Button delete event click
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             
@@ -121,7 +142,12 @@ namespace Main.Dai
             DepartmentAdd frAdd = new DepartmentAdd(RolesID);
             frAdd.ShowDialog();
         }
-        //Button Refresh event click
+        /// <summary>/// Button Refresh event click
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void btnClean_Click(object sender, EventArgs e)
         {
             
@@ -131,7 +157,13 @@ namespace Main.Dai
             dgvDepartment.DataSource = departmentBus.GetAllPage(1,item,20);
             lblPage.Text =  "1/" + pageSize;
         }
-      // Button next event click
+
+        /// <summary>/// Button next event click
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void btnNext_Click(object sender, EventArgs e)
         {
         int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
@@ -154,7 +186,13 @@ namespace Main.Dai
         {
 
         }
-        //Button Previous
+
+        /// <summary>/// Button Previous
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             DepartmentBUS departmentBus = new DepartmentBUS();
@@ -176,7 +214,13 @@ namespace Main.Dai
 
         }
 
-       //Format form Depaert ment cells Status,isDelete
+        
+        /// <summary>/// Format form Depaert ment cells Status,isDelete
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void dgvDepartment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == 2)

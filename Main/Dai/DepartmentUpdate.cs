@@ -35,7 +35,12 @@ namespace Main.Department
                 this.Close();
             }
         }
-        //Entity DepartMent get  data to form Department
+        /// <summary>/// Entity DepartMent get  data to form Department
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private Entity.Department department;
         public Entity.Department Department
         {
@@ -64,7 +69,12 @@ namespace Main.Department
             if (department.IsDelete == 0) rdbIsDelete.Checked = false;
 
         }
-        //Button update event click
+        /// <summary>/// Button update event click
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -101,7 +111,12 @@ namespace Main.Department
 
             }
         }
-        //Button Cannel
+        /// <summary>/// Button Cannel
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void btnCannel_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -51,7 +51,12 @@ namespace Main.Department
         {
 
         }
-        //Button add event click
+        /// <summary>/// Button add event click
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -87,7 +92,12 @@ namespace Main.Department
 
             }
         }
-        //Button cannel event click
+        /// <summary>///Button cannel event click
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void btnCannel_Click(object sender, EventArgs e)
         {
             this.Close();
