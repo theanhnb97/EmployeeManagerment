@@ -32,8 +32,6 @@ namespace Main
         
 
 
-        TaskBus objTaskBus=new TaskBus();
-
         public AddTask(int id)
         {
             this.RolesID = id;

@@ -1,0 +1,14 @@
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\x64\x64\DataAccessLayer.dll.config
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\x64\x64\DataAccessLayer.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\x64\x64\CommonLibrary.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\x64\x64\Entity.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\x64\x64\log4net.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\x64\x64\Oracle.DataAccess.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\x64\x64\Oracle.ManagedDataAccess.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\x64\x64\CommonLibrary.pdb
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\x64\x64\Entity.pdb
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\bin\x64\x64\log4net.xml
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\obj\x64\x64\DataAccessLayer.csprojAssemblyReference.cache
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\obj\x64\x64\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\obj\x64\x64\DataAccessLayer.csproj.CopyComplete
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\DataAccessLayer\obj\x64\x64\DataAccessLayer.dll

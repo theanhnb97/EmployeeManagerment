@@ -245,10 +245,7 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        public DataTable Search(string keyword)
-        {
-            throw new NotImplementedException();
-        }
+   
 
         public int Login(string username, string password)
         {
@@ -274,6 +271,50 @@ namespace DataAccessLayer
                 
             }
         }
-       
+
+
+        public Employee GetById(int id)
+        {
+            Employee result = new Employee();
+            string Connect = "DATA SOURCE=192.168.35.114:1521/orcl;PASSWORD=theanh;PERSIST SECURITY INFO=True;USER ID=GDP";
+            using (OracleConnection objConn = new OracleConnection(Connect))
+            {
+                OracleCommand Ocmd = new OracleCommand();
+                Ocmd.Connection = objConn;
+                Ocmd.CommandText = "EMPLOYEE_GETBYID";
+                Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
+                Ocmd.Parameters.Add("ID", OracleDbType.Decimal).Value = id;
+                Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
+                try
+                {
+                    objConn.Open();
+                    OracleDataReader objReader = Ocmd.ExecuteReader();
+                    while (objReader.Read())
+                    {
+                        result.EmployeeId = int.Parse(objReader["EMPID"].ToString());
+                        result.Address = objReader["EMPID"].ToString();
+                        result.DepartmentId = int.Parse(objReader["DEPARTMENTID"].ToString());
+                        result.Email = objReader["EMAIL"].ToString();
+                        result.FullName = objReader["FULLNAME"].ToString();
+                        result.Identity = objReader["IDENTITY"].ToString();
+                        result.IsDelete = Convert.ToInt16(objReader["ISDELETE"].ToString());
+                        result.Status = Convert.ToInt16(objReader["STATUS"].ToString());
+                        result.Phone = objReader["PHONE"].ToString();                            
+                    }
+                }
+                catch(Exception e)
+                {
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
+                }
+                objConn.Close();
+            }
+            return result;
+        }
+
+        public DataTable Search(string keyword)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
