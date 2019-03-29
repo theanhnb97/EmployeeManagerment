@@ -52,10 +52,10 @@ namespace Main
 
         private void btnLoadData_Click(object sender, System.EventArgs e)
         {
-            string nameSearch = txtNameFilter.ToString();
-            string deptSearch = txtDeptFilter.ToString();
-            DateTime fDate = DateTime.Parse(dateFDateFilter.ToString());
-            DateTime tDate = DateTime.Parse(dateTDateFilter.ToString());
+            string nameSearch = txtNameFilter.Text;
+            string deptSearch = txtDeptFilter.Text;
+            DateTime fDate = DateTime.Parse(dateFDateFilter.Value.ToString());
+            DateTime tDate = DateTime.Parse(dateTDateFilter.Value.ToString());
             dgvSalary.DataSource = salary.SearchSalary(nameSearch, deptSearch, fDate, tDate);
         }
 

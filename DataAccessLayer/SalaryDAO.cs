@@ -15,7 +15,7 @@ namespace DataAccessLayer
     public interface ISalary 
     {
         List<SalaryView> GetData();
-        List<SalaryView> SearchSalary(string name, string dept, DateTime fDate, DateTime tDate);
+        List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate);
         Salary GetById(int id);
     }
     public class SalaryDAO : IEntities<Salary>, ISalary
@@ -35,7 +35,6 @@ namespace DataAccessLayer
                 Ocmd.Parameters.Add("BASIC", OracleDbType.Decimal).Value = obj.BasicSalary;
                 Ocmd.Parameters.Add("BUSSINESS", OracleDbType.Decimal).Value = obj.BussinessSalary;
                 Ocmd.Parameters.Add("COEFFICIENT", OracleDbType.Double).Value = obj.Coefficient;
-                Ocmd.Parameters.Add("ISDELETE", OracleDbType.Decimal).Value = obj.IsDelete;
                 try
                 {
                     objConn.Open();
@@ -150,10 +149,10 @@ namespace DataAccessLayer
                 Ocmd.Connection = objConn;
                 Ocmd.CommandText = "SALARY_SEARCH";
                 Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
-                Ocmd.Parameters.Add("NAME", OracleDbType.Decimal).Value = name;
-                Ocmd.Parameters.Add("DEPT", OracleDbType.Decimal).Value = dept;
-                Ocmd.Parameters.Add("FDATE", OracleDbType.Decimal).Value = fDate;
-                Ocmd.Parameters.Add("TDATE", OracleDbType.Decimal).Value = tDate;
+                Ocmd.Parameters.Add("NAME", OracleDbType.Varchar2).Value = name;
+                Ocmd.Parameters.Add("DEPT", OracleDbType.Varchar2).Value = dept;
+                Ocmd.Parameters.Add("FDATE", OracleDbType.Date).Value = fDate;
+                Ocmd.Parameters.Add("TDATE", OracleDbType.Date).Value = tDate;
                 Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
                 try
                 {
@@ -170,6 +169,7 @@ namespace DataAccessLayer
                         salaryView.Bussiness = int.Parse(objReader["BUSINESSSALARY"].ToString());
                         salaryView.Coefficient = float.Parse(objReader["COEFFICIENT"].ToString());
                         salaryView.Total = double.Parse(objReader["TOTAL"].ToString());
+                        salaryView.SalaryId = int.Parse(objReader["SALARYID"].ToString());
                         salaryViews.Add(salaryView);
                     }
                     objReader.Close();
@@ -272,9 +272,6 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        public List<SalaryView> SearchSalary(string name, string dept, DateTime fDate, DateTime tDate)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
