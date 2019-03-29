@@ -14,7 +14,7 @@ using Main.Dai;
 
 namespace Main
 {
-    public partial class FormMain : Form
+    public partial class FormMain_ : Form
     {
 
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
@@ -41,13 +41,13 @@ namespace Main
 
         private List<Button> btnMenuButtons;
         SalaryManagement salary;
-        ActionManagement ucActionManagement;
+        UcAction ucActionManagement;
         UcRoles ucRoles;
         UcRolesAction ucRolesAction;
         Employees ucEmployees;
         UcTask ucTask;
         UcDepartment ucDepartment;
-        private UcUpdateProfile ucUpdateProfile;
+        private UcUpdateProfile_ ucUpdateProfile;
 
         private void LoadUC()
         {
@@ -78,13 +78,13 @@ namespace Main
         }
 
         private string userName;
-        public FormMain(int rolesId,string username)
+        public FormMain_(int rolesId,string username)
         {
             this.RolesID = rolesId;
             this.userName = username;
             InitializeComponent();
-            ucUpdateProfile = new UcUpdateProfile(username);
-            ucActionManagement = new ActionManagement(RolesID);
+            ucUpdateProfile = new UcUpdateProfile_(username);
+            ucActionManagement = new UcAction(RolesID);
             ucRoles = new UcRoles(RolesID);
             ucRolesAction = new UcRolesAction(RolesID);
             ucTask = new UcTask(RolesID);
@@ -123,7 +123,7 @@ namespace Main
 
         private void ShowFormLogin()
         {
-            Login f = new Login();
+            Login_ f = new Login_();
             f.ShowDialog();
         }
 

@@ -62,172 +62,172 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dong\SalaryAdd.cs">
+    <Compile Include="FormControls\SalaryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dong\SalaryAdd.Designer.cs">
+    <Compile Include="FormControls\SalaryAdd.Designer.cs">
       <DependentUpon>SalaryAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dong\SalaryEdit.cs">
+    <Compile Include="FormControls\SalaryEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dong\SalaryEdit.Designer.cs">
+    <Compile Include="FormControls\SalaryEdit.Designer.cs">
       <DependentUpon>SalaryEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dong\SalaryManagement.cs">
+    <Compile Include="UserControls\SalaryManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Dong\SalaryManagement.designer.cs">
+    <Compile Include="UserControls\SalaryManagement.designer.cs">
       <DependentUpon>SalaryManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bang\AddTask.cs">
+    <Compile Include="FormControls\AddTask.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bang\AddTask.designer.cs">
+    <Compile Include="FormControls\AddTask.designer.cs">
       <DependentUpon>AddTask.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bang\EditTask.cs">
+    <Compile Include="FormControls\EditTask.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bang\EditTask.designer.cs">
+    <Compile Include="FormControls\EditTask.designer.cs">
       <DependentUpon>EditTask.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bang\UcTask.cs">
+    <Compile Include="UserControls\UcTask.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Bang\UcTask.designer.cs">
+    <Compile Include="UserControls\UcTask.designer.cs">
       <DependentUpon>UcTask.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dai\DepartmentAdd.cs">
+    <Compile Include="FormControls\DepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dai\DepartmentAdd.designer.cs">
+    <Compile Include="FormControls\DepartmentAdd.designer.cs">
       <DependentUpon>DepartmentAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dai\DepartmentUpdate.cs">
+    <Compile Include="FormControls\DepartmentUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dai\DepartmentUpdate.designer.cs">
+    <Compile Include="FormControls\DepartmentUpdate.designer.cs">
       <DependentUpon>DepartmentUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dai\UcDepartment.cs">
+    <Compile Include="UserControls\UcDepartment.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Dai\UcDepartment.designer.cs">
+    <Compile Include="UserControls\UcDepartment.designer.cs">
       <DependentUpon>UcDepartment.cs</DependentUpon>
     </Compile>
-    <Compile Include="TheAnh\UcUpdateProfile.cs">
+    <Compile Include="UserControls\UcUpdateProfile_.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TheAnh\UcUpdateProfile.Designer.cs">
-      <DependentUpon>UcUpdateProfile.cs</DependentUpon>
+    <Compile Include="UserControls\UcUpdateProfile_.Designer.cs">
+      <DependentUpon>UcUpdateProfile_.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hai\Employee.cs">
+    <Compile Include="FormControls\Employee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Hai\Employee.designer.cs">
+    <Compile Include="FormControls\Employee.designer.cs">
       <DependentUpon>Employee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hai\Employees.cs">
+    <Compile Include="UserControls\Employees.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Hai\Employees.designer.cs">
+    <Compile Include="UserControls\Employees.designer.cs">
       <DependentUpon>Employees.cs</DependentUpon>
     </Compile>
-    <Compile Include="TheAnh\Role_Add.cs">
+    <Compile Include="FormControls\Role.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TheAnh\Role_Add.Designer.cs">
-      <DependentUpon>Role_Add.cs</DependentUpon>
+    <Compile Include="FormControls\Role.Designer.cs">
+      <DependentUpon>Role.cs</DependentUpon>
     </Compile>
-    <Compile Include="TheAnh\Action_Add.cs">
+    <Compile Include="FormControls\Action.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TheAnh\Action_Add.Designer.cs">
-      <DependentUpon>Action_Add.cs</DependentUpon>
+    <Compile Include="FormControls\Action.Designer.cs">
+      <DependentUpon>Action.cs</DependentUpon>
     </Compile>
-    <Compile Include="TheAnh\ActionManagement.cs">
+    <Compile Include="UserControls\UcAction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TheAnh\ActionManagement.Designer.cs">
-      <DependentUpon>ActionManagement.cs</DependentUpon>
+    <Compile Include="UserControls\UcAction.Designer.cs">
+      <DependentUpon>UcAction.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="MainForm\FormMain_.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="MainForm\FormMain_.Designer.cs">
+      <DependentUpon>FormMain_.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="MainForm\Login_.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="MainForm\Login_.Designer.cs">
+      <DependentUpon>Login_.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TheAnh\UcRoles.cs">
+    <Compile Include="UserControls\UcRoles.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TheAnh\UcRoles.Designer.cs">
+    <Compile Include="UserControls\UcRoles.Designer.cs">
       <DependentUpon>UcRoles.cs</DependentUpon>
     </Compile>
-    <Compile Include="TheAnh\UcRolesAction.cs">
+    <Compile Include="UserControls\UcRolesAction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TheAnh\UcRolesAction.Designer.cs">
+    <Compile Include="UserControls\UcRolesAction.Designer.cs">
       <DependentUpon>UcRolesAction.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Bang\AddTask.resx">
+    <EmbeddedResource Include="FormControls\AddTask.resx">
       <DependentUpon>AddTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bang\EditTask.resx">
+    <EmbeddedResource Include="FormControls\EditTask.resx">
       <DependentUpon>EditTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bang\UcTask.resx">
+    <EmbeddedResource Include="UserControls\UcTask.resx">
       <DependentUpon>UcTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dong\SalaryAdd.resx">
+    <EmbeddedResource Include="FormControls\SalaryAdd.resx">
       <DependentUpon>SalaryAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dong\SalaryEdit.resx">
+    <EmbeddedResource Include="FormControls\SalaryEdit.resx">
       <DependentUpon>SalaryEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dong\SalaryManagement.resx">
+    <EmbeddedResource Include="UserControls\SalaryManagement.resx">
       <DependentUpon>SalaryManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dai\DepartmentAdd.resx">
+    <EmbeddedResource Include="FormControls\DepartmentAdd.resx">
       <DependentUpon>DepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dai\DepartmentUpdate.resx">
+    <EmbeddedResource Include="FormControls\DepartmentUpdate.resx">
       <DependentUpon>DepartmentUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dai\UcDepartment.resx">
+    <EmbeddedResource Include="UserControls\UcDepartment.resx">
       <DependentUpon>UcDepartment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TheAnh\UcUpdateProfile.resx">
-      <DependentUpon>UcUpdateProfile.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UcUpdateProfile_.resx">
+      <DependentUpon>UcUpdateProfile_.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Hai\Employee.resx">
+    <EmbeddedResource Include="FormControls\Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Hai\Employees.resx">
+    <EmbeddedResource Include="UserControls\Employees.resx">
       <DependentUpon>Employees.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TheAnh\Role_Add.resx">
-      <DependentUpon>Role_Add.cs</DependentUpon>
+    <EmbeddedResource Include="FormControls\Role.resx">
+      <DependentUpon>Role.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TheAnh\Action_Add.resx">
-      <DependentUpon>Action_Add.cs</DependentUpon>
+    <EmbeddedResource Include="FormControls\Action.resx">
+      <DependentUpon>Action.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TheAnh\ActionManagement.resx">
-      <DependentUpon>ActionManagement.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UcAction.resx">
+      <DependentUpon>UcAction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm\FormMain_.resx">
+      <DependentUpon>FormMain_.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm\Login_.resx">
+      <DependentUpon>Login_.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -239,10 +239,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="TheAnh\UcRoles.resx">
+    <EmbeddedResource Include="UserControls\UcRoles.resx">
       <DependentUpon>UcRoles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TheAnh\UcRolesAction.resx">
+    <EmbeddedResource Include="UserControls\UcRolesAction.resx">
       <DependentUpon>UcRolesAction.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

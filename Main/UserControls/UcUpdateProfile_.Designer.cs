@@ -1,6 +1,6 @@
 ﻿namespace Main
 {
-    partial class UcUpdateProfile
+    partial class UcUpdateProfile_
     {
         /// <summary>
         /// Required designer variable.
@@ -244,7 +244,7 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Email";
             // 
-            // UcUpdateProfile
+            // UcUpdateProfile_
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -261,7 +261,7 @@
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtIdentity);
             this.Controls.Add(this.txtFullName);
-            this.Name = "UcUpdateProfile";
+            this.Name = "UcUpdateProfile_";
             this.Size = new System.Drawing.Size(809, 588);
             this.Load += new System.EventHandler(this.UcUpdateProfile_Load);
             this.ResumeLayout(false);

@@ -9,13 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using Entity;
-using Action = Entity.Action;
 
 namespace Main
 {
-    public partial class Action_Add : Form
+    public partial class Role_Add : Form
     {
-
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
         protected override void OnLoad(EventArgs e)
@@ -38,28 +36,32 @@ namespace Main
 
 
 
-        private Entity.Action myActionEdit;
-        public Action_Add(Action myActionEdit,int id)
-        {
-            this.RolesID = id;
-            this.myActionEdit = myActionEdit;
-            InitializeComponent();
-        }
-        public Action_Add(int id)
-        {
-            this.RolesID = id;
-            this.myActionEdit = new Action();
-            InitializeComponent();
-        }
-        ActionBUS myAction=new ActionBUS();
 
-        private void Action_Add_Load(object sender, EventArgs e)
+
+
+
+        private RolesBUL myBul=new RolesBUL();
+        private Roles myObjectEdit;
+        public Role_Add(int id)
         {
-            if (myActionEdit.ActionID != 0)
+            this.RolesID = id;
+            myObjectEdit=new Roles();
+            InitializeComponent();
+        }
+
+        public Role_Add(Roles myObjectEdit,int id)
+        {
+            this.RolesID = id;
+            InitializeComponent();
+            this.myObjectEdit = myObjectEdit;
+        }
+
+        private void Role_Add_Load(object sender, EventArgs e)
+        {
+            if (myObjectEdit.RolesID != 0)
             {
-                txtName.Text = myActionEdit.ActionName;
-                txtName.Enabled = false;
-                txtDescription.Text = myActionEdit.Description;
+                txtName.Text = myObjectEdit.RolesName;
+                txtDescription.Text = myObjectEdit.Description;
             }
         }
 
@@ -67,26 +69,36 @@ namespace Main
         {
             this.Close();
         }
+        bool IsValid()
+        {
+            if (myObjectEdit.RolesID != 0)
+            {
+                if (txtName.Text == myObjectEdit.RolesName && txtDescription.Text == myObjectEdit.Description)
+                    return false;
+            }
+            if (txtName.Text == "" || txtDescription.Text == "") return false;
+            return true;
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (IsValid())
             {
-                Action myActionAdd=new Action();
-                myActionAdd.ActionID = myActionEdit.ActionID;
-                myActionAdd.ActionName = txtName.Text;
-                myActionAdd.Description = txtDescription.Text;
-                myActionAdd.IsDelete = 0;
+                Roles myAdd = new Roles();
+                myAdd.RolesID = myObjectEdit.RolesID;
+                myAdd.RolesName = txtName.Text;
+                myAdd.Description = txtDescription.Text;
+                myAdd.IsDelete = 0;
                 bool result = false;
-                if (myActionEdit.ActionID == 0)
-                    result =myAction.Add(myActionAdd) == -1;
+                if (myObjectEdit.RolesID == 0)
+                    result = myBul.Add(myAdd) == -1;
                 else
-                    result = myAction.Update(myActionAdd) == -1;
+                    result = myBul.Update(myAdd) == -1;
                 if (result)
                 {
                     MessageBox.Show("Thành công!");
                     lblNotify.Visible = false;
-                    this.DialogResult = DialogResult.OK;
+                    this.DialogResult=DialogResult.OK;
                 }
                 else
                     MessageBox.Show("Thất bại!");
@@ -98,15 +110,12 @@ namespace Main
             }
         }
 
-        bool IsValid()
+        private void txtName_KeyDown(object sender, KeyEventArgs e)
         {
-            if (myActionEdit.ActionID != 0)
-            {
-                if (txtName.Text == myActionEdit.ActionName && txtDescription.Text == myActionEdit.Description)
-                    return false;
-            }
-            if (txtName.Text == "" || txtDescription.Text == "") return false;
-            return true;
+            if (e.KeyCode == Keys.Enter)
+                btnAdd_Click(btnAdd,e);
+            if (e.KeyCode == Keys.Escape)
+                this.DialogResult = DialogResult.Cancel;
         }
     }
 }

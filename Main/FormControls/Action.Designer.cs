@@ -57,6 +57,7 @@
             this.txtName.Size = new System.Drawing.Size(220, 32);
             this.txtName.TabIndex = 0;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDescription_KeyDown);
             // 
             // label1
             // 
@@ -107,6 +108,7 @@
             this.txtDescription.Size = new System.Drawing.Size(220, 32);
             this.txtDescription.TabIndex = 1;
             this.txtDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDescription_KeyDown);
             // 
             // btnAdd
             // 

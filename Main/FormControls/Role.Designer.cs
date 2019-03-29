@@ -147,16 +147,17 @@
             this.txtDescription.Size = new System.Drawing.Size(220, 32);
             this.txtDescription.TabIndex = 8;
             this.txtDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 66);
+            this.label2.Location = new System.Drawing.Point(48, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 20);
+            this.label2.Size = new System.Drawing.Size(78, 20);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Tên hành động:";
+            this.label2.Text = "Tên roles:";
             // 
             // label1
             // 
@@ -165,9 +166,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label1.Location = new System.Drawing.Point(6, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 24);
+            this.label1.Size = new System.Drawing.Size(148, 24);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Thông tin hành động:";
+            this.label1.Text = "Thông tin Roles:";
             // 
             // txtName
             // 
@@ -187,6 +188,7 @@
             this.txtName.Size = new System.Drawing.Size(220, 32);
             this.txtName.TabIndex = 7;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // Role_Add
             // 
@@ -208,7 +210,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Role_Add";
+            this.Text = "Thêm/ Chỉnh sửa";
             this.Load += new System.EventHandler(this.Role_Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

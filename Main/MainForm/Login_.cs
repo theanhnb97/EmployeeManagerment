@@ -13,11 +13,11 @@ using BusinessLayer;
 
 namespace Main
 {
-    public partial class Login : Form
+    public partial class Login_ : Form
     {
         EmployeeBus myEmployeeBus = new EmployeeBus();
 
-        public Login()
+        public Login_()
         {
             InitializeComponent();
         }
@@ -65,7 +65,7 @@ namespace Main
         }
         private void ShowFormMain()
         {
-            FormMain f = new FormMain(result,username);
+            FormMain_ f = new FormMain_(result,username);
             f.ShowDialog();
         }
 
