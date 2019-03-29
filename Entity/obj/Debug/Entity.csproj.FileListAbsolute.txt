@@ -14,3 +14,4 @@ E:\ProjectEmployee\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
 E:\ProjectEmployee\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
 E:\ProjectEmployee\EmployeeManagerment\Entity\obj\Debug\Entity.dll
 E:\ProjectEmployee\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
+E:\ProjectEmployee\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
