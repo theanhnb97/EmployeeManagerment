@@ -8,13 +8,13 @@ namespace Entity
 {
     public class Department
     {   //Mã phòng ban
-        public int DepartmentID { get; set; }
+        public Int64 DepartmentID { get; set; }
         //Tên phòng ban
         public string DepartmentName { get; set; }
         //Status phòng ban
-        public  int Status { get; set; }
+        public  Int64 Status { get; set; }
         //Biến xóa phòng ban
-        public int IsDelete { get; set; }
+        public Int64 IsDelete { get; set; }
         //Mô tả phòng ban
         public string Description { get; set; }
     }
