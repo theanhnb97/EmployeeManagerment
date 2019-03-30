@@ -184,7 +184,7 @@
             this.dgvDepartment.ReadOnly = true;
             this.dgvDepartment.RowHeadersWidth = 50;
             this.dgvDepartment.Size = new System.Drawing.Size(745, 315);
->
+
             this.dgvDepartment.TabIndex = 9;
             this.dgvDepartment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentClick);
             this.dgvDepartment.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentDoubleClick);
@@ -274,7 +274,7 @@
 
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnClean);
-            this.Controls.Add(this.btnCannel);
+            
 
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
