@@ -15,6 +15,7 @@ namespace Main.Department
 {
     public partial class DepartmentUpdate : Form
     {
+        //Created by (The anh) in (28/3/2019)
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
         protected override void OnLoad(EventArgs e)
@@ -34,18 +35,18 @@ namespace Main.Department
                 this.Close();
             }
         }
-
-
-
-
+        /// <summary>/// Entity DepartMent get  data to form Department
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private Entity.Department department;
         public Entity.Department Department
         {
             get { return department; }
             set { department = value; }
         }
-
-
         public DepartmentUpdate(int id)
         {
             this.RolesID = id;
@@ -68,7 +69,12 @@ namespace Main.Department
             if (department.IsDelete == 0) rdbIsDelete.Checked = false;
 
         }
-
+        /// <summary>/// Button update event click
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -79,16 +85,22 @@ namespace Main.Department
                 department.Status = cbStatus.Checked ? 1 : 0;
                 department.IsDelete = rdbIsDelete.Checked ? 1 : 0;
                 department.Description = txtDescription.Text;
-               
-                int check = departmentBus.Update(department);
-                if (check == -1)
+                if (txtDepartmentName.Text != "" && txtDescription.Text != "")
                 {
-                    MessageBox.Show("You have successfully updated the refresh to change");
-                    
+                    int check = departmentBus.Update(department);
+                    if (check == -1)
+                    {
+                        MessageBox.Show("You have successfully updated the refresh to change");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Update No Suscess");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Update No Suscess");
+                    MessageBox.Show("You can enter data");
                 }
 
             }
@@ -99,7 +111,12 @@ namespace Main.Department
 
             }
         }
-
+        /// <summary>/// Button Cannel
+        /// </summary>
+        /// <param name=”sender”>sender</param>
+        /// <param name=”e”>e</param>
+        /// Created by (BuiCongDai) – (25/3/2019)
+        /// <remarks></remarks>
         private void btnCannel_Click(object sender, EventArgs e)
         {
             this.Close();

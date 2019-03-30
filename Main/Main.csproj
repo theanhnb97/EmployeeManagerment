@@ -59,6 +59,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dai\DepartmentAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dai\DepartmentAdd.designer.cs">
+      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dai\DepartmentUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dai\DepartmentUpdate.designer.cs">
+      <DependentUpon>DepartmentUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dai\UcDepartment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dai\UcDepartment.designer.cs">
+      <DependentUpon>UcDepartment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dong\SalaryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,24 +112,6 @@
     </Compile>
     <Compile Include="Bang\UcTask.designer.cs">
       <DependentUpon>UcTask.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Dai\DepartmentAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dai\DepartmentAdd.designer.cs">
-      <DependentUpon>DepartmentAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Dai\DepartmentUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dai\DepartmentUpdate.designer.cs">
-      <DependentUpon>DepartmentUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Dai\UcDepartment.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Dai\UcDepartment.designer.cs">
-      <DependentUpon>UcDepartment.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain_.cs">
       <SubType>Form</SubType>
@@ -184,15 +184,6 @@
     <EmbeddedResource Include="Bang\UcTask.resx">
       <DependentUpon>UcTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dong\SalaryAdd.resx">
-      <DependentUpon>SalaryAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dong\SalaryEdit.resx">
-      <DependentUpon>SalaryEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dong\SalaryManagement.resx">
-      <DependentUpon>SalaryManagement.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dai\DepartmentAdd.resx">
       <DependentUpon>DepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +192,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dai\UcDepartment.resx">
       <DependentUpon>UcDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dong\SalaryAdd.resx">
+      <DependentUpon>SalaryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dong\SalaryEdit.resx">
+      <DependentUpon>SalaryEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dong\SalaryManagement.resx">
+      <DependentUpon>SalaryManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain_.resx">
       <DependentUpon>FormMain_.cs</DependentUpon>
