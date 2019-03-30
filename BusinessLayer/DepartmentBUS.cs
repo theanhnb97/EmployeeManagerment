@@ -44,6 +44,21 @@ namespace BusinessLayer
             return departments;
         }
 
+        public List<Department> GetDepartmentsForSearch()
+        {
+            DataTable data = departmentDal.GetDepartmentByStatusAndIsDelete(1, 0);
+            List<Department> departments = departmentDal.TranferDataTableToDepartmentList(data);
+            departments.Add(new Department
+            {
+                DepartmentName = "",
+                DepartmentID = 0,
+                Description = "",
+                Status = 1,
+                IsDelete = 0
+            });
+            return departments;
+        }
+
         public int Delete(int id)
         {
             return departmentDal.Delete(id);
