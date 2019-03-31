@@ -149,7 +149,7 @@
             this.btnEmployee.Location = new System.Drawing.Point(17, 223);
             this.btnEmployee.Name = "btnEmployee";
             this.btnEmployee.Size = new System.Drawing.Size(199, 58);
-            this.btnEmployee.TabIndex = 7;
+            this.btnEmployee.TabIndex = 4;
             this.btnEmployee.Text = "           Nhân viên";
             this.btnEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEmployee.UseVisualStyleBackColor = false;
@@ -164,7 +164,7 @@
             this.btnPhanQuyen.Location = new System.Drawing.Point(17, 415);
             this.btnPhanQuyen.Name = "btnPhanQuyen";
             this.btnPhanQuyen.Size = new System.Drawing.Size(199, 58);
-            this.btnPhanQuyen.TabIndex = 6;
+            this.btnPhanQuyen.TabIndex = 7;
             this.btnPhanQuyen.Text = "           Phân quyền";
             this.btnPhanQuyen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPhanQuyen.UseVisualStyleBackColor = false;
@@ -179,7 +179,7 @@
             this.btnRole.Location = new System.Drawing.Point(17, 351);
             this.btnRole.Name = "btnRole";
             this.btnRole.Size = new System.Drawing.Size(199, 58);
-            this.btnRole.TabIndex = 5;
+            this.btnRole.TabIndex = 6;
             this.btnRole.Text = "           Roles";
             this.btnRole.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRole.UseVisualStyleBackColor = false;
@@ -194,7 +194,7 @@
             this.btnAction.Location = new System.Drawing.Point(17, 287);
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(199, 58);
-            this.btnAction.TabIndex = 4;
+            this.btnAction.TabIndex = 5;
             this.btnAction.Text = "           Hành động";
             this.btnAction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAction.UseVisualStyleBackColor = false;
@@ -261,6 +261,7 @@
             this.pnMain.Name = "pnMain";
             this.pnMain.Size = new System.Drawing.Size(809, 614);
             this.pnMain.TabIndex = 2;
+            this.pnMain.TabStop = true;
             // 
             // panel1
             // 

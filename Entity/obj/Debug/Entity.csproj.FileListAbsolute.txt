@@ -15,3 +15,8 @@ E:\newclone2\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference
 E:\newclone2\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
 E:\newclone2\EmployeeManagerment\Entity\obj\Debug\Entity.dll
 E:\newclone2\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll.config
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CopyComplete
