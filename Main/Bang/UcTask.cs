@@ -86,13 +86,33 @@ namespace Main
         /// <param name="e"></param>
         private void btnLoadData_Click(object sender, EventArgs e)
         {
-
-            string cvDueDate = Convert.ToDateTime(dtpDeuDateFilter.Value).ToString("dd/MMM/yyyy");
-            DataTable allData = objTaskBus.Filter(txtNameFilter.Text, Convert.ToInt32(cmbDepartment.SelectedValue),
-                cvDueDate, 0);
-            DataTable firstPage = objTaskBus.Filter(txtNameFilter.Text, Convert.ToInt32(cmbDepartment.SelectedValue),
-                cvDueDate, 1);
-            pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
+            try
+            {
+                string cvDueDate = Convert.ToDateTime(dtpDeuDateFilter.Value).ToString("dd/MMM/yyyy");
+                DataTable allData = objTaskBus.Filter(txtNameFilter.Text, Convert.ToInt32(cmbDepartment.SelectedValue),
+                    cvDueDate, 0);
+                DataTable firstPage = objTaskBus.Filter(txtNameFilter.Text, Convert.ToInt32(cmbDepartment.SelectedValue),
+                    cvDueDate, 1);
+                pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
+                if (firstPage.Rows.Count > 0)
+                {
+                    dgvTask.DataSource = firstPage;
+                    dgvTask.Columns[9].Visible = false;
+                    dgvTask.Columns[10].Visible = false;
+                    lblPage.Text = (allData.Rows.Count % pageSize == 0)
+                        ? (allData.Rows.Count / pageSize).ToString()
+                        : ((allData.Rows.Count / pageSize) + 1).ToString();
+                }
+                else
+                {
+                    dgvTask.DataSource = firstPage;
+                    MessageBox.Show("Task Table Not Data!");
+                }
+            }
+            catch (Exception exception)
+            {
+                logger.Debug(exception);
+            }
         }
         /// <summary>
         /// 
@@ -104,6 +124,7 @@ namespace Main
             txtNameFilter.Text = "";
             dtpDeuDateFilter.Value = DateTime.Now;
             cmbDepartment.SelectedValue = 1;
+            lblCurent.Text = "1";
             DataTable list = objTaskBus.GetAll(1);
             if (list.Rows.Count > 0)
             {

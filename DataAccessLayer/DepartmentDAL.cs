@@ -88,20 +88,25 @@ namespace DataAccessLayer
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
                 using (OracleConnection connection = Connection.GetConnection)
                 {
-                    OracleDataAdapter da = new OracleDataAdapter();
-                    OracleCommand cmd = new OracleCommand();
+                    OracleParameter[] parameters = new OracleParameter[]
+                    {
+                        new OracleParameter("p_isDelete",1),
+                        new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output),
+                    };
+                    return sqlHelp.ExcuteQuery("Department_GetAllDeltete", CommandType.StoredProcedure, connection,
+                        parameters);
+                    //OracleDataAdapter da = new OracleDataAdapter();
+                    //OracleCommand cmd = new OracleCommand();
 
-                    cmd = new OracleCommand("Department_GetAllDeltete", connection);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_isDelete", 1);
-                    cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                    //cmd = new OracleCommand("Department_GetAllDeltete", connection);
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.Add("p_isDelete", 1);
+                    //cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-                    da.SelectCommand = cmd;
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    return dt;
-
-
+                    //da.SelectCommand = cmd;
+                    //DataTable dt = new DataTable();
+                    //da.Fill(dt);
+                    //return dt;
                 }
 
             }
@@ -113,6 +118,7 @@ namespace DataAccessLayer
 
             }
         }
+
 
         public DataTable GetDepartmentByStatusAndIsDelete(int status, int isDeleted)
         {
@@ -153,20 +159,24 @@ namespace DataAccessLayer
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
                 using (OracleConnection connection = Connection.GetConnection)
                 {
-                    OracleDataAdapter da = new OracleDataAdapter();
-                    OracleCommand cmd = new OracleCommand();
+                    OracleParameter[] parameters = new OracleParameter[]
+                    {
+                        new OracleParameter("p_departmentID",id),
+                        new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output),
+                    };
+                    return sqlHelp.ExcuteQuery("Department_GetById", CommandType.StoredProcedure, connection, parameters);
+                    //OracleDataAdapter da = new OracleDataAdapter();
+                    //OracleCommand cmd = new OracleCommand();
 
-                    cmd = new OracleCommand("Department_GetById", connection);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_departmentID", id);
-                    cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                    //cmd = new OracleCommand("Department_GetById", connection);
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.Add("p_departmentID", id);
+                    //cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-                    da.SelectCommand = cmd;
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    return dt;
-
-
+                    //da.SelectCommand = cmd;
+                    //DataTable dt = new DataTable();
+                    //da.Fill(dt);
+                    //return dt;
                 }
 
             }
@@ -179,10 +189,50 @@ namespace DataAccessLayer
             }
         }
 
+
         public List<Department> Search(string keyword)
         {
             throw new NotImplementedException();
         }
+
+        public DataTable SearchDepartment(string keyword, int currPage, int recodperpage, int Pagesize)
+        {
+            //try
+            {
+                SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
+                using (OracleConnection connection = Connection.GetConnection)
+                {
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    OracleCommand cmd = new OracleCommand();
+
+                    cmd = new OracleCommand("Department_Search", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("currPage", currPage);
+                    cmd.Parameters.Add("recodperpage", recodperpage);
+                    cmd.Parameters.Add("Pagesize", Pagesize);
+                    cmd.Parameters.Add(" p_departmentName",keyword);
+
+                    cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    da.SelectCommand = cmd;
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+
+                }
+
+            }
+            //catch (Exception e)
+            //{
+            //    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            //    logger.Debug(e.Message);
+            //    return null;
+
+            //}
+
+        }
+
 
         public int Update(Department department)
         {
@@ -216,9 +266,10 @@ namespace DataAccessLayer
                 return 0;
             }
         }
+
         public DataTable SearchDepartment(string keyword)
         {
-            try
+            //try
             {
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
                 using (OracleConnection connection = Connection.GetConnection)
@@ -240,13 +291,13 @@ namespace DataAccessLayer
                 }
 
             }
-            catch (Exception e)
-            {
-                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                logger.Debug(e.Message);
-                return null;
+            //catch (Exception e)
+            //{
+            //    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            //    logger.Debug(e.Message);
+            //    return null;
 
-            }
+            //}
 
         }
         public int DeleteNoRemove(int id)
@@ -281,7 +332,7 @@ namespace DataAccessLayer
         }
         public DataTable GetAllPage(int currPage, int recodperpage, int Pagesize)
         {
-            try
+            //try
             {
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
                 using (OracleConnection connection = Connection.GetConnection)
@@ -295,7 +346,6 @@ namespace DataAccessLayer
                     cmd.Parameters.Add("currPage", currPage);
                     cmd.Parameters.Add("recodperpage", recodperpage);
                     cmd.Parameters.Add("Pagesize", Pagesize);
-                    cmd.Parameters.Add("p_isDelete", 1);
                     cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
                     da.SelectCommand = cmd;
@@ -306,14 +356,53 @@ namespace DataAccessLayer
                 }
 
             }
-            catch (Exception e)
+            //catch (Exception e)
+            //{
+            //    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            //    logger.Debug(e.Message);
+            //    return null;
+
+            //}
+        }
+
+        public DataTable GetDepartmentAll()
+        {
+            //try
             {
-                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                logger.Debug(e.Message);
-                return null;
+                SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
+                using (OracleConnection connection = Connection.GetConnection)
+                {
+                    OracleParameter[] parameters = new OracleParameter[]
+                    {
+
+                        new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output),
+                    };
+                    return sqlHelp.ExcuteQuery("Department_GetAll", CommandType.StoredProcedure, connection,
+                        parameters);
+                    //OracleDataAdapter da = new OracleDataAdapter();
+                    //OracleCommand cmd = new OracleCommand();
+
+                    //cmd = new OracleCommand("Department_GetAllDeltete", connection);
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.Add("p_isDelete", 1);
+                    //cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    //da.SelectCommand = cmd;
+                    //DataTable dt = new DataTable();
+                    //da.Fill(dt);
+                    //return dt;
+                }
 
             }
+            //catch (Exception e)
+            //{
+            //    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            //    logger.Debug(e.Message);
+            //    return null;
+
+            //}
         }
+
         DataTable IEntities<Department>.Get()
         {
             throw new NotImplementedException();

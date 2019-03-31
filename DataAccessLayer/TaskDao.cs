@@ -24,7 +24,7 @@ namespace DataAccessLayer
         /// <param name="department"></param>
         /// <param name="dueDate"></param>
         /// <returns></returns>
-        DataTable Filter(string taskName, Int64 department, string dueDate,int page);
+        DataTable Filter(string taskName, Int64 department, string dueDate, int page);
 
         // get all Department
         DataTable LoadDepartment();
@@ -113,7 +113,6 @@ namespace DataAccessLayer
         {
             try
             {
-                int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
                 OracleParameter[] listParameters = new OracleParameter[]
                   {
 
@@ -122,6 +121,20 @@ namespace DataAccessLayer
                             new OracleParameter("dueDates", OracleDbType.Varchar2,dueDate, ParameterDirection.Input),
                             new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output)
                  };
+                if (page != 0)
+                {
+                    int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
+                    listParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("numberpage",page),
+                        new OracleParameter("pagesize",pageSize),
+                        new OracleParameter("taskNames", OracleDbType.NVarchar2,taskName,ParameterDirection.Input),
+                        new OracleParameter("departments", OracleDbType.Int32,department, ParameterDirection.Input),
+                        new OracleParameter("dueDates", OracleDbType.Varchar2,dueDate, ParameterDirection.Input),
+                        new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output)
+                    };
+                    return objSqlHelpers.ExcuteQuery("TASK_FILTER_PAGING", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
+                }
                 return objSqlHelpers.ExcuteQuery("TASK_FILTER", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
             }
             catch (Exception e)

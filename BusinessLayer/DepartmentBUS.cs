@@ -25,8 +25,9 @@ namespace BusinessLayer
 
         public DataTable GetDepartmentByStatusAndIsDelete(int status, int isDeleted)
         {
-            return departmentDal.GetDepartmentByStatusAndIsDelete(status,isDeleted);
+            return departmentDal.GetDepartmentByStatusAndIsDelete(status, isDeleted);
         }
+
 
         public List<Department> GetDepartmentsForSearch()
         {
@@ -73,5 +74,14 @@ namespace BusinessLayer
             return departmentDal.GetAllPage(currPage, recodperpage, Pagesize);
         }
 
+        public DataTable SearchDepartment(string keyword, int currPage, int recodperpage, int Pagesize)
+        {
+            return departmentDal.SearchDepartment(keyword, currPage, recodperpage, Pagesize);
+        }
+
+        public DataTable GetDepartmentAll()
+        {
+            return departmentDal.GetDepartmentAll();
+        }
     }
 }
