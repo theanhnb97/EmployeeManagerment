@@ -221,7 +221,7 @@ namespace Main.Bang
         private void txtTaskName_TextChanged(object sender, EventArgs e)
         {
             if (string.Empty.Equals(txtTaskName.Text.Trim()) ||
-                Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,}") == false)
+                Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,200}") == false)
             {
                 lbTaskName.ForeColor = Color.Red;
             }
@@ -295,5 +295,5 @@ namespace Main.Bang
 
         }
 
-    }
+    }   
 }
