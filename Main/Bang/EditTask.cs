@@ -295,18 +295,6 @@ namespace Main.Bang
 
         }
 
-        private void dtpDueDate_ValueChanged(object sender, EventArgs e)
-        {
-            if (Convert.ToDateTime(dtpDueDate.Value) < DateTime.Today)
-            {
-                MessageBox.Show("Due Date must ' > ' or ' = ' Today", "Warning");
-                dtpDueDate.Focus();
-                lbDate.ForeColor = Color.Red;
-            }
-            else
-            {
-                lbDate.ForeColor = Color.DarkGreen;
-            }
-        }
+        
     }
 }

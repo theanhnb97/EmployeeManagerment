@@ -83,8 +83,6 @@
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.Size = new System.Drawing.Size(203, 20);
             this.dtpDueDate.TabIndex = 33;
-            this.dtpDueDate.ValueChanged += new System.EventHandler(this.dtpDueDate_ValueChanged);
-            this.dtpDueDate.Leave += new System.EventHandler(this.dtpDueDate_Leave);
             // 
             // cmbDepartment
             // 

@@ -74,7 +74,7 @@ namespace Main
             ucUpdateProfile.Dock = DockStyle.Fill;
 
 
-
+            salary.BringToFront();
         }
 
         private string userName;

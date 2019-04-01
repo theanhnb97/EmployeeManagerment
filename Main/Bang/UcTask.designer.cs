@@ -36,6 +36,8 @@
             this.btnLoadData = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.grbTaskList = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblCurent = new System.Windows.Forms.Label();
             this.lblPage = new System.Windows.Forms.Label();
             this.dgvTask = new System.Windows.Forms.DataGridView();
             this.btnNext = new System.Windows.Forms.Button();
@@ -47,8 +49,6 @@
             this.lbDueDate = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNameFilter = new System.Windows.Forms.TextBox();
-            this.lblCurent = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.grbTaskList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTask)).BeginInit();
@@ -71,9 +71,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(25, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 20);
+            this.label1.Size = new System.Drawing.Size(156, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Employee Management";
+            this.label1.Text = "Task Management";
             // 
             // btnEdit
             // 
@@ -151,6 +151,26 @@
             this.grbTaskList.TabIndex = 3;
             this.grbTaskList.TabStop = false;
             this.grbTaskList.Text = "Task List";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(740, 366);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(10, 15);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "/";
+            // 
+            // lblCurent
+            // 
+            this.lblCurent.AutoSize = true;
+            this.lblCurent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurent.Location = new System.Drawing.Point(724, 366);
+            this.lblCurent.Name = "lblCurent";
+            this.lblCurent.Size = new System.Drawing.Size(14, 15);
+            this.lblCurent.TabIndex = 15;
+            this.lblCurent.Text = "1";
             // 
             // lblPage
             // 
@@ -277,26 +297,6 @@
             this.txtNameFilter.Name = "txtNameFilter";
             this.txtNameFilter.Size = new System.Drawing.Size(204, 20);
             this.txtNameFilter.TabIndex = 1;
-            // 
-            // lblCurent
-            // 
-            this.lblCurent.AutoSize = true;
-            this.lblCurent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurent.Location = new System.Drawing.Point(724, 366);
-            this.lblCurent.Name = "lblCurent";
-            this.lblCurent.Size = new System.Drawing.Size(14, 15);
-            this.lblCurent.TabIndex = 15;
-            this.lblCurent.Text = "1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(740, 366);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(10, 15);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "/";
             // 
             // UcTask
             // 

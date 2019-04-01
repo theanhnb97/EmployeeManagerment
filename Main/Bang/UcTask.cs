@@ -291,11 +291,11 @@ namespace Main
             if (dgvTask.CurrentRow != null)
             {
 
-                if (Convert.ToInt32(dgvTask.CurrentRow.Cells["ID"].Value.ToString()) <= 0)
+                if (Convert.ToInt32(dgvTask.CurrentRow.Cells["Mã"].Value.ToString()) <= 0)
                 {
                     MessageBox.Show("Id not exist!");
                 }
-                else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["TASKNAME"].Value.ToString().Trim()))
+                else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["Tên Nhiệm Vụ"].Value.ToString().Trim()))
                 {
                     MessageBox.Show("Task name not exist!");
                 }
@@ -304,24 +304,24 @@ namespace Main
                 {
                     MessageBox.Show("Employee not exist!");
                 }
-                else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["STATUS"].Value.ToString()))
+                else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["Tiến Độ"].Value.ToString()))
                 {
                     MessageBox.Show("Status empty!");
                 }
-                else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["STATUS"].Value.ToString()) <= 0)
+                else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["Tiến Độ"].Value.ToString()) <= 0)
                 {
                     MessageBox.Show("Status Fail!");
                 }
-                else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["DUEDATE"].Value.ToString().Trim()))
+                else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["Hạn Chót"].Value.ToString().Trim()))
                 {
                     MessageBox.Show("DUEDATE empty!");
                 }
-                else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["PRIORITY"].Value.ToString().Trim())
-                         || Convert.ToInt32(dgvTask.CurrentRow.Cells["PRIORITY"].Value.ToString()) <= 0)
+                else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["Mức Độ"].Value.ToString().Trim())
+                         || Convert.ToInt32(dgvTask.CurrentRow.Cells["Mức Độ"].Value.ToString()) <= 0)
                 {
                     MessageBox.Show("PRIORITY Fail!");
                 }
-                else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["DESCRIPTION"].Value.ToString().Trim()))
+                else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["Mô Tả"].Value.ToString().Trim()))
                 {
                     MessageBox.Show("DESCRIPTION empty!");
                 }
@@ -333,14 +333,14 @@ namespace Main
                 else
                 {
                     //assign value for variable 
-                    int taskId = Convert.ToInt32(dgvTask.CurrentRow.Cells["ID"].Value.ToString());
-                    string taskName = dgvTask.CurrentRow.Cells["TASKNAME"].Value.ToString().Trim();
+                    int taskId = Convert.ToInt32(dgvTask.CurrentRow.Cells["Mã"].Value.ToString());
+                    string taskName = dgvTask.CurrentRow.Cells["Tên Nhiệm Vụ"].Value.ToString().Trim();
                     int assign = Convert.ToInt32(dgvTask.CurrentRow.Cells["EMPLOYEEID"].Value.ToString());
-                    int status = Convert.ToInt32(dgvTask.CurrentRow.Cells["STATUS"].Value.ToString());
-                    string files = dgvTask.CurrentRow.Cells["FILES"].Value.ToString();
-                    string dueDate = DateTime.Parse(dgvTask.CurrentRow.Cells["DUEDATE"].Value.ToString()).ToString("dd/MMM/yyyy");
-                    int priority = Convert.ToInt32(dgvTask.CurrentRow.Cells["PRIORITY"].Value.ToString());
-                    string description = dgvTask.CurrentRow.Cells["DESCRIPTION"].Value.ToString();
+                    int status = Convert.ToInt32(dgvTask.CurrentRow.Cells["Tiến Độ"].Value.ToString());
+                    string files = dgvTask.CurrentRow.Cells["Tệp"].Value.ToString();
+                    string dueDate = DateTime.Parse(dgvTask.CurrentRow.Cells["Hạn Chót"].Value.ToString()).ToString("dd/MMM/yyyy");
+                    int priority = Convert.ToInt32(dgvTask.CurrentRow.Cells["Mức Độ"].Value.ToString());
+                    string description = dgvTask.CurrentRow.Cells["Mô Tả"].Value.ToString();
                     int department = Convert.ToInt32(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString());
                     int isDelete = 0;
 
@@ -362,6 +362,8 @@ namespace Main
                 }
             }
         }
+
+
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
