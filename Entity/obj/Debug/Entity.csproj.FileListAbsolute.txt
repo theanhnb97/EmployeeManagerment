@@ -31,3 +31,14 @@ C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.cspro
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CopyComplete
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.dll
 C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
+D:\v2\EmployeeManagerment\Entity\bin\Debug\Entity.dll
+D:\v2\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
+D:\v2\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll
+D:\v2\EmployeeManagerment\Entity\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\v2\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.pdb
+D:\v2\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll.config
+D:\v2\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+D:\v2\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+D:\v2\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CopyComplete
+D:\v2\EmployeeManagerment\Entity\obj\Debug\Entity.dll
+D:\v2\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
