@@ -14,8 +14,6 @@ using Entity.DTO;
 
 namespace Main
 {
-
-
     public partial class SalaryManagement : UserControl
     {
         public static SalaryView salaryForEdit = new SalaryView();
@@ -24,6 +22,7 @@ namespace Main
         
         private int currentPage { get; set; } 
         private int lastPage { get; set; }
+        // Number records paging
         private int size { get; set; }
 
         public SalaryManagement(int id)
@@ -63,9 +62,6 @@ namespace Main
                 dgvSalary.Columns[8].Visible = true;
             }
         }
-
-
-
         private void btnLoadData_Click(object sender, System.EventArgs e)
         {
             string nameSearch = txtNameFilter.Text;
@@ -81,7 +77,7 @@ namespace Main
             myth = new Thread(new System.Threading.ThreadStart(CallSaveDialog));
             myth.ApartmentState = ApartmentState.STA;
             myth.Start();
-            dgvSalary.DataSource = salary.GetData();
+            Salary_Load(sender, e);
         }
         private void CallSaveDialog()
         {
@@ -102,6 +98,7 @@ namespace Main
             salaryForEdit.Rank = int.Parse(dgvSalary.Rows[index].Cells[2].Value.ToString());
             SalaryEdit salaryEdit = new SalaryEdit();
             salaryEdit.ShowDialog();
+            Salary_Load(sender, e);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -110,7 +107,7 @@ namespace Main
             txtNameFilter.Clear();
             dateFDateFilter.Refresh();
             dateTDateFilter.Refresh();
-            dgvSalary.DataSource = salary.GetData();
+            Salary_Load(sender, e);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -124,7 +121,7 @@ namespace Main
                     if (salary.Delete(id) != 0)
                     {
                         MessageBox.Show("Success");
-                        dgvSalary.DataSource = salary.GetData();
+                        Salary_Load(sender, e);
                     }
                     else
                     {
