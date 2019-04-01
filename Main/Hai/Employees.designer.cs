@@ -38,6 +38,14 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.lblPage = new System.Windows.Forms.Label();
             this.dgv_employee = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Identity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartmentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -49,14 +57,6 @@
             this.txtUserName_Search = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtFullName_Search = new System.Windows.Forms.TextBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Identity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartmentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_employee)).BeginInit();
@@ -108,7 +108,7 @@
             this.btnEdit.Location = new System.Drawing.Point(104, 361);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 1;
+            this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -119,7 +119,7 @@
             this.btnAdd.Location = new System.Drawing.Point(11, 361);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 0;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -131,7 +131,7 @@
             this.btnDelete.Location = new System.Drawing.Point(195, 361);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 2;
+            this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -142,7 +142,7 @@
             this.btnLoadData.Location = new System.Drawing.Point(284, 361);
             this.btnLoadData.Name = "btnLoadData";
             this.btnLoadData.Size = new System.Drawing.Size(75, 23);
-            this.btnLoadData.TabIndex = 3;
+            this.btnLoadData.TabIndex = 4;
             this.btnLoadData.Text = "Tìm kiếm";
             this.btnLoadData.UseVisualStyleBackColor = true;
             this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
@@ -153,7 +153,7 @@
             this.btnClear.Location = new System.Drawing.Point(377, 361);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 4;
+            this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Làm mới";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -165,7 +165,7 @@
             this.lblPage.Location = new System.Drawing.Point(736, 361);
             this.lblPage.Name = "lblPage";
             this.lblPage.Size = new System.Drawing.Size(37, 15);
-            this.lblPage.TabIndex = 5;
+            this.lblPage.TabIndex = 8;
             this.lblPage.Text = "1 / 10";
             // 
             // dgv_employee
@@ -188,8 +188,71 @@
             this.dgv_employee.ReadOnly = true;
             this.dgv_employee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_employee.Size = new System.Drawing.Size(803, 336);
-            this.dgv_employee.TabIndex = 7;
+            this.dgv_employee.TabIndex = 8;
             this.dgv_employee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_employee_CellClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "EMPLOYEEID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 35;
+            // 
+            // FullName
+            // 
+            this.FullName.DataPropertyName = "FULLNAME";
+            this.FullName.HeaderText = "Họ tên";
+            this.FullName.Name = "FullName";
+            this.FullName.ReadOnly = true;
+            this.FullName.Width = 150;
+            // 
+            // UserName
+            // 
+            this.UserName.DataPropertyName = "USERNAME";
+            this.UserName.HeaderText = "Tên TK";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            this.UserName.Width = 120;
+            // 
+            // Identity
+            // 
+            this.Identity.DataPropertyName = "IDENTITY";
+            this.Identity.HeaderText = "CMTND";
+            this.Identity.Name = "Identity";
+            this.Identity.ReadOnly = true;
+            this.Identity.Width = 90;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "EMAIL";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Width = 127;
+            // 
+            // Phone
+            // 
+            this.Phone.DataPropertyName = "PHONE";
+            this.Phone.HeaderText = "SĐT";
+            this.Phone.Name = "Phone";
+            this.Phone.ReadOnly = true;
+            this.Phone.Width = 95;
+            // 
+            // DepartmentName
+            // 
+            this.DepartmentName.DataPropertyName = "DEPARTMENTNAME";
+            this.DepartmentName.HeaderText = "Phòng";
+            this.DepartmentName.Name = "DepartmentName";
+            this.DepartmentName.ReadOnly = true;
+            this.DepartmentName.Width = 120;
+            // 
+            // Rank
+            // 
+            this.Rank.DataPropertyName = "RANKNAME";
+            this.Rank.HeaderText = "Chức vụ";
+            this.Rank.Name = "Rank";
+            this.Rank.ReadOnly = true;
             // 
             // btnNext
             // 
@@ -197,7 +260,7 @@
             this.btnNext.Location = new System.Drawing.Point(778, 358);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(27, 23);
-            this.btnNext.TabIndex = 6;
+            this.btnNext.TabIndex = 7;
             this.btnNext.Text = ">";
             this.btnNext.UseVisualStyleBackColor = true;
             // 
@@ -207,7 +270,7 @@
             this.btnPrevious.Location = new System.Drawing.Point(699, 358);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(27, 23);
-            this.btnPrevious.TabIndex = 5;
+            this.btnPrevious.TabIndex = 6;
             this.btnPrevious.Text = "<";
             this.btnPrevious.UseVisualStyleBackColor = true;
             // 
@@ -294,69 +357,6 @@
             this.txtFullName_Search.Name = "txtFullName_Search";
             this.txtFullName_Search.Size = new System.Drawing.Size(204, 20);
             this.txtFullName_Search.TabIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "EMPLOYEEID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 35;
-            // 
-            // FullName
-            // 
-            this.FullName.DataPropertyName = "FULLNAME";
-            this.FullName.HeaderText = "Họ tên";
-            this.FullName.Name = "FullName";
-            this.FullName.ReadOnly = true;
-            this.FullName.Width = 150;
-            // 
-            // UserName
-            // 
-            this.UserName.DataPropertyName = "USERNAME";
-            this.UserName.HeaderText = "Tên TK";
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            this.UserName.Width = 120;
-            // 
-            // Identity
-            // 
-            this.Identity.DataPropertyName = "IDENTITY";
-            this.Identity.HeaderText = "CMTND";
-            this.Identity.Name = "Identity";
-            this.Identity.ReadOnly = true;
-            this.Identity.Width = 90;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "EMAIL";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 127;
-            // 
-            // Phone
-            // 
-            this.Phone.DataPropertyName = "PHONE";
-            this.Phone.HeaderText = "SĐT";
-            this.Phone.Name = "Phone";
-            this.Phone.ReadOnly = true;
-            this.Phone.Width = 95;
-            // 
-            // DepartmentName
-            // 
-            this.DepartmentName.DataPropertyName = "DEPARTMENTNAME";
-            this.DepartmentName.HeaderText = "Phòng";
-            this.DepartmentName.Name = "DepartmentName";
-            this.DepartmentName.ReadOnly = true;
-            this.DepartmentName.Width = 120;
-            // 
-            // Rank
-            // 
-            this.Rank.DataPropertyName = "RANKNAME";
-            this.Rank.HeaderText = "Chức vụ";
-            this.Rank.Name = "Rank";
-            this.Rank.ReadOnly = true;
             // 
             // Employees
             // 

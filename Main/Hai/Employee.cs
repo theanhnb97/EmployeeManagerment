@@ -70,6 +70,10 @@ namespace Main
                         employee.IsDelete = 0;
                         employee.Status = Convert.ToInt16(cbbStatus.SelectedValue);
                         employee.Rank = Convert.ToInt16(cbbRank.SelectedValue);
+                        if (Employees.IsCreated == false)
+                        {
+                            employee.EmployeeId = Employees.employeeForUpdate.EmployeeId;
+                        }
 
                         if (CheckValidUserName(Convert.ToInt32(employee.EmployeeId), Employees.IsCreated,
                             employee.UserName))
@@ -93,7 +97,6 @@ namespace Main
                                 // update employee
                                 else
                                 {
-                                    employee.EmployeeId = Employees.employeeForUpdate.EmployeeId;
                                     if (employeeBus.Update(employee) == -1)
                                     {
                                         MessageBox.Show("Cập nhật thông tin nhân viên thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -182,12 +185,12 @@ namespace Main
         public bool CheckValidIdentity(int employeeId,bool isCreated,string identity)
         {
             Entity.Employee employee = employeeBus.GetByIdentity(identity);
-            if (isCreated == true && employee != null)
+            if (isCreated == true && employee.EmployeeId != 0)
             {
                 return false;
             }
 
-            if (isCreated == false && employee != null)
+            if (isCreated == false && employee.EmployeeId != 0)
             {
                 if (employee.EmployeeId == employeeId)
                 {
@@ -203,13 +206,13 @@ namespace Main
 
         public bool CheckValidUserName(int employeeId,bool isCreated, string userName)
         {
-            Entity.Employee employee = employeeBus.GetByIdentity(userName);
-            if (isCreated == true && employee != null)
+            Entity.Employee employee = employeeBus.GetByUsername(userName);
+            if (isCreated == true && employee.EmployeeId != 0)  // init instance -> not null -> check id
             {
                 return false;
             }
 
-            if (isCreated == false && employee != null)
+            if (isCreated == false && employee.EmployeeId != 0)
             {
                 if (employee.EmployeeId == employeeId)
                 {

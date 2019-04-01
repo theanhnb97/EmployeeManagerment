@@ -38,7 +38,6 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnAddAndCreate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -129,7 +128,7 @@
             this.txtEmail.Location = new System.Drawing.Point(162, 203);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(215, 20);
-            this.txtEmail.TabIndex = 5;
+            this.txtEmail.TabIndex = 4;
             // 
             // lblTitle
             // 
@@ -144,28 +143,18 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(298, 482);
+            this.btnCancel.Location = new System.Drawing.Point(245, 482);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 13;
+            this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnAddAndCreate
-            // 
-            this.btnAddAndCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddAndCreate.Location = new System.Drawing.Point(178, 482);
-            this.btnAddAndCreate.Name = "btnAddAndCreate";
-            this.btnAddAndCreate.Size = new System.Drawing.Size(112, 23);
-            this.btnAddAndCreate.TabIndex = 12;
-            this.btnAddAndCreate.Text = "Lưu và tạo mới";
-            this.btnAddAndCreate.UseVisualStyleBackColor = true;
-            // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(94, 482);
+            this.btnAdd.Location = new System.Drawing.Point(145, 482);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 11;
@@ -205,7 +194,7 @@
             this.txtPhone.Location = new System.Drawing.Point(162, 241);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(215, 20);
-            this.txtPhone.TabIndex = 4;
+            this.txtPhone.TabIndex = 5;
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // txtPassword
@@ -229,7 +218,7 @@
             this.txtIdentity.Location = new System.Drawing.Point(161, 168);
             this.txtIdentity.Name = "txtIdentity";
             this.txtIdentity.Size = new System.Drawing.Size(215, 20);
-            this.txtIdentity.TabIndex = 7;
+            this.txtIdentity.TabIndex = 3;
             this.txtIdentity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdentity_KeyPress);
             // 
             // label9
@@ -266,7 +255,7 @@
             this.cbbRank.Location = new System.Drawing.Point(161, 357);
             this.cbbRank.Name = "cbbRank";
             this.cbbRank.Size = new System.Drawing.Size(215, 21);
-            this.cbbRank.TabIndex = 10;
+            this.cbbRank.TabIndex = 8;
             // 
             // cbbDepartment
             // 
@@ -275,7 +264,7 @@
             this.cbbDepartment.Location = new System.Drawing.Point(162, 317);
             this.cbbDepartment.Name = "cbbDepartment";
             this.cbbDepartment.Size = new System.Drawing.Size(215, 21);
-            this.cbbDepartment.TabIndex = 9;
+            this.cbbDepartment.TabIndex = 7;
             // 
             // cbbStatus
             // 
@@ -284,7 +273,7 @@
             this.cbbStatus.Location = new System.Drawing.Point(161, 435);
             this.cbbStatus.Name = "cbbStatus";
             this.cbbStatus.Size = new System.Drawing.Size(215, 21);
-            this.cbbStatus.TabIndex = 8;
+            this.cbbStatus.TabIndex = 10;
             // 
             // cbbRole
             // 
@@ -293,7 +282,7 @@
             this.cbbRole.Location = new System.Drawing.Point(161, 396);
             this.cbbRole.Name = "cbbRole";
             this.cbbRole.Size = new System.Drawing.Size(215, 21);
-            this.cbbRole.TabIndex = 3;
+            this.cbbRole.TabIndex = 9;
             // 
             // label12
             // 
@@ -451,7 +440,6 @@
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnAddAndCreate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -478,7 +466,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnAddAndCreate;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
