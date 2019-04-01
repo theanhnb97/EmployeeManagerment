@@ -88,7 +88,7 @@ namespace BusinessLayer
 
         public Employee GetByIdentity(string identity)
         {
-            return myEmployeeDao.GetByUsername(identity);
+            return myEmployeeDao.GetByIdentity(identity);
         }
 
         public int UpdateProfile(Employee employee)

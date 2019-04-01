@@ -91,6 +91,7 @@ namespace Main
             txtFullName_Search.Text = "";
             txtUserName_Search.Text = "";
             dgv_employee.DataSource = employeeBus.GetAll();
+            cbbDepartment_Search.SelectedValue = 0;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -119,10 +120,9 @@ namespace Main
             {
                 FullName = txtFullName_Search.Text.Trim(),
                 UserName = txtUserName_Search.Text.Trim(),
-                Identity = txtIdentity_Search.Text.Trim()
+                Identity = txtIdentity_Search.Text.Trim(),
+                DepartmentId = Convert.ToInt64(cbbDepartment_Search.SelectedValue)
             };
-
-
             dgv_employee.DataSource = employeeBus.Search(employeeForSearch);
         }
     }
