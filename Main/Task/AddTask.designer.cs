@@ -54,6 +54,7 @@
             // txtTaskName
             // 
             this.txtTaskName.Location = new System.Drawing.Point(118, 81);
+            this.txtTaskName.MaxLength = 200;
             this.txtTaskName.Name = "txtTaskName";
             this.txtTaskName.Size = new System.Drawing.Size(203, 20);
             this.txtTaskName.TabIndex = 0;
@@ -126,6 +127,7 @@
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(118, 258);
+            this.txtDescription.MaxLength = 2000;
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(203, 68);
