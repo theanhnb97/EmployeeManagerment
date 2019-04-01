@@ -269,7 +269,7 @@ namespace DataAccessLayer
 
         public DataTable SearchDepartment(string keyword)
         {
-            //try
+            try
             {
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
                 using (OracleConnection connection = Connection.GetConnection)
@@ -291,13 +291,13 @@ namespace DataAccessLayer
                 }
 
             }
-            //catch (Exception e)
-            //{
-            //    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-            //    logger.Debug(e.Message);
-            //    return null;
+            catch (Exception e)
+            {
+                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+                return null;
 
-            //}
+            }
 
         }
         public int DeleteNoRemove(int id)
@@ -332,7 +332,7 @@ namespace DataAccessLayer
         }
         public DataTable GetAllPage(int currPage, int recodperpage, int Pagesize)
         {
-            //try
+            try
             {
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
                 using (OracleConnection connection = Connection.GetConnection)
@@ -356,13 +356,13 @@ namespace DataAccessLayer
                 }
 
             }
-            //catch (Exception e)
-            //{
-            //    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-            //    logger.Debug(e.Message);
-            //    return null;
+            catch (Exception e)
+            {
+                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.Debug(e.Message);
+                return null;
 
-            //}
+            }
         }
 
         public DataTable GetDepartmentAll()
