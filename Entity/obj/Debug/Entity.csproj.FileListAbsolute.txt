@@ -20,3 +20,14 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\Oracle.ManagedDataAccess
 D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll.config
 D:\TheAnh\Data\Git\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CopyComplete
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\bin\Debug\Entity.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.pdb
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll.config
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CopyComplete
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.dll
+C:\Users\Dell\Documents\GitHub\EmployeeManagerment\Entity\obj\Debug\Entity.pdb

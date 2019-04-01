@@ -15,10 +15,9 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\DataAccessLayer.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\DataAccessLayer.dll.config
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\Entity.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\log4net.xml
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csprojAssemblyReference.cache
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.AddTask.resources
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Bang.frmEditTask.resources
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcTask.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csproj.CopyComplete
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.exe
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Department.DepartmentAdd.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Department.DepartmentUpdate.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Dai.UcDepartment.resources
@@ -31,9 +30,6 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcRoles.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcRolesAction.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csproj.GenerateResource.cache
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csproj.CoreCompileInputs.cache
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csproj.CopyComplete
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.exe
-D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\CommonLibrary.dll.config
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Dong.SalaryAdd.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Dong.SalaryEdit.resources
@@ -83,7 +79,7 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.FormMain_.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Login_.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcAction.resources
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcUpdateProfile_.resources
-C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.FormMain_.resources
-C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.Login_.resources
-C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.UcAction.resources
-C:\Users\Dell\Desktop\CMC\DU3\EmployeeManagerment\Main\obj\Debug\Main.UcUpdateProfile_.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csprojAssemblyReference.cache
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.AddTask.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.Bang.frmEditTask.resources
+D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.UcTask.resources

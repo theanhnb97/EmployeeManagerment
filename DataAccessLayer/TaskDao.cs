@@ -1,43 +1,82 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using DataAccessLayer.Helpers;
-using Oracle.ManagedDataAccess.Client;
-using CommonLibrary.Model;
-using log4net;
-using Entity;
-
-namespace DataAccessLayer
+﻿namespace DataAccessLayer
 {
+    using CommonLibrary.Model;
+    using DataAccessLayer.Helpers;
+    using log4net;
+    using Oracle.ManagedDataAccess.Client;
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Data;
+
     /// <summary>
     /// interface for Task
     /// </summary>
     interface ITaskDao
     {
         //Get All Task
+        /// <summary>
+        /// The GetAll
+        /// </summary>
+        /// <param name="page">The page<see cref="int"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         DataTable GetAll(int page);
+
         /// <summary>
         /// Search task
         /// </summary>
         /// <param name="taskName"></param>
         /// <param name="department"></param>
         /// <param name="dueDate"></param>
+        /// <param name="page">The page<see cref="int"/></param>
         /// <returns></returns>
-        DataTable Filter(string taskName, Int64 department, string dueDate,int page);
+        DataTable Filter(string taskName, Int64 department, string dueDate, int page);
 
         // get all Department
+        /// <summary>
+        /// The LoadDepartment
+        /// </summary>
+        /// <returns>The <see cref="DataTable"/></returns>
         DataTable LoadDepartment();
+
         // get employee follow department
+        /// <summary>
+        /// The LoadEmployeeByDpt
+        /// </summary>
+        /// <param name="departmentId">The departmentId<see cref="Int64"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         DataTable LoadEmployeeByDpt(Int64 departmentId);
+
         // insert task
+        /// <summary>
+        /// The Insert
+        /// </summary>
+        /// <param name="objTask">The objTask<see cref="Entity.Task"/></param>
+        /// <returns>The <see cref="int"/></returns>
         int Insert(Entity.Task objTask);
+
         // get all employees
+        /// <summary>
+        /// The GetAllEmployee
+        /// </summary>
+        /// <returns>The <see cref="DataTable"/></returns>
         DataTable GetAllEmployee();
+
         // get priority
+        /// <summary>
+        /// The GetAlLevel
+        /// </summary>
+        /// <returns>The <see cref="List{Level}"/></returns>
         List<Level> GetAlLevel();
+
         //delete task
+        /// <summary>
+        /// The Delete
+        /// </summary>
+        /// <param name="id">The id<see cref="Int64"/></param>
+        /// <returns>The <see cref="int"/></returns>
         int Delete(Int64 id);
+
         /// <summary>
         /// update task
         /// </summary>
@@ -53,17 +92,26 @@ namespace DataAccessLayer
         /// <returns></returns>
         int Update(Int64 taskId, string taskName, Int64 assign, string dueDate, int priority, string file, int status, int isDelete, string description);
     }
+
     /// <summary>
     /// class TaskDao inheritance interface ITaskDao
     /// </summary>
     public class TaskDao : ITaskDao
     {
+        /// <summary>
+        /// Defines the objSqlHelpers
+        /// </summary>
         private readonly SqlHelpers<Entity.Task> objSqlHelpers = new SqlHelpers<Entity.Task>();
+
+        /// <summary>
+        /// Defines the logger
+        /// </summary>
         protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// 
+        /// The GetAll
         /// </summary>
+        /// <param name="page">The page<see cref="int"/></param>
         /// <returns></returns>
         public DataTable GetAll(int page)
         {
@@ -103,17 +151,17 @@ namespace DataAccessLayer
         }
 
         /// <summary>
-        /// 
+        /// The Filter
         /// </summary>
         /// <param name="taskName"></param>
         /// <param name="department"></param>
         /// <param name="dueDate"></param>
+        /// <param name="page">The page<see cref="int"/></param>
         /// <returns></returns>
         public DataTable Filter(string taskName, Int64 department, string dueDate, int page)
         {
             try
             {
-                int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
                 OracleParameter[] listParameters = new OracleParameter[]
                   {
 
@@ -122,6 +170,20 @@ namespace DataAccessLayer
                             new OracleParameter("dueDates", OracleDbType.Varchar2,dueDate, ParameterDirection.Input),
                             new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output)
                  };
+                if (page != 0)
+                {
+                    int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
+                    listParameters = new OracleParameter[]
+                    {
+                        new OracleParameter("numberpage",page),
+                        new OracleParameter("pagesize",pageSize),
+                        new OracleParameter("taskNames", OracleDbType.NVarchar2,taskName,ParameterDirection.Input),
+                        new OracleParameter("departments", OracleDbType.Int32,department, ParameterDirection.Input),
+                        new OracleParameter("dueDates", OracleDbType.Varchar2,dueDate, ParameterDirection.Input),
+                        new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output)
+                    };
+                    return objSqlHelpers.ExcuteQuery("TASK_FILTER_PAGING", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
+                }
                 return objSqlHelpers.ExcuteQuery("TASK_FILTER", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
             }
             catch (Exception e)
@@ -160,10 +222,10 @@ namespace DataAccessLayer
             {
                 Connection.GetConnection.Close();
             }
-
         }
+
         /// <summary>
-        /// 
+        /// The LoadEmployeeByDpt
         /// </summary>
         /// <param name="departmentId"></param>
         /// <returns> DataTable</returns>
@@ -188,10 +250,10 @@ namespace DataAccessLayer
             {
                 Connection.GetConnection.Close();
             }
-
         }
+
         /// <summary>
-        /// 
+        /// The Insert
         /// </summary>
         /// <param name="objTask"></param>
         /// <returns>number</returns>
@@ -222,8 +284,9 @@ namespace DataAccessLayer
                 Connection.GetConnection.Close();
             }
         }
+
         /// <summary>
-        /// 
+        /// The GetAllEmployee
         /// </summary>
         /// <returns>DataTable</returns>
         public DataTable GetAllEmployee()
@@ -236,7 +299,7 @@ namespace DataAccessLayer
         }
 
         /// <summary>
-        /// 
+        /// The GetAlLevel
         /// </summary>
         /// <returns>list priority</returns>
         public List<Level> GetAlLevel()
@@ -249,8 +312,9 @@ namespace DataAccessLayer
             };
             return list;
         }
+
         /// <summary>
-        /// 
+        /// The Delete
         /// </summary>
         /// <param name="id"></param>
         /// <returns>number</returns>
@@ -277,10 +341,10 @@ namespace DataAccessLayer
                 logger.Debug(e);
                 return 0;
             }
-
         }
+
         /// <summary>
-        /// 
+        /// The Update
         /// </summary>
         /// <param name="taskId"></param>
         /// <param name="taskName"></param>

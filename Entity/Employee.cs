@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Entity
+﻿namespace Entity
 {
+    using System;
+
     /// <summary>
     /// Defines the <see cref="Employee" />
     /// </summary>
@@ -68,6 +68,7 @@ namespace Entity
         public Int16 Status { get; set; }
 
         /// <summary>
+        /// Gets or sets the IsDelete
         /// Gets or sets a value indicating whether IsDelete
         /// </summary>
         public Int16 IsDelete { get; set; }
