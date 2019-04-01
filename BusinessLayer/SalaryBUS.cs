@@ -19,6 +19,7 @@ namespace BusinessLayer
         int Update(Salary obj);
         Salary GetById(int id);
         List<Employee> GetByDeptIdAndRank(int id, int rank);
+        List<SalaryView> Paging(int size, int index);
     }
     public class SalaryBUS : ISalaryBUS
     {
@@ -46,6 +47,11 @@ namespace BusinessLayer
         public List<SalaryView> GetData()
         {
             return SalaryDAO.GetData();
+        }
+
+        public List<SalaryView> Paging(int size, int index)
+        {
+            return SalaryDAO.Paging(size, index);
         }
 
         public List<SalaryView> SearchSalary(string name, string dept, DateTime fDate, DateTime tDate)

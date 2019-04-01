@@ -21,6 +21,11 @@ namespace Main
         public static SalaryView salaryForEdit = new SalaryView();
         protected int RolesID { get; set; }
         SalaryBUS salary = new SalaryBUS();
+        
+        private int currentPage { get; set; } 
+        private int lastPage { get; set; }
+        private int size { get; set; }
+
         public SalaryManagement(int id)
         {
             this.RolesID = id;
@@ -28,7 +33,18 @@ namespace Main
         }
         private void Salary_Load(object sender, EventArgs e)
         {
-            dgvSalary.DataSource = salary.GetData();
+            this.currentPage = 0;
+            // Set 5 records per page
+            this.size = 5;
+
+            if (salary.GetData().Count % size == 0)
+            {
+                this.lastPage = salary.GetData().Count / size - 1;
+            }
+            else this.lastPage = salary.GetData().Count / size;
+            lblPagingSalaryIndex.Text = (currentPage + 1).ToString();
+            lblAllPageSalary.Text = (lastPage+1).ToString();
+            dgvSalary.DataSource = salary.Paging(size, 0);
             if (dgvSalary.DataSource == null)
             {
                 MessageBox.Show("Data Not Found!");
@@ -52,10 +68,10 @@ namespace Main
 
         private void btnLoadData_Click(object sender, System.EventArgs e)
         {
-            string nameSearch = txtNameFilter.ToString();
-            string deptSearch = txtDeptFilter.ToString();
-            DateTime fDate = DateTime.Parse(dateFDateFilter.ToString());
-            DateTime tDate = DateTime.Parse(dateTDateFilter.ToString());
+            string nameSearch = txtNameFilter.Text;
+            string deptSearch = txtDeptFilter.Text;
+            DateTime fDate = DateTime.Parse(dateFDateFilter.Value.ToString());
+            DateTime tDate = DateTime.Parse(dateTDateFilter.Value.ToString());
             dgvSalary.DataSource = salary.SearchSalary(nameSearch, deptSearch, fDate, tDate);
         }
 
@@ -119,5 +135,24 @@ namespace Main
             }
         }
 
+        private void btnPreSalary_Click(object sender, EventArgs e)
+        {
+            if(currentPage != 0)
+            {
+                currentPage = currentPage - 1;
+                dgvSalary.DataSource = salary.Paging(this.size, currentPage);
+                lblPagingSalaryIndex.Text = (currentPage+1).ToString();
+            }
+        }
+
+        private void btnNextSalary_Click(object sender, EventArgs e)
+        {
+            if(currentPage != lastPage)
+            {
+                currentPage = currentPage + 1;
+                dgvSalary.DataSource = salary.Paging(this.size, currentPage);
+                lblPagingSalaryIndex.Text = (currentPage+1).ToString();
+            }
+        }
     }
 }
