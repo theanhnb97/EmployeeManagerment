@@ -39,13 +39,13 @@ namespace Main.Dong
             cbbDept.DataSource = departmentBUS.GetAll();
             cbbDept.ValueMember = "DEPARTMENTID";
             cbbDept.DisplayMember = "DEPARTMENTNAME";
-            cbbDept.SelectedItem = null;          
+            cbbDept.SelectedItem = null;
             //Combobox Rank Source
             Dictionary<int, string> cbbRankItems = new Dictionary<int, string>();
             cbbRankItems.Add(1, "Giam Doc");
             cbbRankItems.Add(2, "Truong Phong");
             cbbRankItems.Add(3, "Nhan Vien");
-            cbbRank.DataSource= new BindingSource(cbbRankItems, null);
+            cbbRank.DataSource = new BindingSource(cbbRankItems, null);
             cbbRank.ValueMember = "Key";
             cbbRank.DisplayMember = "Value";
             cbbRank.SelectedItem = null;
@@ -89,9 +89,9 @@ namespace Main.Dong
         private void cbbDept_TextChanged(object sender, EventArgs e)
         {
             string temp = cbbDept.Text;
-            cbbDept.FindString(temp);            
+            cbbDept.FindString(temp);
         }
-        private void cbbDept_ItemSetected(object sender,EventArgs e)
+        private void cbbDept_ItemSetected(object sender, EventArgs e)
         {
             cbbRank.Enabled = true;
         }
@@ -105,38 +105,37 @@ namespace Main.Dong
                 cbbIdentity.Enabled = true;
                 //Combobox Identity Datasource               
                 cbbIdentity.ValueMember = "EmployeeId";
-                cbbIdentity.DisplayMember = "Identity";               
+                cbbIdentity.DisplayMember = "Identity";
                 cbbIdentity.DataSource = this.cbbIdentAndNameSource;
                 cbbIdentity.SelectedItem = null;
-                //Combobox FullName Datasource     
-                cbbName.DataSource = this.cbbIdentAndNameSource;
+                //Combobox FullName Datasource                   
                 cbbName.ValueMember = "EmployeeId";
                 cbbName.DisplayMember = "FullName";
+                cbbName.DataSource = this.cbbIdentAndNameSource;
                 cbbName.SelectedItem = null;
 
             }
         }
 
         private void cbbIdentity_SelectedIndexChanged(object sender, EventArgs e)
-        {        
+        {
             if ((!string.IsNullOrEmpty(cbbIdentity.Text)) && (cbbIdentity.SelectedIndex != -1))
             {
-                foreach(var item in this.cbbIdentAndNameSource)
+                foreach (var item in this.cbbIdentAndNameSource)
                 {
-                    if(item.EmployeeId == int.Parse(cbbIdentity.SelectedValue.ToString()))
+                    if (item.EmployeeId == int.Parse(cbbIdentity.SelectedValue.ToString()))
                     {
                         string name = item.FullName;
                         int i = cbbName.FindString(name);
                         cbbName.SelectedIndex = i;
                     }
-                }                        
+                }
             }
         }
 
         private void cbbName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if ((!string.IsNullOrEmpty(cbbName.Text)) && (cbbName.SelectedIndex != -1))
-            //{
+
             //    if ((!string.IsNullOrEmpty(cbbName.Text)) && (cbbName.SelectedIndex != -1))
             //    {
             //        foreach (var item in this.cbbIdentAndNameSource)
@@ -149,7 +148,7 @@ namespace Main.Dong
             //            }
             //        }
             //    }
-            //}
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -160,19 +159,23 @@ namespace Main.Dong
         private void btnSaveRefresh_Click(object sender, EventArgs e)
         {
             btnSave_Click(sender, e);
-            this.Show();           
+            this.Show();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Salary salary = new Salary();
-            salary.CreateDate = DateTime.Now;
-            salary.BasicSalary = int.Parse(cbbBasic.Text);
-            salary.BussinessSalary = int.Parse(cbbBussiness.Text);
-            salary.Coefficient = float.Parse(cbbCoefficient.Text);
-            salary.EmployeeId = int.Parse(cbbIdentity.SelectedValue.ToString());
-            salaryBUS.Add(salary);
-            this.Close();
+            if (cbbDept.SelectedIndex != -1 && cbbRank.SelectedIndex != -1 && cbbName.SelectedIndex != -1 && cbbIdentity.SelectedIndex != -1 && cbbBasic.SelectedIndex != -1 && cbbBussiness.SelectedIndex != -1 && cbbCoefficient.SelectedIndex != -1)
+            {
+                Salary salary = new Salary();
+                salary.CreateDate = DateTime.Now;
+                salary.BasicSalary = int.Parse(cbbBasic.Text);
+                salary.BussinessSalary = int.Parse(cbbBussiness.Text);
+                salary.Coefficient = float.Parse(cbbCoefficient.Text);
+                salary.EmployeeId = int.Parse(cbbIdentity.SelectedValue.ToString());
+                salaryBUS.Add(salary);
+                this.Close();
+            }
+            else MessageBox.Show("Vui long dien day du thong tin");
         }
     }
 
