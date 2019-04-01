@@ -155,11 +155,11 @@ namespace Main.Bang
                 {
                     MessageBox.Show("Enter Description!", "Warning");
                 }
-                else if (Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,}") == false)
+                else if (Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,200}") == false)
                 {
                     MessageBox.Show(" Task Name must more than 2 characters!", "Warning");
                 }
-                else if (Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,}") == false)
+                else if (Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,2000}") == false)
                 {
                     MessageBox.Show("Description must more than 2 characters!!", "Warning");
                 }
@@ -238,7 +238,7 @@ namespace Main.Bang
                 MessageBox.Show("Enter Task Name!", "Warning");
                 txtTaskName.Focus();
             }
-            else if (Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,}") == false)
+            else if (Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,200}") == false)
             {
                 MessageBox.Show(" Task Name must more than 2 characters!", "Warning");
                 txtTaskName.Focus();
@@ -252,7 +252,7 @@ namespace Main.Bang
         private void txtDescription_TextChanged(object sender, EventArgs e)
         {
             if (string.Empty.Equals(txtDescription.Text.Trim()) ||
-                Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,}") == false)
+                Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,2000}") == false)
             {
                 lbDescription.ForeColor = Color.Red;
             }
@@ -269,7 +269,7 @@ namespace Main.Bang
                 MessageBox.Show("Enter Description!", "Warning");
                 txtDescription.Focus();
             }
-            else if (Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,}") == false)
+            else if (Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,2000}") == false)
             {
                 MessageBox.Show(" Description must more than 2 characters!", "Warning");
                 txtDescription.Focus();
@@ -295,6 +295,5 @@ namespace Main.Bang
 
         }
 
-        
     }
 }
