@@ -36,7 +36,6 @@ E:\BuiCongDai\project2\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary
 E:\BuiCongDai\project2\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll
 E:\BuiCongDai\project2\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.pdb
 E:\BuiCongDai\project2\EmployeeManagerment\CommonLibrary\bin\Debug\Oracle.ManagedDataAccess.dll
-E:\BuiCongDai\project2\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
 E:\BuiCongDai\project2\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
 E:\BuiCongDai\project2\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
 E:\BuiCongDai\project2\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll

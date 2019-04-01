@@ -19,3 +19,9 @@ E:\News\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
 E:\News\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
 E:\News\EmployeeManagerment\Entity\obj\Debug\Entity.dll
 E:\News\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
+E:\BuiCongDai\project2\EmployeeManagerment\Entity\bin\Debug\Entity.dll
+E:\BuiCongDai\project2\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
+E:\BuiCongDai\project2\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+E:\BuiCongDai\project2\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+E:\BuiCongDai\project2\EmployeeManagerment\Entity\obj\Debug\Entity.dll
+E:\BuiCongDai\project2\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
