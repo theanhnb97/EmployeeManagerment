@@ -99,6 +99,7 @@
         /// <summary>
         /// The ShowFormMain
         /// </summary>
+        [STAThread]
         private void ShowFormMain()
         {
             FormMain_ f = new FormMain_(result,username);

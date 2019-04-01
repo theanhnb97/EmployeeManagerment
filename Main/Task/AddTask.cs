@@ -324,5 +324,13 @@ namespace Main
                 lbDate.ForeColor = Color.DarkGreen;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog a = new OpenFileDialog())
+            {
+                a.ShowDialog();
+            }
+        }
     }
 }

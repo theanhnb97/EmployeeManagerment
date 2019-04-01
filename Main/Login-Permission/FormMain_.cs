@@ -34,20 +34,20 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         protected override void OnLoad(EventArgs e)
         {
-            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
-            bool result = RolesID == 1;
-            string formName = base.Name+".";
-            string Action = "";
-            foreach (DataRow item in myDataTable.Rows)
-                Action += item["ACTIONNAME"].ToString().Trim() + ".";
-            if (Action.Contains(formName)) result = true;
-            if (result)
-                base.OnLoad(e);
-            else
-            {
-                MessageBox.Show("Bạn không có quyền truy cập vào Hệ thống này!");
-                //picLogout_Click(picLogout, e);
-            }
+            //DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            //bool result = RolesID == 1;
+            //string formName = base.Name+".";
+            //string Action = "";
+            //foreach (DataRow item in myDataTable.Rows)
+            //    Action += item["ACTIONNAME"].ToString().Trim() + ".";
+            //if (Action.Contains(formName)) result = true;
+            //if (result)
+            //    base.OnLoad(e);
+            //else
+            //{
+            //    MessageBox.Show("Bạn không có quyền truy cập vào Hệ thống này!");
+            //    //picLogout_Click(picLogout, e);
+            //}
         }
 
         /// <summary>
