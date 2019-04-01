@@ -36,7 +36,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnLoadData = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.lblPage = new System.Windows.Forms.Label();
             this.dgv_employee = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +56,9 @@
             this.txtUserName_Search = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtFullName_Search = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblCurent = new System.Windows.Forms.Label();
+            this.lblPage = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_employee)).BeginInit();
@@ -84,12 +86,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.lblCurent);
+            this.groupBox1.Controls.Add(this.lblPage);
             this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnLoadData);
             this.groupBox1.Controls.Add(this.btnClear);
-            this.groupBox1.Controls.Add(this.lblPage);
             this.groupBox1.Controls.Add(this.dgv_employee);
             this.groupBox1.Controls.Add(this.btnNext);
             this.groupBox1.Controls.Add(this.btnPrevious);
@@ -157,16 +161,6 @@
             this.btnClear.Text = "Làm mới";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // lblPage
-            // 
-            this.lblPage.AutoSize = true;
-            this.lblPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPage.Location = new System.Drawing.Point(736, 361);
-            this.lblPage.Name = "lblPage";
-            this.lblPage.Size = new System.Drawing.Size(37, 15);
-            this.lblPage.TabIndex = 8;
-            this.lblPage.Text = "1 / 10";
             // 
             // dgv_employee
             // 
@@ -358,6 +352,36 @@
             this.txtFullName_Search.Size = new System.Drawing.Size(204, 20);
             this.txtFullName_Search.TabIndex = 0;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(743, 362);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(10, 15);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "/";
+            // 
+            // lblCurent
+            // 
+            this.lblCurent.AutoSize = true;
+            this.lblCurent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurent.Location = new System.Drawing.Point(727, 362);
+            this.lblCurent.Name = "lblCurent";
+            this.lblCurent.Size = new System.Drawing.Size(14, 15);
+            this.lblCurent.TabIndex = 18;
+            this.lblCurent.Text = "1";
+            // 
+            // lblPage
+            // 
+            this.lblPage.AutoSize = true;
+            this.lblPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPage.Location = new System.Drawing.Point(754, 362);
+            this.lblPage.Name = "lblPage";
+            this.lblPage.Size = new System.Drawing.Size(21, 15);
+            this.lblPage.TabIndex = 17;
+            this.lblPage.Text = "10";
+            // 
             // Employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,7 +409,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label lblPage;
         private System.Windows.Forms.DataGridView dgv_employee;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
@@ -411,5 +434,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rank;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblCurent;
+        private System.Windows.Forms.Label lblPage;
     }
 }
