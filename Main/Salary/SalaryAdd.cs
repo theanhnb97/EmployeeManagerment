@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entity;
+using Main.Salary;
 
 namespace Main.Dong
 {
@@ -35,46 +36,28 @@ namespace Main.Dong
 
         private void Add_Load(object sender, EventArgs e)
         {
+            CbbData cbbData = new CbbData();
             //Combobox Department Source
             cbbDept.DataSource = departmentBUS.GetAll();
             cbbDept.ValueMember = "DEPARTMENTID";
             cbbDept.DisplayMember = "DEPARTMENTNAME";
             cbbDept.SelectedItem = null;
             //Combobox Rank Source
-            Dictionary<int, string> cbbRankItems = new Dictionary<int, string>();
-            cbbRankItems.Add(1, "Giam Doc");
-            cbbRankItems.Add(2, "Truong Phong");
-            cbbRankItems.Add(3, "Nhan Vien");
-            cbbRank.DataSource = new BindingSource(cbbRankItems, null);
+            cbbRank.DataSource = new BindingSource(cbbData.cbbRankItems, null);
             cbbRank.ValueMember = "Key";
             cbbRank.DisplayMember = "Value";
             cbbRank.SelectedItem = null;
-            Dictionary<int, string> cbbBasicItems = new Dictionary<int, string>();
-            cbbBasicItems.Add(3, "3");
-            cbbBasicItems.Add(4, "4");
-            cbbBasicItems.Add(5, "5");
-            cbbBasicItems.Add(6, "6");
-            cbbBasic.DataSource = new BindingSource(cbbBasicItems, null);
+            cbbBasic.DataSource = new BindingSource(cbbData.cbbBasicItems, null);
             cbbBasic.ValueMember = "Key";
             cbbBasic.DisplayMember = "Value";
             cbbBasic.SelectedItem = null;
             //Combobox Bussiness Source
-            Dictionary<int, string> cbbBussinessItems = new Dictionary<int, string>();
-            cbbBussinessItems.Add(5, "5");
-            cbbBussinessItems.Add(6, "6");
-            cbbBussinessItems.Add(7, "7");
-            cbbBussinessItems.Add(8, "8");
-            cbbBussiness.DataSource = new BindingSource(cbbBussinessItems, null);
+            cbbBussiness.DataSource = new BindingSource(cbbData.cbbBussinessItems, null);
             cbbBussiness.ValueMember = "Key";
             cbbBussiness.DisplayMember = "Value";
             cbbBussiness.SelectedItem = null;
             //Combobox Coefficient Source
-            Dictionary<int, string> cbbCoefficientItems = new Dictionary<int, string>();
-            cbbCoefficientItems.Add(1, "2.34");
-            cbbCoefficientItems.Add(2, "2.67");
-            cbbCoefficientItems.Add(3, "3.0");
-            cbbCoefficientItems.Add(4, "3.33");
-            cbbCoefficient.DataSource = new BindingSource(cbbCoefficientItems, null);
+            cbbCoefficient.DataSource = new BindingSource(cbbData.cbbCoefficientItems, null);
             cbbCoefficient.ValueMember = "Key";
             cbbCoefficient.DisplayMember = "Value";
             cbbCoefficient.SelectedItem = null;
@@ -166,7 +149,7 @@ namespace Main.Dong
         {
             if (cbbDept.SelectedIndex != -1 && cbbRank.SelectedIndex != -1 && cbbName.SelectedIndex != -1 && cbbIdentity.SelectedIndex != -1 && cbbBasic.SelectedIndex != -1 && cbbBussiness.SelectedIndex != -1 && cbbCoefficient.SelectedIndex != -1)
             {
-                Salary salary = new Salary();
+                Entity.Salary salary = new Entity.Salary();
                 salary.CreateDate = DateTime.Now;
                 salary.BasicSalary = int.Parse(cbbBasic.Text);
                 salary.BussinessSalary = int.Parse(cbbBussiness.Text);

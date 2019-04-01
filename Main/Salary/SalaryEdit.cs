@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Main.Dong
 {
     public partial class SalaryEdit : Form
@@ -60,7 +61,7 @@ namespace Main.Dong
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Salary salary = new Salary();
+            Entity.Salary salary = new Entity.Salary();
             salary.SalaryId = SalaryManagement.salaryForEdit.SalaryId;
             salary.BasicSalary = int.Parse(cbbBasic.Text);
             salary.BussinessSalary = int.Parse(cbbBussiness.Text);
