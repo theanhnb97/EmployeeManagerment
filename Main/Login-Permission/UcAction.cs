@@ -1,23 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BusinessLayer;
-using Action = Entity.Action;
-
-namespace Main
+﻿namespace Main
 {
+    using BusinessLayer;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+    using Action = Entity.Action;
+
+    /// <summary>
+    /// Defines the <see cref="UcAction" />
+    /// </summary>
     public partial class UcAction : UserControl
     {
-
+        /// <summary>
+        /// Defines the myRolesActionBus
+        /// </summary>
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+
+        /// <summary>
+        /// Gets or sets the RolesID
+        /// </summary>
         protected int RolesID { get; set; }
+
+        /// <summary>
+        /// The OnLoad
+        /// </summary>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         protected override void OnLoad(EventArgs e)
         {
             DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
@@ -33,28 +47,45 @@ namespace Main
                 this.Hide();
         }
 
-
-
-
-
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UcAction"/> class.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
         public UcAction(int id)
         {
             this.RolesID = id;
             InitializeComponent();
         }
-        ActionBUS myAction = new ActionBUS();
+
+        /// <summary>
+        /// Defines the myAction
+        /// </summary>
+        internal ActionBUS myAction = new ActionBUS();
+
+        /// <summary>
+        /// The ActionManagement_Load
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void ActionManagement_Load(object sender, EventArgs e)
         {
             Loadd();
         }
 
+        /// <summary>
+        /// The Loadd
+        /// </summary>
         public void Loadd()
         {
             dgvData.DataSource = myAction.GetList();
             dgvData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
+        /// <summary>
+        /// The btnAdd_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Action_Add formAdd = new Action_Add(RolesID);
@@ -62,6 +93,11 @@ namespace Main
                 Loadd();
         }
 
+        /// <summary>
+        /// The btnDelete_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvData.RowCount < 1)
@@ -82,6 +118,11 @@ namespace Main
             }
         }
 
+        /// <summary>
+        /// The btnEdit_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dgvData.RowCount < 1)
@@ -98,6 +139,12 @@ namespace Main
             if (formAdd.ShowDialog() == DialogResult.OK)
                 Loadd();
         }
+
+        /// <summary>
+        /// The btnScan_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnScan_Click(object sender, EventArgs e)
         {
             DialogResult myDialogResult = MessageBox.Show("Bạn có thực sự muốn quét lại chức năng của hệ thống?", "Nguy hiểm",
@@ -128,6 +175,11 @@ namespace Main
             }
         }
 
+        /// <summary>
+        /// The dgvData_CellDoubleClick
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="DataGridViewCellEventArgs"/></param>
         private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvData.RowCount < 1)
@@ -145,6 +197,11 @@ namespace Main
                 Loadd();
         }
 
+        /// <summary>
+        /// The dgvData_KeyDown
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="KeyEventArgs"/></param>
         private void dgvData_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

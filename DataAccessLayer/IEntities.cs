@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-
-namespace DataAccessLayer
+﻿namespace DataAccessLayer
 {
+    using System.Data;
+
+    /// <summary>
+    /// Defines the <see cref="IEntities{T}" />
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IEntities<T>
     {
         /// <summary>
@@ -18,7 +20,7 @@ namespace DataAccessLayer
         /// <param name="keyword"></param>
         /// <returns></returns>
         DataTable Search(string keyword);
-        
+
         /// <summary>
         /// Delete and return result
         /// </summary>
