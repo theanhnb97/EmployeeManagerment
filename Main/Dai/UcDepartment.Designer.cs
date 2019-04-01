@@ -122,8 +122,9 @@
             // txtDepartmentName
             // 
             this.txtDepartmentName.Location = new System.Drawing.Point(157, 39);
+            this.txtDepartmentName.MaxLength = 200;
             this.txtDepartmentName.Name = "txtDepartmentName";
-            this.txtDepartmentName.Size = new System.Drawing.Size(155, 21);
+            this.txtDepartmentName.Size = new System.Drawing.Size(195, 21);
             this.txtDepartmentName.TabIndex = 1;
             // 
             // label1

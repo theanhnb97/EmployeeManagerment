@@ -43,3 +43,47 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Main\bin\Debug\log4net.xml
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.csproj.CopyComplete
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.exe
 D:\TheAnh\Data\Git\EmployeeManagerment\Main\obj\Debug\Main.pdb
+E:\New folder\EmployeeManagerment\Main\bin\Debug\log4net.config
+E:\New folder\EmployeeManagerment\Main\bin\Debug\App.config
+E:\New folder\EmployeeManagerment\Main\bin\Debug\Main.exe.config
+E:\New folder\EmployeeManagerment\Main\bin\Debug\Main.exe
+E:\New folder\EmployeeManagerment\Main\bin\Debug\Main.pdb
+E:\New folder\EmployeeManagerment\Main\bin\Debug\Bunifu_UI_v1.52.dll
+E:\New folder\EmployeeManagerment\Main\bin\Debug\BusinessLayer.dll
+E:\New folder\EmployeeManagerment\Main\bin\Debug\CommonLibrary.dll
+E:\New folder\EmployeeManagerment\Main\bin\Debug\DataAccessLayer.dll
+E:\New folder\EmployeeManagerment\Main\bin\Debug\Entity.dll
+E:\New folder\EmployeeManagerment\Main\bin\Debug\log4net.dll
+E:\New folder\EmployeeManagerment\Main\bin\Debug\BusinessLayer.pdb
+E:\New folder\EmployeeManagerment\Main\bin\Debug\CommonLibrary.pdb
+E:\New folder\EmployeeManagerment\Main\bin\Debug\CommonLibrary.dll.config
+E:\New folder\EmployeeManagerment\Main\bin\Debug\DataAccessLayer.pdb
+E:\New folder\EmployeeManagerment\Main\bin\Debug\DataAccessLayer.dll.config
+E:\New folder\EmployeeManagerment\Main\bin\Debug\Entity.pdb
+E:\New folder\EmployeeManagerment\Main\bin\Debug\log4net.xml
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.csprojAssemblyReference.cache
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.AddTask.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.Bang.frmEditTask.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.UcTask.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.Department.DepartmentAdd.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.Department.DepartmentUpdate.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.Dai.UcDepartment.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.Dong.SalaryAdd.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.Dong.SalaryEdit.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.SalaryManagement.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.FormMain_.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.Login_.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.Employee.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.Employees.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.Properties.Resources.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.Action_Add.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.Role_Add.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.UcAction.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.UcRoles.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.UcRolesAction.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.UcUpdateProfile_.resources
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.csproj.GenerateResource.cache
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.csproj.CoreCompileInputs.cache
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.csproj.CopyComplete
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.exe
+E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.pdb
