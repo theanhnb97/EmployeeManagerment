@@ -42,7 +42,7 @@
             //    Action += item["ACTIONNAME"].ToString().Trim() + ".";
             //if (Action.Contains(formName)) result = true;
             //if (result)
-            //    base.OnLoad(e);
+            base.OnLoad(e);
             //else
             //{
             //    MessageBox.Show("Bạn không có quyền truy cập vào Hệ thống này!");
