@@ -1,29 +1,71 @@
-﻿using DataAccessLayer.Helpers;
-using Entity;
-using log4net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Oracle.ManagedDataAccess.Client;
-using Entity.DTO;
-using System.Data;
-using System.Configuration;
-
-namespace DataAccessLayer
+﻿namespace DataAccessLayer
 {
+    using Entity;
+    using Entity.DTO;
+    using log4net;
+    using Oracle.ManagedDataAccess.Client;
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Data;
+
+    /// <summary>
+    /// Defines the <see cref="ISalary" />
+    /// </summary>
     public interface ISalary
     {
+        /// <summary>
+        /// The GetData
+        /// </summary>
+        /// <returns>The <see cref="List{SalaryView}"/></returns>
         List<SalaryView> GetData();
+
+        /// <summary>
+        /// The SearchSalary
+        /// </summary>
+        /// <param name="name">The name<see cref="string"/></param>
+        /// <param name="dept">The dept<see cref="string"/></param>
+        /// <param name="fDate">The fDate<see cref="DateTime?"/></param>
+        /// <param name="tDate">The tDate<see cref="DateTime?"/></param>
+        /// <returns>The <see cref="List{SalaryView}"/></returns>
         List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate);
+
+        /// <summary>
+        /// The GetById
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="Salary"/></returns>
         Salary GetById(int id);
+
+        /// <summary>
+        /// The Paging
+        /// </summary>
+        /// <param name="Size">The Size<see cref="int"/></param>
+        /// <param name="index">The index<see cref="int"/></param>
+        /// <returns>The <see cref="List{SalaryView}"/></returns>
         List<SalaryView> Paging(int Size, int index);
     }
+
+    /// <summary>
+    /// Defines the <see cref="SalaryDAO" />
+    /// </summary>
     public class SalaryDAO : IEntities<Salary>, ISalary
     {
-        string Connect = ConfigurationManager.ConnectionStrings["ConnectString"].ConnectionString;
-        ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        /// <summary>
+        /// Defines the Connect
+        /// </summary>
+        internal string Connect = ConfigurationManager.ConnectionStrings["ConnectString"].ConnectionString;
+
+        /// <summary>
+        /// Defines the logger
+        /// </summary>
+        internal ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        /// <summary>
+        /// The Add
+        /// </summary>
+        /// <param name="obj">The obj<see cref="Salary"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Add(Salary obj)
         {
             using (OracleConnection objConn = new OracleConnection(Connect))
@@ -52,6 +94,11 @@ namespace DataAccessLayer
             return 1;
         }
 
+        /// <summary>
+        /// The Delete
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Delete(int id)
         {
             using (OracleConnection objConn = new OracleConnection(Connect))
@@ -75,6 +122,11 @@ namespace DataAccessLayer
             }
             return 1;
         }
+
+        /// <summary>
+        /// The GetData
+        /// </summary>
+        /// <returns>The <see cref="List{SalaryView}"/></returns>
         public List<SalaryView> GetData()
         {
             List<SalaryView> salaryViews = new List<SalaryView>();
@@ -113,8 +165,13 @@ namespace DataAccessLayer
                 objConn.Close();
             }
             return salaryViews;
-
         }
+
+        /// <summary>
+        /// The Update
+        /// </summary>
+        /// <param name="obj">The obj<see cref="Salary"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Update(Salary obj)
         {
             using (OracleConnection objConn = new OracleConnection(Connect))
@@ -142,6 +199,14 @@ namespace DataAccessLayer
             return 1;
         }
 
+        /// <summary>
+        /// The SearchSalary
+        /// </summary>
+        /// <param name="name">The name<see cref="string"/></param>
+        /// <param name="dept">The dept<see cref="string"/></param>
+        /// <param name="fDate">The fDate<see cref="DateTime?"/></param>
+        /// <param name="tDate">The tDate<see cref="DateTime?"/></param>
+        /// <returns>The <see cref="List{SalaryView}"/></returns>
         public List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate)
         {
             List<SalaryView> salaryViews = new List<SalaryView>();
@@ -185,6 +250,12 @@ namespace DataAccessLayer
             }
             return salaryViews;
         }
+
+        /// <summary>
+        /// The GetById
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="Salary"/></returns>
         public Salary GetById(int id)
         {
             Salary salary = new Salary();
@@ -219,6 +290,13 @@ namespace DataAccessLayer
             }
             return salary;
         }
+
+        /// <summary>
+        /// The GetByIdDeptAndRank
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <param name="rank">The rank<see cref="int"/></param>
+        /// <returns>The <see cref="List{Employee}"/></returns>
         public List<Employee> GetByIdDeptAndRank(int id, int rank)
         {
             List<Employee> result = new List<Employee>();
@@ -259,6 +337,13 @@ namespace DataAccessLayer
             }
             return result;
         }
+
+        /// <summary>
+        /// The Paging
+        /// </summary>
+        /// <param name="size">The size<see cref="int"/></param>
+        /// <param name="index">The index<see cref="int"/></param>
+        /// <returns>The <see cref="List{SalaryView}"/></returns>
         public List<SalaryView> Paging(int size, int index)
         {
             List<SalaryView> salaryViews = new List<SalaryView>();
@@ -301,22 +386,33 @@ namespace DataAccessLayer
             return salaryViews;
         }
 
-
+        /// <summary>
+        /// The Search
+        /// </summary>
+        /// <param name="keyword">The keyword<see cref="string"/></param>
+        /// <returns>The <see cref="List{Salary}"/></returns>
         public List<Salary> Search(string keyword)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The Get
+        /// </summary>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable Get()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The Search
+        /// </summary>
+        /// <param name="keyword">The keyword<see cref="string"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         DataTable IEntities<Salary>.Search(string keyword)
         {
             throw new NotImplementedException();
         }
-
-
     }
 }

@@ -1,80 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entity.DTO
+﻿namespace Entity.DTO
 {
+    using System;
+
+    /// <summary>
+    /// Defines the <see cref="EmployeeDTO" />
+    /// </summary>
     public class EmployeeDTO
     {
         /// <summary>
-        /// Gets or sets the EmployeeId
+        /// Gets or sets the EMPLOYEEID
         /// </summary>
         public Int64 EMPLOYEEID { get; set; }
 
         /// <summary>
-        /// Gets or sets the RolesId
-        /// </summary>
-        ///public Int64 ROLESID { get; set; }
-
-        /// <summary>
-        /// Gets or sets the DepartmentId
+        /// Gets or sets the DEPARTMENTID
         /// </summary>
         public Int64 DEPARTMENTID { get; set; }
 
+        /// <summary>
+        /// Gets or sets the DepartmentName
+        /// </summary>
         public string DepartmentName { get; set; }
 
         /// <summary>
-        /// Gets or sets the Rank
+        /// Gets or sets the RANK
         /// </summary>
         public Int16 RANK { get; set; }
 
+        /// <summary>
+        /// Gets or sets the RankName
+        /// </summary>
         public string RankName { get; set; }
 
         /// <summary>
-        /// Gets or sets the FullName
+        /// Gets or sets the FULLNAME
         /// </summary>
         public string FULLNAME { get; set; }
 
         /// <summary>
-        /// Gets or sets the UserName
+        /// Gets or sets the USERNAME
         /// </summary>
         public string USERNAME { get; set; }
 
         /// <summary>
-        /// Gets or sets the Password
-        /// </summary>
-        ///public string PASSWORD { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Identity
+        /// Gets or sets the IDENTITY
         /// </summary>
         public string IDENTITY { get; set; }
 
         /// <summary>
-        /// Gets or sets the Address
-        /// </summary>
-        ///public string ADDRESS { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Phone
+        /// Gets or sets the PHONE
         /// </summary>
         public string PHONE { get; set; }
 
         /// <summary>
-        /// Gets or sets the Email
+        /// Gets or sets the EMAIL
         /// </summary>
         public string EMAIL { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Status
-        /// </summary>
-        ///public Int16 STATUS { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether IsDelete
-        /// </summary>
-        ///public Int16 ISDELETE { get; set; }
     }
 }

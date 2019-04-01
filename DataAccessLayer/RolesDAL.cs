@@ -1,25 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccessLayer.Helpers;
-using Entity;
-using log4net;
-using Oracle.ManagedDataAccess.Client;
-
-namespace DataAccessLayer
+﻿namespace DataAccessLayer
 {
-    interface IRoles:IEntities<Roles>
+    using DataAccessLayer.Helpers;
+    using Entity;
+    using log4net;
+    using Oracle.ManagedDataAccess.Client;
+    using System;
+    using System.Data;
+
+    /// <summary>
+    /// Defines the <see cref="IRoles" />
+    /// </summary>
+    interface IRoles : IEntities<Roles>
     {
-        
     }
-    public class RolesDAL:IRoles
+
+    /// <summary>
+    /// Defines the <see cref="RolesDAL" />
+    /// </summary>
+    public class RolesDAL : IRoles
     {
+        /// <summary>
+        /// Defines the sql
+        /// </summary>
         protected SqlHelpers<RolesAction> sql = new SqlHelpers<RolesAction>();
+
+        /// <summary>
+        /// Defines the logger
+        /// </summary>
         protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        /// <summary>
+        /// The Get
+        /// </summary>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable Get()
         {
             using (OracleConnection con = Connection.GetConnection)
@@ -33,6 +46,11 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// The GetByName
+        /// </summary>
+        /// <param name="name">The name<see cref="string"/></param>
+        /// <returns>The <see cref="Roles"/></returns>
         public Roles GetByName(string name)
         {
             using (OracleConnection con = Connection.GetConnection)
@@ -56,12 +74,21 @@ namespace DataAccessLayer
             }
         }
 
-
+        /// <summary>
+        /// The Search
+        /// </summary>
+        /// <param name="keyword">The keyword<see cref="string"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable Search(string keyword)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The Delete
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Delete(int id)
         {
             using (OracleConnection con = Connection.GetConnection)
@@ -75,6 +102,11 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// The Update
+        /// </summary>
+        /// <param name="obj">The obj<see cref="Roles"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Update(Roles obj)
         {
             using (OracleConnection con = Connection.GetConnection)
@@ -91,6 +123,11 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// The Add
+        /// </summary>
+        /// <param name="obj">The obj<see cref="Roles"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Add(Roles obj)
         {
             using (OracleConnection con = Connection.GetConnection)
