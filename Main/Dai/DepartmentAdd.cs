@@ -65,7 +65,7 @@ namespace Main.Department
                 Entity.Department department = new Entity.Department();
                 department.DepartmentName = txtDepartmentName.Text;
                 department.Status = cbStatus.Checked ? 1 : 0;
-                department.IsDelete = rdbIsDelete.Checked ? 1 : 0;
+                department.IsDelete = 0;
                 department.Description = txtDescription.Text;
                 if (txtDepartmentName.Text != "" && txtDescription.Text != "")
                 {

@@ -20,3 +20,14 @@ D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\Oracle.ManagedDataAccess
 D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll.config
 D:\TheAnh\Data\Git\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CopyComplete
+E:\New folder\EmployeeManagerment\Entity\bin\Debug\Entity.dll
+E:\New folder\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
+E:\New folder\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll
+E:\New folder\EmployeeManagerment\Entity\bin\Debug\Oracle.ManagedDataAccess.dll
+E:\New folder\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.pdb
+E:\New folder\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll.config
+E:\New folder\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+E:\New folder\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+E:\New folder\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CopyComplete
+E:\New folder\EmployeeManagerment\Entity\obj\Debug\Entity.dll
+E:\New folder\EmployeeManagerment\Entity\obj\Debug\Entity.pdb

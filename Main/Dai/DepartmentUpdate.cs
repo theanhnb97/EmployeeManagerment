@@ -65,8 +65,8 @@ namespace Main.Department
             txtDescription.Text = department.Description;
             if (department.Status == 1) cbStatus.Checked = true;
             if (department.Status == 0) cbStatus.Checked = false;
-            if (department.IsDelete == 1) rdbIsDelete.Checked = true;
-            if (department.IsDelete == 0) rdbIsDelete.Checked = false;
+            if (department.IsDelete == 0) rdbIsDelete.Checked = true;
+            if (department.IsDelete == 1) rdbIsDelete.Checked = false;
 
         }
         /// <summary>/// Button update event click
@@ -83,7 +83,7 @@ namespace Main.Department
                 
                 department.DepartmentName = txtDepartmentName.Text;
                 department.Status = cbStatus.Checked ? 1 : 0;
-                department.IsDelete = rdbIsDelete.Checked ? 1 : 0;
+                department.IsDelete = rdbIsDelete.Checked ? 0 : 1;
                 department.Description = txtDescription.Text;
                 if (txtDepartmentName.Text != "" && txtDescription.Text != "")
                 {

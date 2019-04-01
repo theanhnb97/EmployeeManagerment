@@ -87,3 +87,4 @@ E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.csproj.CoreCompileInputs.c
 E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.csproj.CopyComplete
 E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.exe
 E:\New folder\EmployeeManagerment\Main\obj\Debug\Main.pdb
+E:\New folder\EmployeeManagerment\Main\bin\Debug\Oracle.ManagedDataAccess.dll

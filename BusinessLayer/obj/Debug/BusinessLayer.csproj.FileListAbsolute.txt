@@ -52,3 +52,21 @@ E:\newclone2\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.Co
 E:\newclone2\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
 E:\newclone2\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.dll
 E:\newclone2\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.pdb
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\BusinessLayer.dll
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\BusinessLayer.pdb
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.dll
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\DataAccessLayer.dll
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\Entity.dll
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\Oracle.ManagedDataAccess.dll
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\log4net.dll
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.pdb
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.dll.config
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\DataAccessLayer.pdb
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\DataAccessLayer.dll.config
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\Entity.pdb
+E:\New folder\EmployeeManagerment\BusinessLayer\bin\Debug\log4net.xml
+E:\New folder\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
+E:\New folder\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+E:\New folder\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+E:\New folder\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.dll
+E:\New folder\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.pdb

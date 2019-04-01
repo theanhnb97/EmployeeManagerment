@@ -7,3 +7,12 @@ D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csp
 D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
 D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb
 D:\TheAnh\Data\Git\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
+E:\New folder\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll.config
+E:\New folder\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll
+E:\New folder\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.pdb
+E:\New folder\EmployeeManagerment\CommonLibrary\bin\Debug\Oracle.ManagedDataAccess.dll
+E:\New folder\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
+E:\New folder\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
+E:\New folder\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
+E:\New folder\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
+E:\New folder\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb

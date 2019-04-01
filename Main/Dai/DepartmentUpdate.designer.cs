@@ -31,11 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbStatus = new System.Windows.Forms.CheckBox();
-            this.rdbIsDelete = new System.Windows.Forms.RadioButton();
             this.txtDepartmentName = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCannel = new System.Windows.Forms.Button();
+            this.rdbIsDelete = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label1
@@ -68,18 +68,6 @@
             this.cbStatus.TabIndex = 2;
             this.cbStatus.Text = "Status";
             this.cbStatus.UseVisualStyleBackColor = true;
-            // 
-            // rdbIsDelete
-            // 
-            this.rdbIsDelete.AutoSize = true;
-            this.rdbIsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbIsDelete.Location = new System.Drawing.Point(276, 154);
-            this.rdbIsDelete.Name = "rdbIsDelete";
-            this.rdbIsDelete.Size = new System.Drawing.Size(78, 19);
-            this.rdbIsDelete.TabIndex = 3;
-            this.rdbIsDelete.TabStop = true;
-            this.rdbIsDelete.Text = "IsDelete";
-            this.rdbIsDelete.UseVisualStyleBackColor = true;
             // 
             // txtDepartmentName
             // 
@@ -118,6 +106,18 @@
             this.btnCannel.UseVisualStyleBackColor = true;
             this.btnCannel.Click += new System.EventHandler(this.btnCannel_Click);
             // 
+            // rdbIsDelete
+            // 
+            this.rdbIsDelete.AutoSize = true;
+            this.rdbIsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbIsDelete.Location = new System.Drawing.Point(276, 154);
+            this.rdbIsDelete.Name = "rdbIsDelete";
+            this.rdbIsDelete.Size = new System.Drawing.Size(78, 19);
+            this.rdbIsDelete.TabIndex = 3;
+            this.rdbIsDelete.TabStop = true;
+            this.rdbIsDelete.Text = "IsDelete";
+            this.rdbIsDelete.UseVisualStyleBackColor = true;
+            // 
             // DepartmentUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,10 +144,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbStatus;
-        private System.Windows.Forms.RadioButton rdbIsDelete;
         private System.Windows.Forms.TextBox txtDepartmentName;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnCannel;
+        private System.Windows.Forms.RadioButton rdbIsDelete;
     }
 }
