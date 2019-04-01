@@ -83,7 +83,7 @@ namespace Main.Dong
         {
             if (cbbDept.SelectedItem != null && cbbRank.SelectedItem != null)
             {
-                SetcbbIdentNameSource();
+                this.SetcbbIdentNameSource();
                 cbbName.Enabled = true;
                 cbbIdentity.Enabled = true;
                 //Combobox Identity Datasource               
@@ -98,6 +98,11 @@ namespace Main.Dong
                 cbbName.SelectedItem = null;
 
             }
+        }
+        private void cbbIdentity_TextChanged(object sender, EventArgs e)
+        {
+            string temp = cbbIdentity.Text;
+            cbbIdentity.FindString(temp);
         }
 
         private void cbbIdentity_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,24 +119,28 @@ namespace Main.Dong
                     }
                 }
             }
+
+        }
+        private void cbbName_TextChanged(object sender, EventArgs e)
+        {
+            string temp = cbbName.Text;
+            cbbName.FindString(temp);
         }
 
         private void cbbName_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            //    if ((!string.IsNullOrEmpty(cbbName.Text)) && (cbbName.SelectedIndex != -1))
+            //if ((!string.IsNullOrEmpty(cbbName.Text)) && (cbbName.SelectedIndex != -1))
+            //{
+            //    foreach (var item in this.cbbIdentAndNameSource)
             //    {
-            //        foreach (var item in this.cbbIdentAndNameSource)
+            //        if (item.EmployeeId == int.Parse(cbbName.SelectedValue.ToString()))
             //        {
-            //            if (item.EmployeeId == int.Parse(cbbName.SelectedValue.ToString()))
-            //            {
-            //                string name = item.FullName;
-            //                int i = cbbIdentity.FindString(name);
-            //                cbbIdentity.SelectedIndex = i;
-            //            }
+            //            string identity = item.Identity;
+            //            int i = cbbIdentity.FindString(identity);
+            //            cbbIdentity.SelectedIndex = i;
             //        }
             //    }
-
+            //}
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
