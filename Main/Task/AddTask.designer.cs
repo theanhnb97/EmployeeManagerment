@@ -49,7 +49,6 @@
             this.lbDate = new System.Windows.Forms.Label();
             this.lbDepartment = new System.Windows.Forms.Label();
             this.lbLevel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTaskName
@@ -259,23 +258,12 @@
             this.lbLevel.TabIndex = 14;
             this.lbLevel.Text = "(*)";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(115, 395);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // AddTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(398, 497);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lbLevel);
             this.Controls.Add(this.lbDepartment);
             this.Controls.Add(this.lbDate);
@@ -331,6 +319,5 @@
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Label lbDepartment;
         private System.Windows.Forms.Label lbLevel;
-        private System.Windows.Forms.Button button1;
     }
 }

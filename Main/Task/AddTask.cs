@@ -327,10 +327,10 @@ namespace Main
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog a = new OpenFileDialog())
-            {
-                a.ShowDialog();
-            }
+            //using (OpenFileDialog a = new OpenFileDialog())
+            //{
+            //    a.ShowDialog();
+            //}
         }
     }
 }
