@@ -6,6 +6,9 @@ using System.Windows.Forms;
 using BusinessLayer;
 using Entity;
 using log4net;
+using System.IO;
+using System.Net;
+using System.Security.Policy;
 
 namespace Main
 {
@@ -325,12 +328,57 @@ namespace Main
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            //using (OpenFileDialog a = new OpenFileDialog())
-            //{
-            //    a.ShowDialog();
-            //}
+            using (OpenFileDialog myDialog = new OpenFileDialog())
+            {
+                myDialog.CheckFileExists = true;
+                myDialog.Multiselect = false;
+                myDialog.Title = "Chọn file đính kèm";
+                myDialog.Filter = "Image|*.png|*.jpg|*.jpeg |Word file|*.doc| Excel file | *.xlsx| Other file | *.*";
+                if (myDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //lblFile.Text = Path.GetFileName(myDialog.FileName);
+                    linkFile.Text= UploadFtpFile("",myDialog.FileName);
+                }
+            }
+        }
+
+        public string UploadFtpFile(string folderName, string fileName)
+        {
+            folderName = "hinhanh";
+            string absoluteFileName = Path.GetFileName(fileName);
+            string link = string.Format(@"http://{0}/{1}/{2}", "theanhnb97.000webhostapp.com", folderName, absoluteFileName);
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(new Uri(string.Format(@"ftp://{0}/{1}/{2}", "files.000webhost.com/public_html", folderName, absoluteFileName)));
+            request.Method = WebRequestMethods.Ftp.UploadFile;
+            request.UsePassive = true;
+            request.UseBinary = true;
+            request.KeepAlive = false;
+            request.Credentials = new NetworkCredential("theanhnb97", "nb791111");
+            request.ConnectionGroupName = "group";
+            request.Method = WebRequestMethods.Ftp.UploadFile;
+            using (Stream fileStream = File.OpenRead(fileName))
+            using (Stream ftpStream = request.GetRequestStream())
+            {
+                byte[] buffer = new byte[10240];
+                int read;
+                while ((read = fileStream.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ftpStream.Write(buffer, 0, read);
+                }
+            }
+            MessageBox.Show("Upload success!");
+            Clipboard.SetText(link);
+            return link;
+        }
+
+        private void linkFile_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using (WebClient myBrowser = new WebClient())
+            {
+                myBrowser.DownloadFile(linkFile.Text,Path.GetFileName(linkFile.Text));
+            }
+            
         }
     }
 }

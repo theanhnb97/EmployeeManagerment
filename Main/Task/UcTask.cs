@@ -233,9 +233,9 @@ namespace Main
             if (result == DialogResult.Yes)
             {
                 //check null, space, id <=0
-                if (dgvTask.CurrentRow != null && (!string.Empty.Equals(dgvTask.CurrentRow.Cells["ID"].Value.ToString()) || Convert.ToInt32(dgvTask.CurrentRow.Cells["ID"].Value.ToString()) <= 0))
+                if (dgvTask.CurrentRow != null && (!string.Empty.Equals(dgvTask.CurrentRow.Cells["Mã"].Value.ToString()) || Convert.ToInt32(dgvTask.CurrentRow.Cells["Mã"].Value.ToString()) <= 0))
                 {
-                    int id = Convert.ToInt32(dgvTask.CurrentRow.Cells["ID"].Value.ToString());
+                    int id = Convert.ToInt32(dgvTask.CurrentRow.Cells["Mã"].Value.ToString());
                     if (objTaskBus.Delete(id) != 0)
                     {
                         MessageBox.Show("Success", "Status");

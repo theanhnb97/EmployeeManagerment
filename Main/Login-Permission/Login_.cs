@@ -31,6 +31,17 @@
             InitializeComponent();
         }
 
+        public static Login_ ThisForm
+        {
+            get
+            {
+                if(ThisForm==null)
+                    ThisForm =new Login_();
+                return ThisForm;
+            }
+            set { ThisForm = value; }
+        }
+
         /// <summary>
         /// The btnCancel_Click
         /// </summary>
@@ -84,6 +95,7 @@
             {
                 username = txtUserName.Text.Trim();
                 Thread threadMainForm = new Thread(new ThreadStart(ShowFormMain));
+                threadMainForm.SetApartmentState(ApartmentState.STA);
                 threadMainForm.Start();
                 Application.Exit();
             }
@@ -99,7 +111,6 @@
         /// <summary>
         /// The ShowFormMain
         /// </summary>
-        [STAThread]
         private void ShowFormMain()
         {
             FormMain_ f = new FormMain_(result,username);
