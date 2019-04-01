@@ -30,15 +30,15 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.ACTIONID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ACTIONNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESCRIPTION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISDELETE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDelete = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnEdit = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnAdd = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnScan = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.ACTIONID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ACTIONNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCRIPTION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISDELETE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,37 +75,6 @@
             this.dgvData.TabIndex = 0;
             this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
             this.dgvData.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvData_KeyDown);
-            // 
-            // ACTIONID
-            // 
-            this.ACTIONID.DataPropertyName = "ACTIONID";
-            this.ACTIONID.HeaderText = "Mã";
-            this.ACTIONID.Name = "ACTIONID";
-            this.ACTIONID.ReadOnly = true;
-            // 
-            // ACTIONNAME
-            // 
-            this.ACTIONNAME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ACTIONNAME.DataPropertyName = "ACTIONNAME";
-            this.ACTIONNAME.HeaderText = "Tên hành động";
-            this.ACTIONNAME.Name = "ACTIONNAME";
-            this.ACTIONNAME.ReadOnly = true;
-            // 
-            // DESCRIPTION
-            // 
-            this.DESCRIPTION.DataPropertyName = "DESCRIPTION";
-            this.DESCRIPTION.HeaderText = "Mô tả";
-            this.DESCRIPTION.Name = "DESCRIPTION";
-            this.DESCRIPTION.ReadOnly = true;
-            this.DESCRIPTION.Width = 200;
-            // 
-            // ISDELETE
-            // 
-            this.ISDELETE.DataPropertyName = "ISDELETE";
-            this.ISDELETE.HeaderText = "Trang Thai Xoa";
-            this.ISDELETE.Name = "ISDELETE";
-            this.ISDELETE.ReadOnly = true;
-            this.ISDELETE.Visible = false;
             // 
             // label1
             // 
@@ -256,6 +225,38 @@
             this.btnScan.Textcolor = System.Drawing.Color.White;
             this.btnScan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
+            // 
+            // ACTIONID
+            // 
+            this.ACTIONID.DataPropertyName = "ACTIONID";
+            this.ACTIONID.HeaderText = "Mã";
+            this.ACTIONID.Name = "ACTIONID";
+            this.ACTIONID.ReadOnly = true;
+            this.ACTIONID.Visible = false;
+            // 
+            // ACTIONNAME
+            // 
+            this.ACTIONNAME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ACTIONNAME.DataPropertyName = "ACTIONNAME";
+            this.ACTIONNAME.HeaderText = "Tên hành động";
+            this.ACTIONNAME.Name = "ACTIONNAME";
+            this.ACTIONNAME.ReadOnly = true;
+            // 
+            // DESCRIPTION
+            // 
+            this.DESCRIPTION.DataPropertyName = "DESCRIPTION";
+            this.DESCRIPTION.HeaderText = "Mô tả";
+            this.DESCRIPTION.Name = "DESCRIPTION";
+            this.DESCRIPTION.ReadOnly = true;
+            this.DESCRIPTION.Width = 400;
+            // 
+            // ISDELETE
+            // 
+            this.ISDELETE.DataPropertyName = "ISDELETE";
+            this.ISDELETE.HeaderText = "Trang Thai Xoa";
+            this.ISDELETE.Name = "ISDELETE";
+            this.ISDELETE.ReadOnly = true;
+            this.ISDELETE.Visible = false;
             // 
             // UcAction
             // 

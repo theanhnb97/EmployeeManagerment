@@ -196,6 +196,7 @@
             this.ROLESID.HeaderText = "Mã Roles";
             this.ROLESID.Name = "ROLESID";
             this.ROLESID.ReadOnly = true;
+            this.ROLESID.Visible = false;
             // 
             // ROLESNAME
             // 
@@ -211,7 +212,7 @@
             this.DESCRIPTION.HeaderText = "Mô tả";
             this.DESCRIPTION.Name = "DESCRIPTION";
             this.DESCRIPTION.ReadOnly = true;
-            this.DESCRIPTION.Width = 200;
+            this.DESCRIPTION.Width = 400;
             // 
             // ISDELETE
             // 
