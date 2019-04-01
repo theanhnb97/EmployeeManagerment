@@ -1,23 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Bunifu.Framework.UI;
-using BusinessLayer;
-using Entity;
-
-namespace Main
+﻿namespace Main
 {
+    using Bunifu.Framework.UI;
+    using BusinessLayer;
+    using Entity;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// Defines the <see cref="UcRolesAction" />
+    /// </summary>
     public partial class UcRolesAction : UserControl
     {
+        /// <summary>
+        /// Defines the myRolesActionBus
+        /// </summary>
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+
+        /// <summary>
+        /// Gets or sets the RolesID
+        /// </summary>
         protected int RolesID { get; set; }
+
+        /// <summary>
+        /// The OnLoad
+        /// </summary>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         protected override void OnLoad(EventArgs e)
         {
             DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
@@ -33,14 +48,25 @@ namespace Main
                 this.Hide();
         }
 
+        /// <summary>
+        /// Defines the myRoles
+        /// </summary>
+        internal RolesBUL myRoles = new RolesBUL();
 
-        
+        /// <summary>
+        /// Defines the myAction
+        /// </summary>
+        internal ActionBUS myAction = new ActionBUS();
 
-
-        RolesBUL myRoles = new RolesBUL();
-        ActionBUS myAction = new ActionBUS();
+        /// <summary>
+        /// Defines the tlpnData
+        /// </summary>
         private TableLayoutPanel tlpnData;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UcRolesAction"/> class.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
         public UcRolesAction(int id)
         {
             this.RolesID = id;
@@ -49,9 +75,20 @@ namespace Main
             this.Controls.Add(tlpnData);
         }
 
+        /// <summary>
+        /// Defines the rolesTable, actionTable, allData
+        /// </summary>
         private DataTable rolesTable, actionTable, allData;
+
+        /// <summary>
+        /// Defines the m, n, x
+        /// </summary>
         private int m, n, x;
-        void CreateTable()
+
+        /// <summary>
+        /// The CreateTable
+        /// </summary>
+        internal void CreateTable()
         {
             tlpnData = new TableLayoutPanel();
             tlpnData.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -63,7 +100,12 @@ namespace Main
             tlpnData.Size = new Size(793, 479);
         }
 
-        Label Getlabel(String Text)
+        /// <summary>
+        /// The Getlabel
+        /// </summary>
+        /// <param name="Text">The Text<see cref="String"/></param>
+        /// <returns>The <see cref="Label"/></returns>
+        internal Label Getlabel(String Text)
         {
             Label obj = new Label();
             obj.Text = Text;
@@ -72,9 +114,10 @@ namespace Main
             return obj;
         }
 
-        
-
-        void LoadForm()
+        /// <summary>
+        /// The LoadForm
+        /// </summary>
+        internal void LoadForm()
         {
             tlpnData.Controls.Clear();
             rolesTable = myRoles.Get();
@@ -86,7 +129,11 @@ namespace Main
             if (m * n != x) MessageBox.Show("Có lỗi về dữ liệu của bảng ma trận phân quyền!");
             LoadDataTable();
         }
-        void LoadDataTable()
+
+        /// <summary>
+        /// The LoadDataTable
+        /// </summary>
+        internal void LoadDataTable()
         {
             // Roles List
             // tlpnData.Controls.Add(Getlabel("."), 0, 0);
@@ -129,21 +176,39 @@ namespace Main
             }
         }
 
+        /// <summary>
+        /// The UcRolesAction_Enter
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void UcRolesAction_Enter(object sender, EventArgs e)
         {
-            //LoadForm();
         }
 
+        /// <summary>
+        /// The UcRolesAction_MouseClick
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="MouseEventArgs"/></param>
         private void UcRolesAction_MouseClick(object sender, MouseEventArgs e)
         {
-            //LoadForm();
         }
 
+        /// <summary>
+        /// The UcRolesAction_Load
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void UcRolesAction_Load(object sender, EventArgs e)
         {
             LoadForm();
         }
 
+        /// <summary>
+        /// The btnAdd_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             DialogResult myDialogResult = MessageBox.Show("Bạn có chắc muốn cập nhật quyền cho Roles?", "Câu hỏi",
