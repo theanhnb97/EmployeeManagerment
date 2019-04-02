@@ -307,7 +307,7 @@
                 Ocmd.CommandText = "EMPLOYEE_GETBYDEPTID_ANDRANK";
                 Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
                 Ocmd.Parameters.Add("IDS", OracleDbType.Decimal).Value = id;
-                Ocmd.Parameters.Add("RANK", OracleDbType.Decimal).Value = rank;
+                Ocmd.Parameters.Add("RANKS", OracleDbType.Decimal).Value = rank;
                 Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
                 try
                 {
@@ -370,7 +370,7 @@
                         salaryView.Basic = int.Parse(objReader["BASICSALARY"].ToString());
                         salaryView.Bussiness = int.Parse(objReader["BUSINESSSALARY"].ToString());
                         salaryView.Coefficient = float.Parse(objReader["COEFFICIENT"].ToString());
-                        salaryView.Total = double.Parse(objReader["TOTAL"].ToString());
+                        salaryView.Total = double.Parse(String.Format("{0:0.00}",objReader["TOTAL"]));
                         salaryView.SalaryId = int.Parse(objReader["SALARYID"].ToString());
                         salaryViews.Add(salaryView);
                     }

@@ -77,23 +77,27 @@
             // 
             // cbbName
             // 
-            this.cbbName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbbName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbName.FormattingEnabled = true;
             this.cbbName.Location = new System.Drawing.Point(162, 177);
             this.cbbName.Name = "cbbName";
             this.cbbName.Size = new System.Drawing.Size(215, 21);
             this.cbbName.TabIndex = 84;
             this.cbbName.SelectedIndexChanged += new System.EventHandler(this.cbbName_SelectedIndexChanged);
+            this.cbbName.TextChanged += new System.EventHandler(this.cbbName_TextChanged);
             // 
             // cbbIdentity
             // 
-            this.cbbIdentity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbIdentity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbbIdentity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbIdentity.FormattingEnabled = true;
             this.cbbIdentity.Location = new System.Drawing.Point(162, 139);
             this.cbbIdentity.Name = "cbbIdentity";
             this.cbbIdentity.Size = new System.Drawing.Size(215, 21);
             this.cbbIdentity.TabIndex = 83;
             this.cbbIdentity.SelectedIndexChanged += new System.EventHandler(this.cbbIdentity_SelectedIndexChanged);
+            this.cbbIdentity.TextChanged += new System.EventHandler(this.cbbIdentity_TextChanged);
             // 
             // cbbRank
             // 

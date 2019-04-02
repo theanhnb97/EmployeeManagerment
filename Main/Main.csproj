@@ -80,6 +80,7 @@
     <Compile Include="Department\UcDepartment.designer.cs">
       <DependentUpon>UcDepartment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Salary\CbbData.cs" />
     <Compile Include="Salary\SalaryAdd.cs">
       <SubType>Form</SubType>
     </Compile>

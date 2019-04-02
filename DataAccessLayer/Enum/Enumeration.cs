@@ -40,5 +40,38 @@ namespace DataAccessLayer.Enum
             AMember = 4,
 
         }
-    }
+        public enum BasicSalary
+        {
+            [Description("3")]
+            Basic1 = 1,
+            [Description("4")]
+            Basic2 = 2,
+            [Description("5")]
+            Basic3 = 3,
+            [Description("6")]
+            Basic4 = 4
+        }
+        public enum BussinessSalary
+        {
+            [Description("5")]
+            Bussiness1 = 1,
+            [Description("6")]
+            Bussiness2 = 2,
+            [Description("7")]
+            Bussiness3 = 3,
+            [Description("8")]
+            Bussiness4 = 4
+        }
+       public enum Coefficient
+        {
+            [Description("2.34")]
+            Coe1 =1,
+            [Description("2.67")]
+            Coe2=2,
+            [Description("3.00")]
+            Coe3=3,
+            [Description("3.33")]
+            Coe4=4
+        }
+    } 
 }
