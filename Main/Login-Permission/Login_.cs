@@ -59,9 +59,9 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void lblExit_Click(object sender, EventArgs e)
         {
-            DialogResult myDialogResult = MessageBox.Show("Bạn có muốn thoát chương trình?", "Thoát?",
-                MessageBoxButtons.YesNoCancel,
-                MessageBoxIcon.Question,MessageBoxDefaultButton.Button3);
+            var myDialogResult = MessageBox.Show("Bạn có muốn thoát chương trình?", "Thoát?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
             if (myDialogResult == DialogResult.Yes)
                 Application.Exit();
         }
@@ -94,7 +94,7 @@
             if (result!=0)
             {
                 username = txtUserName.Text.Trim();
-                Thread threadMainForm = new Thread(new ThreadStart(ShowFormMain));
+                var threadMainForm = new Thread(new ThreadStart(ShowFormMain));
                 threadMainForm.SetApartmentState(ApartmentState.STA);
                 threadMainForm.Start();
                 Application.Exit();
@@ -113,7 +113,7 @@
         /// </summary>
         private void ShowFormMain()
         {
-            FormMain_ f = new FormMain_(result,username);
+            var f = new FormMain_(result,username);
             f.ShowDialog();
         }
 
@@ -126,6 +126,16 @@
         {
             if (e.KeyCode == Keys.Enter)
                 btnOk_Click(btnOk,e);
+        }
+
+        private void txtPassword_OnValueChanged(object sender, EventArgs e)
+        {
+            txtPassword.isPassword = txtPassword.Text != "";
+        }
+
+        private void txtPassword_Enter(object sender, EventArgs e)
+        {
+            ((BunifuMaterialTextbox) sender).Text = "";
         }
     }
 }

@@ -149,7 +149,7 @@
         {
             DialogResult myDialogResult = MessageBox.Show("Bạn có thực sự muốn quét lại chức năng của hệ thống?", "Nguy hiểm",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                MessageBoxIcon.Stop, MessageBoxDefaultButton.Button2);
             if (myDialogResult == DialogResult.Yes)
             {
                 if (myRolesActionBus.DeleteAll() != 0)
@@ -160,7 +160,8 @@
                     {
                         if (formType.IsAssignableFrom(item) || ucType.IsAssignableFrom(item))
                         {
-                            //if (!item.Name.Contains("_"))
+                            var name = item.Name + ".";
+                            if (!(name.Contains("_.")))
                             {
                                 Action myActionAdd = new Action();
                                 myActionAdd.ActionID = 0;
