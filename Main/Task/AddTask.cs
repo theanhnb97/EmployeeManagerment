@@ -6,6 +6,9 @@ using System.Windows.Forms;
 using BusinessLayer;
 using Entity;
 using log4net;
+using System.IO;
+using System.Net;
+using System.Security.Policy;
 
 namespace Main
 {
@@ -323,6 +326,33 @@ namespace Main
             {
                 lbDate.ForeColor = Color.DarkGreen;
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            using (OpenFileDialog myDialog = new OpenFileDialog())
+            {
+                myDialog.CheckFileExists = true;
+                myDialog.Multiselect = false;
+                myDialog.Title = "Chọn file đính kèm";
+                myDialog.Filter = "Image|*.png|*.jpg|*.jpeg |Word file|*.doc| Excel file | *.xlsx| Other file | *.*";
+                if (myDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //lblFile.Text = Path.GetFileName(myDialog.FileName);
+                    linkFile.Text=CommonLibrary.FPTFile.UploadFtpFile("",myDialog.FileName);
+                }
+            }
+        }
+
+        
+
+        private void linkFile_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using (WebClient myBrowser = new WebClient())
+            {
+                myBrowser.DownloadFile(linkFile.Text,Path.GetFileName(linkFile.Text));
+            }
+            
         }
     }
 }

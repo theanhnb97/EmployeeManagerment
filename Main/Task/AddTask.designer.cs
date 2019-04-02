@@ -49,6 +49,8 @@
             this.lbDate = new System.Windows.Forms.Label();
             this.lbDepartment = new System.Windows.Forms.Label();
             this.lbLevel = new System.Windows.Forms.Label();
+            this.btnSelectfile = new System.Windows.Forms.Button();
+            this.linkFile = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // txtTaskName
@@ -194,7 +196,7 @@
             "High",
             "Medium",
             "Low"});
-            this.cmbLevel.Location = new System.Drawing.Point(115, 345);
+            this.cmbLevel.Location = new System.Drawing.Point(118, 345);
             this.cmbLevel.Name = "cmbLevel";
             this.cmbLevel.Size = new System.Drawing.Size(203, 21);
             this.cmbLevel.TabIndex = 5;
@@ -260,12 +262,33 @@
             this.lbLevel.TabIndex = 14;
             this.lbLevel.Text = "(*)";
             // 
+            // btnSelectfile
+            // 
+            this.btnSelectfile.Location = new System.Drawing.Point(118, 390);
+            this.btnSelectfile.Name = "btnSelectfile";
+            this.btnSelectfile.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectfile.TabIndex = 15;
+            this.btnSelectfile.Text = "Chọn file";
+            this.btnSelectfile.UseVisualStyleBackColor = true;
+            this.btnSelectfile.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // linkFile
+            // 
+            this.linkFile.AutoSize = true;
+            this.linkFile.Location = new System.Drawing.Point(118, 420);
+            this.linkFile.Name = "linkFile";
+            this.linkFile.Size = new System.Drawing.Size(0, 13);
+            this.linkFile.TabIndex = 16;
+            this.linkFile.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkFile_LinkClicked);
+            // 
             // AddTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(398, 497);
+            this.Controls.Add(this.linkFile);
+            this.Controls.Add(this.btnSelectfile);
             this.Controls.Add(this.lbLevel);
             this.Controls.Add(this.lbDepartment);
             this.Controls.Add(this.lbDate);
@@ -321,5 +344,7 @@
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Label lbDepartment;
         private System.Windows.Forms.Label lbLevel;
+        private System.Windows.Forms.Button btnSelectfile;
+        private System.Windows.Forms.LinkLabel linkFile;
     }
 }
