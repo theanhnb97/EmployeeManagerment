@@ -41,19 +41,20 @@
             this.lblPage = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
-            this.cbPage = new System.Windows.Forms.ComboBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.btFillall = new System.Windows.Forms.Button();
+            this.Action = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartment)).BeginInit();
+            this.Action.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(626, 30);
+            this.btnSearch.Location = new System.Drawing.Point(688, 29);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(84, 30);
             this.btnSearch.TabIndex = 16;
@@ -64,7 +65,7 @@
             // btnClean
             // 
             this.btnClean.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClean.Location = new System.Drawing.Point(505, 31);
+            this.btnClean.Location = new System.Drawing.Point(580, 29);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(84, 30);
             this.btnClean.TabIndex = 14;
@@ -75,7 +76,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(576, 521);
+            this.btnDelete.Location = new System.Drawing.Point(335, 29);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(84, 30);
             this.btnDelete.TabIndex = 12;
@@ -86,7 +87,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(428, 521);
+            this.btnUpdate.Location = new System.Drawing.Point(233, 29);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(84, 30);
             this.btnUpdate.TabIndex = 11;
@@ -97,7 +98,7 @@
             // btnDepartment
             // 
             this.btnDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDepartment.Location = new System.Drawing.Point(266, 521);
+            this.btnDepartment.Location = new System.Drawing.Point(125, 29);
             this.btnDepartment.Name = "btnDepartment";
             this.btnDepartment.Size = new System.Drawing.Size(84, 30);
             this.btnDepartment.TabIndex = 10;
@@ -112,26 +113,26 @@
             this.groupBox1.Controls.Add(this.btnClean);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(29, 41);
+            this.groupBox1.Location = new System.Drawing.Point(3, 54);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(745, 93);
+            this.groupBox1.Size = new System.Drawing.Size(803, 81);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Fillter";
+            this.groupBox1.Text = "Search";
             // 
             // txtDepartmentName
             // 
-            this.txtDepartmentName.Location = new System.Drawing.Point(157, 39);
+            this.txtDepartmentName.Location = new System.Drawing.Point(155, 34);
             this.txtDepartmentName.MaxLength = 200;
             this.txtDepartmentName.Name = "txtDepartmentName";
-            this.txtDepartmentName.Size = new System.Drawing.Size(195, 21);
+            this.txtDepartmentName.Size = new System.Drawing.Size(221, 21);
             this.txtDepartmentName.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(31, 39);
+            this.label1.Location = new System.Drawing.Point(16, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 15);
             this.label1.TabIndex = 0;
@@ -144,11 +145,11 @@
             this.dgvDepartment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDepartment.BackgroundColor = System.Drawing.Color.White;
             this.dgvDepartment.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvDepartment.Location = new System.Drawing.Point(29, 152);
+            this.dgvDepartment.Location = new System.Drawing.Point(3, 141);
             this.dgvDepartment.Name = "dgvDepartment";
             this.dgvDepartment.ReadOnly = true;
             this.dgvDepartment.RowHeadersWidth = 50;
-            this.dgvDepartment.Size = new System.Drawing.Size(745, 315);
+            this.dgvDepartment.Size = new System.Drawing.Size(803, 359);
             this.dgvDepartment.TabIndex = 9;
             this.dgvDepartment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentClick);
             this.dgvDepartment.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartment_CellContentDoubleClick);
@@ -158,7 +159,7 @@
             // 
             this.lblPage.AutoSize = true;
             this.lblPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPage.Location = new System.Drawing.Point(666, 478);
+            this.lblPage.Location = new System.Drawing.Point(721, 19);
             this.lblPage.Name = "lblPage";
             this.lblPage.Size = new System.Drawing.Size(43, 15);
             this.lblPage.TabIndex = 20;
@@ -168,7 +169,7 @@
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(712, 473);
+            this.btnNext.Location = new System.Drawing.Point(770, 16);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(27, 23);
             this.btnNext.TabIndex = 18;
@@ -179,7 +180,7 @@
             // btnPrevious
             // 
             this.btnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrevious.Location = new System.Drawing.Point(633, 473);
+            this.btnPrevious.Location = new System.Drawing.Point(688, 16);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(27, 23);
             this.btnPrevious.TabIndex = 19;
@@ -187,37 +188,10 @@
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
-            // cbPage
-            // 
-            this.cbPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPage.FormattingEnabled = true;
-            this.cbPage.Items.AddRange(new object[] {
-            "5",
-            "10",
-            "20",
-            "50"});
-            this.cbPage.Location = new System.Drawing.Point(87, 478);
-            this.cbPage.Name = "cbPage";
-            this.cbPage.Size = new System.Drawing.Size(121, 23);
-            this.cbPage.TabIndex = 21;
-            this.cbPage.Text = "5";
-            this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
-            this.cbPage.SelectedValueChanged += new System.EventHandler(this.cbPage_SelectedValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(41, 481);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 15);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Page";
-            // 
             // btFillall
             // 
             this.btFillall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btFillall.Location = new System.Drawing.Point(110, 521);
+            this.btFillall.Location = new System.Drawing.Point(19, 29);
             this.btFillall.Name = "btFillall";
             this.btFillall.Size = new System.Drawing.Size(84, 30);
             this.btFillall.TabIndex = 23;
@@ -225,27 +199,50 @@
             this.btFillall.UseVisualStyleBackColor = true;
             this.btFillall.Click += new System.EventHandler(this.btFillall_Click);
             // 
+            // Action
+            // 
+            this.Action.Controls.Add(this.btnDelete);
+            this.Action.Controls.Add(this.btFillall);
+            this.Action.Controls.Add(this.btnUpdate);
+            this.Action.Controls.Add(this.lblPage);
+            this.Action.Controls.Add(this.btnDepartment);
+            this.Action.Controls.Add(this.btnPrevious);
+            this.Action.Controls.Add(this.btnNext);
+            this.Action.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Action.Location = new System.Drawing.Point(3, 506);
+            this.Action.Name = "Action";
+            this.Action.Size = new System.Drawing.Size(803, 80);
+            this.Action.TabIndex = 24;
+            this.Action.TabStop = false;
+            this.Action.Text = "Action";
+            this.Action.Enter += new System.EventHandler(this.Action_Enter);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(18, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 20);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Department";
+            // 
             // UcDepartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btFillall);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbPage);
-            this.Controls.Add(this.lblPage);
-            this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.btnPrevious);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnDepartment);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Action);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvDepartment);
             this.Name = "UcDepartment";
-            this.Size = new System.Drawing.Size(809, 588);
+            this.Size = new System.Drawing.Size(809, 589);
             this.Load += new System.EventHandler(this.UcDepartment_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartment)).EndInit();
+            this.Action.ResumeLayout(false);
+            this.Action.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,10 +263,10 @@
         private System.Windows.Forms.Label lblPage;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
-        private System.Windows.Forms.ComboBox cbPage;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Label label2;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.Button btFillall;
+        private System.Windows.Forms.GroupBox Action;
+        private System.Windows.Forms.Label label3;
     }
 }
