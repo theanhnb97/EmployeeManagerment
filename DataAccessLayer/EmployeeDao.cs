@@ -1,37 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccessLayer.Helpers;
-using Entity;
-using Entity.DTO;
-using log4net;
-using Oracle.ManagedDataAccess.Client;
-namespace DataAccessLayer
+﻿namespace DataAccessLayer
 {
-    interface IEmployee:IEntities<Employee>
+    using DataAccessLayer.Helpers;
+    using Entity;
+    using Entity.DTO;
+    using log4net;
+    using Oracle.ManagedDataAccess.Client;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+
+    /// <summary>
+    /// Defines the <see cref="IEmployee" />
+    /// </summary>
+    interface IEmployee : IEntities<Employee>
     {
+        /// <summary>
+        /// The Login
+        /// </summary>
+        /// <param name="UserName">The UserName<see cref="string"/></param>
+        /// <param name="Password">The Password<see cref="string"/></param>
+        /// <returns>The <see cref="int"/></returns>
         int Login(string UserName, string Password);
 
+        /// <summary>
+        /// The GetAll
+        /// </summary>
+        /// <returns>The <see cref="List{EmployeeDTO}"/></returns>
         List<EmployeeDTO> GetAll();
 
+        /// <summary>
+        /// The Search
+        /// </summary>
+        /// <param name="employee">The employee<see cref="Employee"/></param>
+        /// <returns>The <see cref="List{EmployeeDTO}"/></returns>
         List<EmployeeDTO> Search(Employee employee);
 
+        /// <summary>
+        /// The GetByEmployeeId
+        /// </summary>
+        /// <param name="employeeId">The employeeId<see cref="int"/></param>
+        /// <returns>The <see cref="Employee"/></returns>
         Employee GetByEmployeeId(int employeeId);
     }
 
+    /// <summary>
+    /// Defines the <see cref="EmployeeDao" />
+    /// </summary>
     public class EmployeeDao : IEmployee
     {
+        /// <summary>
+        /// Defines the sql
+        /// </summary>
         protected SqlHelpers<Employee> sql = new SqlHelpers<Employee>();
+
+        /// <summary>
+        /// Defines the sqlHelpersDto
+        /// </summary>
         protected SqlHelpers<EmployeeDTO> sqlHelpersDto = new SqlHelpers<EmployeeDTO>();
 
+        /// <summary>
+        /// Defines the logger
+        /// </summary>
         protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        /// <summary>
+        /// The Delete
+        /// </summary>
+        /// <param name="employeeId">The employeeId<see cref="int"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Delete(int employeeId)
         {
             int result = 0;
@@ -55,6 +91,11 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// The Update
+        /// </summary>
+        /// <param name="employee">The employee<see cref="Employee"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Update(Employee employee)
         {
             int result = 0;
@@ -93,6 +134,11 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// The Add
+        /// </summary>
+        /// <param name="employee">The employee<see cref="Employee"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Add(Employee employee)
         {
             int result = 0;
@@ -130,7 +176,10 @@ namespace DataAccessLayer
             return result;
         }
 
-
+        /// <summary>
+        /// The GetAll
+        /// </summary>
+        /// <returns>The <see cref="List{EmployeeDTO}"/></returns>
         public List<EmployeeDTO> GetAll()
         {
             List<EmployeeDTO> employees = new List<EmployeeDTO>();
@@ -156,6 +205,11 @@ namespace DataAccessLayer
             return employees;
         }
 
+        /// <summary>
+        /// The Search
+        /// </summary>
+        /// <param name="employee">The employee<see cref="Employee"/></param>
+        /// <returns>The <see cref="List{EmployeeDTO}"/></returns>
         public List<EmployeeDTO> Search(Employee employee)
         {
             List<EmployeeDTO> employees = new List<EmployeeDTO>();
@@ -184,6 +238,11 @@ namespace DataAccessLayer
             return employees;
         }
 
+        /// <summary>
+        /// The GetByEmployeeId
+        /// </summary>
+        /// <param name="employeeId">The employeeId<see cref="int"/></param>
+        /// <returns>The <see cref="Employee"/></returns>
         public Employee GetByEmployeeId(int employeeId)
         {
             Employee employee = new Employee();
@@ -209,6 +268,11 @@ namespace DataAccessLayer
             return employee;
         }
 
+        /// <summary>
+        /// The TranferDataTableToEmployeeList
+        /// </summary>
+        /// <param name="dataTable">The dataTable<see cref="DataTable"/></param>
+        /// <returns>The <see cref="List{Employee}"/></returns>
         public List<Employee> TranferDataTableToEmployeeList(DataTable dataTable)
         {
             List<Employee> employees = new List<Employee>();
@@ -241,14 +305,17 @@ namespace DataAccessLayer
             return employees;
         }
 
+        /// <summary>
+        /// The Get
+        /// </summary>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable Get()
         {
             throw new NotImplementedException();
         }
 
-  
         /// <summary>
-        /// 
+        /// The Login
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
@@ -274,15 +341,14 @@ namespace DataAccessLayer
                 {
                     return 0;
                 }
-                
+
             }
         }
 
-
         /// <summary>
-        /// 
+        /// The GetByUsername
         /// </summary>
-        /// <param name="employeeId"></param>
+        /// <param name="username">The username<see cref="string"/></param>
         /// <returns></returns>
         public Employee GetByUsername(string username)
         {
@@ -309,7 +375,11 @@ namespace DataAccessLayer
             return employee;
         }
 
-
+        /// <summary>
+        /// The GetByIdentity
+        /// </summary>
+        /// <param name="identity">The identity<see cref="string"/></param>
+        /// <returns>The <see cref="Employee"/></returns>
         public Employee GetByIdentity(string identity)
         {
             Employee employee = new Employee();
@@ -335,10 +405,8 @@ namespace DataAccessLayer
             return employee;
         }
 
-
-
         /// <summary>
-        /// 
+        /// The UpdateProfile
         /// </summary>
         /// <param name="employee"></param>
         /// <returns></returns>
@@ -369,11 +437,14 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// The Search
+        /// </summary>
+        /// <param name="keyword">The keyword<see cref="string"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable Search(string keyword)
         {
             throw new NotImplementedException();
         }
-
-
     }
 }
