@@ -62,6 +62,16 @@ namespace DataAccessLayer.Enum
             [Description("8")]
             Bussiness4 = 4
         }
-       
+       public enum Coefficient
+        {
+            [Description("2.34")]
+            Coe1 =1,
+            [Description("2.67")]
+            Coe2=2,
+            [Description("3.00")]
+            Coe3=3,
+            [Description("3.33")]
+            Coe4=4
+        }
     } 
 }
