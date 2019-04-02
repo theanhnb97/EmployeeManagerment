@@ -100,6 +100,7 @@ namespace Main
                     dgvTask.DataSource = firstPage;
                     dgvTask.Columns[9].Visible = false;
                     dgvTask.Columns[10].Visible = false;
+                    dgvTask.Columns[11].Visible = false;
                     lblPage.Text = (allData.Rows.Count % pageSize == 0)
                         ? (allData.Rows.Count / pageSize).ToString()
                         : ((allData.Rows.Count / pageSize) + 1).ToString();
@@ -127,8 +128,13 @@ namespace Main
             cmbDepartment.SelectedValue = 1;
             lblCurent.Text = "1";
             DataTable list = objTaskBus.GetAll(1);
+            DataTable firstPage = objTaskBus.GetAll(1);
             if (list.Rows.Count > 0)
             {
+                DataTable allData = objTaskBus.GetAll(0);
+                lblPage.Text = (allData.Rows.Count % pageSize == 0)
+                    ? (allData.Rows.Count / pageSize).ToString()
+                    : ((allData.Rows.Count / pageSize) + 1).ToString();
                 dgvTask.DataSource = list;
                 dgvTask.Columns[9].Visible = false;
                 dgvTask.Columns[10].Visible = false;
