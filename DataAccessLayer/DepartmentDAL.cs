@@ -90,10 +90,10 @@ namespace DataAccessLayer
                 {
                     OracleParameter[] parameters = new OracleParameter[]
                     {
-                        new OracleParameter("p_isDelete",1),
+                        
                         new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output),
                     };
-                    return sqlHelp.ExcuteQuery("Department_GetAllDeltete", CommandType.StoredProcedure, connection,
+                    return sqlHelp.ExcuteQuery("Department_GetAll", CommandType.StoredProcedure, connection,
                         parameters);
                     //OracleDataAdapter da = new OracleDataAdapter();
                     //OracleCommand cmd = new OracleCommand();
