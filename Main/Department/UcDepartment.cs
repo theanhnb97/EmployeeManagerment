@@ -248,10 +248,10 @@ namespace Main.Dai
                 switch (temp1)
                 {
 
-                    case "1":
+                    case "0":
                         e.Value = "NoDelete";
                         break;
-                    case "0":
+                    case "1":
                         e.Value = "Delete";
                         break;
 

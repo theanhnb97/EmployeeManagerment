@@ -1,0 +1,11 @@
+E:\test\EmployeeManagerment\Entity\bin\Debug\Entity.dll
+E:\test\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
+E:\test\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll
+E:\test\EmployeeManagerment\Entity\bin\Debug\Oracle.ManagedDataAccess.dll
+E:\test\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.pdb
+E:\test\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll.config
+E:\test\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+E:\test\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+E:\test\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CopyComplete
+E:\test\EmployeeManagerment\Entity\obj\Debug\Entity.dll
+E:\test\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
