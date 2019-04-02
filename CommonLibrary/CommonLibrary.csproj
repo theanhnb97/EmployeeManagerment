@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="DataTable2List.cs" />
     <Compile Include="Enumerator\Enumerator.cs" />
+    <Compile Include="FTP\FPTFile.cs" />
     <Compile Include="Model\Level.cs" />
     <Compile Include="Model\TaskDTO.cs" />
     <Compile Include="Paging\PagingGridView.cs" />
@@ -55,6 +56,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FTP\FTPConfig.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
