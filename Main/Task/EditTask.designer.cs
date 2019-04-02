@@ -49,6 +49,8 @@
             this.lbAssign = new System.Windows.Forms.Label();
             this.lbDescription = new System.Windows.Forms.Label();
             this.lbTaskName = new System.Windows.Forms.Label();
+            this.linkFile = new System.Windows.Forms.LinkLabel();
+            this.btnSelectfile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbLevel
@@ -259,12 +261,32 @@
             this.lbTaskName.TabIndex = 37;
             this.lbTaskName.Text = "(*)";
             // 
+            // linkFile
+            // 
+            this.linkFile.AutoSize = true;
+            this.linkFile.Location = new System.Drawing.Point(123, 373);
+            this.linkFile.Name = "linkFile";
+            this.linkFile.Size = new System.Drawing.Size(0, 13);
+            this.linkFile.TabIndex = 44;
+            // 
+            // btnSelectfile
+            // 
+            this.btnSelectfile.Location = new System.Drawing.Point(123, 343);
+            this.btnSelectfile.Name = "btnSelectfile";
+            this.btnSelectfile.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectfile.TabIndex = 43;
+            this.btnSelectfile.Text = "Chọn file";
+            this.btnSelectfile.UseVisualStyleBackColor = true;
+            this.btnSelectfile.Click += new System.EventHandler(this.btnSelectfile_Click);
+            // 
             // frmEditTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(408, 450);
+            this.Controls.Add(this.linkFile);
+            this.Controls.Add(this.btnSelectfile);
             this.Controls.Add(this.lbLevel);
             this.Controls.Add(this.lbDepartment);
             this.Controls.Add(this.lbDate);
@@ -318,5 +340,7 @@
         private System.Windows.Forms.Label lbAssign;
         private System.Windows.Forms.Label lbDescription;
         private System.Windows.Forms.Label lbTaskName;
+        private System.Windows.Forms.LinkLabel linkFile;
+        private System.Windows.Forms.Button btnSelectfile;
     }
 }

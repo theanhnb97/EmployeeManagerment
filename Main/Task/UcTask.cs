@@ -57,6 +57,7 @@ namespace Main
                 dgvTask.DataSource = firstPage;
                 dgvTask.Columns[9].Visible = false;
                 dgvTask.Columns[10].Visible = false;
+                dgvTask.Columns[11].Visible = false;
                 lblPage.Text = (allData.Rows.Count % pageSize == 0)
                     ? (allData.Rows.Count / pageSize).ToString()
                     : ((allData.Rows.Count / pageSize) + 1).ToString();
@@ -131,6 +132,7 @@ namespace Main
                 dgvTask.DataSource = list;
                 dgvTask.Columns[9].Visible = false;
                 dgvTask.Columns[10].Visible = false;
+                dgvTask.Columns[11].Visible = false;
             }
             else
             {
@@ -328,7 +330,11 @@ namespace Main
                 else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString()) <= 0
                          || string.Empty.Equals(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString().Trim()))
                 {
-
+                    MessageBox.Show("DEPARTMENT Not Exited!");
+                }
+                else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["Tiến Độ"].Value.ToString()) ==3)
+                {
+                    MessageBox.Show("Cannot Edit When Status Doned!");
                 }
                 else
                 {

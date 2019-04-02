@@ -106,7 +106,7 @@ namespace Main
                         Assign = Convert.ToInt32(cmbAssign.SelectedValue.ToString()),
                         DueDate = Convert.ToDateTime(dtpDueDate.Value).ToString("dd/MMM/yyyy"),
                         Description = txtDescription.Text.Trim(),
-                        Files = "",
+                        Files = linkFile.Text,
                         Status = 1,
                         Priority = Convert.ToInt32(cmbLevel.SelectedValue.ToString()),
                     };
@@ -330,18 +330,18 @@ namespace Main
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            using (OpenFileDialog myDialog = new OpenFileDialog())
-            {
-                myDialog.CheckFileExists = true;
-                myDialog.Multiselect = false;
-                myDialog.Title = "Chọn file đính kèm";
-                myDialog.Filter = "Image|*.png|*.jpg|*.jpeg |Word file|*.doc| Excel file | *.xlsx| Other file | *.*";
-                if (myDialog.ShowDialog() == DialogResult.OK)
-                {
-                    //lblFile.Text = Path.GetFileName(myDialog.FileName);
-                    linkFile.Text=CommonLibrary.FPTFile.UploadFtpFile("",myDialog.FileName);
-                }
-            }
+            //using (OpenFileDialog myDialog = new OpenFileDialog())
+            //{
+            //    myDialog.CheckFileExists = true;
+            //    myDialog.Multiselect = false;
+            //    myDialog.Title = "Chọn file đính kèm";
+            //    myDialog.Filter = "Image|*.png|*.jpg|*.jpeg |Word file|*.doc| Excel file | *.xlsx| Other file | *.*";
+            //    if (myDialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        //lblFile.Text = Path.GetFileName(myDialog.FileName);
+            //        linkFile.Text=CommonLibrary.FPTFile.UploadFtpFile("",myDialog.FileName);
+            //    }
+            //}
         }
 
         
