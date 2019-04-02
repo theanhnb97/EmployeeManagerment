@@ -9,7 +9,6 @@ D:\v3\EmployeeManagerment\Main\bin\Debug\CommonLibrary.dll
 D:\v3\EmployeeManagerment\Main\bin\Debug\DataAccessLayer.dll
 D:\v3\EmployeeManagerment\Main\bin\Debug\Entity.dll
 D:\v3\EmployeeManagerment\Main\bin\Debug\log4net.dll
-D:\v3\EmployeeManagerment\Main\bin\Debug\Oracle.ManagedDataAccess.dll
 D:\v3\EmployeeManagerment\Main\bin\Debug\BusinessLayer.pdb
 D:\v3\EmployeeManagerment\Main\bin\Debug\CommonLibrary.pdb
 D:\v3\EmployeeManagerment\Main\bin\Debug\CommonLibrary.dll.config

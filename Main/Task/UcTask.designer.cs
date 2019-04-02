@@ -196,6 +196,7 @@
             this.dgvTask.Name = "dgvTask";
             this.dgvTask.ReadOnly = true;
             this.dgvTask.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTask.ShowEditingIcon = false;
             this.dgvTask.Size = new System.Drawing.Size(803, 340);
             this.dgvTask.TabIndex = 0;
             this.dgvTask.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTask_CellClick);

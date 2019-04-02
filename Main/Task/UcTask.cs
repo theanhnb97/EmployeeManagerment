@@ -338,7 +338,7 @@ namespace Main
                 {
                     MessageBox.Show("DEPARTMENT Not Exited!");
                 }
-                else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["Tiến Độ"].Value.ToString()) ==3)
+                else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["Tiến Độ"].Value.ToString()) == 3)
                 {
                     MessageBox.Show("Cannot Edit When Status Doned!");
                 }

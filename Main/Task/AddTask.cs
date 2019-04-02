@@ -8,7 +8,6 @@ using Entity;
 using log4net;
 using System.IO;
 using System.Net;
-using System.Security.Policy;
 
 namespace Main
 {
@@ -22,6 +21,7 @@ namespace Main
         /// 
         /// </summary>
         /// <param name="e"></param>
+        /// 
         protected override void OnLoad(EventArgs e)
         {
             DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
@@ -213,7 +213,7 @@ namespace Main
                 //int id = Convert.ToInt32(tempid.Row[0].ToString());
 
                 DataTable dtDepartment = new DataTable();
-                dtDepartment = objTaskBus.LoadEmployeeByDpt(Convert.ToInt32(cmbDepartment.SelectedValue));
+                dtDepartment = objTaskBus.LoadEmployeeByDpt(Convert.ToInt32(cmbDepartment.SelectedValue.ToString()));
                 if (dtDepartment.Rows.Count > 0)
                 {
                     cmbAssign.ValueMember = "EMPLOYEEID";
