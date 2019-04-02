@@ -313,7 +313,7 @@ namespace DataAccessLayer
                     OracleParameter[] parameters = new OracleParameter[]
                     {
                     new OracleParameter("p_departmentID",id),
-                    new OracleParameter("p_isDelete",'0')
+                    new OracleParameter("p_isDelete",'1')
 
 
                     };
