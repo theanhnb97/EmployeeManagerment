@@ -334,11 +334,13 @@
                         new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
                     };
                     DataTable dt = sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
-                    int a = int.Parse(dt.Rows[0][1].ToString());
-                    return a;
+                    if (dt == null) return -1;
+                    return int.Parse(dt.Rows[0]["ROLESID"].ToString());
                 }
                 catch (Exception e)
                 {
+                    logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
                     return 0;
                 }
 

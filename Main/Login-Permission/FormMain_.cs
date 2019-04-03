@@ -189,9 +189,12 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnPhanQuyen_Click(object sender, EventArgs e)
         {
-            ucRolesAction = new UcRolesAction(RolesID);
-            pnMain.Controls.Add(ucRolesAction);
-            ucRolesAction.Dock = DockStyle.Fill;
+            if (ucRolesAction == null)
+            {
+                ucRolesAction = new UcRolesAction(RolesID);
+                pnMain.Controls.Add(ucRolesAction);
+                ucRolesAction.Dock = DockStyle.Fill;
+            }
             btnMenuItem_Click(sender,e);
             ucRolesAction.BringToFront();
         }

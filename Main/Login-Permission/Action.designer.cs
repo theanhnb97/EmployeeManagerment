@@ -168,7 +168,7 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(215, 220);
+            this.btnCancel.Location = new System.Drawing.Point(214, 220);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Normalcolor = System.Drawing.Color.SteelBlue;
             this.btnCancel.OnHovercolor = System.Drawing.Color.SteelBlue;
@@ -208,7 +208,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 248);
+            this.ClientSize = new System.Drawing.Size(417, 287);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblNotify);
             this.Controls.Add(this.btnCancel);

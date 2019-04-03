@@ -88,7 +88,7 @@
             // btnLogout
             // 
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
-            this.btnLogout.Location = new System.Drawing.Point(947, 9);
+            this.btnLogout.Location = new System.Drawing.Point(938, 9);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(29, 28);
             this.btnLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -99,7 +99,7 @@
             // btnProfile
             // 
             this.btnProfile.Image = ((System.Drawing.Image)(resources.GetObject("btnProfile.Image")));
-            this.btnProfile.Location = new System.Drawing.Point(907, 10);
+            this.btnProfile.Location = new System.Drawing.Point(887, 10);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(29, 28);
             this.btnProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

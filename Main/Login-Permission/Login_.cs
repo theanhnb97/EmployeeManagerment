@@ -83,9 +83,9 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnOk_Click(object sender, EventArgs e)
         {
-            if (txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "")
+            if (String.IsNullOrWhiteSpace(txtUserName.Text) || String.IsNullOrEmpty(txtPassword.Text))
             {
-                lblNotify.Text = "Please input username/password.";
+                lblNotify.Text = "Vui lòng nhập đầy đủ thông tin đăng nhập.";
                 lblNotify.Visible = true;
                 txtUserName.Focus();
                 return;
@@ -101,7 +101,7 @@
             }
             else
             {
-                lblNotify.Text = "UserName or Password is not correct.";
+                lblNotify.Text = "Tên tài khoản hoặc mật khẩu không chính xác.";
                 lblNotify.Visible = true;
                 txtPassword.Focus();
                 txtPassword.Text="";

@@ -73,7 +73,7 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(204, 219);
+            this.btnCancel.Location = new System.Drawing.Point(203, 219);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Normalcolor = System.Drawing.Color.SteelBlue;
             this.btnCancel.OnHovercolor = System.Drawing.Color.SteelBlue;
