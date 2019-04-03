@@ -335,13 +335,14 @@
                     };
                     DataTable dt = sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
                     if (dt == null) return -1;
+                    if (dt.Rows.Count < 1) return 0;
                     return int.Parse(dt.Rows[0]["ROLESID"].ToString());
                 }
-                catch (Exception e)
+                catch (FormatException e)
                 {
                     logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
                     logger.Debug(e.Message);
-                    return 0;
+                    return -1;
                 }
 
             }

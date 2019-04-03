@@ -83,15 +83,15 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnOk_Click(object sender, EventArgs e)
         {
+            lblNotify.Text = "";
             if (String.IsNullOrWhiteSpace(txtUserName.Text) || String.IsNullOrEmpty(txtPassword.Text))
             {
                 lblNotify.Text = "Vui lòng nhập đầy đủ thông tin đăng nhập.";
-                lblNotify.Visible = true;
                 txtUserName.Focus();
                 return;
             }
             result = myEmployeeBus.Login(txtUserName.Text.Trim(), txtPassword.Text.Trim());
-            if (result!=0)
+            if (result>0)
             {
                 username = txtUserName.Text.Trim();
                 var threadMainForm = new Thread(new ThreadStart(ShowFormMain));
@@ -99,10 +99,13 @@
                 threadMainForm.Start();
                 Application.Exit();
             }
-            else
+            else if(result==-1)
+            {
+                lblNotify.Text = "Có lỗi xảy ra trong hệ thống.";
+            }
+            else if(result==0)
             {
                 lblNotify.Text = "Tên tài khoản hoặc mật khẩu không chính xác.";
-                lblNotify.Visible = true;
                 txtPassword.Focus();
                 txtPassword.Text="";
             }

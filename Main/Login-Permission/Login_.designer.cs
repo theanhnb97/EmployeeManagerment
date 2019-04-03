@@ -88,10 +88,8 @@
             this.lblNotify.ForeColor = System.Drawing.Color.Maroon;
             this.lblNotify.Location = new System.Drawing.Point(59, 296);
             this.lblNotify.Name = "lblNotify";
-            this.lblNotify.Size = new System.Drawing.Size(59, 13);
+            this.lblNotify.Size = new System.Drawing.Size(0, 13);
             this.lblNotify.TabIndex = 5;
-            this.lblNotify.Text = "Thông báo";
-            this.lblNotify.Visible = false;
             // 
             // lblExit
             // 
