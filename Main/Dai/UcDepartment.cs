@@ -82,7 +82,11 @@ namespace Main.Dai
             else
             {
                 dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword);
-                
+                lblCurent.Text = "1";
+                lblPage.Text = "1";
+                btnNext.Enabled = false;
+                btnPrevious.Enabled = false;
+
             }
             
         }
@@ -162,6 +166,8 @@ namespace Main.Dai
             dgvDepartment.DataSource = departmentBus.GetAllPage(1,item);
             lblCurent.Text = "1";
             lblPage.Text = pageSize.ToString();
+            btnNext.Enabled = true;
+            btnPrevious.Enabled = true;
         }
 
         /// <summary>/// Button next event click
