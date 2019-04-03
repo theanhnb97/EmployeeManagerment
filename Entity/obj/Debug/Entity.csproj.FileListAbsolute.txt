@@ -1,0 +1,11 @@
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\Entity.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.pdb
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll.config
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CopyComplete
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\obj\Debug\Entity.dll
+D:\TheAnh\Data\Git\EmployeeManagerment\Entity\obj\Debug\Entity.pdb

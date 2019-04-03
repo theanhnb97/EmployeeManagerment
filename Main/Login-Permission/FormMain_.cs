@@ -79,6 +79,8 @@
         /// </summary>
         private void LoadUC()
         {
+            lblUserName.Text = String.Format("Xin chào: {0}!",userName);
+            lblUserName.Location= new Point(pnBot.Width-(lblUserName.Width+10),lblUserName.Location.Y);
             salary = new SalaryManagement(RolesID);
             pnMain.Controls.Add(salary);
             salary.Dock = DockStyle.Fill;
@@ -304,5 +306,6 @@
                 Application.Exit();
             }
         }
+
     }
 }

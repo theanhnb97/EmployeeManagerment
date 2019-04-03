@@ -32,10 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain_));
             this.pnTop = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.PictureBox();
             this.btnProfile = new System.Windows.Forms.PictureBox();
             this.picLogout = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblUserName = new System.Windows.Forms.Label();
             this.pnMenu = new System.Windows.Forms.Panel();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnPhanQuyen = new System.Windows.Forms.Button();
@@ -46,16 +48,16 @@
             this.pnSlide = new System.Windows.Forms.Panel();
             this.btnSalary = new System.Windows.Forms.Button();
             this.pnMain = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnBot = new System.Windows.Forms.Panel();
             this.bunifuElipseMain = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.btnLogout = new System.Windows.Forms.PictureBox();
             this.pnTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLogout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnMenu.SuspendLayout();
             this.pnMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnLogout)).BeginInit();
+            this.pnBot.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnTop
@@ -83,10 +85,21 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Test v1.0.1";
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
+            this.btnLogout.Location = new System.Drawing.Point(947, 9);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(29, 28);
+            this.btnLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnLogout.TabIndex = 0;
+            this.btnLogout.TabStop = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // btnProfile
             // 
             this.btnProfile.Image = ((System.Drawing.Image)(resources.GetObject("btnProfile.Image")));
-            this.btnProfile.Location = new System.Drawing.Point(917, 8);
+            this.btnProfile.Location = new System.Drawing.Point(907, 10);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(29, 28);
             this.btnProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -97,7 +110,7 @@
             // picLogout
             // 
             this.picLogout.Image = ((System.Drawing.Image)(resources.GetObject("picLogout.Image")));
-            this.picLogout.Location = new System.Drawing.Point(987, 8);
+            this.picLogout.Location = new System.Drawing.Point(987, 10);
             this.picLogout.Name = "picLogout";
             this.picLogout.Size = new System.Drawing.Size(29, 27);
             this.picLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -125,6 +138,16 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Location = new System.Drawing.Point(757, 5);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(45, 16);
+            this.lblUserName.TabIndex = 4;
+            this.lblUserName.Text = "label3";
             // 
             // pnMenu
             // 
@@ -198,7 +221,7 @@
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(199, 58);
             this.btnAction.TabIndex = 5;
-            this.btnAction.Text = "           Hành động";
+            this.btnAction.Text = "           Form- màn hình";
             this.btnAction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAction.UseVisualStyleBackColor = false;
             this.btnAction.Click += new System.EventHandler(this.btnAction_Click);
@@ -258,7 +281,7 @@
             // 
             // pnMain
             // 
-            this.pnMain.Controls.Add(this.panel1);
+            this.pnMain.Controls.Add(this.pnBot);
             this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMain.Location = new System.Drawing.Point(216, 50);
             this.pnMain.Name = "pnMain";
@@ -266,30 +289,20 @@
             this.pnMain.TabIndex = 2;
             this.pnMain.TabStop = true;
             // 
-            // panel1
+            // pnBot
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightCyan;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 588);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(809, 26);
-            this.panel1.TabIndex = 1;
+            this.pnBot.BackColor = System.Drawing.Color.LightCyan;
+            this.pnBot.Controls.Add(this.lblUserName);
+            this.pnBot.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnBot.Location = new System.Drawing.Point(0, 588);
+            this.pnBot.Name = "pnBot";
+            this.pnBot.Size = new System.Drawing.Size(809, 26);
+            this.pnBot.TabIndex = 1;
             // 
             // bunifuElipseMain
             // 
             this.bunifuElipseMain.ElipseRadius = 15;
             this.bunifuElipseMain.TargetControl = this;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
-            this.btnLogout.Location = new System.Drawing.Point(952, 7);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(29, 28);
-            this.btnLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnLogout.TabIndex = 0;
-            this.btnLogout.TabStop = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // FormMain_
             // 
@@ -309,12 +322,14 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.pnTop.ResumeLayout(false);
             this.pnTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLogout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnMenu.ResumeLayout(false);
             this.pnMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnLogout)).EndInit();
+            this.pnBot.ResumeLayout(false);
+            this.pnBot.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -335,9 +350,10 @@
         private System.Windows.Forms.Panel pnSlide;
         private System.Windows.Forms.Button btnSalary;
         private System.Windows.Forms.Button btnEmployee;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnBot;
         private System.Windows.Forms.PictureBox btnProfile;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipseMain;
         private System.Windows.Forms.PictureBox btnLogout;
+        private System.Windows.Forms.Label lblUserName;
     }
 }

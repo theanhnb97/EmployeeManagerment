@@ -62,6 +62,7 @@
         /// Defines the tlpnData
         /// </summary>
         private TableLayoutPanel tlpnData;
+        private TableLayoutPanel tlpnHeader;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UcRolesAction"/> class.
@@ -73,6 +74,7 @@
             CreateTable();
             InitializeComponent();
             this.Controls.Add(tlpnData);
+            this.Controls.Add(tlpnHeader);
         }
 
         /// <summary>
@@ -93,11 +95,19 @@
             tlpnData = new TableLayoutPanel();
             tlpnData.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tlpnData.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
-            tlpnData.Location = new Point(7, 50);
+            tlpnData.Location = new Point(7, 80);
             tlpnData.Name = "tlpnData";
             tlpnData.AutoScroll = true;
-            tlpnData.MaximumSize = new Size(793, 479);
+            tlpnData.MaximumSize = new Size(793, 449);
             tlpnData.Size = new Size(793, 479);
+            
+            tlpnHeader = new TableLayoutPanel();
+            tlpnHeader.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tlpnHeader.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
+            tlpnHeader.Name = "tlpnHeader";
+            tlpnHeader.AutoScroll = true;
+            tlpnHeader.Size = new Size(793, 30);
+            tlpnHeader.Location = new Point(7, 50);
         }
 
         /// <summary>
@@ -117,7 +127,7 @@
         /// <summary>
         /// The LoadForm
         /// </summary>
-        internal void LoadForm()
+        private void LoadForm()
         {
             tlpnData.Controls.Clear();
             rolesTable = myRoles.Get();
@@ -133,19 +143,20 @@
         /// <summary>
         /// The LoadDataTable
         /// </summary>
-        internal void LoadDataTable()
+        private void LoadDataTable()
         {
             // Roles List
-            // tlpnData.Controls.Add(Getlabel("."), 0, 0);
-            tlpnData.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,200F));
-
+            tlpnData.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+            tlpnHeader.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             int start = 0;
             foreach (DataRow item in rolesTable.Rows)
             {
+                tlpnData.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+                tlpnHeader.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
                 start++;
-                //var rolesName = Getlabel(item["ROLESNAME"].ToString());
-                var rolesName = Getlabel(item["DESCRIPTION"].ToString());
-                tlpnData.Controls.Add(rolesName, start, 0);
+                var rolesName = Getlabel(item["ROLESNAME"].ToString());
+                //var rolesName = Getlabel(item["DESCRIPTION"].ToString());
+                tlpnHeader.Controls.Add(rolesName, start, 0);
             }
 
             // Action List
@@ -168,7 +179,7 @@
                     hang++;
                     cot = 1;
                 }
-                BunifuiOSSwitch myOsSwitch = new BunifuiOSSwitch();
+                var myOsSwitch = new BunifuiOSSwitch();
                 myOsSwitch.OnColor = SystemColors.HotTrack;
                 myOsSwitch.Name = allData.Rows[i]["ID"].ToString();
                 myOsSwitch.Value = allData.Rows[i]["ISTRUE"].ToString() != "0";
@@ -211,16 +222,16 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            DialogResult myDialogResult = MessageBox.Show("Bạn có chắc muốn cập nhật quyền cho Roles?", "Câu hỏi",
+            var myDialogResult = MessageBox.Show("Bạn có chắc muốn cập nhật quyền cho Roles?", "Câu hỏi",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (myDialogResult == DialogResult.Yes)
             {
-                List<RolesAction> myArray = new List<RolesAction>();
-                List<BunifuiOSSwitch> myList = tlpnData.Controls.OfType<BunifuiOSSwitch>().ToList();
-                foreach (BunifuiOSSwitch item in myList)
+                var myArray = new List<RolesAction>();
+                var myList = tlpnData.Controls.OfType<BunifuiOSSwitch>().ToList();
+                foreach (var item in myList)
                 {
-                    RolesAction temp = new RolesAction();
+                    var temp = new RolesAction();
                     temp.ID = int.Parse(item.Name);
                     if (item.Value)
                         temp.IsTrue = 1;
