@@ -107,11 +107,11 @@
             // 
             this.lblLogo.AutoSize = true;
             this.lblLogo.BackColor = System.Drawing.Color.Transparent;
-            this.lblLogo.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogo.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lblLogo.Location = new System.Drawing.Point(16, 56);
+            this.lblLogo.Location = new System.Drawing.Point(16, 48);
             this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Size = new System.Drawing.Size(369, 36);
+            this.lblLogo.Size = new System.Drawing.Size(369, 33);
             this.lblLogo.TabIndex = 2;
             this.lblLogo.Text = "Hệ thống quản lý nhân sự";
             // 
