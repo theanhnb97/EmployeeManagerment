@@ -448,6 +448,7 @@
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtPassword);
             this.Name = "Employee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nhân viên";
             this.Load += new System.EventHandler(this.Employee_Load);
             this.ResumeLayout(false);

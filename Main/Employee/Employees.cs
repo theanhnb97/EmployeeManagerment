@@ -99,17 +99,13 @@ namespace Main
         private void btnAdd_Click(object sender, EventArgs e)
         {
             IsCreated = true;
-            Thread thread = new Thread((CallSaveDialog)) {ApartmentState = ApartmentState.STA};
-            thread.Start();
-            Employees_Load(sender, e);
-        }
-
-        private void CallSaveDialog()
-        {
             Employee formEmployee = new Employee(RolesId);
             formEmployee.ShowDialog();
+            Employees_Load(sender, e);
+
         }
 
+       
         /// <summary>
         /// The btnEdit_Click
         /// </summary>
