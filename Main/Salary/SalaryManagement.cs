@@ -240,14 +240,18 @@ namespace Main
 
         private void cbbRecordNum_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.size = int.Parse(cbbRecordNum.Text);
-            currentPage = 0;
-            if ((txtDeptFilter.Text.Trim() == "") && (txtNameFilter.Text.Trim() == "") && chkDate.Checked == false)
+            try
             {
-                SetPaging();
-                Salary_Load(sender, e);
+                this.size = int.Parse(cbbRecordNum.Text);
+                currentPage = 0;
+                if ((txtDeptFilter.Text.Trim() == "") && (txtNameFilter.Text.Trim() == "") && chkDate.Checked == false)
+                {
+                    SetPaging();
+                    Salary_Load(sender, e);
+                }
+                else btnLoadData_Click(sender, e);
             }
-            else btnLoadData_Click(sender, e);
+            catch { }
         }
     }
 }
