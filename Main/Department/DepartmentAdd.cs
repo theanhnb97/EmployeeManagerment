@@ -15,7 +15,9 @@ namespace Main.Department
 {
     public partial class DepartmentAdd : Form
     {
+        DepartmentBUS departmentBus = new DepartmentBUS();
         //Created by The anh (28/3/2019)
+        
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
         protected override void OnLoad(EventArgs e)
@@ -49,7 +51,19 @@ namespace Main.Department
         }
         private void DepartmentAdd_Load(object sender, EventArgs e)
         {
+            var actives = departmentBus.GetAllActive();
+            if (actives.Count > 0)
+            {
+                cmbActive.DataSource = actives;
+                cmbActive.ValueMember = "Id";
+                cmbActive.DisplayMember = "Name";
+                
 
+            }
+            else
+            {
+                MessageBox.Show("Priority have not data", "Status");
+            }
         }
         /// <summary>/// Button add event click
         /// </summary>
@@ -61,11 +75,11 @@ namespace Main.Department
         {
             try
             {
-                DepartmentBUS departmentBus = new DepartmentBUS();
+                
                 Entity.Department department = new Entity.Department();
                 department.DepartmentName = txtDepartmentName.Text;
-                department.Status = cbStatus.Checked ? 1 : 0;
-                department.IsDelete = rdbIsDelete.Checked ? 1 : 0;
+                department.Status = int.Parse(cmbActive.SelectedValue.ToString());
+                department.IsDelete = 0;
                 department.Description = txtDescription.Text;
                 if (txtDepartmentName.Text != "" && txtDescription.Text != "")
                 {
@@ -101,6 +115,46 @@ namespace Main.Department
         private void btnCannel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbActive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDescription_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDepartmentName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

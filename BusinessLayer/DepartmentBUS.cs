@@ -1,5 +1,6 @@
 ﻿namespace BusinessLayer
 {
+    using CommonLibrary.Model;
     using DataAccessLayer;
     using Entity;
     using System.Collections.Generic;
@@ -94,15 +95,7 @@
             return departmentDal.Update(department);
         }
 
-        /// <summary>
-        /// The SearchDepartment
-        /// </summary>
-        /// <param name="keyword">The keyword<see cref="string"/></param>
-        /// <returns>The <see cref="DataTable"/></returns>
-        public DataTable SearchDepartment(string keyword)
-        {
-            return departmentDal.SearchDepartment(keyword);
-        }
+        
 
         /// <summary>
         /// The DeleteNoRemove
@@ -114,29 +107,14 @@
             return departmentDal.DeleteNoRemove(id);
         }
 
-        /// <summary>
-        /// The GetAllPage
-        /// </summary>
-        /// <param name="currPage">The currPage<see cref="int"/></param>
-        /// <param name="recodperpage">The recodperpage<see cref="int"/></param>
-        /// <param name="Pagesize">The Pagesize<see cref="int"/></param>
-        /// <returns>The <see cref="DataTable"/></returns>
-        public DataTable GetAllPage(int currPage, int recodperpage, int Pagesize)
+        public DataTable GetAllPage(int currPage, int recodperpage)
         {
-            return departmentDal.GetAllPage(currPage, recodperpage, Pagesize);
+            return departmentDal.GetAllPage(currPage, recodperpage);
         }
 
-        /// <summary>
-        /// The SearchDepartment
-        /// </summary>
-        /// <param name="keyword">The keyword<see cref="string"/></param>
-        /// <param name="currPage">The currPage<see cref="int"/></param>
-        /// <param name="recodperpage">The recodperpage<see cref="int"/></param>
-        /// <param name="Pagesize">The Pagesize<see cref="int"/></param>
-        /// <returns>The <see cref="DataTable"/></returns>
-        public DataTable SearchDepartment(string keyword, int currPage, int recodperpage, int Pagesize)
+       public  DataTable SearchDepartment(string keyword)
         {
-            return departmentDal.SearchDepartment(keyword, currPage, recodperpage, Pagesize);
+            return departmentDal.SearchDepartment(keyword );
         }
 
         /// <summary>
@@ -146,6 +124,11 @@
         public DataTable GetDepartmentAll()
         {
             return departmentDal.GetDepartmentAll();
+        }
+
+        public List<Active> GetAllActive()
+        {
+            return departmentDal.GetAllActive();
         }
     }
 }

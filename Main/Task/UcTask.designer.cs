@@ -64,6 +64,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(809, 57);
             this.panel1.TabIndex = 0;
+            
             // 
             // label1
             // 
@@ -74,6 +75,7 @@
             this.label1.Size = new System.Drawing.Size(156, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Task Management";
+            
             // 
             // btnEdit
             // 
@@ -151,6 +153,29 @@
             this.grbTaskList.TabIndex = 3;
             this.grbTaskList.TabStop = false;
             this.grbTaskList.Text = "Task List";
+          
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(740, 366);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(10, 15);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "/";
+            
+            // 
+            // lblCurent
+            // 
+            this.lblCurent.AutoSize = true;
+            this.lblCurent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurent.Location = new System.Drawing.Point(724, 366);
+            this.lblCurent.Name = "lblCurent";
+            this.lblCurent.Size = new System.Drawing.Size(14, 15);
+            this.lblCurent.TabIndex = 15;
+            this.lblCurent.Text = "1";
+            
             // 
             // label2
             // 
@@ -181,6 +206,7 @@
             this.lblPage.Size = new System.Drawing.Size(21, 15);
             this.lblPage.TabIndex = 5;
             this.lblPage.Text = "10";
+            
             // 
             // dgvTask
             // 
@@ -256,6 +282,7 @@
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(150, 21);
             this.cmbDepartment.TabIndex = 3;
+            
             // 
             // dtpDeuDateFilter
             // 
@@ -265,6 +292,7 @@
             this.dtpDeuDateFilter.Name = "dtpDeuDateFilter";
             this.dtpDeuDateFilter.Size = new System.Drawing.Size(204, 20);
             this.dtpDeuDateFilter.TabIndex = 2;
+            
             // 
             // lbDepartment
             // 

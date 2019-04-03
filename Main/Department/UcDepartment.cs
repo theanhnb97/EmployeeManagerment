@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Drawing;
 using System.Data;
 using System.Linq;
@@ -10,13 +11,16 @@ using System.Windows.Forms;
 using BusinessLayer;
 using Main.Department;
 using log4net;
+using System.Configuration;
 
 namespace Main.Dai
 {
 
     public partial class UcDepartment : UserControl
     {
+
         //Create by the anh (28/3/2019)
+        int item = int.Parse(ConfigurationManager.AppSettings["pageSize"].ToString());
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
         protected override void OnLoad(EventArgs e)
@@ -34,7 +38,7 @@ namespace Main.Dai
                 this.Hide();
         }
 
-
+         
         int cusPage = 1;
         public UcDepartment(int id)
         {
@@ -50,13 +54,15 @@ namespace Main.Dai
 
         private void UcDepartment_Load(object sender, EventArgs e)
         {
-
+            int  item = int.Parse(ConfigurationManager.AppSettings["pageSize"].ToString());
             DepartmentBUS departmentBus = new DepartmentBUS();
+            
+            
+            int pageSize = (departmentBus.GetAll().Rows.Count) /item+1 ;
+           dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item);//get datagridview 
 
-            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));// get item page combobox
-            int pageSize = (departmentBus.GetAll().Rows.Count) / item + 1;
-            dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);//get datagridview 
-            lblPage.Text = cusPage.ToString() + '/' + pageSize;
+           lblCurent.Text = "1";
+           lblPage.Text = pageSize.ToString();
 
         }
         /// <summary>/// Button search event click
@@ -67,17 +73,21 @@ namespace Main.Dai
         /// <remarks></remarks>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string keyword = txtDepartmentName.Text;
+            string keyword = txtDepartmentName.Text.Trim();
             DepartmentBUS departmentBus = new DepartmentBUS();
-            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));// get item page combobox
+            
             if (txtDepartmentName.Text == "")
             {
                 MessageBox.Show("You have not entered");
             }
             else
             {
-                dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword, cusPage, item, 20);
-                txtDepartmentName.Text = "";
+                dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword);
+                lblCurent.Text = "1";
+                lblPage.Text = "1";
+                btnNext.Enabled = false;
+                btnPrevious.Enabled = false;
+
             }
 
         }
@@ -94,7 +104,7 @@ namespace Main.Dai
             department.DepartmentID = int.Parse(dgvDepartment.Rows[index].Cells[0].Value.ToString());
             department.DepartmentName = dgvDepartment.Rows[index].Cells[1].Value.ToString();
             department.Status = int.Parse(dgvDepartment.Rows[index].Cells[2].Value.ToString());
-            department.IsDelete = int.Parse(dgvDepartment.Rows[index].Cells[3].Value.ToString());
+            
             department.Description = dgvDepartment.Rows[index].Cells[4].Value.ToString();
 
             DepartmentUpdate frUpdate = new DepartmentUpdate(RolesID);
@@ -123,9 +133,17 @@ namespace Main.Dai
                 int checkDelete = departmentBus.DeleteNoRemove(id);// check delete
                 if (checkDelete == -1)
                 {
-                    MessageBox.Show("Delete Complete", "Delete Message", MessageBoxButtons.OK);
-                    int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
-                    dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);
+                    int checkDelete = departmentBus.DeleteNoRemove(id);// check delete
+                    if (checkDelete == -1)
+                    {
+                        MessageBox.Show("Delete Complete","Delete Message",MessageBoxButtons.OK);
+                        
+                    dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage,item);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Delete Fail");
+                    }
                 }
                 else
                 {
@@ -152,10 +170,13 @@ namespace Main.Dai
         {
 
             DepartmentBUS departmentBus = new DepartmentBUS();
-            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));//get Item combobox Page
-            int pageSize = (departmentBus.GetAll().Rows.Count) / item + 1;//get Pagesize
-            dgvDepartment.DataSource = departmentBus.GetAllPage(1, item, 20);
-            lblPage.Text = "1/" + pageSize;
+            int item = int.Parse(ConfigurationManager.AppSettings["pageSize"].ToString());
+            int pageSize = (departmentBus.GetAll().Rows.Count) / item+1;//get Pagesize
+            dgvDepartment.DataSource = departmentBus.GetAllPage(1,item);
+            lblCurent.Text = "1";
+            lblPage.Text = pageSize.ToString();
+            btnNext.Enabled = true;
+            btnPrevious.Enabled = true;
         }
 
         /// <summary>/// Button next event click
@@ -166,18 +187,20 @@ namespace Main.Dai
         /// <remarks></remarks>
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
-            DepartmentBUS departmentBus = new DepartmentBUS();
-            int pageSize = (departmentBus.GetAll().Rows.Count) / item + 1;
+        
+            DepartmentBUS departmentBus=new DepartmentBUS();
+            int pageSize = (departmentBus.GetAll().Rows.Count) / item+1;
             if (cusPage < pageSize)//if cusPage<pagesize
-            {
-                cusPage++;
-                lblPage.Text = cusPage.ToString() + '/' + pageSize;
-                dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);
+        {
+            cusPage++;
+            lblCurent.Text = cusPage.ToString();
+            lblPage.Text = pageSize.ToString();
+                dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item);
             }
-            else
-            {
-                lblPage.Text = pageSize + "/" + pageSize;
+        else
+        {
+            lblCurent.Text = pageSize.ToString();
+            lblPage.Text = pageSize.ToString();
             }
 
         }
@@ -196,20 +219,21 @@ namespace Main.Dai
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             DepartmentBUS departmentBus = new DepartmentBUS();
-            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));
-            int pageSize = (departmentBus.GetAll().Rows.Count) / item + 1;
+           
+            int pageSize = (departmentBus.GetAll().Rows.Count) / item+1;
 
             if (cusPage >= 1)
             {
                 cusPage--;
-                lblPage.Text = cusPage.ToString() + '/' + pageSize;
-                dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);
-            }
-            if (cusPage < 1)
+                lblCurent.Text = cusPage.ToString();
+                lblPage.Text = pageSize.ToString();
+                dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item);
+            } 
+            if(cusPage<1)
             {
-                cusPage = 1;
-                lblPage.Text = "1/" + pageSize;
-                dgvDepartment.DataSource = departmentBus.GetAllPage(1, item, 20);
+                lblCurent.Text = "1";
+                lblPage.Text = pageSize.ToString();
+                dgvDepartment.DataSource = departmentBus.GetAllPage(1, item);
             }
 
         }
@@ -231,10 +255,10 @@ namespace Main.Dai
                 {
 
                     case "1":
-                        e.Value = "Status";
+                        e.Value = "Active";
                         break;
                     case "0":
-                        e.Value = "NoStatus";
+                        e.Value = "No Active";
                         break;
 
                 }
@@ -247,10 +271,10 @@ namespace Main.Dai
                 switch (temp1)
                 {
 
-                    case "1":
+                    case "0":
                         e.Value = "NoDelete";
                         break;
-                    case "0":
+                    case "1":
                         e.Value = "Delete";
                         break;
 
@@ -259,38 +283,10 @@ namespace Main.Dai
             }
         }
 
-        private void btnCannel_Click(object sender, EventArgs e)
-        {
+     
 
-        }
-        private void dgvDepartment_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+       
 
-        }
-
-        private void dgvDepartment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btFillall_Click(object sender, EventArgs e)
-        {
-            DepartmentBUS departmentBus = new DepartmentBUS();
-            dgvDepartment.DataSource = departmentBus.GetDepartmentAll();
-        }
-
-        private void cbPage_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbPage_SelectedValueChanged(object sender, EventArgs e)
-        {
-            DepartmentBUS departmentBus = new DepartmentBUS();
-            int item = int.Parse(this.cbPage.GetItemText(this.cbPage.SelectedItem));//get Item combobox Page
-            int pageSize = (departmentBus.GetAll().Rows.Count) / item + 1;//get Pagesize
-            dgvDepartment.DataSource = departmentBus.GetAllPage(1, item, 20);
-            lblPage.Text = "1/" + pageSize;
-        }
+       
     }
 }

@@ -28,121 +28,129 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtDepartmentName = new System.Windows.Forms.TextBox();
-            this.cbStatus = new System.Windows.Forms.CheckBox();
-            this.rdbIsDelete = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
+            this.txtDepartmentName = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnCannel = new System.Windows.Forms.Button();
-            this.txtMessager = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.cmbActive = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // label7
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "DepartmentName";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(16, 88);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 13);
+            this.label7.TabIndex = 64;
+            this.label7.Text = "Decription";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // label4
+            // label8
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(28, 253);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 15);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Description";
-            // 
-            // txtDepartmentName
-            // 
-            this.txtDepartmentName.Location = new System.Drawing.Point(129, 51);
-            this.txtDepartmentName.Name = "txtDepartmentName";
-            this.txtDepartmentName.Size = new System.Drawing.Size(231, 20);
-            this.txtDepartmentName.TabIndex = 4;
-            // 
-            // cbStatus
-            // 
-            this.cbStatus.AutoSize = true;
-            this.cbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbStatus.Location = new System.Drawing.Point(129, 133);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(66, 19);
-            this.cbStatus.TabIndex = 5;
-            this.cbStatus.Text = "Status";
-            this.cbStatus.UseVisualStyleBackColor = true;
-            // 
-            // rdbIsDelete
-            // 
-            this.rdbIsDelete.AutoSize = true;
-            this.rdbIsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbIsDelete.Location = new System.Drawing.Point(282, 133);
-            this.rdbIsDelete.Name = "rdbIsDelete";
-            this.rdbIsDelete.Size = new System.Drawing.Size(78, 19);
-            this.rdbIsDelete.TabIndex = 6;
-            this.rdbIsDelete.TabStop = true;
-            this.rdbIsDelete.Text = "IsDelete";
-            this.rdbIsDelete.UseVisualStyleBackColor = true;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 48);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(39, 13);
+            this.label8.TabIndex = 65;
+            this.label8.Text = "Họ tên";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(129, 213);
+            this.txtDescription.Location = new System.Drawing.Point(80, 80);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(231, 103);
-            this.txtDescription.TabIndex = 7;
+            this.txtDescription.Size = new System.Drawing.Size(215, 129);
+            this.txtDescription.TabIndex = 63;
+            this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
+            // 
+            // txtDepartmentName
+            // 
+            this.txtDepartmentName.Location = new System.Drawing.Point(80, 48);
+            this.txtDepartmentName.Name = "txtDepartmentName";
+            this.txtDepartmentName.Size = new System.Drawing.Size(215, 20);
+            this.txtDepartmentName.TabIndex = 62;
+            this.txtDepartmentName.TextChanged += new System.EventHandler(this.txtDepartmentName_TextChanged);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(200, 328);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 69;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(120, 374);
+            this.btnAdd.Location = new System.Drawing.Point(80, 328);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 8;
+            this.btnAdd.TabIndex = 68;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnCannel
+            // lblTitle
             // 
-            this.btnCannel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCannel.Location = new System.Drawing.Point(241, 374);
-            this.btnCannel.Name = "btnCannel";
-            this.btnCannel.Size = new System.Drawing.Size(75, 23);
-            this.btnCannel.TabIndex = 9;
-            this.btnCannel.Text = "Cannel";
-            this.btnCannel.UseVisualStyleBackColor = true;
-            this.btnCannel.Click += new System.EventHandler(this.btnCannel_Click);
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(128, 16);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(82, 15);
+            this.lblTitle.TabIndex = 70;
+            this.lblTitle.Text = "Department";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
-            // txtMessager
+            // cmbActive
             // 
-            this.txtMessager.AutoSize = true;
-            this.txtMessager.Location = new System.Drawing.Point(129, 91);
-            this.txtMessager.Name = "txtMessager";
-            this.txtMessager.Size = new System.Drawing.Size(0, 13);
-            this.txtMessager.TabIndex = 10;
+            this.cmbActive.DisplayMember = "1,2,3";
+            this.cmbActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbActive.FormattingEnabled = true;
+            this.cmbActive.Items.AddRange(new object[] {
+            "High",
+            "Medium",
+            "Low"});
+            this.cmbActive.Location = new System.Drawing.Point(80, 264);
+            this.cmbActive.Name = "cmbActive";
+            this.cmbActive.Size = new System.Drawing.Size(215, 21);
+            this.cmbActive.TabIndex = 71;
+            this.cmbActive.ValueMember = "1,2,3";
+            this.cmbActive.SelectedIndexChanged += new System.EventHandler(this.cmbActive_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 264);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 72;
+            this.label6.Text = "Active :";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // DepartmentAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 450);
-            this.Controls.Add(this.txtMessager);
-            this.Controls.Add(this.btnCannel);
+            this.ClientSize = new System.Drawing.Size(337, 375);
+            this.Controls.Add(this.cmbActive);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.rdbIsDelete);
-            this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.txtDepartmentName);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
             this.Name = "DepartmentAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Department";
             this.Load += new System.EventHandler(this.DepartmentAdd_Load);
             this.ResumeLayout(false);
@@ -151,15 +159,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtDepartmentName;
-        private System.Windows.Forms.CheckBox cbStatus;
-        private System.Windows.Forms.RadioButton rdbIsDelete;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.TextBox txtDepartmentName;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnCannel;
-        private System.Windows.Forms.Label txtMessager;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ComboBox cmbActive;
+        private System.Windows.Forms.Label label6;
     }
 }
