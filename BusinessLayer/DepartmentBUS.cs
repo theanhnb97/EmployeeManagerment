@@ -1,5 +1,6 @@
 ﻿namespace BusinessLayer
 {
+    using CommonLibrary.Model;
     using DataAccessLayer;
     using Entity;
     using System.Collections.Generic;
@@ -99,9 +100,9 @@
         /// </summary>
         /// <param name="keyword">The keyword<see cref="string"/></param>
         /// <returns>The <see cref="DataTable"/></returns>
-        public DataTable SearchDepartment(string keyword)
+        public DataTable SearchDepartment(string keyword,int page)
         {
-            return departmentDal.SearchDepartment(keyword);
+            return departmentDal.SearchDepartment(keyword, page);
         }
 
         /// <summary>
@@ -121,9 +122,9 @@
         /// <param name="recodperpage">The recodperpage<see cref="int"/></param>
         /// <param name="Pagesize">The Pagesize<see cref="int"/></param>
         /// <returns>The <see cref="DataTable"/></returns>
-        public DataTable GetAllPage(int currPage, int recodperpage, int Pagesize)
+        public DataTable GetAllPage(int currPage, int recodperpage)
         {
-            return departmentDal.GetAllPage(currPage, recodperpage, Pagesize);
+            return departmentDal.GetAllPage(currPage, recodperpage);
         }
 
         /// <summary>
@@ -146,6 +147,11 @@
         public DataTable GetDepartmentAll()
         {
             return departmentDal.GetDepartmentAll();
+        }
+
+        public List<Active> GetAllActives()
+        {
+            return departmentDal.GetAllActive();
         }
     }
 }

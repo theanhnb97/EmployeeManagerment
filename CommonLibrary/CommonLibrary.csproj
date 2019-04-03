@@ -48,6 +48,7 @@
     <Compile Include="DataTable2List.cs" />
     <Compile Include="Enumerator\Enumerator.cs" />
     <Compile Include="FTP\FPTFile.cs" />
+    <Compile Include="Model\Active.cs" />
     <Compile Include="Model\Level.cs" />
     <Compile Include="Model\TaskDTO.cs" />
     <Compile Include="Paging\PagingGridView.cs" />

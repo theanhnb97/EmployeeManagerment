@@ -63,10 +63,25 @@ namespace Main.Department
             DepartmentBUS departmentBus = new DepartmentBUS();
             txtDepartmentName.Text = department.DepartmentName;
             txtDescription.Text = department.Description;
-            if (department.Status == 1) cbStatus.Checked = true;
-            if (department.Status == 0) cbStatus.Checked = false;
-            if (department.IsDelete == 1) rdbIsDelete.Checked = true;
-            if (department.IsDelete == 0) rdbIsDelete.Checked = false;
+            cmbActive.DisplayMember = (department.Status == 0) ? "Active" : "No Active";
+            
+            var actives = departmentBus.GetAllActives();
+            if (actives.Count > 0)
+            {
+                cmbActive.DataSource = actives;
+                cmbActive.ValueMember = "Id";
+                cmbActive.DisplayMember = "Name";
+                if (Convert.ToInt64(cmbActive.SelectedValue) > 0)
+                {
+                    cmbActive.ForeColor = Color.DarkGreen;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Priority have not data", "Status");
+            }
+
 
         }
         /// <summary>/// Button update event click
@@ -82,8 +97,8 @@ namespace Main.Department
                 DepartmentBUS departmentBus = new DepartmentBUS();
                 
                 department.DepartmentName = txtDepartmentName.Text;
-                department.Status = cbStatus.Checked ? 1 : 0;
-                department.IsDelete = rdbIsDelete.Checked ? 1 : 0;
+                department.Status = int.Parse(cmbActive.SelectedValue.ToString());
+                department.IsDelete = 0;
                 department.Description = txtDescription.Text;
                 if (txtDepartmentName.Text != "" && txtDescription.Text != "")
                 {

@@ -389,5 +389,75 @@ namespace Main
             dgvTask.DataSource = objTaskBus.GetAll(page);
             dgvTask.Columns["RN"].Visible = false;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grbFiler_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grbTaskList_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCurent_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvTask_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpDeuDateFilter_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbDepartment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbDueDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNameFilter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

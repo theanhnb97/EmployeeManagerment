@@ -1,4 +1,6 @@
-﻿namespace DataAccessLayer
+﻿using CommonLibrary.Model;
+
+namespace DataAccessLayer
 {
     using DataAccessLayer.Helpers;
     using Entity;
@@ -6,6 +8,7 @@
     using Oracle.ManagedDataAccess.Client;
     using System;
     using System.Collections.Generic;
+    using System.Configuration;
     using System.Data;
 
     /// <summary>
@@ -107,7 +110,6 @@
                 {
                     OracleParameter[] parameters = new OracleParameter[]
                     {
-                        new OracleParameter("p_isDelete",1),
                         new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output),
                     };
                     return sqlHelp.ExcuteQuery("Department_GetAllDeltete", CommandType.StoredProcedure, connection,
@@ -306,26 +308,22 @@
         /// </summary>
         /// <param name="keyword">The keyword<see cref="string"/></param>
         /// <returns>The <see cref="DataTable"/></returns>
-        public DataTable SearchDepartment(string keyword)
+        public DataTable SearchDepartment(string keyword,int page)
         {
             //try
             {
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
+                int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
                 using (OracleConnection connection = Connection.GetConnection)
                 {
-                    OracleDataAdapter da = new OracleDataAdapter();
-                    OracleCommand cmd = new OracleCommand();
-
-                    cmd = new OracleCommand("Department_Search", connection);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_departmentName", keyword);
-                    cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-                    da.SelectCommand = cmd;
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    return dt;
-
+                   OracleParameter[] parameters=new OracleParameter[]
+                   {
+                       new OracleParameter("currPage",page),
+                       new OracleParameter("recodperpage",pageSize),
+                       new OracleParameter("p_departmentName",keyword),
+                       new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output),
+                   };
+                   return sqlHelp.ExcuteQuery("Department_Search", CommandType.StoredProcedure, connection, parameters);
 
                 }
 
@@ -350,7 +348,7 @@
                     OracleParameter[] parameters = new OracleParameter[]
                     {
                     new OracleParameter("p_departmentID",id),
-                    new OracleParameter("p_isDelete",'0')
+                    new OracleParameter("p_isDelete",'1')
 
 
                     };
@@ -375,7 +373,7 @@
         /// <param name="recodperpage">The recodperpage<see cref="int"/></param>
         /// <param name="Pagesize">The Pagesize<see cref="int"/></param>
         /// <returns>The <see cref="DataTable"/></returns>
-        public DataTable GetAllPage(int currPage, int recodperpage, int Pagesize)
+        public DataTable GetAllPage(int currPage, int recodperpage)
         {
             //try
             {
@@ -390,7 +388,6 @@
 
                     cmd.Parameters.Add("currPage", currPage);
                     cmd.Parameters.Add("recodperpage", recodperpage);
-                    cmd.Parameters.Add("Pagesize", Pagesize);
                     cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
                     da.SelectCommand = cmd;
@@ -484,6 +481,16 @@
                 }
             }
             return employees;
+        }
+        public List<Active> GetAllActive()
+        {
+            List<Active> list = new List<Active>
+            {
+                new Active(1,"Active"),
+                new Active(0,"No Active"),
+
+            };
+            return list;
         }
     }
 }
