@@ -1,27 +1,71 @@
-﻿using DataAccessLayer.Helpers;
-using Entity;
-using log4net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Oracle.ManagedDataAccess.Client;
-using Entity.DTO;
-using System.Data;
-
-namespace DataAccessLayer
+﻿namespace DataAccessLayer
 {
-    public interface ISalary 
+    using Entity;
+    using Entity.DTO;
+    using log4net;
+    using Oracle.ManagedDataAccess.Client;
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Data;
+
+    /// <summary>
+    /// Defines the <see cref="ISalary" />
+    /// </summary>
+    public interface ISalary
     {
+        /// <summary>
+        /// The GetData
+        /// </summary>
+        /// <returns>The <see cref="List{SalaryView}"/></returns>
         List<SalaryView> GetData();
-        List<SalaryView> SearchSalary(string name, string dept, DateTime fDate, DateTime tDate);
+
+        /// <summary>
+        /// The SearchSalary
+        /// </summary>
+        /// <param name="name">The name<see cref="string"/></param>
+        /// <param name="dept">The dept<see cref="string"/></param>
+        /// <param name="fDate">The fDate<see cref="DateTime?"/></param>
+        /// <param name="tDate">The tDate<see cref="DateTime?"/></param>
+        /// <returns>The <see cref="List{SalaryView}"/></returns>
+        List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate);
+
+        /// <summary>
+        /// The GetById
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="Salary"/></returns>
         Salary GetById(int id);
+
+        /// <summary>
+        /// The Paging
+        /// </summary>
+        /// <param name="Size">The Size<see cref="int"/></param>
+        /// <param name="index">The index<see cref="int"/></param>
+        /// <returns>The <see cref="List{SalaryView}"/></returns>
+        List<SalaryView> Paging(int Size, int index);
     }
+
+    /// <summary>
+    /// Defines the <see cref="SalaryDAO" />
+    /// </summary>
     public class SalaryDAO : IEntities<Salary>, ISalary
-    {       
-        string Connect = "DATA SOURCE=192.168.35.114:1521/orcl;PASSWORD=theanh;PERSIST SECURITY INFO=True;USER ID=GDP";
-        ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+    {
+        /// <summary>
+        /// Defines the Connect
+        /// </summary>
+        internal string Connect = ConfigurationManager.ConnectionStrings["ConnectString"].ConnectionString;
+
+        /// <summary>
+        /// Defines the logger
+        /// </summary>
+        internal ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        /// <summary>
+        /// The Add
+        /// </summary>
+        /// <param name="obj">The obj<see cref="Salary"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Add(Salary obj)
         {
             using (OracleConnection objConn = new OracleConnection(Connect))
@@ -35,7 +79,6 @@ namespace DataAccessLayer
                 Ocmd.Parameters.Add("BASIC", OracleDbType.Decimal).Value = obj.BasicSalary;
                 Ocmd.Parameters.Add("BUSSINESS", OracleDbType.Decimal).Value = obj.BussinessSalary;
                 Ocmd.Parameters.Add("COEFFICIENT", OracleDbType.Double).Value = obj.Coefficient;
-                Ocmd.Parameters.Add("ISDELETE", OracleDbType.Decimal).Value = obj.IsDelete;
                 try
                 {
                     objConn.Open();
@@ -51,6 +94,11 @@ namespace DataAccessLayer
             return 1;
         }
 
+        /// <summary>
+        /// The Delete
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Delete(int id)
         {
             using (OracleConnection objConn = new OracleConnection(Connect))
@@ -74,6 +122,11 @@ namespace DataAccessLayer
             }
             return 1;
         }
+
+        /// <summary>
+        /// The GetData
+        /// </summary>
+        /// <returns>The <see cref="List{SalaryView}"/></returns>
         public List<SalaryView> GetData()
         {
             List<SalaryView> salaryViews = new List<SalaryView>();
@@ -85,9 +138,9 @@ namespace DataAccessLayer
                 Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
                 Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
                 try
-                { 
+                {
                     objConn.Open();
-                    OracleDataReader objReader = Ocmd.ExecuteReader();                   
+                    OracleDataReader objReader = Ocmd.ExecuteReader();
                     while (objReader.Read())
                     {
                         SalaryView salaryView = new SalaryView();
@@ -112,8 +165,13 @@ namespace DataAccessLayer
                 objConn.Close();
             }
             return salaryViews;
-
         }
+
+        /// <summary>
+        /// The Update
+        /// </summary>
+        /// <param name="obj">The obj<see cref="Salary"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Update(Salary obj)
         {
             using (OracleConnection objConn = new OracleConnection(Connect))
@@ -127,9 +185,9 @@ namespace DataAccessLayer
                 Ocmd.Parameters.Add("BUSSINESS", OracleDbType.Decimal).Value = obj.BussinessSalary;
                 Ocmd.Parameters.Add("COFFI", OracleDbType.Decimal).Value = obj.Coefficient;
                 try
-                {                    
+                {
                     objConn.Open();
-                    Ocmd.ExecuteNonQuery();                    
+                    Ocmd.ExecuteNonQuery();
                 }
                 catch (Exception e)
                 {
@@ -141,6 +199,14 @@ namespace DataAccessLayer
             return 1;
         }
 
+        /// <summary>
+        /// The SearchSalary
+        /// </summary>
+        /// <param name="name">The name<see cref="string"/></param>
+        /// <param name="dept">The dept<see cref="string"/></param>
+        /// <param name="fDate">The fDate<see cref="DateTime?"/></param>
+        /// <param name="tDate">The tDate<see cref="DateTime?"/></param>
+        /// <returns>The <see cref="List{SalaryView}"/></returns>
         public List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate)
         {
             List<SalaryView> salaryViews = new List<SalaryView>();
@@ -150,10 +216,10 @@ namespace DataAccessLayer
                 Ocmd.Connection = objConn;
                 Ocmd.CommandText = "SALARY_SEARCH";
                 Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
-                Ocmd.Parameters.Add("NAME", OracleDbType.Decimal).Value = name;
-                Ocmd.Parameters.Add("DEPT", OracleDbType.Decimal).Value = dept;
-                Ocmd.Parameters.Add("FDATE", OracleDbType.Decimal).Value = fDate;
-                Ocmd.Parameters.Add("TDATE", OracleDbType.Decimal).Value = tDate;
+                Ocmd.Parameters.Add("NAME", OracleDbType.Varchar2).Value = name;
+                Ocmd.Parameters.Add("DEPT", OracleDbType.Varchar2).Value = dept;
+                Ocmd.Parameters.Add("FDATE", OracleDbType.Date).Value = fDate;
+                Ocmd.Parameters.Add("TDATE", OracleDbType.Date).Value = tDate;
                 Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
                 try
                 {
@@ -170,6 +236,7 @@ namespace DataAccessLayer
                         salaryView.Bussiness = int.Parse(objReader["BUSINESSSALARY"].ToString());
                         salaryView.Coefficient = float.Parse(objReader["COEFFICIENT"].ToString());
                         salaryView.Total = double.Parse(objReader["TOTAL"].ToString());
+                        salaryView.SalaryId = int.Parse(objReader["SALARYID"].ToString());
                         salaryViews.Add(salaryView);
                     }
                     objReader.Close();
@@ -183,6 +250,12 @@ namespace DataAccessLayer
             }
             return salaryViews;
         }
+
+        /// <summary>
+        /// The GetById
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="Salary"/></returns>
         public Salary GetById(int id)
         {
             Salary salary = new Salary();
@@ -217,6 +290,13 @@ namespace DataAccessLayer
             }
             return salary;
         }
+
+        /// <summary>
+        /// The GetByIdDeptAndRank
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <param name="rank">The rank<see cref="int"/></param>
+        /// <returns>The <see cref="List{Employee}"/></returns>
         public List<Employee> GetByIdDeptAndRank(int id, int rank)
         {
             List<Employee> result = new List<Employee>();
@@ -227,7 +307,7 @@ namespace DataAccessLayer
                 Ocmd.CommandText = "EMPLOYEE_GETBYDEPTID_ANDRANK";
                 Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
                 Ocmd.Parameters.Add("IDS", OracleDbType.Decimal).Value = id;
-                Ocmd.Parameters.Add("RANK", OracleDbType.Decimal).Value = rank;
+                Ocmd.Parameters.Add("RANKS", OracleDbType.Decimal).Value = rank;
                 Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
                 try
                 {
@@ -257,22 +337,80 @@ namespace DataAccessLayer
             }
             return result;
         }
-            public List<Salary> Search(string keyword)
+
+        /// <summary>
+        /// The Paging
+        /// </summary>
+        /// <param name="size">The size<see cref="int"/></param>
+        /// <param name="index">The index<see cref="int"/></param>
+        /// <returns>The <see cref="List{SalaryView}"/></returns>
+        public List<SalaryView> Paging(int size, int index)
+        {
+            List<SalaryView> salaryViews = new List<SalaryView>();
+            using (OracleConnection objConn = new OracleConnection(Connect))
+            {
+                OracleCommand Ocmd = new OracleCommand();
+                Ocmd.Connection = objConn;
+                Ocmd.CommandText = "SALARY_PAGING";
+                Ocmd.CommandType = System.Data.CommandType.StoredProcedure;
+                Ocmd.Parameters.Add("PageSize", OracleDbType.Decimal).Value = size;
+                Ocmd.Parameters.Add("PageIndex", OracleDbType.Decimal).Value = index;
+                Ocmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
+                try
+                {
+                    objConn.Open();
+                    OracleDataReader objReader = Ocmd.ExecuteReader();
+                    while (objReader.Read())
+                    {
+                        SalaryView salaryView = new SalaryView();
+                        salaryView.FullName = objReader["FULLNAME"].ToString();
+                        salaryView.Identity = objReader["IDENTITY"].ToString();
+                        salaryView.Rank = int.Parse(objReader["RANK"].ToString());
+                        salaryView.Dept = objReader["DEPARTMENTNAME"].ToString();
+                        salaryView.Basic = int.Parse(objReader["BASICSALARY"].ToString());
+                        salaryView.Bussiness = int.Parse(objReader["BUSINESSSALARY"].ToString());
+                        salaryView.Coefficient = float.Parse(objReader["COEFFICIENT"].ToString());
+                        salaryView.Total = double.Parse(String.Format("{0:0.00}",objReader["TOTAL"]));
+                        salaryView.SalaryId = int.Parse(objReader["SALARYID"].ToString());
+                        salaryViews.Add(salaryView);
+                    }
+                    objReader.Close();
+                }
+                catch (Exception e)
+                {
+                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                    logger.Debug(e.Message);
+                }
+                objConn.Close();
+            }
+            return salaryViews;
+        }
+
+        /// <summary>
+        /// The Search
+        /// </summary>
+        /// <param name="keyword">The keyword<see cref="string"/></param>
+        /// <returns>The <see cref="List{Salary}"/></returns>
+        public List<Salary> Search(string keyword)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The Get
+        /// </summary>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable Get()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The Search
+        /// </summary>
+        /// <param name="keyword">The keyword<see cref="string"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         DataTable IEntities<Salary>.Search(string keyword)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<SalaryView> SearchSalary(string name, string dept, DateTime fDate, DateTime tDate)
         {
             throw new NotImplementedException();
         }

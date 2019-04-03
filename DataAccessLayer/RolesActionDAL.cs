@@ -1,27 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccessLayer.Helpers;
-using Entity;
-using log4net;
-using Oracle.ManagedDataAccess.Client;
-using Action = System.Action;
-
-namespace DataAccessLayer
+﻿namespace DataAccessLayer
 {
+    using DataAccessLayer.Helpers;
+    using Entity;
+    using log4net;
+    using Oracle.ManagedDataAccess.Client;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+
+    /// <summary>
+    /// Defines the <see cref="IRolesAction" />
+    /// </summary>
     interface IRolesAction : IEntities<RolesAction>
     {
+        /// <summary>
+        /// The GetAllTrue
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         DataTable GetAllTrue(int id);
+
+        /// <summary>
+        /// The DeleteAll
+        /// </summary>
+        /// <returns>The <see cref="int"/></returns>
         int DeleteAll();
     }
+
+    /// <summary>
+    /// Defines the <see cref="RolesActionDAL" />
+    /// </summary>
     public class RolesActionDAL : IRolesAction
     {
+        /// <summary>
+        /// Defines the sql
+        /// </summary>
         protected SqlHelpers<RolesAction> sql = new SqlHelpers<RolesAction>();
+
+        /// <summary>
+        /// Defines the logger
+        /// </summary>
         protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        /// <summary>
+        /// The GetAllTrue
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable GetAllTrue(int id)
         {
             using (OracleConnection con = Connection.GetConnection)
@@ -37,6 +62,10 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// The DeleteAll
+        /// </summary>
+        /// <returns>The <see cref="int"/></returns>
         public int DeleteAll()
         {
             using (OracleConnection con = Connection.GetConnection)
@@ -46,7 +75,10 @@ namespace DataAccessLayer
             }
         }
 
-
+        /// <summary>
+        /// The Get
+        /// </summary>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable Get()
         {
             using (OracleConnection con = Connection.GetConnection)
@@ -60,21 +92,41 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// The Search
+        /// </summary>
+        /// <param name="keyword">The keyword<see cref="string"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable Search(string keyword)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The Delete
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Delete(int id)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The Update
+        /// </summary>
+        /// <param name="obj">The obj<see cref="RolesAction"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Update(RolesAction obj)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The Update
+        /// </summary>
+        /// <param name="obj">The obj<see cref="List{RolesAction}"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Update(List<RolesAction> obj)
         {
             String cmd = "RolesAction_Update";
@@ -86,11 +138,16 @@ namespace DataAccessLayer
                         new OracleParameter("istrues",item.IsTrue)
                 };
                 using (OracleConnection con = Connection.GetConnection)
-                sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                    sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
             return -1;
         }
 
+        /// <summary>
+        /// The Add
+        /// </summary>
+        /// <param name="obj">The obj<see cref="RolesAction"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Add(RolesAction obj)
         {
             using (OracleConnection con = Connection.GetConnection)
