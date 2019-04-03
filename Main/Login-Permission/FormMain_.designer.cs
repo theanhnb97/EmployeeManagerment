@@ -48,18 +48,21 @@
             this.pnMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuElipseMain = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.btnLogout = new System.Windows.Forms.PictureBox();
             this.pnTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnMenu.SuspendLayout();
             this.pnMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLogout)).BeginInit();
             this.SuspendLayout();
             // 
             // pnTop
             // 
             this.pnTop.BackColor = System.Drawing.Color.LightCyan;
             this.pnTop.Controls.Add(this.label2);
+            this.pnTop.Controls.Add(this.btnLogout);
             this.pnTop.Controls.Add(this.btnProfile);
             this.pnTop.Controls.Add(this.picLogout);
             this.pnTop.Controls.Add(this.label1);
@@ -83,7 +86,7 @@
             // btnProfile
             // 
             this.btnProfile.Image = ((System.Drawing.Image)(resources.GetObject("btnProfile.Image")));
-            this.btnProfile.Location = new System.Drawing.Point(934, 8);
+            this.btnProfile.Location = new System.Drawing.Point(917, 8);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(29, 28);
             this.btnProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -94,7 +97,7 @@
             // picLogout
             // 
             this.picLogout.Image = ((System.Drawing.Image)(resources.GetObject("picLogout.Image")));
-            this.picLogout.Location = new System.Drawing.Point(979, 8);
+            this.picLogout.Location = new System.Drawing.Point(987, 8);
             this.picLogout.Name = "picLogout";
             this.picLogout.Size = new System.Drawing.Size(29, 27);
             this.picLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -277,6 +280,17 @@
             this.bunifuElipseMain.ElipseRadius = 15;
             this.bunifuElipseMain.TargetControl = this;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
+            this.btnLogout.Location = new System.Drawing.Point(952, 7);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(29, 28);
+            this.btnLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnLogout.TabIndex = 0;
+            this.btnLogout.TabStop = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // FormMain_
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,6 +314,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnMenu.ResumeLayout(false);
             this.pnMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnLogout)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -323,5 +338,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox btnProfile;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipseMain;
+        private System.Windows.Forms.PictureBox btnLogout;
     }
 }

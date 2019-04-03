@@ -191,9 +191,9 @@
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPassword.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPassword.HintForeColor = System.Drawing.Color.Empty;
-            this.txtPassword.HintText = "";
-            this.txtPassword.isPassword = true;
+            this.txtPassword.HintForeColor = System.Drawing.Color.Gray;
+            this.txtPassword.HintText = "Mật khẩu";
+            this.txtPassword.isPassword = false;
             this.txtPassword.LineFocusedColor = System.Drawing.Color.Blue;
             this.txtPassword.LineIdleColor = System.Drawing.Color.Gray;
             this.txtPassword.LineMouseHoverColor = System.Drawing.Color.Blue;
@@ -203,8 +203,9 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(327, 42);
             this.txtPassword.TabIndex = 1;
-            this.txtPassword.Text = "123456";
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtPassword.OnValueChanged += new System.EventHandler(this.txtPassword_OnValueChanged);
+            this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.login_KeyDown);
             // 
             // txtUserName
@@ -212,7 +213,7 @@
             this.txtUserName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUserName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txtUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtUserName.HintForeColor = System.Drawing.Color.Empty;
+            this.txtUserName.HintForeColor = System.Drawing.Color.Gray;
             this.txtUserName.HintText = "Tên tài khoản";
             this.txtUserName.isPassword = false;
             this.txtUserName.LineFocusedColor = System.Drawing.Color.Blue;
@@ -225,6 +226,7 @@
             this.txtUserName.Size = new System.Drawing.Size(327, 42);
             this.txtUserName.TabIndex = 0;
             this.txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtUserName.Enter += new System.EventHandler(this.txtPassword_Enter);
             this.txtUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.login_KeyDown);
             // 
             // bunifuElipse1
@@ -259,12 +261,12 @@
         private System.Windows.Forms.Panel pnRight;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtPassword;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox txtUserName;
         private Bunifu.Framework.UI.BunifuFlatButton btnOk;
         private System.Windows.Forms.Label lblLogo;
         private Bunifu.Framework.UI.BunifuFlatButton btnCancel;
         private System.Windows.Forms.Label lblExit;
         private System.Windows.Forms.Label lblNotify;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox txtUserName;
     }
 }

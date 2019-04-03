@@ -28,27 +28,6 @@
         /// </summary>
         protected int RolesID { get; set; }
 
-        /// <summary>
-        /// The OnLoad
-        /// </summary>
-        /// <param name="e">The e<see cref="EventArgs"/></param>
-        protected override void OnLoad(EventArgs e)
-        {
-            //DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
-            //bool result = RolesID == 1;
-            //string formName = base.Name+".";
-            //string Action = "";
-            //foreach (DataRow item in myDataTable.Rows)
-            //    Action += item["ACTIONNAME"].ToString().Trim() + ".";
-            //if (Action.Contains(formName)) result = true;
-            //if (result)
-            base.OnLoad(e);
-            //else
-            //{
-            //    MessageBox.Show("Bạn không có quyền truy cập vào Hệ thống này!");
-            //    //picLogout_Click(picLogout, e);
-            //}
-        }
 
         /// <summary>
         /// Defines the btnMenuButtons
@@ -58,37 +37,37 @@
         /// <summary>
         /// Defines the salary
         /// </summary>
-        internal SalaryManagement salary;
+        private SalaryManagement salary;
 
         /// <summary>
         /// Defines the ucActionManagement
         /// </summary>
-        internal UcAction ucActionManagement;
+        private UcAction ucActionManagement;
 
         /// <summary>
         /// Defines the ucRoles
         /// </summary>
-        internal UcRoles ucRoles;
+        private UcRoles ucRoles;
 
         /// <summary>
         /// Defines the ucRolesAction
         /// </summary>
-        internal UcRolesAction ucRolesAction;
+        private UcRolesAction ucRolesAction;
 
         /// <summary>
         /// Defines the ucEmployees
         /// </summary>
-        internal Employees ucEmployees;
+        private Employees ucEmployees;
 
         /// <summary>
         /// Defines the ucTask
         /// </summary>
-        internal UcTask ucTask;
+        private UcTask ucTask;
 
         /// <summary>
         /// Defines the ucDepartment
         /// </summary>
-        internal UcDepartment ucDepartment;
+        private UcDepartment ucDepartment;
 
         /// <summary>
         /// Defines the ucUpdateProfile
@@ -100,29 +79,9 @@
         /// </summary>
         private void LoadUC()
         {
-            pnMain.Controls.Add(ucActionManagement);
-            ucActionManagement.Dock = DockStyle.Fill;
-
-            pnMain.Controls.Add(ucEmployees);
-            ucEmployees.Dock = DockStyle.Fill;
-
-            pnMain.Controls.Add(ucTask);
-            ucTask.Dock = DockStyle.Fill;
+            salary = new SalaryManagement(RolesID);
             pnMain.Controls.Add(salary);
             salary.Dock = DockStyle.Fill;
-            pnMain.Controls.Add(ucRoles);
-            ucRoles.Dock = DockStyle.Fill;
-
-            pnMain.Controls.Add(ucRolesAction);
-            ucRolesAction.Dock = DockStyle.Fill;
-
-            pnMain.Controls.Add(ucDepartment);
-            ucDepartment.Dock = DockStyle.Fill;
-
-            pnMain.Controls.Add(ucUpdateProfile);
-            ucUpdateProfile.Dock = DockStyle.Fill;
-
-
             salary.BringToFront();
         }
 
@@ -141,14 +100,6 @@
             this.RolesID = rolesId;
             this.userName = username;
             InitializeComponent();
-            ucUpdateProfile = new UcUpdateProfile_(username);
-            ucActionManagement = new UcAction(RolesID);
-            ucRoles = new UcRoles(RolesID);
-            ucRolesAction = new UcRolesAction(RolesID);
-            ucTask = new UcTask(RolesID);
-            ucEmployees = new Employees(RolesID);
-            ucDepartment = new UcDepartment(RolesID);
-            salary = new SalaryManagement(RolesID);
             btnMenuButtons = new List<Button>();
         }
 
@@ -178,15 +129,11 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void picLogout_Click(object sender, EventArgs e)
         {
-            DialogResult myDialogResult = MessageBox.Show("Do you want logout?", "Question",
+            var myDialogResult = MessageBox.Show("Bạn có thực sự muốn thoát chương trình?", "Thoát",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (myDialogResult == DialogResult.Yes)
-            {
-                Thread threadMainForm = new Thread(new ThreadStart(ShowFormLogin));
-                threadMainForm.Start();
                 Application.Exit();
-            }
         }
 
         /// <summary>
@@ -203,7 +150,7 @@
         /// </summary>
         /// <param name="slide">The slide<see cref="Panel"/></param>
         /// <param name="inActiceButton">The inActiceButton<see cref="Button"/></param>
-        internal void LoacationSlide(Panel slide,Button inActiceButton)
+        private void LoacationSlide(Panel slide,Button inActiceButton)
         {
             foreach (Button item in btnMenuButtons)
             {
@@ -240,6 +187,9 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnPhanQuyen_Click(object sender, EventArgs e)
         {
+            ucRolesAction = new UcRolesAction(RolesID);
+            pnMain.Controls.Add(ucRolesAction);
+            ucRolesAction.Dock = DockStyle.Fill;
             btnMenuItem_Click(sender,e);
             ucRolesAction.BringToFront();
         }
@@ -251,6 +201,9 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnRole_Click(object sender, EventArgs e)
         {
+            ucRoles = new UcRoles(RolesID);
+            pnMain.Controls.Add(ucRoles);
+            ucRoles.Dock = DockStyle.Fill;
             btnMenuItem_Click(sender, e);
             ucRoles.BringToFront();
         }
@@ -262,6 +215,9 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnAction_Click(object sender, EventArgs e)
         {
+            ucActionManagement = new UcAction(RolesID);
+            pnMain.Controls.Add(ucActionManagement);
+            ucActionManagement.Dock = DockStyle.Fill;
             btnMenuItem_Click(sender, e);
             ucActionManagement.BringToFront();
         }
@@ -273,6 +229,9 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnSalary_Click(object sender, EventArgs e)
         {
+            salary = new SalaryManagement(RolesID);
+            pnMain.Controls.Add(salary);
+            salary.Dock = DockStyle.Fill;
             btnMenuItem_Click(sender, e);
             salary.BringToFront();
         }
@@ -284,6 +243,9 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnTask_Click(object sender, EventArgs e)
         {
+            ucTask = new UcTask(RolesID);
+            pnMain.Controls.Add(ucTask);
+            ucTask.Dock = DockStyle.Fill;
             btnMenuItem_Click(sender, e);
             ucTask.BringToFront();
         }
@@ -295,6 +257,9 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnDepartment_Click(object sender, EventArgs e)
         {
+            ucDepartment = new UcDepartment(RolesID);
+            pnMain.Controls.Add(ucDepartment);
+            ucDepartment.Dock = DockStyle.Fill;
             btnMenuItem_Click(sender, e);
             ucDepartment.BringToFront();
         }
@@ -306,6 +271,9 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnEmployee_Click(object sender, EventArgs e)
         {
+            ucEmployees = new Employees(RolesID);
+            pnMain.Controls.Add(ucEmployees);
+            ucEmployees.Dock = DockStyle.Fill;
             btnMenuItem_Click(sender, e);
             ucEmployees.BringToFront();
         }
@@ -317,7 +285,24 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnProfile_Click(object sender, EventArgs e)
         {
+            ucUpdateProfile = new UcUpdateProfile_(userName);
+            pnMain.Controls.Add(ucUpdateProfile);
+            ucUpdateProfile.Dock = DockStyle.Fill;
             ucUpdateProfile.BringToFront();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            var myDialogResult = MessageBox.Show("Bạn có thực sự muốn đăng xuất?", "Đăng xuất",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (myDialogResult == DialogResult.Yes)
+            {
+                var threadMainForm = new Thread(new ThreadStart(ShowFormLogin));
+                threadMainForm.TrySetApartmentState(ApartmentState.STA);
+                threadMainForm.Start();
+                Application.Exit();
+            }
         }
     }
 }
