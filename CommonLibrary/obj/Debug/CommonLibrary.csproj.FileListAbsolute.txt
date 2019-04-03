@@ -16,3 +16,12 @@ E:\New folder\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.C
 E:\New folder\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
 E:\New folder\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
 E:\New folder\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb
+E:\BuiCongDai\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll.config
+E:\BuiCongDai\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.dll
+E:\BuiCongDai\EmployeeManagerment\CommonLibrary\bin\Debug\CommonLibrary.pdb
+E:\BuiCongDai\EmployeeManagerment\CommonLibrary\bin\Debug\Oracle.ManagedDataAccess.dll
+E:\BuiCongDai\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
+E:\BuiCongDai\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
+E:\BuiCongDai\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.csproj.CopyComplete
+E:\BuiCongDai\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.dll
+E:\BuiCongDai\EmployeeManagerment\CommonLibrary\obj\Debug\CommonLibrary.pdb

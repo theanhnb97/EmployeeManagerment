@@ -70,3 +70,21 @@ E:\New folder\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.C
 E:\New folder\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
 E:\New folder\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.dll
 E:\New folder\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.pdb
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\BusinessLayer.dll
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\BusinessLayer.pdb
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.dll
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\DataAccessLayer.dll
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\Entity.dll
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\Oracle.ManagedDataAccess.dll
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\log4net.dll
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.pdb
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\CommonLibrary.dll.config
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\DataAccessLayer.pdb
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\DataAccessLayer.dll.config
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\Entity.pdb
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\bin\Debug\log4net.xml
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.dll
+E:\BuiCongDai\EmployeeManagerment\BusinessLayer\obj\Debug\BusinessLayer.pdb

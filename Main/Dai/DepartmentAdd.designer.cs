@@ -31,10 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDepartmentName = new System.Windows.Forms.TextBox();
-            this.cbStatus = new System.Windows.Forms.CheckBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCannel = new System.Windows.Forms.Button();
+            this.cmbActive = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -52,7 +53,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(28, 253);
+            this.label4.Location = new System.Drawing.Point(24, 152);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 15);
             this.label4.TabIndex = 3;
@@ -65,20 +66,9 @@
             this.txtDepartmentName.Size = new System.Drawing.Size(231, 20);
             this.txtDepartmentName.TabIndex = 4;
             // 
-            // cbStatus
-            // 
-            this.cbStatus.AutoSize = true;
-            this.cbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbStatus.Location = new System.Drawing.Point(129, 133);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(66, 19);
-            this.cbStatus.TabIndex = 5;
-            this.cbStatus.Text = "Status";
-            this.cbStatus.UseVisualStyleBackColor = true;
-            // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(129, 213);
+            this.txtDescription.Location = new System.Drawing.Point(128, 112);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(231, 103);
@@ -87,7 +77,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(120, 374);
+            this.btnAdd.Location = new System.Drawing.Point(120, 360);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 8;
@@ -98,7 +88,7 @@
             // btnCannel
             // 
             this.btnCannel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCannel.Location = new System.Drawing.Point(241, 374);
+            this.btnCannel.Location = new System.Drawing.Point(240, 360);
             this.btnCannel.Name = "btnCannel";
             this.btnCannel.Size = new System.Drawing.Size(75, 23);
             this.btnCannel.TabIndex = 9;
@@ -106,19 +96,39 @@
             this.btnCannel.UseVisualStyleBackColor = true;
             this.btnCannel.Click += new System.EventHandler(this.btnCannel_Click);
             // 
+            // cmbActive
+            // 
+            this.cmbActive.FormattingEnabled = true;
+            this.cmbActive.Location = new System.Drawing.Point(128, 280);
+            this.cmbActive.Name = "cmbActive";
+            this.cmbActive.Size = new System.Drawing.Size(232, 21);
+            this.cmbActive.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(48, 280);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 15);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Active";
+            // 
             // DepartmentAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 450);
+            this.ClientSize = new System.Drawing.Size(406, 403);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbActive);
             this.Controls.Add(this.btnCannel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.txtDepartmentName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Name = "DepartmentAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Department";
             this.Load += new System.EventHandler(this.DepartmentAdd_Load);
             this.ResumeLayout(false);
@@ -131,9 +141,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDepartmentName;
-        private System.Windows.Forms.CheckBox cbStatus;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCannel;
+        private System.Windows.Forms.ComboBox cmbActive;
+        private System.Windows.Forms.Label label2;
     }
 }

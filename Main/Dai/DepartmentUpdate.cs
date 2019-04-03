@@ -15,6 +15,7 @@ namespace Main.Department
 {
     public partial class DepartmentUpdate : Form
     {
+        DepartmentBUS departmentBus = new DepartmentBUS();
         //Created by (The anh) in (28/3/2019)
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
@@ -55,7 +56,19 @@ namespace Main.Department
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            var actives = departmentBus.GetAllActive();
+            if (actives.Count > 0)
+            {
+                cmbActive.DataSource = actives;
+                cmbActive.ValueMember = "Id";
+                cmbActive.DisplayMember = "Name";
 
+
+            }
+            else
+            {
+                MessageBox.Show("Priority have not data", "Status");
+            }
         }
 
         private void DepartmentUpdate_Load(object sender, EventArgs e)
@@ -63,10 +76,20 @@ namespace Main.Department
             DepartmentBUS departmentBus = new DepartmentBUS();
             txtDepartmentName.Text = department.DepartmentName;
             txtDescription.Text = department.Description;
-            if (department.Status == 1) cbStatus.Checked = true;
-            if (department.Status == 0) cbStatus.Checked = false;
-            if (department.IsDelete == 0) rdbIsDelete.Checked = true;
-            if (department.IsDelete == 1) rdbIsDelete.Checked = false;
+            var actives = departmentBus.GetAllActive();
+            if (actives.Count > 0)
+            {
+                cmbActive.DataSource = actives;
+                cmbActive.ValueMember = "Id";
+                cmbActive.DisplayMember = "Name";
+
+
+            }
+            else
+            {
+                MessageBox.Show("Priority have not data", "Status");
+            }
+
 
         }
         /// <summary>/// Button update event click
@@ -82,8 +105,8 @@ namespace Main.Department
                 DepartmentBUS departmentBus = new DepartmentBUS();
                 
                 department.DepartmentName = txtDepartmentName.Text;
-                department.Status = cbStatus.Checked ? 1 : 0;
-                department.IsDelete = rdbIsDelete.Checked ? 0 : 1;
+                department.Status = int.Parse(cmbActive.SelectedValue.ToString());
+                department.IsDelete = 0;
                 department.Description = txtDescription.Text;
                 if (txtDepartmentName.Text != "" && txtDescription.Text != "")
                 {

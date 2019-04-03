@@ -31,3 +31,14 @@ E:\New folder\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInpu
 E:\New folder\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CopyComplete
 E:\New folder\EmployeeManagerment\Entity\obj\Debug\Entity.dll
 E:\New folder\EmployeeManagerment\Entity\obj\Debug\Entity.pdb
+E:\BuiCongDai\EmployeeManagerment\Entity\bin\Debug\Entity.dll
+E:\BuiCongDai\EmployeeManagerment\Entity\bin\Debug\Entity.pdb
+E:\BuiCongDai\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll
+E:\BuiCongDai\EmployeeManagerment\Entity\bin\Debug\Oracle.ManagedDataAccess.dll
+E:\BuiCongDai\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.pdb
+E:\BuiCongDai\EmployeeManagerment\Entity\bin\Debug\CommonLibrary.dll.config
+E:\BuiCongDai\EmployeeManagerment\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+E:\BuiCongDai\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+E:\BuiCongDai\EmployeeManagerment\Entity\obj\Debug\Entity.csproj.CopyComplete
+E:\BuiCongDai\EmployeeManagerment\Entity\obj\Debug\Entity.dll
+E:\BuiCongDai\EmployeeManagerment\Entity\obj\Debug\Entity.pdb

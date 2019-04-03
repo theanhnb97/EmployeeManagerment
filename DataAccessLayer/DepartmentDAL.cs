@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommonLibrary.Model;
 using DataAccessLayer.Helpers;
 using Entity;
 using log4net;
@@ -269,35 +271,22 @@ namespace DataAccessLayer
 
         public DataTable SearchDepartment(string keyword)
         {
-            try
-            {
+            int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
+            
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
                 using (OracleConnection connection = Connection.GetConnection)
                 {
-                    OracleDataAdapter da = new OracleDataAdapter();
-                    OracleCommand cmd = new OracleCommand();
-
-                    cmd = new OracleCommand("Department_Search", connection);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_departmentName", keyword);
-                    cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-                    da.SelectCommand = cmd;
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    return dt;
-
-
+                  OracleParameter[] parameters=new OracleParameter[]
+                  {
+                      new OracleParameter("p_departmentName",keyword),
+                      new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output),
+                  };
+                  return sqlHelp.ExcuteQuery("Department_SearchAll", CommandType.StoredProcedure, connection,
+                      parameters);
                 }
 
-            }
-            catch (Exception e)
-            {
-                ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                logger.Debug(e.Message);
-                return null;
-
-            }
+            
+            
 
         }
         public int DeleteNoRemove(int id)
@@ -330,7 +319,7 @@ namespace DataAccessLayer
                 return 0;
             }
         }
-        public DataTable GetAllPage(int currPage, int recodperpage, int Pagesize)
+        public DataTable GetAllPage(int currPage, int recodperpage)
         {
             try
             {
@@ -345,7 +334,7 @@ namespace DataAccessLayer
 
                     cmd.Parameters.Add("currPage", currPage);
                     cmd.Parameters.Add("recodperpage", recodperpage);
-                    cmd.Parameters.Add("Pagesize", Pagesize);
+                    
                     cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
                     da.SelectCommand = cmd;
@@ -435,6 +424,20 @@ namespace DataAccessLayer
                 }
             }
             return employees;
+        }
+
+        public List<Active> GetAllActive()
+        {
+            
+            
+                List<Active> list = new List<Active>
+                {
+                    new Active(0,"No Active"),
+                    new Active(1,"Active"),
+
+                };
+                return list;
+            
         }
     }
 }

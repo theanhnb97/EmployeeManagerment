@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entity;
 using DataAccessLayer;
+using CommonLibrary.Model;
 
 namespace BusinessLayer
 {
@@ -59,29 +60,31 @@ namespace BusinessLayer
             return departmentDal.Update(department);
         }
 
-        public DataTable SearchDepartment(string keyword)
-        {
-            return departmentDal.SearchDepartment(keyword);
-        }
+        
 
         public int DeleteNoRemove(int id)
         {
             return departmentDal.DeleteNoRemove(id);
         }
 
-        public DataTable GetAllPage(int currPage, int recodperpage, int Pagesize)
+        public DataTable GetAllPage(int currPage, int recodperpage)
         {
-            return departmentDal.GetAllPage(currPage, recodperpage, Pagesize);
+            return departmentDal.GetAllPage(currPage, recodperpage);
         }
 
-        public DataTable SearchDepartment(string keyword, int currPage, int recodperpage, int Pagesize)
+       public  DataTable SearchDepartment(string keyword)
         {
-            return departmentDal.SearchDepartment(keyword, currPage, recodperpage, Pagesize);
+            return departmentDal.SearchDepartment(keyword );
         }
 
         public DataTable GetDepartmentAll()
         {
             return departmentDal.GetDepartmentAll();
+        }
+
+        public List<Active> GetAllActive()
+        {
+            return departmentDal.GetAllActive();
         }
     }
 }

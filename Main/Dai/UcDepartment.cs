@@ -58,9 +58,10 @@ namespace Main.Dai
             
             
             int pageSize = (departmentBus.GetAll().Rows.Count) /item+1 ;
-           dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);//get datagridview 
+           dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item);//get datagridview 
 
-                lblPage.Text = cusPage.ToString() + '/' + pageSize;
+           lblCurent.Text = "1";
+           lblPage.Text = pageSize.ToString();
 
         }
         /// <summary>/// Button search event click
@@ -71,7 +72,7 @@ namespace Main.Dai
         /// <remarks></remarks>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string keyword = txtDepartmentName.Text;
+            string keyword = txtDepartmentName.Text.Trim();
             DepartmentBUS departmentBus = new DepartmentBUS();
            
             if (txtDepartmentName.Text == "")
@@ -80,8 +81,8 @@ namespace Main.Dai
             }
             else
             {
-                dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword,cusPage,item,20);
-                txtDepartmentName.Text = "";
+                dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword);
+                
             }
             
         }
@@ -129,7 +130,7 @@ namespace Main.Dai
                     {
                         MessageBox.Show("Delete Complete","Delete Message",MessageBoxButtons.OK);
                         
-                    dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage,item,20);
+                    dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage,item);
                     }
                     else
                     {
@@ -158,8 +159,9 @@ namespace Main.Dai
             DepartmentBUS departmentBus = new DepartmentBUS();
             int item = int.Parse(ConfigurationManager.AppSettings["pageSize"].ToString());
             int pageSize = (departmentBus.GetAll().Rows.Count) / item+1;//get Pagesize
-            dgvDepartment.DataSource = departmentBus.GetAllPage(1,item,20);
-            lblPage.Text =  "1/" + pageSize;
+            dgvDepartment.DataSource = departmentBus.GetAllPage(1,item);
+            lblCurent.Text = "1";
+            lblPage.Text = pageSize.ToString();
         }
 
         /// <summary>/// Button next event click
@@ -176,13 +178,15 @@ namespace Main.Dai
             if (cusPage < pageSize)//if cusPage<pagesize
         {
             cusPage++;
-            lblPage.Text = cusPage.ToString() + '/' + pageSize;
-            dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);
+            lblCurent.Text = cusPage.ToString();
+            lblPage.Text = pageSize.ToString();
+                dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item);
             }
         else
         {
-            lblPage.Text = pageSize+"/"+pageSize;
-        }
+            lblCurent.Text = pageSize.ToString();
+            lblPage.Text = pageSize.ToString();
+            }
 
         }
 
@@ -206,14 +210,15 @@ namespace Main.Dai
             if (cusPage>=1)
             {
                 cusPage--;
-                lblPage.Text = cusPage.ToString() + '/' + pageSize;
-                dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item, 20);
+                lblCurent.Text = cusPage.ToString();
+                lblPage.Text = pageSize.ToString();
+                dgvDepartment.DataSource = departmentBus.GetAllPage(cusPage, item);
             } 
             if(cusPage<1)
             {
-                cusPage = 1;
-                lblPage.Text = "1/" + pageSize;
-                dgvDepartment.DataSource = departmentBus.GetAllPage(1, item, 20);
+                lblCurent.Text = "1";
+                lblPage.Text = pageSize.ToString();
+                dgvDepartment.DataSource = departmentBus.GetAllPage(1, item);
             }
 
         }
@@ -235,10 +240,10 @@ namespace Main.Dai
                 {
 
                     case "1":
-                        e.Value = "Status";
+                        e.Value = "Active";
                         break;
                     case "0":
-                        e.Value = "NoStatus";
+                        e.Value = "No Active";
                         break;
 
                 }
@@ -263,43 +268,10 @@ namespace Main.Dai
             }
         }
 
-        private void btnCannel_Click(object sender, EventArgs e)
-        {
-            
-        }
-        private void dgvDepartment_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+     
 
-        }
+       
 
-        private void dgvDepartment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btFillall_Click(object sender, EventArgs e)
-        {
-            DepartmentBUS departmentBus = new DepartmentBUS();
-            dgvDepartment.DataSource=departmentBus.GetDepartmentAll();
-        }
-
-        private void cbPage_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbPage_SelectedValueChanged(object sender, EventArgs e)
-        {
-            DepartmentBUS departmentBus = new DepartmentBUS();
-           
-            int pageSize = (departmentBus.GetAll().Rows.Count) / item + 1;//get Pagesize
-            dgvDepartment.DataSource = departmentBus.GetAllPage(1, item, 20);
-            lblPage.Text = "1/" + pageSize;
-        }
-
-        private void Action_Enter(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

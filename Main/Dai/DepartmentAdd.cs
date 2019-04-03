@@ -15,6 +15,7 @@ namespace Main.Department
 {
     public partial class DepartmentAdd : Form
     {
+        DepartmentBUS departmentBus = new DepartmentBUS();
         //Created by The anh (28/3/2019)
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
@@ -49,7 +50,19 @@ namespace Main.Department
         }
         private void DepartmentAdd_Load(object sender, EventArgs e)
         {
+            var actives = departmentBus.GetAllActive();
+            if (actives.Count > 0)
+            {
+                cmbActive.DataSource = actives;
+                cmbActive.ValueMember = "Id";
+                cmbActive.DisplayMember = "Name";
+                
 
+            }
+            else
+            {
+                MessageBox.Show("Priority have not data", "Status");
+            }
         }
         /// <summary>/// Button add event click
         /// </summary>
@@ -64,7 +77,7 @@ namespace Main.Department
                 DepartmentBUS departmentBus = new DepartmentBUS();
                 Entity.Department department = new Entity.Department();
                 department.DepartmentName = txtDepartmentName.Text;
-                department.Status = cbStatus.Checked ? 1 : 0;
+                department.Status = int.Parse(cmbActive.SelectedValue.ToString());
                 department.IsDelete = 0;
                 department.Description = txtDescription.Text;
                 if (txtDepartmentName.Text != "" && txtDescription.Text != "")
