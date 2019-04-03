@@ -1,52 +1,82 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BusinessLayer;
-using Entity.DTO;
+﻿using System.Threading;
+using Main.Dong;
 
 namespace Main
 {
+    using BusinessLayer;
+    using System;
+    using System.Data;
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// Defines the <see cref="Employees" />
+    /// </summary>
     public partial class Employees : UserControl
     {
+        /// <summary>
+        /// Defines the employeeBus
+        /// </summary>
         private readonly EmployeeBus employeeBus = new EmployeeBus();
 
+        /// <summary>
+        /// Defines the departmentBus
+        /// </summary>
         private readonly DepartmentBUS departmentBus = new DepartmentBUS();
 
-        public static Entity.Employee employeeForUpdate = new Entity.Employee();
+        /// <summary>
+        /// Defines the employeeForUpdate
+        /// </summary>
+        public static Entity.Employee EmployeeForUpdate = new Entity.Employee();
 
+        /// <summary>
+        /// Defines the IsCreated
+        /// </summary>
         public static bool IsCreated;
 
+        /// <summary>
+        /// Defines the myRolesActionBus
+        /// </summary>
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
 
-        protected int RolesID { get; set; }
+        /// <summary>
+        /// Gets or sets the RolesID
+        /// </summary>
+        protected int RolesId { get; set; }
 
+        /// <summary>
+        /// The OnLoad
+        /// </summary>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         protected override void OnLoad(EventArgs e)
         {
-            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
-            bool result = RolesID == 1;
-            string ucName = base.Name + ".";
-            string Action = "";
+            var myDataTable = myRolesActionBus.GetTrue(RolesId);
+            var result = RolesId == 1;
+            var ucName = Name + ".";
+            var action = "";
             foreach (DataRow item in myDataTable.Rows)
-                Action += item["ACTIONNAME"].ToString().Trim() + ".";
-            if (Action.Contains(ucName)) result = true;
+                action += item["ACTIONNAME"].ToString().Trim() + ".";
+            if (action.Contains(ucName)) result = true;
             if (result)
                 base.OnLoad(e);
             else
-                this.Hide();
+                Hide();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Employees"/> class.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
         public Employees(int id)
         {
-            this.RolesID = id;
+            RolesId = id;
             InitializeComponent();
         }
 
+        /// <summary>
+        /// The Employees_Load
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void Employees_Load(object sender, EventArgs e)
         {
             dgv_employee.DataSource = employeeBus.GetAll();
@@ -59,32 +89,54 @@ namespace Main
             cbbDepartment_Search.DisplayMember = "DepartmentName";
             cbbDepartment_Search.ValueMember = "DepartmentID";
             cbbDepartment_Search.SelectedValue = 0;
-
         }
 
+        /// <summary>
+        /// The btnAdd_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             IsCreated = true;
-            Employee formEmployee = new Employee(RolesID);
-            formEmployee.Show();
+            Employee formEmployee = new Employee(RolesId);
+            formEmployee.ShowDialog();
+            Employees_Load(sender, e);
+
         }
 
+       
+        /// <summary>
+        /// The btnEdit_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
             IsCreated = false;
-            Employee frmEmployee = new Employee(RolesID);
+            Employee frmEmployee = new Employee(RolesId);
             frmEmployee.ShowDialog();
         }
 
+        /// <summary>
+        /// The dgv_employee_CellClick
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="DataGridViewCellEventArgs"/></param>
         private void dgv_employee_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dgv_employee.CurrentCell.RowIndex;
             int employeeId = Convert.ToInt32(dgv_employee.Rows[index].Cells["ID"].Value.ToString());
-            employeeForUpdate = employeeBus.GetByEmployeeId(employeeId);
+            EmployeeForUpdate = employeeBus.GetByEmployeeId(employeeId);
             btnDelete.Enabled = true;
             btnEdit.Enabled = true;
         }
 
+        /// <summary>
+        /// The btnClear_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtIdentity_Search.Text = "";
@@ -94,6 +146,11 @@ namespace Main
             cbbDepartment_Search.SelectedValue = 0;
         }
 
+        /// <summary>
+        /// The btnDelete_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int index = dgv_employee.CurrentCell.RowIndex;
@@ -114,6 +171,11 @@ namespace Main
             }
         }
 
+        /// <summary>
+        /// The btnLoadData_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnLoadData_Click(object sender, EventArgs e)
         {
             Entity.Employee employeeForSearch = new Entity.Employee

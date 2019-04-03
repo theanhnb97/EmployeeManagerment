@@ -1,38 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Schema;
-using BusinessLayer;
-using CommonLibrary.Enumerator;
-using DataAccessLayer.Enum;
-using log4net;
-
-namespace Main
+﻿namespace Main
 {
+    using BusinessLayer;
+    using CommonLibrary.Enumerator;
+    using DataAccessLayer.Enum;
+    using log4net;
+    using System;
+    using System.Data;
+    using System.Text.RegularExpressions;
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// Defines the <see cref="Employee" />
+    /// </summary>
     public partial class Employee : Form
     {
+        /// <summary>
+        /// Defines the myRolesActionBus
+        /// </summary>
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
+
+        /// <summary>
+        /// Defines the departmentBus
+        /// </summary>
         private readonly DepartmentBUS departmentBus = new DepartmentBUS();
+
+        /// <summary>
+        /// Defines the employeeBus
+        /// </summary>
         private readonly EmployeeBus employeeBus = new EmployeeBus();
+
+        /// <summary>
+        /// Defines the rolesBul
+        /// </summary>
         private readonly RolesBUL rolesBul = new RolesBUL();
 
-        protected int RolesID { get; set; }
+        /// <summary>
+        /// Gets or sets the RolesID
+        /// </summary>
+        protected int RolesId { get; set; }
+
+        /// <summary>
+        /// The OnLoad
+        /// </summary>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         protected override void OnLoad(EventArgs e)
         {
-            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
-            bool result = RolesID == 1;
-            string formName = base.Name + ".";
-            string Action = "";
+            var myDataTable = myRolesActionBus.GetTrue(RolesId);
+            var result = RolesId == 1;
+            var formName = base.Name + ".";
+            string action = "";
             foreach (DataRow item in myDataTable.Rows)
-                Action += item["ACTIONNAME"].ToString().Trim() + ".";
-            if (Action.Contains(formName)) result = true;
+                action += item["ACTIONNAME"].ToString().Trim() + ".";
+            if (action.Contains(formName)) result = true;
             if (result)
                 base.OnLoad(e);
             else
@@ -42,12 +61,21 @@ namespace Main
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Employee"/> class.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
         public Employee(int id)
         {
-            RolesID = id;
+            RolesId = id;
             InitializeComponent();
         }
 
+        /// <summary>
+        /// The btnAdd_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -57,22 +85,24 @@ namespace Main
                 {
                     if (CheckValidEmail(txtEmail.Text))
                     {
-                        Entity.Employee employee = new Entity.Employee();
-                        employee.FullName = txtFullName.Text;
-                        employee.Address = txtAddress.Text;
-                        employee.DepartmentId = Convert.ToInt64(cbbDepartment.SelectedValue);
-                        employee.Email = txtEmail.Text;
-                        employee.Identity = txtIdentity.Text;
-                        employee.Password = txtPassword.Text;
-                        employee.RolesId = Convert.ToInt64(cbbRole.SelectedValue);
-                        employee.Phone = txtPhone.Text;
-                        employee.UserName = txtUserName.Text;
-                        employee.IsDelete = 0;
-                        employee.Status = Convert.ToInt16(cbbStatus.SelectedValue);
-                        employee.Rank = Convert.ToInt16(cbbRank.SelectedValue);
+                        var employee = new Entity.Employee
+                        {
+                            FullName = txtFullName.Text,
+                            Address = txtAddress.Text,
+                            DepartmentId = Convert.ToInt64(cbbDepartment.SelectedValue),
+                            Email = txtEmail.Text,
+                            Identity = txtIdentity.Text,
+                            Password = txtPassword.Text,
+                            RolesId = Convert.ToInt64(cbbRole.SelectedValue),
+                            Phone = txtPhone.Text,
+                            UserName = txtUserName.Text,
+                            IsDelete = 0,
+                            Status = Convert.ToInt16(cbbStatus.SelectedValue),
+                            Rank = Convert.ToInt16(cbbRank.SelectedValue)
+                        };
                         if (Employees.IsCreated == false)
                         {
-                            employee.EmployeeId = Employees.employeeForUpdate.EmployeeId;
+                            employee.EmployeeId = Employees.EmployeeForUpdate.EmployeeId;
                         }
 
                         if (CheckValidUserName(Convert.ToInt32(employee.EmployeeId), Employees.IsCreated,
@@ -139,6 +169,11 @@ namespace Main
             }
         }
 
+        /// <summary>
+        /// The Employee_Load
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void Employee_Load(object sender, EventArgs e)
         {
             cbbStatus.DataSource = Enumerator.BindEnumToCombobox<Enumeration.Status>(cbbStatus, Enumeration.Status.AMember);
@@ -151,108 +186,122 @@ namespace Main
             cbbRole.ValueMember = "ROLESID";
 
             // for update employee
-            if (Employees.IsCreated == false && Employees.employeeForUpdate.EmployeeId != 0)
+            if (Employees.IsCreated == false && Employees.EmployeeForUpdate.EmployeeId != 0)
             {
-                txtFullName.Text = Employees.employeeForUpdate.FullName;
-                txtAddress.Text = Employees.employeeForUpdate.Address;
-                txtEmail.Text = Employees.employeeForUpdate.Email;
-                txtIdentity.Text = Employees.employeeForUpdate.Identity;
-                txtPassword.Text = Employees.employeeForUpdate.Password;
-                txtPhone.Text = Employees.employeeForUpdate.Phone;
-                txtUserName.Text = Employees.employeeForUpdate.UserName;
-                cbbStatus.SelectedIndex = cbbStatus.FindString(Enumerator.GetDescription((Enumeration.Status)Employees.employeeForUpdate.Status));
-                cbbRank.SelectedIndex = cbbRank.FindString(Enumerator.GetDescription((Enumeration.Rank)Employees.employeeForUpdate.Rank));
-                cbbDepartment.SelectedValue = Employees.employeeForUpdate.DepartmentId;
-                cbbRole.SelectedValue = Employees.employeeForUpdate.RolesId;
+                txtFullName.Text = Employees.EmployeeForUpdate.FullName;
+                txtAddress.Text = Employees.EmployeeForUpdate.Address;
+                txtEmail.Text = Employees.EmployeeForUpdate.Email;
+                txtIdentity.Text = Employees.EmployeeForUpdate.Identity;
+                txtPassword.Text = Employees.EmployeeForUpdate.Password;
+                txtPhone.Text = Employees.EmployeeForUpdate.Phone;
+                txtUserName.Text = Employees.EmployeeForUpdate.UserName;
+                cbbStatus.SelectedIndex = cbbStatus.FindString(Enumerator.GetDescription((Enumeration.Status)Employees.EmployeeForUpdate.Status));
+                cbbRank.SelectedIndex = cbbRank.FindString(Enumerator.GetDescription((Enumeration.Rank)Employees.EmployeeForUpdate.Rank));
+                cbbDepartment.SelectedValue = Employees.EmployeeForUpdate.DepartmentId;
+                cbbRole.SelectedValue = Employees.EmployeeForUpdate.RolesId;
             }
         }
 
+        /// <summary>
+        /// The CheckValidForm
+        /// </summary>
+        /// <returns>The <see cref="bool"/></returns>
         public bool CheckValidForm()
         {
-            if (txtFullName.Text.Trim() == "" || txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "" || txtPassword.Text.Trim() == "" || txtEmail.Text.Trim() == "" || txtPhone.Text.Trim()=="" || txtAddress.Text.Trim()=="")
+            if (txtFullName.Text.Trim() == "" || txtUserName.Text.Trim() == "" || txtPassword.Text.Trim() == "" || txtPassword.Text.Trim() == "" || txtEmail.Text.Trim() == "" || txtPhone.Text.Trim() == "" || txtAddress.Text.Trim() == "")
             {
                 return false;
             }
             return true;
         }
 
+        /// <summary>
+        /// The CheckValidEmail
+        /// </summary>
+        /// <param name="email">The email<see cref="string"/></param>
+        /// <returns>The <see cref="bool"/></returns>
         public bool CheckValidEmail(string email)
         {
             var regex = new Regex(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
             return regex.IsMatch(email);
         }
 
-        public bool CheckValidIdentity(int employeeId,bool isCreated,string identity)
+        /// <summary>
+        /// The CheckValidIdentity
+        /// </summary>
+        /// <param name="employeeId">The employeeId<see cref="int"/></param>
+        /// <param name="isCreated">The isCreated<see cref="bool"/></param>
+        /// <param name="identity">The identity<see cref="string"/></param>
+        /// <returns>The <see cref="bool"/></returns>
+        public bool CheckValidIdentity(int employeeId, bool isCreated, string identity)
         {
-            Entity.Employee employee = employeeBus.GetByIdentity(identity);
-            if (isCreated == true && employee.EmployeeId != 0)
+            var employee = employeeBus.GetByIdentity(identity);
+            if (isCreated && employee.EmployeeId != 0)
             {
                 return false;
             }
 
-            if (isCreated == false && employee.EmployeeId != 0)
-            {
-                if (employee.EmployeeId == employeeId)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            return true;
+            if (isCreated || employee.EmployeeId == 0) return true;
+            return employee.EmployeeId == employeeId;
         }
 
-        public bool CheckValidUserName(int employeeId,bool isCreated, string userName)
+        /// <summary>
+        /// The CheckValidUserName
+        /// </summary>
+        /// <param name="employeeId">The employeeId<see cref="int"/></param>
+        /// <param name="isCreated">The isCreated<see cref="bool"/></param>
+        /// <param name="userName">The userName<see cref="string"/></param>
+        /// <returns>The <see cref="bool"/></returns>
+        public bool CheckValidUserName(int employeeId, bool isCreated, string userName)
         {
-            Entity.Employee employee = employeeBus.GetByUsername(userName);
-            if (isCreated == true && employee.EmployeeId != 0)  // init instance -> not null -> check id
-            {
-                return false;
-            }
-
+            var employee = employeeBus.GetByUsername(userName);
+            if (isCreated && employee.EmployeeId != 0) return false;
             if (isCreated == false && employee.EmployeeId != 0)
             {
-                if (employee.EmployeeId == employeeId)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return employee.EmployeeId == employeeId;
             }
+
             return true;
+
         }
 
+        /// <summary>
+        /// The btnCancel_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
+        /// <summary>
+        /// The label12_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
         private void label12_Click(object sender, EventArgs e)
         {
-
         }
 
+        /// <summary>
+        /// The txtIdentity_KeyPress
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="KeyPressEventArgs"/></param>
         private void txtIdentity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
-
-            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            //    (e.KeyChar != '.'))
-            // cho phép nhập .
-            // only allow one decimal point
-            //if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            //{
-            //    e.Handled = true;
-            //}
         }
 
+        /// <summary>
+        /// The txtPhone_KeyPress
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="KeyPressEventArgs"/></param>
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))

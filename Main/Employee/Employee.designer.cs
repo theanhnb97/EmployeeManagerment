@@ -136,9 +136,9 @@
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(198, 23);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(70, 15);
+            this.lblTitle.Size = new System.Drawing.Size(71, 15);
             this.lblTitle.TabIndex = 48;
-            this.lblTitle.Text = "Employee";
+            this.lblTitle.Text = "Nhân viên";
             // 
             // btnCancel
             // 
@@ -203,6 +203,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(215, 20);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // label5
             // 
@@ -447,7 +448,8 @@
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtPassword);
             this.Name = "Employee";
-            this.Text = "Employee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Nhân viên";
             this.Load += new System.EventHandler(this.Employee_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

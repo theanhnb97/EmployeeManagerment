@@ -164,9 +164,9 @@
             this.lblPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPage.Location = new System.Drawing.Point(736, 361);
             this.lblPage.Name = "lblPage";
-            this.lblPage.Size = new System.Drawing.Size(37, 15);
+            this.lblPage.Size = new System.Drawing.Size(30, 15);
             this.lblPage.TabIndex = 8;
-            this.lblPage.Text = "1 / 10";
+            this.lblPage.Text = "1 / 1";
             // 
             // dgv_employee
             // 
