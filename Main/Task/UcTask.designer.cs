@@ -113,7 +113,7 @@
             // btnLoadData
             // 
             this.btnLoadData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadData.Location = new System.Drawing.Point(472, 85);
+            this.btnLoadData.Location = new System.Drawing.Point(512, 85);
             this.btnLoadData.Name = "btnLoadData";
             this.btnLoadData.Size = new System.Drawing.Size(75, 23);
             this.btnLoadData.TabIndex = 4;
@@ -124,7 +124,7 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(603, 85);
+            this.btnClear.Location = new System.Drawing.Point(616, 85);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 5;
@@ -200,6 +200,7 @@
             this.dgvTask.Size = new System.Drawing.Size(803, 340);
             this.dgvTask.TabIndex = 0;
             this.dgvTask.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTask_CellClick);
+            this.dgvTask.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTask_CellDoubleClick);
             this.dgvTask.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTask_CellFormatting);
             // 
             // btnNext

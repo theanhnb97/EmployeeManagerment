@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Configuration;
 using System.Data;
+using System.Security.Policy;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using BusinessLayer;
 using CommonLibrary.Model;
@@ -58,6 +60,7 @@ namespace Main
                 dgvTask.Columns[9].Visible = false;
                 dgvTask.Columns[10].Visible = false;
                 dgvTask.Columns[11].Visible = false;
+
                 lblPage.Text = (allData.Rows.Count % pageSize == 0)
                     ? (allData.Rows.Count / pageSize).ToString()
                     : ((allData.Rows.Count / pageSize) + 1).ToString();
@@ -97,6 +100,7 @@ namespace Main
                     cvDueDate, 1);
                 lblCurent.Text = "1";
                 pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
+
 
                 if (firstPage.Rows.Count > 0)
                 {
@@ -256,6 +260,7 @@ namespace Main
                         if (objTaskBus.GetAll(0).Rows.Count > 0 && objTaskBus.GetAll(0) != null)
                         {
                             dgvTask.DataSource = objTaskBus.GetAll(0);
+
                         }
                         else
                         {
@@ -267,7 +272,6 @@ namespace Main
                         MessageBox.Show("Error!");
                     }
                 }
-
             }
         }
         /// <summary>
@@ -307,46 +311,46 @@ namespace Main
 
                 if (Convert.ToInt32(dgvTask.CurrentRow.Cells["Mã"].Value.ToString()) <= 0)
                 {
-                    MessageBox.Show("Id not exist!");
+                    MessageBox.Show("Mã Không Tồn Tại!");
                 }
                 else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["Tên Nhiệm Vụ"].Value.ToString().Trim()))
                 {
-                    MessageBox.Show("Task name not exist!");
+                    MessageBox.Show("Tên Không Tồn Tại!");
                 }
                 else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["EMPLOYEEID"].Value.ToString()) <= 0
                          || string.Empty.Equals(dgvTask.CurrentRow.Cells["EMPLOYEEID"].Value.ToString().Trim()))
                 {
-                    MessageBox.Show("Employee not exist!");
+                    MessageBox.Show("Nhân Viên Không Tồn Tại!");
                 }
                 else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["Tiến Độ"].Value.ToString()))
                 {
-                    MessageBox.Show("Status empty!");
+                    MessageBox.Show("Tiến Độ Trống!");
                 }
                 else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["Tiến Độ"].Value.ToString()) <= 0)
                 {
-                    MessageBox.Show("Status Fail!");
+                    MessageBox.Show("Tiến Độ Không Hợp Lệ!");
                 }
                 else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["Hạn Chót"].Value.ToString().Trim()))
                 {
-                    MessageBox.Show("DUEDATE empty!");
+                    MessageBox.Show("Hạn Chót Trống!");
                 }
                 else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["Mức Độ"].Value.ToString().Trim())
                          || Convert.ToInt32(dgvTask.CurrentRow.Cells["Mức Độ"].Value.ToString()) <= 0)
                 {
-                    MessageBox.Show("PRIORITY Fail!");
+                    MessageBox.Show("Mức Độ Không Hợp Lệ!");
                 }
                 else if (string.Empty.Equals(dgvTask.CurrentRow.Cells["Mô Tả"].Value.ToString().Trim()))
                 {
-                    MessageBox.Show("DESCRIPTION empty!");
+                    MessageBox.Show("Mô Tả Trống!");
                 }
                 else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString()) <= 0
                          || string.Empty.Equals(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString().Trim()))
                 {
-                    MessageBox.Show("DEPARTMENT Not Exited!");
+                    MessageBox.Show("Phòng / Ban Không Tồn Tại!");
                 }
                 else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["Tiến Độ"].Value.ToString()) == 3)
                 {
-                    MessageBox.Show("Cannot Edit When Status Doned!");
+                    MessageBox.Show("Không Thể Xóa Nhiệm Vụ Khi Đã Hoàn Thành!");
                 }
                 else
                 {
@@ -406,6 +410,29 @@ namespace Main
             lblCurent.Text = page.ToString();
             dgvTask.DataSource = objTaskBus.GetAll(page);
             dgvTask.Columns["RN"].Visible = false;
+        }
+
+        private void dgvTask_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvTask.CurrentRow != null)
+            {
+                string link = dgvTask.CurrentRow.Cells["Tệp"].Value.ToString();
+                if (!string.Empty.Equals(link))
+                {
+                    DialogResult dialog = MessageBox.Show("Bạn Có Muốn Xem Hoặc Tải Tệp?", "Xác Nhận", MessageBoxButtons.YesNo);
+                    if (dialog == DialogResult.Yes)
+                    {
+                        if (Regex.IsMatch(link, @"^http(s)?://([\w-]+.)+[\w-]+(/[\w- ./?%&=])?$"))
+                        {
+                            System.Diagnostics.Process.Start(link);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Đường Dẫn Không Đúng Định Dạng");
+                        }
+                    }
+                }
+            }
         }
     }
 }
