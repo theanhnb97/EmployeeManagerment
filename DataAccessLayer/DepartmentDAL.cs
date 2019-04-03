@@ -308,12 +308,12 @@ namespace DataAccessLayer
         /// </summary>
         /// <param name="keyword">The keyword<see cref="string"/></param>
         /// <returns>The <see cref="DataTable"/></returns>
-        public DataTable SearchDepartment(string keyword,int page)
+        public DataTable SearchDepartment(string keyword)
         {
-            int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
+           
             
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
-                int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
+                
                 using (OracleConnection connection = Connection.GetConnection)
                 {
                   OracleParameter[] parameters=new OracleParameter[]

@@ -64,7 +64,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(809, 57);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            
             // 
             // label1
             // 
@@ -75,7 +75,7 @@
             this.label1.Size = new System.Drawing.Size(156, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Task Management";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // btnEdit
             // 
@@ -153,7 +153,7 @@
             this.grbTaskList.TabIndex = 3;
             this.grbTaskList.TabStop = false;
             this.grbTaskList.Text = "Task List";
-            this.grbTaskList.Enter += new System.EventHandler(this.grbTaskList_Enter);
+          
             // 
             // label2
             // 
@@ -164,7 +164,7 @@
             this.label2.Size = new System.Drawing.Size(10, 15);
             this.label2.TabIndex = 16;
             this.label2.Text = "/";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            
             // 
             // lblCurent
             // 
@@ -175,7 +175,7 @@
             this.lblCurent.Size = new System.Drawing.Size(14, 15);
             this.lblCurent.TabIndex = 15;
             this.lblCurent.Text = "1";
-            this.lblCurent.Click += new System.EventHandler(this.lblCurent_Click);
+            
             // 
             // label2
             // 
@@ -206,7 +206,7 @@
             this.lblPage.Size = new System.Drawing.Size(21, 15);
             this.lblPage.TabIndex = 5;
             this.lblPage.Text = "10";
-            this.lblPage.Click += new System.EventHandler(this.lblPage_Click);
+            
             // 
             // dgvTask
             // 
@@ -225,7 +225,7 @@
             this.dgvTask.Size = new System.Drawing.Size(803, 340);
             this.dgvTask.TabIndex = 0;
             this.dgvTask.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTask_CellClick);
-            this.dgvTask.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTask_CellContentClick);
+            
             this.dgvTask.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTask_CellFormatting);
             // 
             // btnNext
@@ -282,7 +282,7 @@
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(150, 21);
             this.cmbDepartment.TabIndex = 3;
-            this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbDepartment_SelectedIndexChanged);
+            
             // 
             // dtpDeuDateFilter
             // 
@@ -292,7 +292,7 @@
             this.dtpDeuDateFilter.Name = "dtpDeuDateFilter";
             this.dtpDeuDateFilter.Size = new System.Drawing.Size(204, 20);
             this.dtpDeuDateFilter.TabIndex = 2;
-            this.dtpDeuDateFilter.ValueChanged += new System.EventHandler(this.dtpDeuDateFilter_ValueChanged);
+            
             // 
             // lbDepartment
             // 
@@ -302,7 +302,7 @@
             this.lbDepartment.Size = new System.Drawing.Size(68, 13);
             this.lbDepartment.TabIndex = 6;
             this.lbDepartment.Text = "Department :";
-            this.lbDepartment.Click += new System.EventHandler(this.lbDepartment_Click);
+            
             // 
             // lbDueDate
             // 
@@ -312,8 +312,7 @@
             this.lbDueDate.Size = new System.Drawing.Size(59, 13);
             this.lbDueDate.TabIndex = 9;
             this.lbDueDate.Text = "Due Date :";
-            this.lbDueDate.Click += new System.EventHandler(this.lbDueDate_Click);
-            // 
+            
             // label6
             // 
             this.label6.AutoSize = true;
@@ -322,7 +321,7 @@
             this.label6.Size = new System.Drawing.Size(68, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Task Name :";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+           
             // 
             // txtNameFilter
             // 

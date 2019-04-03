@@ -38,7 +38,7 @@ namespace Main.Dai
                 this.Hide();
         }
 
-         int item = int.Parse(ConfigurationManager.AppSettings["pageSize"].ToString());
+         
         int cusPage = 1;
         public UcDepartment(int id)
         {

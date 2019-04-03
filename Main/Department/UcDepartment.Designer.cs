@@ -91,11 +91,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(96, 32);
+            this.label6.Location = new System.Drawing.Point(96, 24);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 13);
+            this.label6.Size = new System.Drawing.Size(83, 13);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Tên phòng ban";
+            this.label6.Text = "Tên phòng ban:";
             // 
             // txtDepartmentName
             // 

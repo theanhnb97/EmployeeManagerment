@@ -17,7 +17,7 @@ namespace Main.Department
     {
         DepartmentBUS departmentBus = new DepartmentBUS();
         //Created by The anh (28/3/2019)
-        DepartmentBUS departmentBus = new DepartmentBUS();
+        
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
         protected int RolesID { get; set; }
         protected override void OnLoad(EventArgs e)
