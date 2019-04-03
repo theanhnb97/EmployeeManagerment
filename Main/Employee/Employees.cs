@@ -1,4 +1,7 @@
-﻿namespace Main
+﻿using System.Threading;
+using Main.Dong;
+
+namespace Main
 {
     using BusinessLayer;
     using System;
@@ -96,8 +99,15 @@
         private void btnAdd_Click(object sender, EventArgs e)
         {
             IsCreated = true;
+            Thread thread = new Thread((CallSaveDialog)) {ApartmentState = ApartmentState.STA};
+            thread.Start();
+            Employees_Load(sender, e);
+        }
+
+        private void CallSaveDialog()
+        {
             Employee formEmployee = new Employee(RolesId);
-            formEmployee.Show();
+            formEmployee.ShowDialog();
         }
 
         /// <summary>
