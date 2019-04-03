@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbbRecordNum = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lblAllPageSalary = new System.Windows.Forms.Label();
             this.lblPagingSalaryIndex = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtDeptFilter = new System.Windows.Forms.TextBox();
             this.txtNameFilter = new System.Windows.Forms.TextBox();
-            this.cbbRecordNum = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -79,7 +79,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 30);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Salary Management";
+            this.label1.Text = "Quản Lí Lương";
             // 
             // panel2
             // 
@@ -99,6 +99,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(809, 77);
             this.panel2.TabIndex = 2;
+            // 
+            // cbbRecordNum
+            // 
+            this.cbbRecordNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbRecordNum.FormattingEnabled = true;
+            this.cbbRecordNum.Location = new System.Drawing.Point(611, 6);
+            this.cbbRecordNum.Name = "cbbRecordNum";
+            this.cbbRecordNum.Size = new System.Drawing.Size(49, 21);
+            this.cbbRecordNum.TabIndex = 20;
+            this.cbbRecordNum.SelectedIndexChanged += new System.EventHandler(this.cbbRecordNum_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -159,7 +169,7 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 13;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -170,7 +180,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 12;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -181,7 +191,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 14;
-            this.btnDelete.Text = "Delete";
+            this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -192,7 +202,7 @@
             this.btnLoadData.Name = "btnLoadData";
             this.btnLoadData.Size = new System.Drawing.Size(75, 23);
             this.btnLoadData.TabIndex = 10;
-            this.btnLoadData.Text = "Search";
+            this.btnLoadData.Text = "Tìm kiếm";
             this.btnLoadData.UseVisualStyleBackColor = true;
             this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
             // 
@@ -203,7 +213,7 @@
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 11;
-            this.btnClear.Text = "Refresh";
+            this.btnClear.Text = "Làm mới";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -216,7 +226,7 @@
             this.groupBox1.Size = new System.Drawing.Size(809, 338);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Salary Information";
+            this.groupBox1.Text = "Thông tin lương";
             // 
             // dgvSalary
             // 
@@ -242,7 +252,7 @@
             this.groupBox2.Size = new System.Drawing.Size(809, 142);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filter area";
+            this.groupBox2.Text = "Tìm kiếm";
             // 
             // panelDate
             // 
@@ -274,27 +284,27 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(407, 24);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 16;
-            this.label5.Text = "To date";
+            this.label5.Text = "Đến ngày";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(103, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 17;
-            this.label2.Text = "From date";
+            this.label2.Text = "Từ ngày";
             // 
             // chkDate
             // 
             this.chkDate.AutoSize = true;
             this.chkDate.Location = new System.Drawing.Point(111, 53);
             this.chkDate.Name = "chkDate";
-            this.chkDate.Size = new System.Drawing.Size(135, 17);
+            this.chkDate.Size = new System.Drawing.Size(111, 17);
             this.chkDate.TabIndex = 17;
-            this.chkDate.Text = "Search By Create Date";
+            this.chkDate.Text = "Tìm theo ngày tạo";
             this.chkDate.UseVisualStyleBackColor = true;
             this.chkDate.CheckedChanged += new System.EventHandler(this.chkDate_CheckedChanged);
             // 
@@ -303,18 +313,18 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(406, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Department";
+            this.label4.Text = " Phòng";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(109, 25);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Name";
+            this.label6.Text = "Họ Tên";
             // 
             // txtDeptFilter
             // 
@@ -329,16 +339,6 @@
             this.txtNameFilter.Name = "txtNameFilter";
             this.txtNameFilter.Size = new System.Drawing.Size(201, 20);
             this.txtNameFilter.TabIndex = 12;
-            // 
-            // cbbRecordNum
-            // 
-            this.cbbRecordNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbRecordNum.FormattingEnabled = true;
-            this.cbbRecordNum.Location = new System.Drawing.Point(611, 6);
-            this.cbbRecordNum.Name = "cbbRecordNum";
-            this.cbbRecordNum.Size = new System.Drawing.Size(49, 21);
-            this.cbbRecordNum.TabIndex = 20;
-            this.cbbRecordNum.SelectedIndexChanged += new System.EventHandler(this.cbbRecordNum_SelectedIndexChanged);
             // 
             // SalaryManagement
             // 

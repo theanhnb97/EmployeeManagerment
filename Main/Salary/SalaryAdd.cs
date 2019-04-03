@@ -162,6 +162,27 @@ namespace Main.Dong
             }
             else MessageBox.Show("Please recheck, seem some value not fill");
         }
+
+
+        private void cbbBussiness_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbBasic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbCoefficient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
