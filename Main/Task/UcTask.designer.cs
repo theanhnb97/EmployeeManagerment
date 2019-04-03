@@ -79,22 +79,22 @@
             // 
             this.btnEdit.Enabled = false;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(228, 362);
+            this.btnEdit.Location = new System.Drawing.Point(323, 362);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 13;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(135, 362);
+            this.btnAdd.Location = new System.Drawing.Point(230, 362);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 12;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -102,11 +102,11 @@
             // 
             this.btnDelete.Enabled = false;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(319, 362);
+            this.btnDelete.Location = new System.Drawing.Point(414, 362);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 14;
-            this.btnDelete.Text = "Delete";
+            this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -117,7 +117,7 @@
             this.btnLoadData.Name = "btnLoadData";
             this.btnLoadData.Size = new System.Drawing.Size(75, 23);
             this.btnLoadData.TabIndex = 4;
-            this.btnLoadData.Text = "Search";
+            this.btnLoadData.Text = "Tìm Kiếm";
             this.btnLoadData.UseVisualStyleBackColor = true;
             this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
             // 
@@ -128,7 +128,7 @@
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 5;
-            this.btnClear.Text = "Refresh";
+            this.btnClear.Text = "Làm Mới";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -271,27 +271,27 @@
             this.lbDepartment.AutoSize = true;
             this.lbDepartment.Location = new System.Drawing.Point(438, 30);
             this.lbDepartment.Name = "lbDepartment";
-            this.lbDepartment.Size = new System.Drawing.Size(68, 13);
+            this.lbDepartment.Size = new System.Drawing.Size(66, 13);
             this.lbDepartment.TabIndex = 6;
-            this.lbDepartment.Text = "Department :";
+            this.lbDepartment.Text = "Phòng Ban :";
             // 
             // lbDueDate
             // 
             this.lbDueDate.AutoSize = true;
-            this.lbDueDate.Location = new System.Drawing.Point(103, 85);
+            this.lbDueDate.Location = new System.Drawing.Point(100, 85);
             this.lbDueDate.Name = "lbDueDate";
-            this.lbDueDate.Size = new System.Drawing.Size(59, 13);
+            this.lbDueDate.Size = new System.Drawing.Size(52, 13);
             this.lbDueDate.TabIndex = 9;
-            this.lbDueDate.Text = "Due Date :";
+            this.lbDueDate.Text = "Hạn Chót";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(98, 29);
+            this.label6.Location = new System.Drawing.Point(100, 29);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 13);
+            this.label6.Size = new System.Drawing.Size(59, 13);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Task Name :";
+            this.label6.Text = "Nhiệm Vụ :";
             // 
             // txtNameFilter
             // 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using System.Data;
-using System.Security.Policy;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using BusinessLayer;
@@ -164,7 +163,30 @@ namespace Main
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddTask objAddTask = new AddTask(RolesID);
-            objAddTask.ShowDialog();
+            if (objAddTask.ShowDialog() == DialogResult.OK)
+            {
+                pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
+                DataTable allData = objTaskBus.GetAll(0);
+                DataTable firstPage = objTaskBus.GetAll(1);
+
+                if (firstPage.Rows.Count > 0)
+                {
+                    dgvTask.DataSource = firstPage;
+                    dgvTask.Columns[9].Visible = false;
+                    dgvTask.Columns[10].Visible = false;
+                    dgvTask.Columns[11].Visible = false;
+
+                    lblPage.Text = (allData.Rows.Count % pageSize == 0)
+                        ? (allData.Rows.Count / pageSize).ToString()
+                        : ((allData.Rows.Count / pageSize) + 1).ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Task Table Not Data!");
+                }
+            }
+
+
         }
 
         /// <summary>
@@ -247,16 +269,17 @@ namespace Main
         private void btnDelete_Click(object sender, EventArgs e)
         {
 
-            DialogResult result = MessageBox.Show("You Want Delete?", "Warning", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Bạn Có Muốn Xóa?", "Cảnh Báo", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 //check null, space, id <=0
-                if (dgvTask.CurrentRow != null && (!string.Empty.Equals(dgvTask.CurrentRow.Cells["Mã"].Value.ToString()) || Convert.ToInt32(dgvTask.CurrentRow.Cells["Mã"].Value.ToString()) <= 0))
+                if (dgvTask.CurrentRow != null && (!string.Empty.Equals(dgvTask.CurrentRow.Cells["Mã"].Value.ToString())
+                                                   || Convert.ToInt32(dgvTask.CurrentRow.Cells["Mã"].Value.ToString()) > 0))
                 {
                     int id = Convert.ToInt32(dgvTask.CurrentRow.Cells["Mã"].Value.ToString());
                     if (objTaskBus.Delete(id) != 0)
                     {
-                        MessageBox.Show("Success", "Status");
+                        MessageBox.Show("Thành Công!", "Trạng Thái");
                         if (objTaskBus.GetAll(0).Rows.Count > 0 && objTaskBus.GetAll(0) != null)
                         {
                             dgvTask.DataSource = objTaskBus.GetAll(0);
@@ -264,12 +287,12 @@ namespace Main
                         }
                         else
                         {
-                            MessageBox.Show("Fail!", "Status");
+                            MessageBox.Show("Thất Bại!", "Trạng Thái");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Error!");
+                        MessageBox.Show("Lỗi Bất Thường!");
                     }
                 }
             }
@@ -378,10 +401,36 @@ namespace Main
                     TaskDTO.Department = department;
                     TaskDTO.IsDelete = isDelete;
 
-                    //call frm follow roles
+                    //call from follow roles
                     frmEditTask objFrmEditTask = new frmEditTask(RolesID);
-                    objFrmEditTask.ShowDialog();
+                    if (objFrmEditTask.ShowDialog() == DialogResult.OK)
+                    {
+                        pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
+                        DataTable allData = objTaskBus.GetAll(0);
+                        DataTable firstPage = objTaskBus.GetAll(1);
+
+                        if (firstPage.Rows.Count > 0)
+                        {
+                            dgvTask.DataSource = firstPage;
+                            dgvTask.Columns[9].Visible = false;
+                            dgvTask.Columns[10].Visible = false;
+                            dgvTask.Columns[11].Visible = false;
+
+                            lblPage.Text = (allData.Rows.Count % pageSize == 0)
+                                ? (allData.Rows.Count / pageSize).ToString()
+                                : ((allData.Rows.Count / pageSize) + 1).ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Task Table Not Data!");
+                        }
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Dữ Liệu Không Tồn Tại", "Trạng Thái");
+
             }
         }
 
