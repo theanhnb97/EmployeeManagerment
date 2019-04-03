@@ -19,15 +19,25 @@
     /// </summary>
     public partial class UcRolesAction : UserControl
     {
-        /// <summary>
-        /// Defines the myRolesActionBus
-        /// </summary>
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
 
-        /// <summary>
-        /// Gets or sets the RolesID
-        /// </summary>
         protected int RolesID { get; set; }
+
+        private readonly RolesBUL rolesBus = new RolesBUL();
+
+        private readonly ActionBUS actionBus = new ActionBUS();
+
+        private TableLayoutPanel tlpnData;
+
+        private TableLayoutPanel tlpnHeader;
+
+        private DataTable rolesTable;
+
+        private DataTable actionTable;
+
+        private DataTable allData;
+
+        private int m, n, x;
 
         /// <summary>
         /// The OnLoad
@@ -35,7 +45,7 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         protected override void OnLoad(EventArgs e)
         {
-            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            var myDataTable = myRolesActionBus.GetTrue(RolesID);
             bool result = RolesID == 1;
             string ucName = base.Name + ".";
             string Action = "";
@@ -47,22 +57,6 @@
             else
                 this.Hide();
         }
-
-        /// <summary>
-        /// Defines the myRoles
-        /// </summary>
-        internal RolesBUL myRoles = new RolesBUL();
-
-        /// <summary>
-        /// Defines the myAction
-        /// </summary>
-        internal ActionBUS myAction = new ActionBUS();
-
-        /// <summary>
-        /// Defines the tlpnData
-        /// </summary>
-        private TableLayoutPanel tlpnData;
-        private TableLayoutPanel tlpnHeader;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UcRolesAction"/> class.
@@ -77,16 +71,7 @@
             this.Controls.Add(tlpnHeader);
         }
 
-        /// <summary>
-        /// Defines the rolesTable, actionTable, allData
-        /// </summary>
-        private DataTable rolesTable, actionTable, allData;
-
-        /// <summary>
-        /// Defines the m, n, x
-        /// </summary>
-        private int m, n, x;
-
+        
         /// <summary>
         /// The CreateTable
         /// </summary>
@@ -117,7 +102,7 @@
         /// <returns>The <see cref="Label"/></returns>
         internal Label Getlabel(String Text)
         {
-            Label obj = new Label();
+            var obj = new Label();
             obj.Text = Text;
             obj.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
             obj.ForeColor = SystemColors.HotTrack;
@@ -130,8 +115,8 @@
         private void LoadForm()
         {
             tlpnData.Controls.Clear();
-            rolesTable = myRoles.Get();
-            actionTable = myAction.Get();
+            rolesTable = rolesBus.Get();
+            actionTable = actionBus.Get();
             allData = myRolesActionBus.Get();
             m = rolesTable.Rows.Count;
             n = actionTable.Rows.Count;
@@ -185,24 +170,6 @@
                 myOsSwitch.Value = allData.Rows[i]["ISTRUE"].ToString() != "0";
                 tlpnData.Controls.Add(myOsSwitch, cot, hang);
             }
-        }
-
-        /// <summary>
-        /// The UcRolesAction_Enter
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/></param>
-        /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void UcRolesAction_Enter(object sender, EventArgs e)
-        {
-        }
-
-        /// <summary>
-        /// The UcRolesAction_MouseClick
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/></param>
-        /// <param name="e">The e<see cref="MouseEventArgs"/></param>
-        private void UcRolesAction_MouseClick(object sender, MouseEventArgs e)
-        {
         }
 
         /// <summary>

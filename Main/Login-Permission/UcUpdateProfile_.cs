@@ -18,20 +18,10 @@
     /// </summary>
     public partial class UcUpdateProfile_ : UserControl
     {
-        /// <summary>
-        /// Defines the userName
-        /// </summary>
         private string userName;
 
-        /// <summary>
-        /// Defines the myEmployeeBus
-        /// </summary>
         private EmployeeBus myEmployeeBus;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UcUpdateProfile_"/> class.
-        /// </summary>
-        /// <param name="username">The username<see cref="string"/></param>
         public UcUpdateProfile_(string username)
         {
             myEmployeeBus = new EmployeeBus();
@@ -46,7 +36,7 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void UcUpdateProfile_Load(object sender, EventArgs e)
         {
-            Entity.Employee myEmployee = myEmployeeBus.GetByUsername(userName);
+            var myEmployee = myEmployeeBus.GetByUsername(userName);
             txtFullName.Text = myEmployee.FullName;
             txtEmail.Text = myEmployee.Email;
             txtAddress.Text = myEmployee.Address;
@@ -61,8 +51,8 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void txtEdit_Click(object sender, EventArgs e)
         {
-            BunifuMaterialTextbox myTextbox = (BunifuMaterialTextbox)sender;
-            myTextbox.Enabled = true;
+            var textBox = (BunifuMaterialTextbox)sender;
+            textBox.Enabled = true;
         }
 
         /// <summary>
@@ -81,10 +71,8 @@
         /// <param name="e">The e<see cref="KeyPressEventArgs"/></param>
         private void Key_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) /*&& (e.KeyChar != '.')*/)
-            {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 e.Handled = true;
-            }
         }
 
         /// <summary>
@@ -96,7 +84,7 @@
         {
             if (IsEmail(txtEmail.Text))
             {
-                Entity.Employee myEmployee = new Entity.Employee();
+                var myEmployee = new Entity.Employee();
                 myEmployee.FullName = txtFullName.Text;
                 myEmployee.Email = txtEmail.Text;
                 myEmployee.Address = txtAddress.Text;
@@ -117,13 +105,13 @@
         /// <summary>
         /// The IsEmail
         /// </summary>
-        /// <param name="emailaddress">The emailaddress<see cref="string"/></param>
+        /// <param name="emailAddress">The emailaddress<see cref="string"/></param>
         /// <returns>The <see cref="bool"/></returns>
-        public bool IsEmail(string emailaddress)
+        public bool IsEmail(string emailAddress)
         {
             try
             {
-                MailAddress m = new MailAddress(emailaddress);
+                var checkAddress = new MailAddress(emailAddress);
                 return true;
             }
             catch (FormatException)

@@ -69,16 +69,17 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void ActionManagement_Load(object sender, EventArgs e)
         {
-            Loadd();
+            dgvData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            LoadData();
         }
 
         /// <summary>
         /// The Loadd
         /// </summary>
-        public void Loadd()
+        public void LoadData()
         {
             dgvData.DataSource = myAction.GetList();
-            dgvData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvData.Rows[0].Selected = false;
         }
 
         /// <summary>
@@ -90,7 +91,7 @@
         {
             Action_Add formAdd = new Action_Add(RolesID);
             if (formAdd.ShowDialog() == DialogResult.OK)
-                Loadd();
+                LoadData();
         }
 
         /// <summary>
@@ -114,7 +115,7 @@
                     MessageBox.Show("Xoá thành công!");
                 else
                     MessageBox.Show("Xoá thất bại");
-                Loadd();
+                LoadData();
             }
         }
 
@@ -137,7 +138,7 @@
             myActionEdit.Description = dgvData.Rows[index].Cells[3].Value.ToString();
             Action_Add formAdd = new Action_Add(myActionEdit, RolesID);
             if (formAdd.ShowDialog() == DialogResult.OK)
-                Loadd();
+                LoadData();
         }
 
         /// <summary>
@@ -195,7 +196,7 @@
             myActionEdit.Description = dgvData.Rows[index].Cells[3].Value.ToString();
             Action_Add formAdd = new Action_Add(myActionEdit, RolesID);
             if (formAdd.ShowDialog() == DialogResult.OK)
-                Loadd();
+                LoadData();
         }
 
         /// <summary>
@@ -214,7 +215,7 @@
                 myActionEdit.Description = dgvData.Rows[index].Cells[3].Value.ToString();
                 Action_Add formAdd = new Action_Add(myActionEdit, RolesID);
                 if (formAdd.ShowDialog() == DialogResult.OK)
-                    Loadd();
+                    LoadData();
             }
         }
     }

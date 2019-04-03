@@ -22,7 +22,7 @@
         /// <summary>
         /// Defines the sql
         /// </summary>
-        protected SqlHelpers<RolesAction> sql = new SqlHelpers<RolesAction>();
+        protected SqlHelpers<RolesAction> sqlHelpers = new SqlHelpers<RolesAction>();
 
         /// <summary>
         /// Defines the logger
@@ -35,14 +35,14 @@
         /// <returns>The <see cref="DataTable"/></returns>
         public DataTable Get()
         {
-            using (OracleConnection con = Connection.GetConnection)
+            using (var con = Connection.GetConnection)
             {
-                String cmd = "Roles_GetAll";
-                OracleParameter[] myParameters = new OracleParameter[]
+                string cmd = "Roles_GetAll";
+                var myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("listAction",OracleDbType.RefCursor,ParameterDirection.Output)
+                    new OracleParameter("roles",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
-                return sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                return sqlHelpers.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
         }
 
@@ -53,15 +53,15 @@
         /// <returns>The <see cref="Roles"/></returns>
         public Roles GetByName(string name)
         {
-            using (OracleConnection con = Connection.GetConnection)
+            using (var con = Connection.GetConnection)
             {
-                String cmd = "Roles_Get";
-                OracleParameter[] myParameters = new OracleParameter[]
+                string cmd = "Roles_Get";
+                var myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("_name",name),
-                    new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
+                    new OracleParameter("name",name),
+                    new OracleParameter("role",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
-                DataTable myList = sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                var myList = sqlHelpers.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
                 if (myList.Rows.Count < 1)
                     return null;
                 return new Roles
@@ -91,14 +91,14 @@
         /// <returns>The <see cref="int"/></returns>
         public int Delete(int id)
         {
-            using (OracleConnection con = Connection.GetConnection)
+            using (var con = Connection.GetConnection)
             {
-                String cmd = "Roles_Delete";
-                OracleParameter[] myParameters = new OracleParameter[]
+                string cmd = "Roles_Delete";
+                var myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("_rolesId",id)
+                    new OracleParameter("rolesId",id)
                 };
-                return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                return sqlHelpers.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
         }
 
@@ -109,17 +109,17 @@
         /// <returns>The <see cref="int"/></returns>
         public int Update(Roles obj)
         {
-            using (OracleConnection con = Connection.GetConnection)
+            using (var con = Connection.GetConnection)
             {
-                String cmd = "Roles_Update";
-                OracleParameter[] myParameters = new OracleParameter[]
+                string cmd = "Roles_Update";
+                var myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("_rolesId",obj.RolesID),
-                    new OracleParameter("_rolesName",obj.RolesName),
-                    new OracleParameter("_isDelete",obj.IsDelete),
-                    new OracleParameter("_description",obj.Description)
+                    new OracleParameter("rolesId",obj.RolesID),
+                    new OracleParameter("rolesName",obj.RolesName),
+                    new OracleParameter("isDelete",obj.IsDelete),
+                    new OracleParameter("description",obj.Description)
                 };
-                return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                return sqlHelpers.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
         }
 
@@ -130,24 +130,23 @@
         /// <returns>The <see cref="int"/></returns>
         public int Add(Roles obj)
         {
-            using (OracleConnection con = Connection.GetConnection)
+            using (var con = Connection.GetConnection)
             {
-                String cmd = "Roles_Insert";
-                OracleParameter[] myParameters = new OracleParameter[]
+                string cmd = "Roles_Insert";
+                var myParameters = new OracleParameter[]
                 {
                     new OracleParameter("_rolesName",obj.RolesName),
                     new OracleParameter("_isDelete",obj.IsDelete),
                     new OracleParameter("_description",obj.Description)
                 };
-                sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
-                Roles newAdd = GetByName(obj.RolesName);
-                DataTable listRoles = new DataTable();
-                ActionDAL myActionDal = new ActionDAL();
-                RolesActionDAL myRolesAction = new RolesActionDAL();
-                listRoles = myActionDal.Get();
+                sqlHelpers.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                var newAdd = GetByName(obj.RolesName);
+                var myActionDal = new ActionDAL();
+                var myRolesAction = new RolesActionDAL();
+                var listRoles = myActionDal.Get();
                 foreach (DataRow item in listRoles.Rows)
                 {
-                    RolesAction myRolesActionAdd = new RolesAction
+                    var myRolesActionAdd = new RolesAction
                     {
                         ID = 0,
                         ActionID = int.Parse(item["ActionID"].ToString()),

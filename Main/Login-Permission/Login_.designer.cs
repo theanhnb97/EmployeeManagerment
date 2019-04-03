@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login_));
-            this.pnLeft = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnRight = new System.Windows.Forms.Panel();
             this.lblNotify = new System.Windows.Forms.Label();
             this.lblExit = new System.Windows.Forms.Label();
@@ -41,30 +39,12 @@
             this.txtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.txtUserName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.pnLeft = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnRight.SuspendLayout();
             this.pnLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnRight.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnLeft
-            // 
-            this.pnLeft.BackColor = System.Drawing.Color.White;
-            this.pnLeft.Controls.Add(this.pictureBox1);
-            this.pnLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnLeft.Location = new System.Drawing.Point(0, 0);
-            this.pnLeft.Name = "pnLeft";
-            this.pnLeft.Size = new System.Drawing.Size(296, 476);
-            this.pnLeft.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(16, 136);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(264, 252);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // pnRight
             // 
@@ -109,7 +89,7 @@
             this.lblLogo.BackColor = System.Drawing.Color.Transparent;
             this.lblLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogo.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lblLogo.Location = new System.Drawing.Point(16, 48);
+            this.lblLogo.Location = new System.Drawing.Point(40, 56);
             this.lblLogo.Name = "lblLogo";
             this.lblLogo.Size = new System.Drawing.Size(369, 33);
             this.lblLogo.TabIndex = 2;
@@ -205,7 +185,7 @@
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPassword.OnValueChanged += new System.EventHandler(this.txtPassword_OnValueChanged);
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
-            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.login_KeyDown);
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLoginInfo_KeyDown);
             // 
             // txtUserName
             // 
@@ -226,12 +206,32 @@
             this.txtUserName.TabIndex = 0;
             this.txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUserName.Enter += new System.EventHandler(this.txtPassword_Enter);
-            this.txtUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.login_KeyDown);
+            this.txtUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLoginInfo_KeyDown);
             // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 15;
             this.bunifuElipse1.TargetControl = this;
+            // 
+            // pnLeft
+            // 
+            this.pnLeft.BackColor = System.Drawing.Color.White;
+            this.pnLeft.Controls.Add(this.pictureBox1);
+            this.pnLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnLeft.Location = new System.Drawing.Point(0, 0);
+            this.pnLeft.Name = "pnLeft";
+            this.pnLeft.Size = new System.Drawing.Size(296, 476);
+            this.pnLeft.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(16, 136);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(264, 252);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // Login_
             // 
@@ -248,19 +248,16 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.pnLeft.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnRight.ResumeLayout(false);
             this.pnRight.PerformLayout();
+            this.pnLeft.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnLeft;
         private System.Windows.Forms.Panel pnRight;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtPassword;
         private Bunifu.Framework.UI.BunifuFlatButton btnOk;
         private System.Windows.Forms.Label lblLogo;
@@ -269,5 +266,7 @@
         private System.Windows.Forms.Label lblNotify;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtUserName;
+        private System.Windows.Forms.Panel pnLeft;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

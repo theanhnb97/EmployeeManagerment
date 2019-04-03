@@ -25,7 +25,7 @@
         /// <summary>
         /// Gets or sets the RolesID
         /// </summary>
-        protected int RolesID { get; set; }
+        protected readonly int RolesID { get; set; }
 
         /// <summary>
         /// The OnLoad

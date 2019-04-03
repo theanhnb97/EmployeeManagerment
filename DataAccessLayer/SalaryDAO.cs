@@ -405,14 +405,6 @@
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// The Search
-        /// </summary>
-        /// <param name="keyword">The keyword<see cref="string"/></param>
-        /// <returns>The <see cref="DataTable"/></returns>
-        DataTable IEntities<Salary>.Search(string keyword)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

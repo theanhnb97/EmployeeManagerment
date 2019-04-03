@@ -14,31 +14,29 @@
     interface IRolesAction : IEntities<RolesAction>
     {
         /// <summary>
-        /// The GetAllTrue
+        /// The Get All Action Checked
         /// </summary>
         /// <param name="id">The id<see cref="int"/></param>
         /// <returns>The <see cref="DataTable"/></returns>
         DataTable GetAllTrue(int id);
 
         /// <summary>
-        /// The DeleteAll
+        /// The Delete All RolesAction to Scan new Table
         /// </summary>
         /// <returns>The <see cref="int"/></returns>
         int DeleteAll();
     }
 
-    /// <summary>
-    /// Defines the <see cref="RolesActionDAL" />
-    /// </summary>
+
     public class RolesActionDAL : IRolesAction
     {
         /// <summary>
         /// Defines the sql
         /// </summary>
-        protected SqlHelpers<RolesAction> sql = new SqlHelpers<RolesAction>();
+        protected SqlHelpers<RolesAction> sqlHelpers = new SqlHelpers<RolesAction>();
 
         /// <summary>
-        /// Defines the logger
+        /// Defines the logger to write Log when bug
         /// </summary>
         protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -49,16 +47,15 @@
         /// <returns>The <see cref="DataTable"/></returns>
         public DataTable GetAllTrue(int id)
         {
-            using (OracleConnection con = Connection.GetConnection)
+            using (var con = Connection.GetConnection)
             {
-                String cmd = "RolesAction_GetAllTrue";
-                OracleParameter[] myParameters = new OracleParameter[]
+                string cmd = "RolesAction_GetAllTrue";
+                var myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("_id",id),
-                    new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
+                    new OracleParameter("id",id),
+                    new OracleParameter("actionsChecked",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
-                List<RolesAction> myList = sql.ExcuteQueryList(cmd, CommandType.StoredProcedure, con, myParameters);
-                return sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                return sqlHelpers.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
         }
 
@@ -68,10 +65,10 @@
         /// <returns>The <see cref="int"/></returns>
         public int DeleteAll()
         {
-            using (OracleConnection con = Connection.GetConnection)
+            using (var con = Connection.GetConnection)
             {
-                String cmd = "RolesAction_Scan";
-                return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, null);
+                string cmd = "RolesAction_Scan";
+                return sqlHelpers.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, null);
             }
         }
 
@@ -86,21 +83,12 @@
                 String cmd = "RolesAction_GetAll";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
+                    new OracleParameter("rolesActions",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
-                return sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                return sqlHelpers.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
         }
 
-        /// <summary>
-        /// The Search
-        /// </summary>
-        /// <param name="keyword">The keyword<see cref="string"/></param>
-        /// <returns>The <see cref="DataTable"/></returns>
-        public DataTable Search(string keyword)
-        {
-            throw new NotImplementedException();
-        }
 
         /// <summary>
         /// The Delete
@@ -117,9 +105,16 @@
         /// </summary>
         /// <param name="obj">The obj<see cref="RolesAction"/></param>
         /// <returns>The <see cref="int"/></returns>
-        public int Update(RolesAction obj)
+        public int Update(RolesAction model)
         {
-            throw new NotImplementedException();
+            string cmd = "RolesAction_Update";
+            var myParameters = new OracleParameter[]
+            {
+                new OracleParameter("id",model.ID),
+                new OracleParameter("checked",model.IsTrue)
+            };
+            using (var con = Connection.GetConnection)
+                return sqlHelpers.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
         }
 
         /// <summary>
@@ -127,19 +122,10 @@
         /// </summary>
         /// <param name="obj">The obj<see cref="List{RolesAction}"/></param>
         /// <returns>The <see cref="int"/></returns>
-        public int Update(List<RolesAction> obj)
+        public int Update(List<RolesAction> models)
         {
-            String cmd = "RolesAction_Update";
-            foreach (RolesAction item in obj)
-            {
-                OracleParameter[] myParameters = new OracleParameter[]
-                {
-                        new OracleParameter("_ids",item.ID),
-                        new OracleParameter("_isTrue",item.IsTrue)
-                };
-                using (OracleConnection con = Connection.GetConnection)
-                    sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
-            }
+            foreach (var item in models)
+                Update(item);
             return -1;
         }
 
@@ -150,16 +136,16 @@
         /// <returns>The <see cref="int"/></returns>
         public int Add(RolesAction obj)
         {
-            using (OracleConnection con = Connection.GetConnection)
+            using (var con = Connection.GetConnection)
             {
-                String cmd = "RolesAction_Insert";
-                OracleParameter[] myParameters = new OracleParameter[]
+                string cmd = "RolesAction_Insert";
+                var myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("_actionId",obj.ActionID),
-                    new OracleParameter("_rolesId",obj.RolesID),
-                    new OracleParameter("_isTrue",obj.IsTrue)
+                    new OracleParameter("actionId",obj.ActionID),
+                    new OracleParameter("rolesId",obj.RolesID),
+                    new OracleParameter("isTrue",obj.IsTrue)
                 };
-                return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+                return sqlHelpers.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
         }
     }

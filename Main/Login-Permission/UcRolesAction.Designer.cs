@@ -87,8 +87,6 @@
             this.Name = "UcRolesAction";
             this.Size = new System.Drawing.Size(809, 588);
             this.Load += new System.EventHandler(this.UcRolesAction_Load);
-            this.Enter += new System.EventHandler(this.UcRolesAction_Enter);
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UcRolesAction_MouseClick);
             this.ResumeLayout(false);
             this.PerformLayout();
 

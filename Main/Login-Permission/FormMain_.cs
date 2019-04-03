@@ -39,47 +39,27 @@
         /// </summary>
         private SalaryManagement salary;
 
-        /// <summary>
-        /// Defines the ucActionManagement
-        /// </summary>
         private UcAction ucActionManagement;
 
-        /// <summary>
-        /// Defines the ucRoles
-        /// </summary>
         private UcRoles ucRoles;
 
-        /// <summary>
-        /// Defines the ucRolesAction
-        /// </summary>
         private UcRolesAction ucRolesAction;
 
-        /// <summary>
-        /// Defines the ucEmployees
-        /// </summary>
         private Employees ucEmployees;
 
-        /// <summary>
-        /// Defines the ucTask
-        /// </summary>
         private UcTask ucTask;
 
-        /// <summary>
-        /// Defines the ucDepartment
-        /// </summary>
         private UcDepartment ucDepartment;
 
-        /// <summary>
-        /// Defines the ucUpdateProfile
-        /// </summary>
         private UcUpdateProfile_ ucUpdateProfile;
+
 
         /// <summary>
         /// The LoadUC
         /// </summary>
         private void LoadUC()
         {
-            lblUserName.Text = String.Format("Xin chào: {0}!",userName);
+            lblUserName.Text = @"Xin chào: "+ userName + @"!";
             lblUserName.Location= new Point(pnBot.Width-(lblUserName.Width+10),lblUserName.Location.Y);
             ucTask = new UcTask(RolesID);
             pnMain.Controls.Add(ucTask);
@@ -90,7 +70,7 @@
         /// <summary>
         /// Defines the userName
         /// </summary>
-        private string userName;
+        private readonly string userName;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FormMain_"/> class.
@@ -131,7 +111,7 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void picLogout_Click(object sender, EventArgs e)
         {
-            var myDialogResult = MessageBox.Show("Bạn có thực sự muốn thoát chương trình?", "Thoát",
+            var myDialogResult = MessageBox.Show(@"Bạn có thực sự muốn thoát chương trình?", @"Thoát",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (myDialogResult == DialogResult.Yes)
@@ -143,7 +123,7 @@
         /// </summary>
         private void ShowFormLogin()
         {
-            Login_ f = new Login_();
+            var f = new Login_();
             f.ShowDialog();
         }
 
@@ -178,7 +158,7 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnMenuItem_Click(object sender, EventArgs e)
         {
-            Button inActiceButton = (Button) sender;
+            var inActiceButton = (Button) sender;
             LoacationSlide(this.pnSlide,inActiceButton);
         }
 

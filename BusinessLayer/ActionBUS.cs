@@ -26,7 +26,7 @@
         /// <summary>
         /// The GetList
         /// </summary>
-        /// <returns>The <see cref="List{Entity.Action}"/></returns>
+        /// <returns>List Action/></returns>
         public List<Entity.Action> GetList()
         {
             return myAtionDal.GetList();

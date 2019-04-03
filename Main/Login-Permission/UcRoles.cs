@@ -18,15 +18,13 @@
     /// </summary>
     public partial class UcRoles : UserControl
     {
-        /// <summary>
-        /// Defines the myRolesActionBus
-        /// </summary>
+
         private readonly RolesActionBUS myRolesActionBus = new RolesActionBUS();
 
-        /// <summary>
-        /// Gets or sets the RolesID
-        /// </summary>
+        private readonly RolesBUL myBus = new RolesBUL();
+
         protected int RolesID { get; set; }
+
 
         /// <summary>
         /// The OnLoad
@@ -34,7 +32,7 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         protected override void OnLoad(EventArgs e)
         {
-            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            var myDataTable = myRolesActionBus.GetTrue(RolesID);
             bool result = RolesID == 1;
             string ucName = base.Name + ".";
             string Action = "";
@@ -57,10 +55,6 @@
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Defines the myBus
-        /// </summary>
-        internal RolesBUL myBus = new RolesBUL();
 
         /// <summary>
         /// The UcRoles_Load
@@ -69,13 +63,13 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void UcRoles_Load(object sender, EventArgs e)
         {
-            Loadd();
+            LoadData();
         }
 
         /// <summary>
         /// The Loadd
         /// </summary>
-        public void Loadd()
+        public void LoadData()
         {
             dgvData.DataSource = myBus.Get();
             dgvData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -90,7 +84,7 @@
         {
             Role_Add formAdd = new Role_Add(RolesID);
             if (formAdd.ShowDialog() == DialogResult.OK)
-                Loadd();
+                LoadData();
         }
 
         /// <summary>
@@ -106,13 +100,13 @@
                 return;
             }
             int index = dgvData.CurrentCell.RowIndex;
-            Roles myObject = new Roles();
+            var myObject = new Roles();
             myObject.RolesID = int.Parse(dgvData.Rows[index].Cells[0].Value.ToString());
             myObject.RolesName = dgvData.Rows[index].Cells[1].Value.ToString();
             myObject.Description = dgvData.Rows[index].Cells[3].Value.ToString();
-            Role_Add formAdd = new Role_Add(myObject,RolesID);
+            var formAdd = new Role_Add(myObject, RolesID);
             if (formAdd.ShowDialog() == DialogResult.OK)
-                Loadd();
+                LoadData();
         }
 
         /// <summary>
@@ -128,16 +122,13 @@
                 return;
             }
             int index = int.Parse(dgvData.Rows[dgvData.CurrentCell.RowIndex].Cells[0].Value.ToString());
-            DialogResult myDialogResult = MessageBox.Show("Bạn thực sự muốn xoá Role này?", "Nhắc nhở",
+            var myDialogResult = MessageBox.Show("Bạn thực sự muốn xoá Role này?", "Nhắc nhở",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (myDialogResult == DialogResult.Yes)
             {
-                if (myBus.Delete(index) == -1)
-                    MessageBox.Show("Xoá thành công!");
-                else
-                    MessageBox.Show("Xoá thất bại");
-                Loadd();
+                MessageBox.Show(myBus.Delete(index) == -1 ? "Thành công." : "Thất bại.");
+                LoadData();
             }
         }
 
@@ -149,13 +140,13 @@
         private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dgvData.CurrentCell.RowIndex;
-            Roles myObject = new Roles();
+            var myObject = new Roles();
             myObject.RolesID = int.Parse(dgvData.Rows[index].Cells[0].Value.ToString());
             myObject.RolesName = dgvData.Rows[index].Cells[1].Value.ToString();
             myObject.Description = dgvData.Rows[index].Cells[3].Value.ToString();
-            Role_Add formAdd = new Role_Add(myObject, RolesID);
-            if(formAdd.ShowDialog()==DialogResult.OK)
-                Loadd();
+            var formAdd = new Role_Add(myObject, RolesID);
+            if (formAdd.ShowDialog() == DialogResult.OK)
+                LoadData();
         }
 
         /// <summary>
@@ -168,13 +159,13 @@
             if (e.KeyCode == Keys.Enter)
             {
                 int index = dgvData.CurrentCell.RowIndex;
-                Roles myObject = new Roles();
+                var myObject = new Roles();
                 myObject.RolesID = int.Parse(dgvData.Rows[index].Cells[0].Value.ToString());
                 myObject.RolesName = dgvData.Rows[index].Cells[1].Value.ToString();
                 myObject.Description = dgvData.Rows[index].Cells[3].Value.ToString();
-                Role_Add formAdd = new Role_Add(myObject, RolesID);
+                var formAdd = new Role_Add(myObject, RolesID);
                 if (formAdd.ShowDialog() == DialogResult.OK)
-                    Loadd();
+                    LoadData();
             }
         }
     }

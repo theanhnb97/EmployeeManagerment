@@ -27,7 +27,7 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         protected override void OnLoad(EventArgs e)
         {
-            DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
+            var myDataTable = myRolesActionBus.GetTrue(RolesID);
             bool result = RolesID == 1;
             string formName = base.Name + ".";
             string Action = "";
@@ -116,7 +116,7 @@
         {
             if (IsValid())
             {
-                Action myActionAdd = new Action();
+                var myActionAdd = new Action();
                 myActionAdd.ActionID = myActionEdit.ActionID;
                 myActionAdd.ActionName = txtName.Text;
                 myActionAdd.Description = txtDescription.Text;

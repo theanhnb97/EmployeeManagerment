@@ -8,18 +8,6 @@
     /// <typeparam name="T"></typeparam>
     public interface IEntities<T>
     {
-        /// <summary>
-        /// Get All Data from DB to List
-        /// </summary>
-        /// <returns></returns>
-        DataTable Get();
-
-        /// <summary>
-        /// Search T From DB
-        /// </summary>
-        /// <param name="keyword"></param>
-        /// <returns></returns>
-        DataTable Search(string keyword);
 
         /// <summary>
         /// Delete and return result

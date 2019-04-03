@@ -268,6 +268,7 @@
             return employee;
         }
 
+
         /// <summary>
         /// The TranferDataTableToEmployeeList
         /// </summary>
@@ -275,12 +276,12 @@
         /// <returns>The <see cref="List{Employee}"/></returns>
         public List<Employee> TranferDataTableToEmployeeList(DataTable dataTable)
         {
-            List<Employee> employees = new List<Employee>();
+            var employees = new List<Employee>();
             foreach (DataRow dr in dataTable.Rows)
             {
                 try
                 {
-                    Employee employee = new Employee();
+                    var employee = new Employee();
                     employee.RolesId = Convert.ToInt32(dr["ROLESID"].ToString());
                     employee.DepartmentId = Convert.ToInt32(dr["DEPARTMENTID"].ToString());
                     employee.Rank = Convert.ToInt16(dr["RANK"].ToString());
@@ -305,46 +306,41 @@
             return employees;
         }
 
-        /// <summary>
-        /// The Get
-        /// </summary>
-        /// <returns>The <see cref="DataTable"/></returns>
-        public DataTable Get()
-        {
-            throw new NotImplementedException();
-        }
+
+
+
+
+
 
         /// <summary>
-        /// The Login
+        /// Login System
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        /// <returns></returns>
+        /// <returns>RoleID of username</returns>
         public int Login(string username, string password)
         {
-            using (OracleConnection con = Connection.GetConnection)
+            using (var con = Connection.GetConnection)
             {
+                string cmd = "Login";
+                var myParameters = new OracleParameter[]
+                {
+                    new OracleParameter("_username",username),
+                    new OracleParameter("_password",password),
+                    new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
+                };
+                var dt = sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
                 try
                 {
-                    String cmd = "Login";
-                    OracleParameter[] myParameters = new OracleParameter[]
-                    {
-                        new OracleParameter("_username",username),
-                        new OracleParameter("_password",password),
-                        new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
-                    };
-                    DataTable dt = sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
                     if (dt == null) return -1;
                     if (dt.Rows.Count < 1) return 0;
                     return int.Parse(dt.Rows[0]["ROLESID"].ToString());
                 }
                 catch (FormatException e)
                 {
-                    logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
                     logger.Debug(e.Message);
                     return -1;
                 }
-
             }
         }
 
@@ -352,31 +348,24 @@
         /// The GetByUsername
         /// </summary>
         /// <param name="username">The username<see cref="string"/></param>
-        /// <returns></returns>
+        /// <returns>Employee have username=username</returns>
         public Employee GetByUsername(string username)
         {
-            Employee employee = new Employee();
-            try
+
+            using (var oracleConnection = Connection.GetConnection)
             {
-                using (OracleConnection oracleConnection = Connection.GetConnection)
+                string storeName = "EMPLOYEE_GETBYUSERNAME";
+                var oracleParameters = new OracleParameter[]
                 {
-                    string storeName = "EMPLOYEE_GETBYUSERNAME";
-                    OracleParameter[] oracleParameters = new OracleParameter[]
-                    {
-                        new OracleParameter("_username",username),
-                        new OracleParameter("cursor",OracleDbType.RefCursor,ParameterDirection.Output)
-                    };
-                    DataTable data = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
-                    employee = TranferDataTableToEmployeeList(data)[0];
-                }
+                    new OracleParameter("_username",username),
+                    new OracleParameter("cursor",OracleDbType.RefCursor,ParameterDirection.Output)
+                };
+                var data = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
+                return TranferDataTableToEmployeeList(data)[0];
             }
-            catch (Exception e)
-            {
-                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                logger.Debug(e.Message);
-            }
-            return employee;
+
         }
+
 
         /// <summary>
         /// The GetByIdentity
@@ -415,39 +404,22 @@
         /// <returns></returns>
         public int UpdateProfile(Employee employee)
         {
-            try
+            using (var oracleConnection = Connection.GetConnection)
             {
-                using (OracleConnection oracleConnection = Connection.GetConnection)
+                string storeName = "Employee_UpdateByUserName";
+                var oracleParameters = new OracleParameter[]
                 {
-                    string storeName = "Employee_UpdateByUserName";
-                    OracleParameter[] oracleParameters = new OracleParameter[]
-                    {
-                        new OracleParameter("_userName",employee.UserName),
-                        new OracleParameter("_fullName",employee.FullName),
-                        new OracleParameter("_identity",employee.Identity),
-                        new OracleParameter("_address",employee.Address),
-                        new OracleParameter("_phone",employee.Phone),
-                        new OracleParameter("_email",employee.Email),
-                    };
-                    return sql.ExcuteNonQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
-                }
+                        new OracleParameter("userName",employee.UserName),
+                        new OracleParameter("fullName",employee.FullName),
+                        new OracleParameter("identity",employee.Identity),
+                        new OracleParameter("address",employee.Address),
+                        new OracleParameter("phone",employee.Phone),
+                        new OracleParameter("email",employee.Email),
+                };
+                return sql.ExcuteNonQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
             }
-            catch (Exception e)
-            {
-                logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                logger.Debug(e.Message);
-                return 0;
-            }
+
         }
 
-        /// <summary>
-        /// The Search
-        /// </summary>
-        /// <param name="keyword">The keyword<see cref="string"/></param>
-        /// <returns>The <see cref="DataTable"/></returns>
-        public DataTable Search(string keyword)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
