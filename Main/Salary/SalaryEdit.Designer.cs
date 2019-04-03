@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbbCoefficient = new System.Windows.Forms.ComboBox();
-            this.cbbBussiness = new System.Windows.Forms.ComboBox();
-            this.cbbBasic = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,52 +42,28 @@
             this.lblRank = new System.Windows.Forms.Label();
             this.lblIdent = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
+            this.cbbBasic = new System.Windows.Forms.ComboBox();
+            this.cbbBussiness = new System.Windows.Forms.ComboBox();
+            this.cbbCoefficient = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // cbbCoefficient
-            // 
-            this.cbbCoefficient.FormattingEnabled = true;
-            this.cbbCoefficient.Location = new System.Drawing.Point(162, 289);
-            this.cbbCoefficient.Name = "cbbCoefficient";
-            this.cbbCoefficient.Size = new System.Drawing.Size(215, 21);
-            this.cbbCoefficient.TabIndex = 87;
-            this.cbbCoefficient.SelectedIndexChanged += new System.EventHandler(this.cbbCoefficient_SelectedIndexChanged);
-            // 
-            // cbbBussiness
-            // 
-            this.cbbBussiness.FormattingEnabled = true;
-            this.cbbBussiness.Location = new System.Drawing.Point(162, 251);
-            this.cbbBussiness.Name = "cbbBussiness";
-            this.cbbBussiness.Size = new System.Drawing.Size(215, 21);
-            this.cbbBussiness.TabIndex = 86;
-            this.cbbBussiness.SelectedIndexChanged += new System.EventHandler(this.cbbBussiness_SelectedIndexChanged);
-            // 
-            // cbbBasic
-            // 
-            this.cbbBasic.FormattingEnabled = true;
-            this.cbbBasic.Location = new System.Drawing.Point(162, 219);
-            this.cbbBasic.Name = "cbbBasic";
-            this.cbbBasic.Size = new System.Drawing.Size(215, 21);
-            this.cbbBasic.TabIndex = 85;
-            this.cbbBasic.SelectedIndexChanged += new System.EventHandler(this.cbbBasic_SelectedIndexChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(77, 110);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.Size = new System.Drawing.Size(36, 13);
             this.label7.TabIndex = 79;
-            this.label7.Text = "Rank";
+            this.label7.Text = "Rank ";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(78, 73);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 13);
+            this.label8.Size = new System.Drawing.Size(65, 13);
             this.label8.TabIndex = 80;
-            this.label8.Text = "Department";
+            this.label8.Text = "Department ";
             // 
             // label2
             // 
@@ -147,9 +120,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(77, 185);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.Size = new System.Drawing.Size(54, 13);
             this.label4.TabIndex = 70;
-            this.label4.Text = "FullName";
+            this.label4.Text = "FullName ";
             // 
             // label3
             // 
@@ -165,58 +138,86 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(77, 147);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 72;
-            this.label1.Text = "Identity";
+            this.label1.Text = "Identity ";
             // 
             // lblDept
             // 
             this.lblDept.AutoSize = true;
+            this.lblDept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDept.Location = new System.Drawing.Point(159, 73);
             this.lblDept.Name = "lblDept";
-            this.lblDept.Size = new System.Drawing.Size(58, 13);
+            this.lblDept.Size = new System.Drawing.Size(75, 15);
             this.lblDept.TabIndex = 96;
             this.lblDept.Text = "DeptName";
             // 
             // lblRank
             // 
             this.lblRank.AutoSize = true;
+            this.lblRank.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRank.Location = new System.Drawing.Point(159, 110);
             this.lblRank.Name = "lblRank";
-            this.lblRank.Size = new System.Drawing.Size(33, 13);
+            this.lblRank.Size = new System.Drawing.Size(40, 15);
             this.lblRank.TabIndex = 97;
             this.lblRank.Text = "Rank";
             // 
             // lblIdent
             // 
             this.lblIdent.AutoSize = true;
+            this.lblIdent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIdent.Location = new System.Drawing.Point(159, 147);
             this.lblIdent.Name = "lblIdent";
-            this.lblIdent.Size = new System.Drawing.Size(31, 13);
+            this.lblIdent.Size = new System.Drawing.Size(39, 15);
             this.lblIdent.TabIndex = 98;
             this.lblIdent.Text = "Ident";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(159, 185);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(51, 13);
+            this.lblName.Size = new System.Drawing.Size(69, 15);
             this.lblName.TabIndex = 99;
             this.lblName.Text = "FullName";
+            // 
+            // cbbBasic
+            // 
+            this.cbbBasic.FormattingEnabled = true;
+            this.cbbBasic.Location = new System.Drawing.Point(162, 214);
+            this.cbbBasic.Name = "cbbBasic";
+            this.cbbBasic.Size = new System.Drawing.Size(215, 21);
+            this.cbbBasic.TabIndex = 100;
+            // 
+            // cbbBussiness
+            // 
+            this.cbbBussiness.FormattingEnabled = true;
+            this.cbbBussiness.Location = new System.Drawing.Point(162, 251);
+            this.cbbBussiness.Name = "cbbBussiness";
+            this.cbbBussiness.Size = new System.Drawing.Size(215, 21);
+            this.cbbBussiness.TabIndex = 101;
+            // 
+            // cbbCoefficient
+            // 
+            this.cbbCoefficient.FormattingEnabled = true;
+            this.cbbCoefficient.Location = new System.Drawing.Point(162, 289);
+            this.cbbCoefficient.Name = "cbbCoefficient";
+            this.cbbCoefficient.Size = new System.Drawing.Size(215, 21);
+            this.cbbCoefficient.TabIndex = 102;
             // 
             // SalaryEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 433);
+            this.Controls.Add(this.cbbCoefficient);
+            this.Controls.Add(this.cbbBussiness);
+            this.Controls.Add(this.cbbBasic);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblIdent);
             this.Controls.Add(this.lblRank);
             this.Controls.Add(this.lblDept);
-            this.Controls.Add(this.cbbCoefficient);
-            this.Controls.Add(this.cbbBussiness);
-            this.Controls.Add(this.cbbBasic);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label2);
@@ -236,10 +237,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cbbCoefficient;
-        private System.Windows.Forms.ComboBox cbbBussiness;
-        private System.Windows.Forms.ComboBox cbbBasic;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
@@ -254,5 +251,8 @@
         private System.Windows.Forms.Label lblRank;
         private System.Windows.Forms.Label lblIdent;
         private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.ComboBox cbbBasic;
+        private System.Windows.Forms.ComboBox cbbBussiness;
+        private System.Windows.Forms.ComboBox cbbCoefficient;
     }
 }

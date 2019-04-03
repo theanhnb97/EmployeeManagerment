@@ -18,7 +18,7 @@
         /// <summary>
         /// Gets or sets the Rank
         /// </summary>
-        public int Rank { get; set; }
+        public string Rank { get; set; }
 
         /// <summary>
         /// Gets or sets the Dept

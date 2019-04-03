@@ -77,8 +77,7 @@
             // 
             // cbbName
             // 
-            this.cbbName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbbName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbbName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbName.FormattingEnabled = true;
             this.cbbName.Location = new System.Drawing.Point(162, 177);
             this.cbbName.Name = "cbbName";
@@ -89,8 +88,7 @@
             // 
             // cbbIdentity
             // 
-            this.cbbIdentity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbbIdentity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbbIdentity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbIdentity.FormattingEnabled = true;
             this.cbbIdentity.Location = new System.Drawing.Point(162, 139);
             this.cbbIdentity.Name = "cbbIdentity";
