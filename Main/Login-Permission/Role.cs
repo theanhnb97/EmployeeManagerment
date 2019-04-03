@@ -103,20 +103,26 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            var myDialogResult = MessageBox.Show("Bạn có thực sự muốn huỷ bỏ thay đổi?", "Huỷ",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (myDialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         /// <summary>
         /// The IsValid
         /// </summary>
         /// <returns>The <see cref="bool"/></returns>
-        internal bool IsValid()
+        private bool IsValid()
         {
-            if (myObjectEdit.RolesID != 0)
-            {
-                if (txtName.Text == myObjectEdit.RolesName && txtDescription.Text == myObjectEdit.Description)
-                    return false;
-            }
+            //if (myObjectEdit.RolesID != 0)
+            //{
+            //    if (txtName.Text == myObjectEdit.RolesName && txtDescription.Text == myObjectEdit.Description)
+            //        return false;
+            //}
             if (txtName.Text == "" || txtDescription.Text == "") return false;
             return true;
         }
@@ -167,6 +173,17 @@
                 btnAdd_Click(btnAdd,e);
             if (e.KeyCode == Keys.Escape)
                 this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            var myDialogResult = MessageBox.Show("Bạn có thực sự muốn huỷ bỏ thay đổi?", "Huỷ",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (myDialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

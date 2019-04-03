@@ -28,27 +28,6 @@
         /// </summary>
         protected int RolesID { get; set; }
 
-        /// <summary>
-        /// The OnLoad
-        /// </summary>
-        /// <param name="e">The e<see cref="EventArgs"/></param>
-        protected override void OnLoad(EventArgs e)
-        {
-            //DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
-            //bool result = RolesID == 1;
-            //string formName = base.Name+".";
-            //string Action = "";
-            //foreach (DataRow item in myDataTable.Rows)
-            //    Action += item["ACTIONNAME"].ToString().Trim() + ".";
-            //if (Action.Contains(formName)) result = true;
-            //if (result)
-            base.OnLoad(e);
-            //else
-            //{
-            //    MessageBox.Show("Bạn không có quyền truy cập vào Hệ thống này!");
-            //    //picLogout_Click(picLogout, e);
-            //}
-        }
 
         /// <summary>
         /// Defines the btnMenuButtons
@@ -58,37 +37,37 @@
         /// <summary>
         /// Defines the salary
         /// </summary>
-        internal SalaryManagement salary;
+        private SalaryManagement salary;
 
         /// <summary>
         /// Defines the ucActionManagement
         /// </summary>
-        internal UcAction ucActionManagement;
+        private UcAction ucActionManagement;
 
         /// <summary>
         /// Defines the ucRoles
         /// </summary>
-        internal UcRoles ucRoles;
+        private UcRoles ucRoles;
 
         /// <summary>
         /// Defines the ucRolesAction
         /// </summary>
-        internal UcRolesAction ucRolesAction;
+        private UcRolesAction ucRolesAction;
 
         /// <summary>
         /// Defines the ucEmployees
         /// </summary>
-        internal Employees ucEmployees;
+        private Employees ucEmployees;
 
         /// <summary>
         /// Defines the ucTask
         /// </summary>
-        internal UcTask ucTask;
+        private UcTask ucTask;
 
         /// <summary>
         /// Defines the ucDepartment
         /// </summary>
-        internal UcDepartment ucDepartment;
+        private UcDepartment ucDepartment;
 
         /// <summary>
         /// Defines the ucUpdateProfile
@@ -150,16 +129,11 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void picLogout_Click(object sender, EventArgs e)
         {
-            var myDialogResult = MessageBox.Show("Bạn có thực sự muốn đăng xuất?", "Đăng xuất",
+            var myDialogResult = MessageBox.Show("Bạn có thực sự muốn thoát chương trình?", "Thoát",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (myDialogResult == DialogResult.Yes)
-            {
-                var threadMainForm = new Thread(new ThreadStart(ShowFormLogin));
-                threadMainForm.TrySetApartmentState(ApartmentState.STA);
-                threadMainForm.Start();
                 Application.Exit();
-            }
         }
 
         /// <summary>
@@ -176,7 +150,7 @@
         /// </summary>
         /// <param name="slide">The slide<see cref="Panel"/></param>
         /// <param name="inActiceButton">The inActiceButton<see cref="Button"/></param>
-        internal void LoacationSlide(Panel slide,Button inActiceButton)
+        private void LoacationSlide(Panel slide,Button inActiceButton)
         {
             foreach (Button item in btnMenuButtons)
             {
@@ -315,6 +289,20 @@
             pnMain.Controls.Add(ucUpdateProfile);
             ucUpdateProfile.Dock = DockStyle.Fill;
             ucUpdateProfile.BringToFront();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            var myDialogResult = MessageBox.Show("Bạn có thực sự muốn đăng xuất?", "Đăng xuất",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (myDialogResult == DialogResult.Yes)
+            {
+                var threadMainForm = new Thread(new ThreadStart(ShowFormLogin));
+                threadMainForm.TrySetApartmentState(ApartmentState.STA);
+                threadMainForm.Start();
+                Application.Exit();
+            }
         }
     }
 }

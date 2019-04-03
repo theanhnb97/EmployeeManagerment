@@ -104,7 +104,11 @@
                 myEmployee.Phone = txtPhone.Text;
                 myEmployee.UserName = userName;
                 if (myEmployeeBus.UpdateProfile(myEmployee) != 0)
-                    MessageBox.Show("Thành công!");
+                {
+                    MessageBox.Show("Thành công!"); 
+                    this.SendToBack();
+                }
+
                 else
                     MessageBox.Show("Thất bại!");
             }

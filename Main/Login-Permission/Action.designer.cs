@@ -37,6 +37,8 @@
             this.btnAdd = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnCancel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblNotify = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
             // 
             // txtName
@@ -51,7 +53,7 @@
             this.txtName.LineIdleColor = System.Drawing.Color.Gray;
             this.txtName.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.txtName.LineThickness = 3;
-            this.txtName.Location = new System.Drawing.Point(157, 58);
+            this.txtName.Location = new System.Drawing.Point(157, 88);
             this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(220, 32);
@@ -64,7 +66,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(17, 14);
+            this.label1.Location = new System.Drawing.Point(17, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(193, 24);
             this.label1.TabIndex = 1;
@@ -74,7 +76,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 72);
+            this.label2.Location = new System.Drawing.Point(17, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 20);
             this.label2.TabIndex = 1;
@@ -84,7 +86,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(84, 132);
+            this.label3.Location = new System.Drawing.Point(84, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 20);
             this.label3.TabIndex = 3;
@@ -102,7 +104,7 @@
             this.txtDescription.LineIdleColor = System.Drawing.Color.Gray;
             this.txtDescription.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.txtDescription.LineThickness = 3;
-            this.txtDescription.Location = new System.Drawing.Point(157, 117);
+            this.txtDescription.Location = new System.Drawing.Point(157, 147);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(220, 32);
@@ -131,7 +133,7 @@
             this.btnAdd.IconVisible = true;
             this.btnAdd.IconZoom = 90D;
             this.btnAdd.IsTab = false;
-            this.btnAdd.Location = new System.Drawing.Point(305, 190);
+            this.btnAdd.Location = new System.Drawing.Point(305, 220);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Normalcolor = System.Drawing.Color.SteelBlue;
             this.btnAdd.OnHovercolor = System.Drawing.Color.SteelBlue;
@@ -166,7 +168,7 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(215, 190);
+            this.btnCancel.Location = new System.Drawing.Point(215, 220);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Normalcolor = System.Drawing.Color.SteelBlue;
             this.btnCancel.OnHovercolor = System.Drawing.Color.SteelBlue;
@@ -184,18 +186,30 @@
             // 
             this.lblNotify.AutoSize = true;
             this.lblNotify.ForeColor = System.Drawing.Color.Maroon;
-            this.lblNotify.Location = new System.Drawing.Point(154, 159);
+            this.lblNotify.Location = new System.Drawing.Point(154, 189);
             this.lblNotify.Name = "lblNotify";
             this.lblNotify.Size = new System.Drawing.Size(59, 13);
             this.lblNotify.TabIndex = 6;
             this.lblNotify.Text = "Thông báo";
             this.lblNotify.Visible = false;
             // 
+            // btnClose
+            // 
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(383, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(29, 28);
+            this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnClose.TabIndex = 7;
+            this.btnClose.TabStop = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // Action_Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(401, 248);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblNotify);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
@@ -204,7 +218,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(417, 287);
             this.MinimumSize = new System.Drawing.Size(417, 287);
@@ -214,6 +228,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hành động";
             this.Load += new System.EventHandler(this.Action_Add_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,5 +244,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnAdd;
         private Bunifu.Framework.UI.BunifuFlatButton btnCancel;
         private System.Windows.Forms.Label lblNotify;
+        private System.Windows.Forms.PictureBox btnClose;
     }
 }
