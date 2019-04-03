@@ -51,6 +51,7 @@
             this.lbLevel = new System.Windows.Forms.Label();
             this.btnSelectfile = new System.Windows.Forms.Button();
             this.linkFile = new System.Windows.Forms.LinkLabel();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtTaskName
@@ -173,7 +174,7 @@
             this.dtpDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDueDate.Location = new System.Drawing.Point(118, 210);
             this.dtpDueDate.Name = "dtpDueDate";
-            this.dtpDueDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpDueDate.Size = new System.Drawing.Size(203, 20);
             this.dtpDueDate.TabIndex = 3;
             this.dtpDueDate.ValueChanged += new System.EventHandler(this.dtpDueDate_ValueChanged);
             this.dtpDueDate.Leave += new System.EventHandler(this.dtpDueDate_Leave);
@@ -281,12 +282,23 @@
             this.linkFile.TabIndex = 16;
             this.linkFile.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkFile_LinkClicked);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(143, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(146, 24);
+            this.label8.TabIndex = 46;
+            this.label8.Text = "Add New Task";
+            // 
             // AddTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(398, 497);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.linkFile);
             this.Controls.Add(this.btnSelectfile);
             this.Controls.Add(this.lbLevel);
@@ -310,6 +322,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTaskName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddTask";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -346,5 +361,6 @@
         private System.Windows.Forms.Label lbLevel;
         private System.Windows.Forms.Button btnSelectfile;
         private System.Windows.Forms.LinkLabel linkFile;
+        private System.Windows.Forms.Label label8;
     }
 }

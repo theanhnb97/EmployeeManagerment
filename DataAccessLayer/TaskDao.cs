@@ -206,7 +206,7 @@
                 {
                     new OracleParameter("cursorParam", OracleDbType.RefCursor, ParameterDirection.Output)
                 };
-                return objSqlHelpers.ExcuteQuery("Department_GetAll", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
+                return objSqlHelpers.ExcuteQuery("Department_Getall", CommandType.StoredProcedure, Connection.GetConnection, listParameters);
             }
             catch (OracleException e)
             {

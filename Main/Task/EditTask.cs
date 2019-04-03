@@ -52,7 +52,6 @@ namespace Main.Bang
         {
             try
             {
-
                 var departTable = objTaskBus.LoadDepartment();
 
                 if (departTable.Rows.Count > 0)
@@ -176,6 +175,7 @@ namespace Main.Bang
                     TaskDTO.Department = Convert.ToInt32(cmbDepartment.SelectedValue);
                     TaskDTO.Priority = Convert.ToInt32(cmbLevel.SelectedValue);
                     TaskDTO.DueDate = dtpDueDate.Value.ToString("dd/MMM/yyyy");
+                    TaskDTO.Files = linkFile.Text;
                     //check result
                     if (objTaskBus.Update(TaskDTO.TaskId, TaskDTO.TaskName, TaskDTO.Assign,
                         TaskDTO.DueDate, TaskDTO.Priority, TaskDTO.Files, TaskDTO.Status, TaskDTO.IsDelete,
@@ -295,5 +295,20 @@ namespace Main.Bang
 
         }
 
+        private void btnSelectfile_Click(object sender, EventArgs e)
+        {
+            //using (OpenFileDialog myDialog = new OpenFileDialog())
+            //{
+            //    myDialog.CheckFileExists = true;
+            //    myDialog.Multiselect = false;
+            //    myDialog.Title = "Chọn file đính kèm";
+            //    myDialog.Filter = "Image|*.png|*.jpg|*.jpeg |Word file|*.doc| Excel file | *.xlsx| Other file | *.*";
+            //    if (myDialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        //lblFile.Text = Path.GetFileName(myDialog.FileName);
+            //        linkFile.Text = CommonLibrary.FPTFile.UploadFtpFile("", myDialog.FileName);
+            //    }
+            //}
+        }
     }   
 }

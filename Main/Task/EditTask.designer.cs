@@ -49,6 +49,9 @@
             this.lbAssign = new System.Windows.Forms.Label();
             this.lbDescription = new System.Windows.Forms.Label();
             this.lbTaskName = new System.Windows.Forms.Label();
+            this.linkFile = new System.Windows.Forms.LinkLabel();
+            this.btnSelectfile = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbLevel
@@ -60,7 +63,7 @@
             "High",
             "Medium",
             "Low"});
-            this.cmbLevel.Location = new System.Drawing.Point(120, 293);
+            this.cmbLevel.Location = new System.Drawing.Point(113, 343);
             this.cmbLevel.Name = "cmbLevel";
             this.cmbLevel.Size = new System.Drawing.Size(206, 21);
             this.cmbLevel.TabIndex = 35;
@@ -70,7 +73,7 @@
             // 
             this.cmbAssign.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAssign.FormattingEnabled = true;
-            this.cmbAssign.Location = new System.Drawing.Point(123, 120);
+            this.cmbAssign.Location = new System.Drawing.Point(116, 170);
             this.cmbAssign.Name = "cmbAssign";
             this.cmbAssign.Size = new System.Drawing.Size(203, 21);
             this.cmbAssign.TabIndex = 34;
@@ -79,7 +82,7 @@
             // 
             this.dtpDueDate.CustomFormat = "dd/MM/yyyy";
             this.dtpDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDueDate.Location = new System.Drawing.Point(123, 158);
+            this.dtpDueDate.Location = new System.Drawing.Point(116, 208);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.Size = new System.Drawing.Size(203, 20);
             this.dtpDueDate.TabIndex = 33;
@@ -88,7 +91,7 @@
             // 
             this.cmbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDepartment.FormattingEnabled = true;
-            this.cmbDepartment.Location = new System.Drawing.Point(123, 77);
+            this.cmbDepartment.Location = new System.Drawing.Point(116, 127);
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(203, 21);
             this.cmbDepartment.TabIndex = 32;
@@ -96,7 +99,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(108, 395);
+            this.btnUpdate.Location = new System.Drawing.Point(113, 445);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 30;
@@ -107,7 +110,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(123, 206);
+            this.txtDescription.Location = new System.Drawing.Point(116, 256);
             this.txtDescription.MaxLength = 2000;
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
@@ -119,7 +122,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 343);
+            this.label7.Location = new System.Drawing.Point(14, 393);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 13);
             this.label7.TabIndex = 28;
@@ -128,7 +131,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(53, 296);
+            this.label6.Location = new System.Drawing.Point(46, 346);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 13);
             this.label6.TabIndex = 27;
@@ -137,7 +140,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(60, 231);
+            this.label5.Location = new System.Drawing.Point(53, 281);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 26;
@@ -146,7 +149,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(46, 166);
+            this.label4.Location = new System.Drawing.Point(39, 216);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 25;
@@ -155,7 +158,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 122);
+            this.label3.Location = new System.Drawing.Point(27, 172);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 24;
@@ -164,7 +167,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 80);
+            this.label2.Location = new System.Drawing.Point(29, 130);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 23;
@@ -173,7 +176,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 33);
+            this.label1.Location = new System.Drawing.Point(16, 83);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 22;
@@ -181,7 +184,7 @@
             // 
             // txtTaskName
             // 
-            this.txtTaskName.Location = new System.Drawing.Point(123, 29);
+            this.txtTaskName.Location = new System.Drawing.Point(116, 79);
             this.txtTaskName.MaxLength = 200;
             this.txtTaskName.Name = "txtTaskName";
             this.txtTaskName.Size = new System.Drawing.Size(203, 20);
@@ -191,7 +194,7 @@
             // 
             // btnCacncel
             // 
-            this.btnCacncel.Location = new System.Drawing.Point(227, 395);
+            this.btnCacncel.Location = new System.Drawing.Point(244, 445);
             this.btnCacncel.Name = "btnCacncel";
             this.btnCacncel.Size = new System.Drawing.Size(75, 23);
             this.btnCacncel.TabIndex = 36;
@@ -203,7 +206,7 @@
             // 
             this.lbLevel.AutoSize = true;
             this.lbLevel.ForeColor = System.Drawing.Color.Red;
-            this.lbLevel.Location = new System.Drawing.Point(345, 296);
+            this.lbLevel.Location = new System.Drawing.Point(338, 346);
             this.lbLevel.Name = "lbLevel";
             this.lbLevel.Size = new System.Drawing.Size(17, 13);
             this.lbLevel.TabIndex = 42;
@@ -213,7 +216,7 @@
             // 
             this.lbDepartment.AutoSize = true;
             this.lbDepartment.ForeColor = System.Drawing.Color.Red;
-            this.lbDepartment.Location = new System.Drawing.Point(345, 80);
+            this.lbDepartment.Location = new System.Drawing.Point(338, 130);
             this.lbDepartment.Name = "lbDepartment";
             this.lbDepartment.Size = new System.Drawing.Size(17, 13);
             this.lbDepartment.TabIndex = 41;
@@ -223,7 +226,7 @@
             // 
             this.lbDate.AutoSize = true;
             this.lbDate.ForeColor = System.Drawing.Color.Red;
-            this.lbDate.Location = new System.Drawing.Point(345, 163);
+            this.lbDate.Location = new System.Drawing.Point(338, 213);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(17, 13);
             this.lbDate.TabIndex = 40;
@@ -233,7 +236,7 @@
             // 
             this.lbAssign.AutoSize = true;
             this.lbAssign.ForeColor = System.Drawing.Color.Red;
-            this.lbAssign.Location = new System.Drawing.Point(345, 124);
+            this.lbAssign.Location = new System.Drawing.Point(338, 174);
             this.lbAssign.Name = "lbAssign";
             this.lbAssign.Size = new System.Drawing.Size(17, 13);
             this.lbAssign.TabIndex = 39;
@@ -243,7 +246,7 @@
             // 
             this.lbDescription.AutoSize = true;
             this.lbDescription.ForeColor = System.Drawing.Color.Red;
-            this.lbDescription.Location = new System.Drawing.Point(345, 234);
+            this.lbDescription.Location = new System.Drawing.Point(338, 284);
             this.lbDescription.Name = "lbDescription";
             this.lbDescription.Size = new System.Drawing.Size(17, 13);
             this.lbDescription.TabIndex = 38;
@@ -253,18 +256,49 @@
             // 
             this.lbTaskName.AutoSize = true;
             this.lbTaskName.ForeColor = System.Drawing.Color.Red;
-            this.lbTaskName.Location = new System.Drawing.Point(345, 32);
+            this.lbTaskName.Location = new System.Drawing.Point(338, 82);
             this.lbTaskName.Name = "lbTaskName";
             this.lbTaskName.Size = new System.Drawing.Size(17, 13);
             this.lbTaskName.TabIndex = 37;
             this.lbTaskName.Text = "(*)";
+            // 
+            // linkFile
+            // 
+            this.linkFile.AutoSize = true;
+            this.linkFile.Location = new System.Drawing.Point(116, 423);
+            this.linkFile.Name = "linkFile";
+            this.linkFile.Size = new System.Drawing.Size(0, 13);
+            this.linkFile.TabIndex = 44;
+            // 
+            // btnSelectfile
+            // 
+            this.btnSelectfile.Location = new System.Drawing.Point(113, 388);
+            this.btnSelectfile.Name = "btnSelectfile";
+            this.btnSelectfile.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectfile.TabIndex = 43;
+            this.btnSelectfile.Text = "Chọn file";
+            this.btnSelectfile.UseVisualStyleBackColor = true;
+            this.btnSelectfile.Click += new System.EventHandler(this.btnSelectfile_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(151, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(102, 24);
+            this.label8.TabIndex = 45;
+            this.label8.Text = "Edit Task ";
             // 
             // frmEditTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(408, 450);
+            this.ClientSize = new System.Drawing.Size(398, 497);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.linkFile);
+            this.Controls.Add(this.btnSelectfile);
             this.Controls.Add(this.lbLevel);
             this.Controls.Add(this.lbDepartment);
             this.Controls.Add(this.lbDate);
@@ -286,6 +320,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTaskName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmEditTask";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditTask";
@@ -318,5 +355,8 @@
         private System.Windows.Forms.Label lbAssign;
         private System.Windows.Forms.Label lbDescription;
         private System.Windows.Forms.Label lbTaskName;
+        private System.Windows.Forms.LinkLabel linkFile;
+        private System.Windows.Forms.Button btnSelectfile;
+        private System.Windows.Forms.Label label8;
     }
 }

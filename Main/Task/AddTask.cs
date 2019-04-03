@@ -8,7 +8,6 @@ using Entity;
 using log4net;
 using System.IO;
 using System.Net;
-using System.Security.Policy;
 
 namespace Main
 {
@@ -22,6 +21,7 @@ namespace Main
         /// 
         /// </summary>
         /// <param name="e"></param>
+        /// 
         protected override void OnLoad(EventArgs e)
         {
             DataTable myDataTable = myRolesActionBus.GetTrue(RolesID);
@@ -106,7 +106,7 @@ namespace Main
                         Assign = Convert.ToInt32(cmbAssign.SelectedValue.ToString()),
                         DueDate = Convert.ToDateTime(dtpDueDate.Value).ToString("dd/MMM/yyyy"),
                         Description = txtDescription.Text.Trim(),
-                        Files = "",
+                        Files = linkFile.Text,
                         Status = 1,
                         Priority = Convert.ToInt32(cmbLevel.SelectedValue.ToString()),
                     };
@@ -213,7 +213,7 @@ namespace Main
                 //int id = Convert.ToInt32(tempid.Row[0].ToString());
 
                 DataTable dtDepartment = new DataTable();
-                dtDepartment = objTaskBus.LoadEmployeeByDpt(Convert.ToInt32(cmbDepartment.SelectedValue));
+                dtDepartment = objTaskBus.LoadEmployeeByDpt(Convert.ToInt32(cmbDepartment.SelectedValue.ToString()));
                 if (dtDepartment.Rows.Count > 0)
                 {
                     cmbAssign.ValueMember = "EMPLOYEEID";
@@ -262,6 +262,7 @@ namespace Main
                 Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,200}") == false)
             {
                 lbTaskName.ForeColor = Color.Red;
+                txtTaskName.Focus();
             }
             else
             {
@@ -275,6 +276,7 @@ namespace Main
                 Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,2000}") == false)
             {
                 lbDescription.ForeColor = Color.Red;
+                txtTaskName.Focus();
             }
             else
             {
@@ -330,18 +332,18 @@ namespace Main
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            using (OpenFileDialog myDialog = new OpenFileDialog())
-            {
-                myDialog.CheckFileExists = true;
-                myDialog.Multiselect = false;
-                myDialog.Title = "Chọn file đính kèm";
-                myDialog.Filter = "Image|*.png|*.jpg|*.jpeg |Word file|*.doc| Excel file | *.xlsx| Other file | *.*";
-                if (myDialog.ShowDialog() == DialogResult.OK)
-                {
-                    //lblFile.Text = Path.GetFileName(myDialog.FileName);
-                    linkFile.Text=CommonLibrary.FPTFile.UploadFtpFile("",myDialog.FileName);
-                }
-            }
+            //using (OpenFileDialog myDialog = new OpenFileDialog())
+            //{
+            //    myDialog.CheckFileExists = true;
+            //    myDialog.Multiselect = false;
+            //    myDialog.Title = "Chọn file đính kèm";
+            //    myDialog.Filter = "Image|*.png|*.jpg|*.jpeg |Word file|*.doc| Excel file | *.xlsx| Other file | *.*";
+            //    if (myDialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        //lblFile.Text = Path.GetFileName(myDialog.FileName);
+            //        linkFile.Text=CommonLibrary.FPTFile.UploadFtpFile("",myDialog.FileName);
+            //    }
+            //}
         }
 
         

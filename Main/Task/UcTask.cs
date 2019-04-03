@@ -57,6 +57,7 @@ namespace Main
                 dgvTask.DataSource = firstPage;
                 dgvTask.Columns[9].Visible = false;
                 dgvTask.Columns[10].Visible = false;
+                dgvTask.Columns[11].Visible = false;
                 lblPage.Text = (allData.Rows.Count % pageSize == 0)
                     ? (allData.Rows.Count / pageSize).ToString()
                     : ((allData.Rows.Count / pageSize) + 1).ToString();
@@ -89,19 +90,25 @@ namespace Main
             try
             {
                 string cvDueDate = Convert.ToDateTime(dtpDeuDateFilter.Value).ToString("dd/MMM/yyyy");
+
                 DataTable allData = objTaskBus.Filter(txtNameFilter.Text, Convert.ToInt32(cmbDepartment.SelectedValue),
                     cvDueDate, 0);
                 DataTable firstPage = objTaskBus.Filter(txtNameFilter.Text, Convert.ToInt32(cmbDepartment.SelectedValue),
                     cvDueDate, 1);
+                lblCurent.Text = "1";
                 pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
+
                 if (firstPage.Rows.Count > 0)
                 {
                     dgvTask.DataSource = firstPage;
                     dgvTask.Columns[9].Visible = false;
                     dgvTask.Columns[10].Visible = false;
+                    dgvTask.Columns[11].Visible = false;
+
                     lblPage.Text = (allData.Rows.Count % pageSize == 0)
                         ? (allData.Rows.Count / pageSize).ToString()
                         : ((allData.Rows.Count / pageSize) + 1).ToString();
+
                 }
                 else
                 {
@@ -125,12 +132,19 @@ namespace Main
             dtpDeuDateFilter.Value = DateTime.Now;
             cmbDepartment.SelectedValue = 1;
             lblCurent.Text = "1";
-            DataTable list = objTaskBus.GetAll(1);
-            if (list.Rows.Count > 0)
+            DataTable allData = objTaskBus.GetAll(0);
+            DataTable firstPage = objTaskBus.GetAll(1);
+            if (firstPage.Rows.Count > 0)
             {
-                dgvTask.DataSource = list;
+                dgvTask.DataSource = firstPage;
                 dgvTask.Columns[9].Visible = false;
                 dgvTask.Columns[10].Visible = false;
+                dgvTask.Columns[11].Visible = false;
+
+                lblPage.Text = (allData.Rows.Count % pageSize == 0)
+                    ? (allData.Rows.Count / pageSize).ToString()
+                    : ((allData.Rows.Count / pageSize) + 1).ToString();
+
             }
             else
             {
@@ -328,7 +342,11 @@ namespace Main
                 else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString()) <= 0
                          || string.Empty.Equals(dgvTask.CurrentRow.Cells["DEPARTMENTID"].Value.ToString().Trim()))
                 {
-
+                    MessageBox.Show("DEPARTMENT Not Exited!");
+                }
+                else if (Convert.ToInt32(dgvTask.CurrentRow.Cells["Tiến Độ"].Value.ToString()) == 3)
+                {
+                    MessageBox.Show("Cannot Edit When Status Doned!");
                 }
                 else
                 {
