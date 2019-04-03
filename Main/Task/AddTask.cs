@@ -262,6 +262,7 @@ namespace Main
                 Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,200}") == false)
             {
                 lbTaskName.ForeColor = Color.Red;
+                txtTaskName.Focus();
             }
             else
             {
@@ -275,6 +276,7 @@ namespace Main
                 Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,2000}") == false)
             {
                 lbDescription.ForeColor = Color.Red;
+                txtTaskName.Focus();
             }
             else
             {

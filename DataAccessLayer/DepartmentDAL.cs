@@ -385,12 +385,11 @@
                     OracleDataAdapter da = new OracleDataAdapter();
                     OracleCommand cmd = new OracleCommand();
 
-                    cmd = new OracleCommand("Department_Page", connection);
+                    cmd = new OracleCommand("Department_Pageall", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("currPage", currPage);
                     cmd.Parameters.Add("recodperpage", recodperpage);
-                    cmd.Parameters.Add("Pagesize", Pagesize);
                     cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
                     da.SelectCommand = cmd;
