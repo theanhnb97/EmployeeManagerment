@@ -112,7 +112,7 @@ namespace DataAccessLayer
                     {
                         new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output),
                     };
-                    return sqlHelp.ExcuteQuery("Department_GetAllDeltete", CommandType.StoredProcedure, connection,
+                    return sqlHelp.ExcuteQuery("Department_GetAll", CommandType.StoredProcedure, connection,
                         parameters);
                     //OracleDataAdapter da = new OracleDataAdapter();
                     //OracleCommand cmd = new OracleCommand();
@@ -235,31 +235,27 @@ namespace DataAccessLayer
         /// <param name="recodperpage">The recodperpage<see cref="int"/></param>
         /// <param name="Pagesize">The Pagesize<see cref="int"/></param>
         /// <returns>The <see cref="DataTable"/></returns>
-        public DataTable SearchDepartment(string keyword, int currPage, int recodperpage, int Pagesize)
+        public DataTable SearchDepartment(string keyword, int currPage)
         {
             //try
             {
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
                 using (OracleConnection connection = Connection.GetConnection)
                 {
+                    int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"].ToString());
                     OracleDataAdapter da = new OracleDataAdapter();
                     OracleCommand cmd = new OracleCommand();
 
                     cmd = new OracleCommand("Department_Search", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
-
                     cmd.Parameters.Add("currPage", currPage);
-                    cmd.Parameters.Add("recodperpage", recodperpage);
-                    cmd.Parameters.Add("Pagesize", Pagesize);
+                    cmd.Parameters.Add("recodperpage", pageSize);
                     cmd.Parameters.Add(" p_departmentName", keyword);
-
                     cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
                     da.SelectCommand = cmd;
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     return dt;
-
                 }
 
             }
@@ -324,9 +320,6 @@ namespace DataAccessLayer
                   return sqlHelp.ExcuteQuery("Department_SearchAll", CommandType.StoredProcedure, connection,
                       parameters);
                 }
-
-            
-            
 
         }
 

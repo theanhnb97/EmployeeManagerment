@@ -82,7 +82,7 @@ namespace Main.Dai
             }
             else
             {
-                dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword);
+                dgvDepartment.DataSource = departmentBus.SearchDepartment(keyword,0);
                 lblCurent.Text = "1";
                 lblPage.Text = "1";
                 btnNext.Enabled = false;
@@ -130,8 +130,8 @@ namespace Main.Dai
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.OK)
             {
-                int checkDelete = departmentBus.DeleteNoRemove(id);// check delete
-                if (checkDelete == -1)
+                int checkDeletet = departmentBus.DeleteNoRemove(id);// check delete
+                if (checkDeletet == -1)
                 {
                     int checkDelete = departmentBus.DeleteNoRemove(id);// check delete
                     if (checkDelete == -1)

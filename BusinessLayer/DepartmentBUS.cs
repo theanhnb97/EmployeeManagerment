@@ -112,9 +112,9 @@
             return departmentDal.GetAllPage(currPage, recodperpage);
         }
 
-       public  DataTable SearchDepartment(string keyword)
+       public  DataTable SearchDepartment(string keyword,int numberPage)
         {
-            return departmentDal.SearchDepartment(keyword );
+            return departmentDal.SearchDepartment(keyword , numberPage);
         }
 
         /// <summary>
