@@ -12,6 +12,7 @@ namespace Main.Salary
         public Dictionary<int, string> cbbBasicItems = new Dictionary<int, string>();
         public Dictionary<int, string> cbbBussinessItems = new Dictionary<int, string>();
         public Dictionary<int, string> cbbCoefficientItems = new Dictionary<int, string>();
+        public Dictionary<int, int> pageSizes = new Dictionary<int, int>();
         public CbbData()
         {
             //Rank Source
@@ -33,6 +34,9 @@ namespace Main.Salary
             cbbCoefficientItems.Add(2, "2.67");
             cbbCoefficientItems.Add(3, "3.0");
             cbbCoefficientItems.Add(4, "3.33");
+            //PageSize in Paging
+            pageSizes.Add(5, 5);
+            pageSizes.Add(10, 10);
         }
 
 

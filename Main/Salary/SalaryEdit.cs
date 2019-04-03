@@ -1,5 +1,6 @@
 ﻿using BusinessLayer;
 using Entity;
+using Main.Salary;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,36 +27,23 @@ namespace Main.Dong
             lblIdent.Text = SalaryManagement.salaryForEdit.Identity;
             lblRank.Text = SalaryManagement.salaryForEdit.Rank.ToString();
             lblName.Text = SalaryManagement.salaryForEdit.FullName;
+            CbbData cbbData = new CbbData();
             //Combobox Basic Source
-            Dictionary<int, string> cbbBasicItems = new Dictionary<int, string>();
-            cbbBasicItems.Add(3, "3");
-            cbbBasicItems.Add(4, "4");
-            cbbBasicItems.Add(5, "5");
-            cbbBasicItems.Add(6, "6");
-            cbbBasic.DataSource = new BindingSource(cbbBasicItems, null);
+            cbbBasic.DataSource = new BindingSource(cbbData.cbbBasicItems, null);
             cbbBasic.ValueMember = "Key";
             cbbBasic.DisplayMember = "Value";
-            cbbBasic.SelectedItem = null;
+            cbbBasic.SelectedText = SalaryManagement.salaryForEdit.Basic.ToString();
             //Combobox Bussiness Source
-            Dictionary<int, string> cbbBussinessItems = new Dictionary<int, string>();
-            cbbBussinessItems.Add(5, "5");
-            cbbBussinessItems.Add(6, "6");
-            cbbBussinessItems.Add(7, "7");
-            cbbBussinessItems.Add(8, "8");
-            cbbBussiness.DataSource = new BindingSource(cbbBussinessItems, null);
+            cbbBussiness.DataSource = new BindingSource(cbbData.cbbBussinessItems, null);
             cbbBussiness.ValueMember = "Key";
             cbbBussiness.DisplayMember = "Value";
-            cbbBussiness.SelectedItem = null;
+            cbbBussiness.SelectedText = SalaryManagement.salaryForEdit.Bussiness.ToString();
             //Combobox Coefficient Source
-            Dictionary<int, string> cbbCoefficientItems = new Dictionary<int, string>();
-            cbbCoefficientItems.Add(1, "2.34");
-            cbbCoefficientItems.Add(2, "2.67");
-            cbbCoefficientItems.Add(3, "3.0");
-            cbbCoefficientItems.Add(4, "3.33");
-            cbbCoefficient.DataSource = new BindingSource(cbbCoefficientItems, null);
+            cbbCoefficient.DataSource = new BindingSource(cbbData.cbbCoefficientItems, null);
             cbbCoefficient.ValueMember = "Key";
             cbbCoefficient.DisplayMember = "Value";
-            cbbCoefficient.SelectedItem = null;
+            cbbCoefficient.SelectedText = SalaryManagement.salaryForEdit.Coefficient.ToString();
+ 
 
         }
 
@@ -67,6 +55,7 @@ namespace Main.Dong
             salary.BussinessSalary = int.Parse(cbbBussiness.Text);
             salary.Coefficient = float.Parse(cbbCoefficient.Text);
             salaryBUS.Update(salary);
+            MessageBox.Show("Update Successfull");
             this.Close();
         }
 
@@ -75,19 +64,5 @@ namespace Main.Dong
             this.Close();
         }
 
-        private void cbbBasic_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbbBussiness_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbbCoefficient_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

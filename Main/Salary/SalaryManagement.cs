@@ -11,6 +11,7 @@ using BusinessLayer;
 using Main.Dong;
 using System.Threading;
 using Entity.DTO;
+using Main.Salary;
 
 namespace Main
 {
@@ -18,32 +19,54 @@ namespace Main
     {
         public static SalaryView salaryForEdit = new SalaryView();
         protected int RolesID { get; set; }
-        SalaryBUS salary = new SalaryBUS();
-        
+        SalaryBUS salary = new SalaryBUS();        
         private int currentPage { get; set; } 
         private int lastPage { get; set; }
         // Number records paging
         private int size { get; set; }
+        private int currentSearchPage { get; set; }
 
         public SalaryManagement(int id)
         {
             this.RolesID = id;
             InitializeComponent();
-        }
-        private void Salary_Load(object sender, EventArgs e)
-        {
             this.currentPage = 0;
-            // Set 5 records per page
-            this.size = 5;
-
+            CbbData cbbData = new CbbData();
+            var firstsize = cbbData.pageSizes.First();
+            this.size = firstsize.Value;  
+            this.SetPaging();
+            cbbRecordNum.DataSource = new BindingSource(cbbData.pageSizes, null);
+            cbbRecordNum.DisplayMember = "Value";
+            cbbRecordNum.ValueMember = "Key";
+            currentSearchPage = 0;
+        }
+        private void SetPaging()
+        {
             if (salary.GetData().Count % size == 0)
             {
                 this.lastPage = salary.GetData().Count / size - 1;
             }
             else this.lastPage = salary.GetData().Count / size;
             lblPagingSalaryIndex.Text = (currentPage + 1).ToString();
-            lblAllPageSalary.Text = (lastPage+1).ToString();
-            dgvSalary.DataSource = salary.Paging(size, 0);
+            lblAllPageSalary.Text = (lastPage + 1).ToString();
+        }
+
+        private void Salary_Load(object sender, EventArgs e)
+        {         
+            panelDate.Visible = false;
+            List<SalaryView> salaryViews = salary.Paging(size, currentPage);
+            CbbData cbbData = new CbbData();
+            foreach(var item in salaryViews)
+            {
+                foreach(var rank in cbbData.cbbRankItems)
+                {
+                    if (item.Rank == rank.Key.ToString())
+                    {
+                        item.Rank = rank.Value;
+                    }
+                }
+            }
+            dgvSalary.DataSource = salaryViews;
             if (dgvSalary.DataSource == null)
             {
                 MessageBox.Show("Data Not Found!");
@@ -63,27 +86,57 @@ namespace Main
             }
         }
         private void btnLoadData_Click(object sender, System.EventArgs e)
-        {
+       {
             string nameSearch = txtNameFilter.Text;
             string deptSearch = txtDeptFilter.Text;
-            DateTime fDate = DateTime.Parse(dateFDateFilter.Value.ToString());
-            DateTime tDate = DateTime.Parse(dateTDateFilter.Value.ToString());
-            dgvSalary.DataSource = salary.SearchSalary(nameSearch, deptSearch, fDate, tDate);
+            if (panelDate.Visible == true)
+            {
+                DateTime fDate = DateTime.Parse(dateFDateFilter.Value.ToString());
+                DateTime tDate = DateTime.Parse(dateTDateFilter.Value.ToString());
+                List<SalaryView> salaryViews = salary.SearchSalary(nameSearch, deptSearch, fDate, tDate);
+                CbbData cbbData = new CbbData();
+                foreach (var item in salaryViews)
+                {
+                    foreach (var rank in cbbData.cbbRankItems)
+                    {
+                        if (item.Rank == rank.Key.ToString())
+                        {
+                            item.Rank = rank.Value;
+                        }
+                    }
+                }
+                dgvSalary.DataSource = salaryViews;             
+            }
+            else
+            {
+                DateTime fDate = DateTime.Parse("01/01/1900");
+                DateTime tDate = DateTime.Parse("01/01/2100");
+                List<SalaryView> salaryViews = salary.SearchSalary(nameSearch, deptSearch, fDate, tDate);
+                CbbData cbbData = new CbbData();
+                foreach (var item in salaryViews)
+                {
+                    foreach (var rank in cbbData.cbbRankItems)
+                    {
+                        if (item.Rank == rank.Key.ToString())
+                        {
+                            item.Rank = rank.Value;
+                        }
+                    }
+                }
+                dgvSalary.DataSource = salaryViews;
+               
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Thread myth;
-            myth = new Thread(new System.Threading.ThreadStart(CallSaveDialog));
-            myth.ApartmentState = ApartmentState.STA;
-            myth.Start();
-            Salary_Load(sender, e);
-        }
-        private void CallSaveDialog()
-        {
-            SalaryAdd sa = new SalaryAdd();
+            SalaryAdd sa = new SalaryAdd();           
             sa.ShowDialog();
+            this.Hide();
+            Salary_Load(sender, e);
+            this.Show();
         }
+
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -95,10 +148,12 @@ namespace Main
             salaryForEdit.Identity = dgvSalary.Rows[index].Cells[1].Value.ToString();
             salaryForEdit.FullName = dgvSalary.Rows[index].Cells[0].Value.ToString();
             salaryForEdit.Dept = dgvSalary.Rows[index].Cells[3].Value.ToString();
-            salaryForEdit.Rank = int.Parse(dgvSalary.Rows[index].Cells[2].Value.ToString());
+            salaryForEdit.Rank = dgvSalary.Rows[index].Cells[2].Value.ToString();
             SalaryEdit salaryEdit = new SalaryEdit();
             salaryEdit.ShowDialog();
+            this.Hide();
             Salary_Load(sender, e);
+            this.Show();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -107,7 +162,9 @@ namespace Main
             txtNameFilter.Clear();
             dateFDateFilter.Refresh();
             dateTDateFilter.Refresh();
+            SetPaging();
             Salary_Load(sender, e);
+            currentSearchPage = 0;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -128,28 +185,69 @@ namespace Main
                         MessageBox.Show("Error!");
                     }
                 }
-
             }
         }
 
         private void btnPreSalary_Click(object sender, EventArgs e)
         {
-            if(currentPage != 0)
+            if(currentPage > 0)
             {
-                currentPage = currentPage - 1;
-                dgvSalary.DataSource = salary.Paging(this.size, currentPage);
-                lblPagingSalaryIndex.Text = (currentPage+1).ToString();
+                if ((txtDeptFilter.Text.Trim() == "") && (txtNameFilter.Text.Trim() == "") && chkDate.Checked == false)
+                {
+                    currentPage = currentPage - 1;
+                    Salary_Load(sender, e);
+                    if(currentPage==0)
+                    lblPagingSalaryIndex.Text = (currentPage+1).ToString();
+                    else lblPagingSalaryIndex.Text = currentPage.ToString();
+                }
+                else
+                {
+                    currentSearchPage = currentSearchPage - 1;
+                    btnLoadData_Click(sender, e);
+                    lblPagingSalaryIndex.Text = (currentSearchPage - 1).ToString();                    
+                }
             }
         }
 
         private void btnNextSalary_Click(object sender, EventArgs e)
         {
-            if(currentPage != lastPage)
-            {
-                currentPage = currentPage + 1;
-                dgvSalary.DataSource = salary.Paging(this.size, currentPage);
-                lblPagingSalaryIndex.Text = (currentPage+1).ToString();
+            if(currentPage < lastPage)
+            {             
+                if ((txtDeptFilter.Text.Trim() == "") && (txtNameFilter.Text.Trim() == "") && chkDate.Checked == false)
+                {
+                    currentPage = currentPage + 1;
+                    Salary_Load(sender, e);
+                    lblPagingSalaryIndex.Text = (currentPage + 1).ToString();
+                }                   
+                else
+                {
+                    currentSearchPage = currentSearchPage + 1;
+                    btnLoadData_Click(sender, e);
+                    lblPagingSalaryIndex.Text = (currentSearchPage + 1).ToString();
+                }
+                
             }
+        }
+
+        private void chkDate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (panelDate.Visible == false)
+            {
+                panelDate.Visible = true;
+            }
+            else panelDate.Visible = false;
+        }
+
+        private void cbbRecordNum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.size = int.Parse(cbbRecordNum.Text);
+            currentPage = 0;
+            if ((txtDeptFilter.Text.Trim() == "") && (txtNameFilter.Text.Trim() == "") && chkDate.Checked == false)
+            {
+                SetPaging();
+                Salary_Load(sender, e);
+            }
+            else btnLoadData_Click(sender, e);
         }
     }
 }

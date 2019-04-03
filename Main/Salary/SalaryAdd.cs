@@ -129,18 +129,6 @@ namespace Main.Dong
 
         private void cbbName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if ((!string.IsNullOrEmpty(cbbName.Text)) && (cbbName.SelectedIndex != -1))
-            //{
-            //    foreach (var item in this.cbbIdentAndNameSource)
-            //    {
-            //        if (item.EmployeeId == int.Parse(cbbName.SelectedValue.ToString()))
-            //        {
-            //            string identity = item.Identity;
-            //            int i = cbbIdentity.FindString(identity);
-            //            cbbIdentity.SelectedIndex = i;
-            //        }
-            //    }
-            //}
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -156,7 +144,11 @@ namespace Main.Dong
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (cbbDept.SelectedIndex != -1 && cbbRank.SelectedIndex != -1 && cbbName.SelectedIndex != -1 && cbbIdentity.SelectedIndex != -1 && cbbBasic.SelectedIndex != -1 && cbbBussiness.SelectedIndex != -1 && cbbCoefficient.SelectedIndex != -1)
+            if(cbbIdentity.SelectedValue== null)
+            {
+                MessageBox.Show("Identity value invalid, please refill identity");
+            }
+            else if (cbbDept.SelectedIndex != -1 && cbbRank.SelectedIndex != -1 && cbbName.SelectedIndex != -1 && cbbIdentity.SelectedIndex != -1 && cbbBasic.SelectedIndex != -1 && cbbBussiness.SelectedIndex != -1 && cbbCoefficient.SelectedIndex != -1)
             {
                 Entity.Salary salary = new Entity.Salary();
                 salary.CreateDate = DateTime.Now;
@@ -165,9 +157,31 @@ namespace Main.Dong
                 salary.Coefficient = float.Parse(cbbCoefficient.Text);
                 salary.EmployeeId = int.Parse(cbbIdentity.SelectedValue.ToString());
                 salaryBUS.Add(salary);
+                MessageBox.Show("Add Successful");
                 this.Close();
             }
-            else MessageBox.Show("Vui long dien day du thong tin");
+            else MessageBox.Show("Please recheck, seem some value not fill");
+        }
+
+
+        private void cbbBussiness_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbBasic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbCoefficient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
