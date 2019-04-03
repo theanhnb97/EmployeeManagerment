@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvData = new System.Windows.Forms.DataGridView();
+            this.ACTIONID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ACTIONNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCRIPTION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISDELETE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDelete = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnEdit = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnAdd = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnScan = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.ACTIONID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ACTIONNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESCRIPTION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISDELETE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,14 +49,14 @@
             this.dgvData.AllowUserToResizeColumns = false;
             this.dgvData.AllowUserToResizeRows = false;
             this.dgvData.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ACTIONID,
@@ -76,11 +76,43 @@
             this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
             this.dgvData.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvData_KeyDown);
             // 
+            // ACTIONID
+            // 
+            this.ACTIONID.DataPropertyName = "ACTIONID";
+            this.ACTIONID.HeaderText = "Mã";
+            this.ACTIONID.Name = "ACTIONID";
+            this.ACTIONID.ReadOnly = true;
+            this.ACTIONID.Visible = false;
+            // 
+            // ACTIONNAME
+            // 
+            this.ACTIONNAME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ACTIONNAME.DataPropertyName = "ACTIONNAME";
+            this.ACTIONNAME.HeaderText = "Form Keyword";
+            this.ACTIONNAME.Name = "ACTIONNAME";
+            this.ACTIONNAME.ReadOnly = true;
+            // 
+            // DESCRIPTION
+            // 
+            this.DESCRIPTION.DataPropertyName = "DESCRIPTION";
+            this.DESCRIPTION.HeaderText = "Tên chi tiết";
+            this.DESCRIPTION.Name = "DESCRIPTION";
+            this.DESCRIPTION.ReadOnly = true;
+            this.DESCRIPTION.Width = 400;
+            // 
+            // ISDELETE
+            // 
+            this.ISDELETE.DataPropertyName = "ISDELETE";
+            this.ISDELETE.HeaderText = "Trang Thai Xoa";
+            this.ISDELETE.Name = "ISDELETE";
+            this.ISDELETE.ReadOnly = true;
+            this.ISDELETE.Visible = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 19);
+            this.label1.Location = new System.Drawing.Point(8, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(141, 20);
             this.label1.TabIndex = 1;
@@ -107,7 +139,7 @@
             this.btnDelete.IconVisible = true;
             this.btnDelete.IconZoom = 90D;
             this.btnDelete.IsTab = false;
-            this.btnDelete.Location = new System.Drawing.Point(745, 19);
+            this.btnDelete.Location = new System.Drawing.Point(752, 40);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Normalcolor = System.Drawing.Color.SteelBlue;
             this.btnDelete.OnHovercolor = System.Drawing.Color.SteelBlue;
@@ -142,7 +174,7 @@
             this.btnEdit.IconVisible = true;
             this.btnEdit.IconZoom = 90D;
             this.btnEdit.IsTab = false;
-            this.btnEdit.Location = new System.Drawing.Point(695, 19);
+            this.btnEdit.Location = new System.Drawing.Point(688, 40);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Normalcolor = System.Drawing.Color.SteelBlue;
             this.btnEdit.OnHovercolor = System.Drawing.Color.SteelBlue;
@@ -177,7 +209,7 @@
             this.btnAdd.IconVisible = true;
             this.btnAdd.IconZoom = 90D;
             this.btnAdd.IsTab = false;
-            this.btnAdd.Location = new System.Drawing.Point(645, 19);
+            this.btnAdd.Location = new System.Drawing.Point(624, 40);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Normalcolor = System.Drawing.Color.SteelBlue;
             this.btnAdd.OnHovercolor = System.Drawing.Color.SteelBlue;
@@ -212,7 +244,7 @@
             this.btnScan.IconVisible = true;
             this.btnScan.IconZoom = 90D;
             this.btnScan.IsTab = false;
-            this.btnScan.Location = new System.Drawing.Point(541, 19);
+            this.btnScan.Location = new System.Drawing.Point(504, 40);
             this.btnScan.Name = "btnScan";
             this.btnScan.Normalcolor = System.Drawing.Color.SteelBlue;
             this.btnScan.OnHovercolor = System.Drawing.Color.SteelBlue;
@@ -225,38 +257,6 @@
             this.btnScan.Textcolor = System.Drawing.Color.White;
             this.btnScan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
-            // 
-            // ACTIONID
-            // 
-            this.ACTIONID.DataPropertyName = "ACTIONID";
-            this.ACTIONID.HeaderText = "Mã";
-            this.ACTIONID.Name = "ACTIONID";
-            this.ACTIONID.ReadOnly = true;
-            this.ACTIONID.Visible = false;
-            // 
-            // ACTIONNAME
-            // 
-            this.ACTIONNAME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ACTIONNAME.DataPropertyName = "ACTIONNAME";
-            this.ACTIONNAME.HeaderText = "Form Keyword";
-            this.ACTIONNAME.Name = "ACTIONNAME";
-            this.ACTIONNAME.ReadOnly = true;
-            // 
-            // DESCRIPTION
-            // 
-            this.DESCRIPTION.DataPropertyName = "DESCRIPTION";
-            this.DESCRIPTION.HeaderText = "Tên chi tiết";
-            this.DESCRIPTION.Name = "DESCRIPTION";
-            this.DESCRIPTION.ReadOnly = true;
-            this.DESCRIPTION.Width = 400;
-            // 
-            // ISDELETE
-            // 
-            this.ISDELETE.DataPropertyName = "ISDELETE";
-            this.ISDELETE.HeaderText = "Trang Thai Xoa";
-            this.ISDELETE.Name = "ISDELETE";
-            this.ISDELETE.ReadOnly = true;
-            this.ISDELETE.Visible = false;
             // 
             // UcAction
             // 

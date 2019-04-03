@@ -58,7 +58,7 @@
                 String cmd = "Roles_Get";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("names",name),
+                    new OracleParameter("_name",name),
                     new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
                 DataTable myList = sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
@@ -66,10 +66,10 @@
                     return null;
                 return new Roles
                 {
-                    RolesID = int.Parse(myList.Rows[0][0].ToString()),
-                    RolesName = myList.Rows[0][1].ToString(),
-                    IsDelete = int.Parse(myList.Rows[0][2].ToString()),
-                    Description = myList.Rows[0][3].ToString()
+                    RolesID = int.Parse(myList.Rows[0]["RolesID"].ToString()),
+                    RolesName = myList.Rows[0]["RolesName"].ToString(),
+                    IsDelete = int.Parse(myList.Rows[0]["IsDelete"].ToString()),
+                    Description = myList.Rows[0]["Description"].ToString()
                 };
             }
         }
@@ -96,7 +96,7 @@
                 String cmd = "Roles_Delete";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("rolesids",id)
+                    new OracleParameter("_rolesId",id)
                 };
                 return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
@@ -114,10 +114,10 @@
                 String cmd = "Roles_Update";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("rolesids",obj.RolesID),
-                    new OracleParameter("rolesnames",obj.RolesName),
-                    new OracleParameter("isdeletes",obj.IsDelete),
-                    new OracleParameter("descriptions",obj.Description)
+                    new OracleParameter("_rolesId",obj.RolesID),
+                    new OracleParameter("_rolesName",obj.RolesName),
+                    new OracleParameter("_isDelete",obj.IsDelete),
+                    new OracleParameter("_description",obj.Description)
                 };
                 return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
@@ -135,9 +135,9 @@
                 String cmd = "Roles_Insert";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("rolesnames",obj.RolesName),
-                    new OracleParameter("isdeletes",obj.IsDelete),
-                    new OracleParameter("descriptions",obj.Description)
+                    new OracleParameter("_rolesName",obj.RolesName),
+                    new OracleParameter("_isDelete",obj.IsDelete),
+                    new OracleParameter("_description",obj.Description)
                 };
                 sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
                 Roles newAdd = GetByName(obj.RolesName);
@@ -150,7 +150,7 @@
                     RolesAction myRolesActionAdd = new RolesAction
                     {
                         ID = 0,
-                        ActionID = int.Parse(item[0].ToString()),
+                        ActionID = int.Parse(item["ActionID"].ToString()),
                         IsTrue = 0,
                         RolesID = newAdd.RolesID
                     };

@@ -126,9 +126,9 @@
         /// <param name="UserName"></param>
         /// <param name="Password"></param>
         /// <returns></returns>
-        public int Login(string UserName, string Password)
+        public int Login(string userName, string password)
         {
-            return myEmployeeDao.Login(UserName, Password);
+            return myEmployeeDao.Login(userName, password);
         }
 
         /// <summary>

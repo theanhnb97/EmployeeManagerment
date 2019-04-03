@@ -54,7 +54,7 @@
                 String cmd = "RolesAction_GetAllTrue";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("ids",id),
+                    new OracleParameter("_id",id),
                     new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
                 List<RolesAction> myList = sql.ExcuteQueryList(cmd, CommandType.StoredProcedure, con, myParameters);
@@ -134,8 +134,8 @@
             {
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                        new OracleParameter("ids",item.ID),
-                        new OracleParameter("istrues",item.IsTrue)
+                        new OracleParameter("_ids",item.ID),
+                        new OracleParameter("_isTrue",item.IsTrue)
                 };
                 using (OracleConnection con = Connection.GetConnection)
                     sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
@@ -155,9 +155,9 @@
                 String cmd = "RolesAction_Insert";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("actionids",obj.ActionID),
-                    new OracleParameter("rolesids",obj.RolesID),
-                    new OracleParameter("istrues",obj.IsTrue)
+                    new OracleParameter("_actionId",obj.ActionID),
+                    new OracleParameter("_rolesId",obj.RolesID),
+                    new OracleParameter("_isTrue",obj.IsTrue)
                 };
                 return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }

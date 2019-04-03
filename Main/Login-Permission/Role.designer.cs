@@ -55,7 +55,7 @@
             // btnCancel
             // 
             this.btnCancel.Activecolor = System.Drawing.Color.SteelBlue;
-            this.btnCancel.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.BorderRadius = 0;
             this.btnCancel.ButtonText = "Huỷ bỏ";
@@ -73,10 +73,10 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(203, 219);
+            this.btnCancel.Location = new System.Drawing.Point(296, 216);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.SteelBlue;
-            this.btnCancel.OnHovercolor = System.Drawing.Color.SteelBlue;
+            this.btnCancel.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnCancel.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.White;
             this.btnCancel.selected = false;
             this.btnCancel.Size = new System.Drawing.Size(72, 36);
@@ -108,7 +108,7 @@
             this.btnAdd.IconVisible = true;
             this.btnAdd.IconZoom = 90D;
             this.btnAdd.IsTab = false;
-            this.btnAdd.Location = new System.Drawing.Point(294, 219);
+            this.btnAdd.Location = new System.Drawing.Point(208, 216);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Normalcolor = System.Drawing.Color.SteelBlue;
             this.btnAdd.OnHovercolor = System.Drawing.Color.SteelBlue;

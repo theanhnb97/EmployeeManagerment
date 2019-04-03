@@ -81,10 +81,10 @@
         {
             lblUserName.Text = String.Format("Xin chào: {0}!",userName);
             lblUserName.Location= new Point(pnBot.Width-(lblUserName.Width+10),lblUserName.Location.Y);
-            salary = new SalaryManagement(RolesID);
-            pnMain.Controls.Add(salary);
-            salary.Dock = DockStyle.Fill;
-            salary.BringToFront();
+            ucTask = new UcTask(RolesID);
+            pnMain.Controls.Add(ucTask);
+            ucTask.Dock = DockStyle.Fill;
+            ucTask.BringToFront();
         }
 
         /// <summary>
@@ -112,8 +112,8 @@
         /// <param name="e">The e<see cref="EventArgs"/></param>
         private void FormMain_Load(object sender, EventArgs e)
         {
-            btnSalary.BackColor = pnSlide.BackColor;
-            btnSalary.ForeColor = Color.AliceBlue;
+            btnTask.BackColor = pnSlide.BackColor;
+            btnTask.ForeColor = Color.AliceBlue;
             btnMenuButtons.Add(btnAction);
             btnMenuButtons.Add(btnRole);
             btnMenuButtons.Add(btnPhanQuyen);
@@ -310,5 +310,9 @@
             }
         }
 
+        private void pnMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

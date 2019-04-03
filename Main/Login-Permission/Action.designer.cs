@@ -53,7 +53,7 @@
             this.txtName.LineIdleColor = System.Drawing.Color.Gray;
             this.txtName.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.txtName.LineThickness = 3;
-            this.txtName.Location = new System.Drawing.Point(157, 88);
+            this.txtName.Location = new System.Drawing.Point(144, 88);
             this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(220, 32);
@@ -66,7 +66,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(17, 44);
+            this.label1.Location = new System.Drawing.Point(4, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(193, 24);
             this.label1.TabIndex = 1;
@@ -76,7 +76,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 102);
+            this.label2.Location = new System.Drawing.Point(4, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 20);
             this.label2.TabIndex = 1;
@@ -86,7 +86,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(84, 162);
+            this.label3.Location = new System.Drawing.Point(71, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 20);
             this.label3.TabIndex = 3;
@@ -104,7 +104,7 @@
             this.txtDescription.LineIdleColor = System.Drawing.Color.Gray;
             this.txtDescription.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.txtDescription.LineThickness = 3;
-            this.txtDescription.Location = new System.Drawing.Point(157, 147);
+            this.txtDescription.Location = new System.Drawing.Point(144, 147);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(220, 32);
@@ -133,7 +133,7 @@
             this.btnAdd.IconVisible = true;
             this.btnAdd.IconZoom = 90D;
             this.btnAdd.IsTab = false;
-            this.btnAdd.Location = new System.Drawing.Point(305, 220);
+            this.btnAdd.Location = new System.Drawing.Point(203, 216);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Normalcolor = System.Drawing.Color.SteelBlue;
             this.btnAdd.OnHovercolor = System.Drawing.Color.SteelBlue;
@@ -150,7 +150,7 @@
             // btnCancel
             // 
             this.btnCancel.Activecolor = System.Drawing.Color.SteelBlue;
-            this.btnCancel.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.BorderRadius = 0;
             this.btnCancel.ButtonText = "Huỷ bỏ";
@@ -168,10 +168,10 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(214, 220);
+            this.btnCancel.Location = new System.Drawing.Point(291, 216);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.SteelBlue;
-            this.btnCancel.OnHovercolor = System.Drawing.Color.SteelBlue;
+            this.btnCancel.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnCancel.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.White;
             this.btnCancel.selected = false;
             this.btnCancel.Size = new System.Drawing.Size(72, 36);
@@ -186,7 +186,7 @@
             // 
             this.lblNotify.AutoSize = true;
             this.lblNotify.ForeColor = System.Drawing.Color.Maroon;
-            this.lblNotify.Location = new System.Drawing.Point(154, 189);
+            this.lblNotify.Location = new System.Drawing.Point(141, 189);
             this.lblNotify.Name = "lblNotify";
             this.lblNotify.Size = new System.Drawing.Size(59, 13);
             this.lblNotify.TabIndex = 6;

@@ -53,13 +53,13 @@
             this.pnLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnLeft.Location = new System.Drawing.Point(0, 0);
             this.pnLeft.Name = "pnLeft";
-            this.pnLeft.Size = new System.Drawing.Size(288, 476);
+            this.pnLeft.Size = new System.Drawing.Size(296, 476);
             this.pnLeft.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 108);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 136);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(264, 252);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -77,16 +77,16 @@
             this.pnRight.Controls.Add(this.txtPassword);
             this.pnRight.Controls.Add(this.txtUserName);
             this.pnRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnRight.Location = new System.Drawing.Point(288, 0);
+            this.pnRight.Location = new System.Drawing.Point(296, 0);
             this.pnRight.Name = "pnRight";
-            this.pnRight.Size = new System.Drawing.Size(445, 476);
+            this.pnRight.Size = new System.Drawing.Size(437, 476);
             this.pnRight.TabIndex = 1;
             // 
             // lblNotify
             // 
             this.lblNotify.AutoSize = true;
             this.lblNotify.ForeColor = System.Drawing.Color.Maroon;
-            this.lblNotify.Location = new System.Drawing.Point(59, 296);
+            this.lblNotify.Location = new System.Drawing.Point(59, 352);
             this.lblNotify.Name = "lblNotify";
             this.lblNotify.Size = new System.Drawing.Size(0, 13);
             this.lblNotify.TabIndex = 5;
@@ -96,7 +96,7 @@
             this.lblExit.AutoSize = true;
             this.lblExit.Font = new System.Drawing.Font("Colonna MT", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExit.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblExit.Location = new System.Drawing.Point(411, 4);
+            this.lblExit.Location = new System.Drawing.Point(400, 4);
             this.lblExit.Name = "lblExit";
             this.lblExit.Size = new System.Drawing.Size(30, 28);
             this.lblExit.TabIndex = 4;
@@ -106,13 +106,14 @@
             // lblLogo
             // 
             this.lblLogo.AutoSize = true;
+            this.lblLogo.BackColor = System.Drawing.Color.Transparent;
             this.lblLogo.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogo.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lblLogo.Location = new System.Drawing.Point(121, 84);
+            this.lblLogo.Location = new System.Drawing.Point(16, 56);
             this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Size = new System.Drawing.Size(190, 36);
+            this.lblLogo.Size = new System.Drawing.Size(369, 36);
             this.lblLogo.TabIndex = 2;
-            this.lblLogo.Text = "CMC Global";
+            this.lblLogo.Text = "Hệ thống quản lý nhân sự";
             // 
             // btnCancel
             // 
@@ -135,13 +136,13 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(59, 328);
+            this.btnCancel.Location = new System.Drawing.Point(272, 376);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnCancel.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.White;
             this.btnCancel.selected = false;
-            this.btnCancel.Size = new System.Drawing.Size(119, 36);
+            this.btnCancel.Size = new System.Drawing.Size(110, 36);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Thoát";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -170,13 +171,13 @@
             this.btnOk.IconVisible = true;
             this.btnOk.IconZoom = 90D;
             this.btnOk.IsTab = false;
-            this.btnOk.Location = new System.Drawing.Point(270, 328);
+            this.btnOk.Location = new System.Drawing.Point(144, 376);
             this.btnOk.Name = "btnOk";
             this.btnOk.Normalcolor = System.Drawing.Color.SteelBlue;
             this.btnOk.OnHovercolor = System.Drawing.Color.SteelBlue;
             this.btnOk.OnHoverTextColor = System.Drawing.Color.White;
             this.btnOk.selected = false;
-            this.btnOk.Size = new System.Drawing.Size(116, 36);
+            this.btnOk.Size = new System.Drawing.Size(110, 36);
             this.btnOk.TabIndex = 2;
             this.btnOk.Text = "Đăng nhập";
             this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -196,10 +197,10 @@
             this.txtPassword.LineIdleColor = System.Drawing.Color.Gray;
             this.txtPassword.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.txtPassword.LineThickness = 3;
-            this.txtPassword.Location = new System.Drawing.Point(59, 246);
+            this.txtPassword.Location = new System.Drawing.Point(56, 281);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(327, 42);
+            this.txtPassword.Size = new System.Drawing.Size(328, 42);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPassword.OnValueChanged += new System.EventHandler(this.txtPassword_OnValueChanged);
@@ -218,10 +219,10 @@
             this.txtUserName.LineIdleColor = System.Drawing.Color.Gray;
             this.txtUserName.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.txtUserName.LineThickness = 3;
-            this.txtUserName.Location = new System.Drawing.Point(59, 165);
+            this.txtUserName.Location = new System.Drawing.Point(56, 185);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(4);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(327, 42);
+            this.txtUserName.Size = new System.Drawing.Size(328, 42);
             this.txtUserName.TabIndex = 0;
             this.txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUserName.Enter += new System.EventHandler(this.txtPassword_Enter);
@@ -236,6 +237,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(733, 476);
             this.Controls.Add(this.pnRight);
             this.Controls.Add(this.pnLeft);

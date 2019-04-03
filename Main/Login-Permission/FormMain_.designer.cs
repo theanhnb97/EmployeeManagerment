@@ -40,16 +40,16 @@
             this.lblUserName = new System.Windows.Forms.Label();
             this.pnMenu = new System.Windows.Forms.Panel();
             this.btnEmployee = new System.Windows.Forms.Button();
+            this.btnTask = new System.Windows.Forms.Button();
             this.btnPhanQuyen = new System.Windows.Forms.Button();
             this.btnRole = new System.Windows.Forms.Button();
             this.btnAction = new System.Windows.Forms.Button();
             this.btnDepartment = new System.Windows.Forms.Button();
-            this.btnTask = new System.Windows.Forms.Button();
-            this.pnSlide = new System.Windows.Forms.Panel();
             this.btnSalary = new System.Windows.Forms.Button();
             this.pnMain = new System.Windows.Forms.Panel();
             this.pnBot = new System.Windows.Forms.Panel();
             this.bunifuElipseMain = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.pnSlide = new System.Windows.Forms.Panel();
             this.pnTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnProfile)).BeginInit();
@@ -79,16 +79,16 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label2.Location = new System.Drawing.Point(241, 33);
+            this.label2.Location = new System.Drawing.Point(224, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Test v1.0.1";
+            this.label2.Text = "GDP v1.0.1";
             // 
             // btnLogout
             // 
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
-            this.btnLogout.Location = new System.Drawing.Point(938, 9);
+            this.btnLogout.Location = new System.Drawing.Point(936, 8);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(29, 28);
             this.btnLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -99,7 +99,7 @@
             // btnProfile
             // 
             this.btnProfile.Image = ((System.Drawing.Image)(resources.GetObject("btnProfile.Image")));
-            this.btnProfile.Location = new System.Drawing.Point(887, 10);
+            this.btnProfile.Location = new System.Drawing.Point(888, 8);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(29, 28);
             this.btnProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -110,7 +110,7 @@
             // picLogout
             // 
             this.picLogout.Image = ((System.Drawing.Image)(resources.GetObject("picLogout.Image")));
-            this.picLogout.Location = new System.Drawing.Point(987, 10);
+            this.picLogout.Location = new System.Drawing.Point(984, 8);
             this.picLogout.Name = "picLogout";
             this.picLogout.Size = new System.Drawing.Size(29, 27);
             this.picLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -123,11 +123,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(236, 7);
+            this.label1.Location = new System.Drawing.Point(224, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 23);
+            this.label1.Size = new System.Drawing.Size(236, 23);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Employee Management";
+            this.label1.Text = "Hệ thống quản lý nhân sự";
             // 
             // pictureBox1
             // 
@@ -152,19 +152,20 @@
             // pnMenu
             // 
             this.pnMenu.BackColor = System.Drawing.Color.FloralWhite;
+            this.pnMenu.Controls.Add(this.pnSlide);
             this.pnMenu.Controls.Add(this.btnEmployee);
+            this.pnMenu.Controls.Add(this.btnTask);
             this.pnMenu.Controls.Add(this.btnPhanQuyen);
             this.pnMenu.Controls.Add(this.btnRole);
             this.pnMenu.Controls.Add(this.btnAction);
             this.pnMenu.Controls.Add(this.btnDepartment);
-            this.pnMenu.Controls.Add(this.btnTask);
-            this.pnMenu.Controls.Add(this.pnSlide);
             this.pnMenu.Controls.Add(this.btnSalary);
             this.pnMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnMenu.Location = new System.Drawing.Point(0, 50);
             this.pnMenu.Name = "pnMenu";
             this.pnMenu.Size = new System.Drawing.Size(216, 614);
             this.pnMenu.TabIndex = 1;
+            this.pnMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.pnMenu_Paint);
             // 
             // btnEmployee
             // 
@@ -172,7 +173,7 @@
             this.btnEmployee.FlatAppearance.BorderSize = 0;
             this.btnEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployee.Location = new System.Drawing.Point(17, 223);
+            this.btnEmployee.Location = new System.Drawing.Point(24, 216);
             this.btnEmployee.Name = "btnEmployee";
             this.btnEmployee.Size = new System.Drawing.Size(199, 58);
             this.btnEmployee.TabIndex = 4;
@@ -181,13 +182,28 @@
             this.btnEmployee.UseVisualStyleBackColor = false;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
             // 
+            // btnTask
+            // 
+            this.btnTask.BackColor = System.Drawing.Color.FloralWhite;
+            this.btnTask.FlatAppearance.BorderSize = 0;
+            this.btnTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTask.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTask.Location = new System.Drawing.Point(24, 32);
+            this.btnTask.Name = "btnTask";
+            this.btnTask.Size = new System.Drawing.Size(199, 58);
+            this.btnTask.TabIndex = 1;
+            this.btnTask.Text = "           Công việc";
+            this.btnTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTask.UseVisualStyleBackColor = false;
+            this.btnTask.Click += new System.EventHandler(this.btnTask_Click);
+            // 
             // btnPhanQuyen
             // 
             this.btnPhanQuyen.BackColor = System.Drawing.Color.FloralWhite;
             this.btnPhanQuyen.FlatAppearance.BorderSize = 0;
             this.btnPhanQuyen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPhanQuyen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPhanQuyen.Location = new System.Drawing.Point(17, 415);
+            this.btnPhanQuyen.Location = new System.Drawing.Point(24, 408);
             this.btnPhanQuyen.Name = "btnPhanQuyen";
             this.btnPhanQuyen.Size = new System.Drawing.Size(199, 58);
             this.btnPhanQuyen.TabIndex = 7;
@@ -202,7 +218,7 @@
             this.btnRole.FlatAppearance.BorderSize = 0;
             this.btnRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRole.Location = new System.Drawing.Point(17, 351);
+            this.btnRole.Location = new System.Drawing.Point(24, 344);
             this.btnRole.Name = "btnRole";
             this.btnRole.Size = new System.Drawing.Size(199, 58);
             this.btnRole.TabIndex = 6;
@@ -217,7 +233,7 @@
             this.btnAction.FlatAppearance.BorderSize = 0;
             this.btnAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAction.Location = new System.Drawing.Point(17, 287);
+            this.btnAction.Location = new System.Drawing.Point(24, 280);
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(199, 58);
             this.btnAction.TabIndex = 5;
@@ -232,7 +248,7 @@
             this.btnDepartment.FlatAppearance.BorderSize = 0;
             this.btnDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDepartment.Location = new System.Drawing.Point(17, 159);
+            this.btnDepartment.Location = new System.Drawing.Point(24, 152);
             this.btnDepartment.Name = "btnDepartment";
             this.btnDepartment.Size = new System.Drawing.Size(199, 58);
             this.btnDepartment.TabIndex = 3;
@@ -241,39 +257,16 @@
             this.btnDepartment.UseVisualStyleBackColor = false;
             this.btnDepartment.Click += new System.EventHandler(this.btnDepartment_Click);
             // 
-            // btnTask
-            // 
-            this.btnTask.BackColor = System.Drawing.Color.FloralWhite;
-            this.btnTask.FlatAppearance.BorderSize = 0;
-            this.btnTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTask.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTask.Location = new System.Drawing.Point(17, 95);
-            this.btnTask.Name = "btnTask";
-            this.btnTask.Size = new System.Drawing.Size(199, 58);
-            this.btnTask.TabIndex = 2;
-            this.btnTask.Text = "           Công việc";
-            this.btnTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTask.UseVisualStyleBackColor = false;
-            this.btnTask.Click += new System.EventHandler(this.btnTask_Click);
-            // 
-            // pnSlide
-            // 
-            this.pnSlide.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.pnSlide.Location = new System.Drawing.Point(1, 31);
-            this.pnSlide.Name = "pnSlide";
-            this.pnSlide.Size = new System.Drawing.Size(16, 58);
-            this.pnSlide.TabIndex = 1;
-            // 
             // btnSalary
             // 
             this.btnSalary.BackColor = System.Drawing.Color.FloralWhite;
             this.btnSalary.FlatAppearance.BorderSize = 0;
             this.btnSalary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalary.Location = new System.Drawing.Point(17, 31);
+            this.btnSalary.Location = new System.Drawing.Point(24, 96);
             this.btnSalary.Name = "btnSalary";
             this.btnSalary.Size = new System.Drawing.Size(199, 58);
-            this.btnSalary.TabIndex = 0;
+            this.btnSalary.TabIndex = 2;
             this.btnSalary.Text = "           Lương";
             this.btnSalary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalary.UseVisualStyleBackColor = false;
@@ -303,6 +296,14 @@
             // 
             this.bunifuElipseMain.ElipseRadius = 15;
             this.bunifuElipseMain.TargetControl = this;
+            // 
+            // pnSlide
+            // 
+            this.pnSlide.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.pnSlide.Location = new System.Drawing.Point(0, 32);
+            this.pnSlide.Name = "pnSlide";
+            this.pnSlide.Size = new System.Drawing.Size(22, 59);
+            this.pnSlide.TabIndex = 8;
             // 
             // FormMain_
             // 
@@ -347,7 +348,6 @@
         private System.Windows.Forms.Button btnAction;
         private System.Windows.Forms.Button btnDepartment;
         private System.Windows.Forms.Button btnTask;
-        private System.Windows.Forms.Panel pnSlide;
         private System.Windows.Forms.Button btnSalary;
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Panel pnBot;
@@ -355,5 +355,6 @@
         private Bunifu.Framework.UI.BunifuElipse bunifuElipseMain;
         private System.Windows.Forms.PictureBox btnLogout;
         private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.Panel pnSlide;
     }
 }

@@ -83,7 +83,7 @@
                 String cmd = "Action_Get";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("names",name),
+                    new OracleParameter("_name",name),
                     new OracleParameter("listAction",OracleDbType.RefCursor,ParameterDirection.Output)
                 };
                 List<Action> myList = sql.ExcuteQueryDataReader(cmd, CommandType.StoredProcedure, con, myParameters);
@@ -115,7 +115,7 @@
                 String cmd = "Action_Delete";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("actionids",id)
+                    new OracleParameter("_actionId",id)
                 };
                 return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
             }
@@ -133,9 +133,9 @@
                 String cmd = "Action_Update";
                 OracleParameter[] myParameters = new OracleParameter[]
                 {
-                    new OracleParameter("actionids",obj.ActionID),
-                    new OracleParameter("actionnames",obj.ActionName),
-                    new OracleParameter("isdeletes",obj.IsDelete),
+                    new OracleParameter("_actionId",obj.ActionID),
+                    new OracleParameter("_actionName",obj.ActionName),
+                    new OracleParameter("_isDelete",obj.IsDelete),
                     new OracleParameter("descriptions",obj.Description)
                 };
                 return sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
@@ -156,9 +156,9 @@
                     String cmd = "Action_Insert";
                     OracleParameter[] myParameters = new OracleParameter[]
                     {
-                        new OracleParameter("actionnames", obj.ActionName),
-                        new OracleParameter("isdeletes", obj.IsDelete),
-                        new OracleParameter("descriptions", obj.Description)
+                        new OracleParameter("_actionName", obj.ActionName),
+                        new OracleParameter("_isDelete", obj.IsDelete),
+                        new OracleParameter("_description", obj.Description)
                     };
                     sql.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
                     Action newActionAdd = GetByName(obj.ActionName);

@@ -326,11 +326,11 @@
             {
                 try
                 {
-                    String cmd = "Loginn";
+                    String cmd = "Login";
                     OracleParameter[] myParameters = new OracleParameter[]
                     {
-                        new OracleParameter("usernames",username),
-                        new OracleParameter("passwords",password),
+                        new OracleParameter("_username",username),
+                        new OracleParameter("_password",password),
                         new OracleParameter("listReturn",OracleDbType.RefCursor,ParameterDirection.Output)
                     };
                     DataTable dt = sql.ExcuteQuery(cmd, CommandType.StoredProcedure, con, myParameters);
@@ -363,7 +363,7 @@
                     string storeName = "EMPLOYEE_GETBYUSERNAME";
                     OracleParameter[] oracleParameters = new OracleParameter[]
                     {
-                        new OracleParameter("usernames",username),
+                        new OracleParameter("_username",username),
                         new OracleParameter("cursor",OracleDbType.RefCursor,ParameterDirection.Output)
                     };
                     DataTable data = sql.ExcuteQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
@@ -422,12 +422,12 @@
                     string storeName = "Employee_UpdateByUserName";
                     OracleParameter[] oracleParameters = new OracleParameter[]
                     {
-                        new OracleParameter("userNames",employee.UserName),
-                        new OracleParameter("fullNames",employee.FullName),
-                        new OracleParameter("identitys",employee.Identity),
-                        new OracleParameter("addresss",employee.Address),
-                        new OracleParameter("phones",employee.Phone),
-                        new OracleParameter("emails",employee.Email),
+                        new OracleParameter("_userName",employee.UserName),
+                        new OracleParameter("_fullName",employee.FullName),
+                        new OracleParameter("_identity",employee.Identity),
+                        new OracleParameter("_address",employee.Address),
+                        new OracleParameter("_phone",employee.Phone),
+                        new OracleParameter("_email",employee.Email),
                     };
                     return sql.ExcuteNonQuery(storeName, CommandType.StoredProcedure, oracleConnection, oracleParameters);
                 }
