@@ -1,8 +1,12 @@
 
-*.cache
-*.exe
-*.pdb
-.vs
-*.lock
-/BusinessLayer/obj/Debug
-/DataAccessLayer/obj/Debug
+/.vs
+/BusinessLayer/obj
+/BusinessLayer/bin
+/DataAccessLayer/obj
+/DataAccessLayer/bin
+/CommonLibrary/bin
+/CommonLibrary/obj
+/Entity/bin
+/Entity/obj
+/Main/bin
+/Main/obj
