@@ -25,7 +25,7 @@
         /// <param name="fDate">The fDate<see cref="DateTime"/></param>
         /// <param name="tDate">The tDate<see cref="DateTime"/></param>
         /// <returns>The <see cref="List{SalaryView}"/></returns>
-        List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate, int size,int currPage);
+        List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate);
 
         /// <summary>
         /// The Add
@@ -71,7 +71,6 @@
         /// <returns>The <see cref="List{SalaryView}"/></returns>
         List<SalaryView> Paging(int size, int index);
 
-        List<SalaryView> SearchRecords(string nameSearch,string deptSearch,DateTime fDate,DateTime tDate);
     }
 
     /// <summary>
@@ -145,10 +144,7 @@
             return SalaryDAO.Paging(size, index);
         }
 
-        public List<SalaryView> SearchRecords(string nameSearch, string deptSearch, DateTime fDate, DateTime tDate)
-        {
-            return SalaryDAO.SearchRecords(nameSearch, deptSearch, fDate, tDate);
-        }
+
 
         /// <summary>
         /// The SearchSalary
@@ -158,9 +154,9 @@
         /// <param name="fDate">The fDate<see cref="DateTime"/></param>
         /// <param name="tDate">The tDate<see cref="DateTime"/></param>
         /// <returns>The <see cref="List{SalaryView}"/></returns>
-        public List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate,int size,int currPage)
+        public List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate)
         {
-            return SalaryDAO.SearchSalary(name, dept, fDate, tDate,size,currPage);
+            return SalaryDAO.SearchSalary(name, dept, fDate, tDate);
         }
 
         /// <summary>

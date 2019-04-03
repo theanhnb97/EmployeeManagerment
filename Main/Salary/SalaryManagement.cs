@@ -93,7 +93,7 @@ namespace Main
             {
                 DateTime fDate = DateTime.Parse(dateFDateFilter.Value.ToString());
                 DateTime tDate = DateTime.Parse(dateTDateFilter.Value.ToString());
-                List<SalaryView> salaryViews = salary.SearchSalary(nameSearch, deptSearch, fDate, tDate ,size, currentSearchPage);
+                List<SalaryView> salaryViews = salary.SearchSalary(nameSearch, deptSearch, fDate, tDate);
                 CbbData cbbData = new CbbData();
                 foreach (var item in salaryViews)
                 {
@@ -105,20 +105,13 @@ namespace Main
                         }
                     }
                 }
-                dgvSalary.DataSource = salaryViews;
-                if (salaryViews.Count % size == 0)
-                {
-                    this.lastPage = salaryViews.Count / size - 1;
-                }
-                else this.lastPage = salaryViews.Count / size;               
-                lblPagingSalaryIndex.Text = (currentSearchPage + 1).ToString();
-                lblAllPageSalary.Text = (lastPage + 1).ToString();
+                dgvSalary.DataSource = salaryViews;             
             }
             else
             {
                 DateTime fDate = DateTime.Parse("01/01/1900");
                 DateTime tDate = DateTime.Parse("01/01/2100");
-                List<SalaryView> salaryViews = salary.SearchSalary(nameSearch, deptSearch, fDate, tDate, size, currentSearchPage);
+                List<SalaryView> salaryViews = salary.SearchSalary(nameSearch, deptSearch, fDate, tDate);
                 CbbData cbbData = new CbbData();
                 foreach (var item in salaryViews)
                 {
@@ -131,14 +124,7 @@ namespace Main
                     }
                 }
                 dgvSalary.DataSource = salaryViews;
-                if (salary.SearchRecords(nameSearch, deptSearch, fDate, tDate).Count % size == 0)
-                {
-                    this.lastPage = salary.SearchRecords(nameSearch, deptSearch, fDate, tDate).Count / size - 1;
-                }
-                else this.lastPage = salary.SearchRecords(nameSearch, deptSearch, fDate, tDate).Count / size;
-                lblPagingSalaryIndex.Text = (currentSearchPage + 1).ToString();
-                lblAllPageSalary.Text = (lastPage + 1).ToString();
-                dgvSalary.DataSource = salaryViews;
+               
             }
         }
 
@@ -218,8 +204,7 @@ namespace Main
                 {
                     currentSearchPage = currentSearchPage - 1;
                     btnLoadData_Click(sender, e);
-                    lblPagingSalaryIndex.Text = (currentSearchPage - 1).ToString();
-                    
+                    lblPagingSalaryIndex.Text = (currentSearchPage - 1).ToString();                    
                 }
             }
         }

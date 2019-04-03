@@ -28,7 +28,7 @@
         /// <param name="fDate">The fDate<see cref="DateTime?"/></param>
         /// <param name="tDate">The tDate<see cref="DateTime?"/></param>
         /// <returns>The <see cref="List{SalaryView}"/></returns>
-        List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate,int size,int currPage);
+        List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate);
         /// <summary>
         /// The GetById
         /// </summary>
@@ -207,7 +207,7 @@
         /// <param name="fDate">The fDate<see cref="DateTime?"/></param>
         /// <param name="tDate">The tDate<see cref="DateTime?"/></param>
         /// <returns>The <see cref="List{SalaryView}"/></returns>
-        public List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate,int size,int currPage)
+        public List<SalaryView> SearchSalary(string name, string dept, DateTime? fDate, DateTime? tDate)
         {
             List<SalaryView> salaryViews = new List<SalaryView>();
             using (OracleConnection Conn = new OracleConnection(Connect))
@@ -220,8 +220,6 @@
                 Cmd.Parameters.Add("DEPT", OracleDbType.Varchar2).Value = dept;
                 Cmd.Parameters.Add("FDATE", OracleDbType.Date).Value = fDate;
                 Cmd.Parameters.Add("TDATE", OracleDbType.Date).Value = tDate;
-                Cmd.Parameters.Add("SIZE", OracleDbType.Int16).Value = size;
-                Cmd.Parameters.Add("CURRPAGE", OracleDbType.Int16).Value = currPage;
                 Cmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
                 try
                 {
@@ -237,53 +235,7 @@
                         salaryView.Basic = int.Parse(objReader["BASICSALARY"].ToString());
                         salaryView.Bussiness = int.Parse(objReader["BUSINESSSALARY"].ToString());
                         salaryView.Coefficient = float.Parse(objReader["COEFFICIENT"].ToString());
-                        salaryView.Total = double.Parse(objReader["TOTAL"].ToString());
-                        salaryView.SalaryId = int.Parse(objReader["SALARYID"].ToString());
-                        salaryViews.Add(salaryView);
-                    }
-                    objReader.Close();
-                }
-                catch (Exception e)
-                {
-                    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                    logger.Debug(e.Message);
-                    return null;
-                }
-            }
-            return salaryViews;
-        }
-
-        public List<SalaryView> SearchRecords(string name, string dept, DateTime? fDate, DateTime? tDate)
-        {
-            List<SalaryView> salaryViews = new List<SalaryView>();
-            using (OracleConnection Conn = new OracleConnection(Connect))
-            {
-                OracleCommand Cmd = new OracleCommand();
-                Cmd.Connection = Conn;
-                Cmd.CommandText = "SALARY_SEARCHRECORDS";
-                Cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                Cmd.Parameters.Add("ENAME", OracleDbType.Varchar2).Value = name;
-                Cmd.Parameters.Add("DEPT", OracleDbType.Varchar2).Value = dept;
-                Cmd.Parameters.Add("FDATE", OracleDbType.Date).Value = fDate;
-                Cmd.Parameters.Add("TDATE", OracleDbType.Date).Value = tDate;
-                Cmd.Parameters.Add("P_RESULT", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
-                //Cmd.Parameters.Add("NUMRECORD", OracleDbType.Int32).Direction = System.Data.ParameterDirection.Output;
-                try
-                {
-                    Conn.Open();
-                    OracleDataReader objReader = Cmd.ExecuteReader();
-                    while (objReader.Read())
-                    {
-                        //result = int.Parse(Cmd.Parameters["NUMRECORD"].Value.ToString());
-                        SalaryView salaryView = new SalaryView();
-                        salaryView.FullName = objReader["FULLNAME"].ToString();
-                        salaryView.Identity = objReader["IDENTITY"].ToString();
-                        salaryView.Rank = objReader["RANK"].ToString();
-                        salaryView.Dept = objReader["DEPARTMENTNAME"].ToString();
-                        salaryView.Basic = int.Parse(objReader["BASICSALARY"].ToString());
-                        salaryView.Bussiness = int.Parse(objReader["BUSINESSSALARY"].ToString());
-                        salaryView.Coefficient = float.Parse(objReader["COEFFICIENT"].ToString());
-                        salaryView.Total = double.Parse(objReader["TOTAL"].ToString());
+                        salaryView.Total = double.Parse(String.Format("{0:0.00}", objReader["TOTAL"]));
                         salaryView.SalaryId = int.Parse(objReader["SALARYID"].ToString());
                         salaryViews.Add(salaryView);
                     }
