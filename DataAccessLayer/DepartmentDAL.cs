@@ -1,20 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommonLibrary.Model;
-using DataAccessLayer.Helpers;
-using Entity;
-using log4net;
-using Oracle.ManagedDataAccess.Client;
+﻿using CommonLibrary.Model;
 
 namespace DataAccessLayer
 {
+    using DataAccessLayer.Helpers;
+    using Entity;
+    using log4net;
+    using Oracle.ManagedDataAccess.Client;
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Data;
+
+    /// <summary>
+    /// Defines the <see cref="DepartmentDAL" />
+    /// </summary>
     public class DepartmentDAL : Connection, IEntities<Department>
     {
+        /// <summary>
+        /// The Add
+        /// </summary>
+        /// <param name="department">The department<see cref="Department"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Add(Department department)
         {
             try
@@ -47,6 +53,11 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// The Delete
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Delete(int id)
         {
             try
@@ -75,14 +86,21 @@ namespace DataAccessLayer
                 logger.Debug(e.Message);
                 return 0;
             }
-
         }
 
+        /// <summary>
+        /// The Get
+        /// </summary>
+        /// <returns>The <see cref="List{Department}"/></returns>
         public List<Department> Get()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The GetAll
+        /// </summary>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable GetAll()
         {
             try
@@ -92,7 +110,6 @@ namespace DataAccessLayer
                 {
                     OracleParameter[] parameters = new OracleParameter[]
                     {
-                        
                         new OracleParameter("cursorParam",OracleDbType.RefCursor,ParameterDirection.Output),
                     };
                     return sqlHelp.ExcuteQuery("Department_GetAll", CommandType.StoredProcedure, connection,
@@ -121,7 +138,12 @@ namespace DataAccessLayer
             }
         }
 
-
+        /// <summary>
+        /// The GetDepartmentByStatusAndIsDelete
+        /// </summary>
+        /// <param name="status">The status<see cref="int"/></param>
+        /// <param name="isDeleted">The isDeleted<see cref="int"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable GetDepartmentByStatusAndIsDelete(int status, int isDeleted)
         {
             try
@@ -153,7 +175,11 @@ namespace DataAccessLayer
             }
         }
 
-
+        /// <summary>
+        /// The GetById
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable GetById(int id)
         {
             try
@@ -191,12 +217,24 @@ namespace DataAccessLayer
             }
         }
 
-
+        /// <summary>
+        /// The Search
+        /// </summary>
+        /// <param name="keyword">The keyword<see cref="string"/></param>
+        /// <returns>The <see cref="List{Department}"/></returns>
         public List<Department> Search(string keyword)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The SearchDepartment
+        /// </summary>
+        /// <param name="keyword">The keyword<see cref="string"/></param>
+        /// <param name="currPage">The currPage<see cref="int"/></param>
+        /// <param name="recodperpage">The recodperpage<see cref="int"/></param>
+        /// <param name="Pagesize">The Pagesize<see cref="int"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable SearchDepartment(string keyword, int currPage, int recodperpage, int Pagesize)
         {
             //try
@@ -213,7 +251,7 @@ namespace DataAccessLayer
                     cmd.Parameters.Add("currPage", currPage);
                     cmd.Parameters.Add("recodperpage", recodperpage);
                     cmd.Parameters.Add("Pagesize", Pagesize);
-                    cmd.Parameters.Add(" p_departmentName",keyword);
+                    cmd.Parameters.Add(" p_departmentName", keyword);
 
                     cmd.Parameters.Add("cursorParam", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
@@ -225,17 +263,13 @@ namespace DataAccessLayer
                 }
 
             }
-            //catch (Exception e)
-            //{
-            //    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-            //    logger.Debug(e.Message);
-            //    return null;
-
-            //}
-
         }
 
-
+        /// <summary>
+        /// The Update
+        /// </summary>
+        /// <param name="department">The department<see cref="Department"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int Update(Department department)
         {
             try
@@ -269,11 +303,17 @@ namespace DataAccessLayer
             }
         }
 
-        public DataTable SearchDepartment(string keyword)
+        /// <summary>
+        /// The SearchDepartment
+        /// </summary>
+        /// <param name="keyword">The keyword<see cref="string"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
+        public DataTable SearchDepartment(string keyword,int page)
         {
             int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
             
                 SqlHelpers<Department> sqlHelp = new SqlHelpers<Department>();
+                int pageSize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
                 using (OracleConnection connection = Connection.GetConnection)
                 {
                   OracleParameter[] parameters=new OracleParameter[]
@@ -289,6 +329,12 @@ namespace DataAccessLayer
             
 
         }
+
+        /// <summary>
+        /// The DeleteNoRemove
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/></param>
+        /// <returns>The <see cref="int"/></returns>
         public int DeleteNoRemove(int id)
         {
             try
@@ -319,6 +365,14 @@ namespace DataAccessLayer
                 return 0;
             }
         }
+
+        /// <summary>
+        /// The GetAllPage
+        /// </summary>
+        /// <param name="currPage">The currPage<see cref="int"/></param>
+        /// <param name="recodperpage">The recodperpage<see cref="int"/></param>
+        /// <param name="Pagesize">The Pagesize<see cref="int"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable GetAllPage(int currPage, int recodperpage)
         {
             try
@@ -354,6 +408,10 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// The GetDepartmentAll
+        /// </summary>
+        /// <returns>The <see cref="DataTable"/></returns>
         public DataTable GetDepartmentAll()
         {
             //try
@@ -383,25 +441,32 @@ namespace DataAccessLayer
                 }
 
             }
-            //catch (Exception e)
-            //{
-            //    ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-            //    logger.Debug(e.Message);
-            //    return null;
-
-            //}
         }
 
+        /// <summary>
+        /// The Get
+        /// </summary>
+        /// <returns>The <see cref="DataTable"/></returns>
         DataTable IEntities<Department>.Get()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The Search
+        /// </summary>
+        /// <param name="keyword">The keyword<see cref="string"/></param>
+        /// <returns>The <see cref="DataTable"/></returns>
         DataTable IEntities<Department>.Search(string keyword)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The TranferDataTableToDepartmentList
+        /// </summary>
+        /// <param name="dataTable">The dataTable<see cref="DataTable"/></param>
+        /// <returns>The <see cref="List{Department}"/></returns>
         public List<Department> TranferDataTableToDepartmentList(DataTable dataTable)
         {
             List<Department> employees = new List<Department>();
@@ -425,19 +490,15 @@ namespace DataAccessLayer
             }
             return employees;
         }
-
         public List<Active> GetAllActive()
         {
-            
-            
-                List<Active> list = new List<Active>
-                {
-                    new Active(0,"No Active"),
-                    new Active(1,"Active"),
+            List<Active> list = new List<Active>
+            {
+                new Active(1,"Active"),
+                new Active(0,"No Active"),
 
-                };
-                return list;
-            
+            };
+            return list;
         }
     }
 }

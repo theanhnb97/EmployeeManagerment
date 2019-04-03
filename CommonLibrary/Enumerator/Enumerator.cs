@@ -1,16 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace CommonLibrary.Enumerator
+﻿namespace CommonLibrary.Enumerator
 {
+    using System;
+    using System.ComponentModel;
+    using System.Linq;
+    using System.Reflection;
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// Defines the <see cref="Enumerator" />
+    /// </summary>
     public class Enumerator
     {
+        /// <summary>
+        /// The BindEnumToCombobox
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="comboBox">The comboBox<see cref="ComboBox"/></param>
+        /// <param name="defaultSelection">The defaultSelection<see cref="T"/></param>
+        /// <returns>The <see cref="object"/></returns>
         public static object BindEnumToCombobox<T>(ComboBox comboBox, T defaultSelection)
         {
             var list = Enum.GetValues(typeof(T))
@@ -37,6 +44,11 @@ namespace CommonLibrary.Enumerator
             return list;
         }
 
+        /// <summary>
+        /// The GetDescription
+        /// </summary>
+        /// <param name="value">The value<see cref="Enum"/></param>
+        /// <returns>The <see cref="string"/></returns>
         public static string GetDescription(Enum value)
         {
             FieldInfo field = value.GetType().GetField(value.ToString());
@@ -47,6 +59,5 @@ namespace CommonLibrary.Enumerator
 
             return attribute == null ? value.ToString() : attribute.Description;
         }
-
     }
 }
