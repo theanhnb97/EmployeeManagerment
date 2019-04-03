@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using BusinessLayer;
@@ -67,7 +69,7 @@ namespace Main.Bang
                 }
                 else
                 {
-                    MessageBox.Show("Department have not data", "Status");
+                    MessageBox.Show("Phòng/Ban Không Có Dữ Liệu!", "Cảnh Báo");
                 }
 
 
@@ -85,7 +87,7 @@ namespace Main.Bang
                 }
                 else
                 {
-                    MessageBox.Show("Priority have not data", "Status");
+                    MessageBox.Show("Mức Độ Không Có Dữ Liệu!", "Cảnh Báo");
                 }
 
                 //assign file from data transfer object
@@ -95,11 +97,13 @@ namespace Main.Bang
                 cmbDepartment.SelectedValue = TaskDTO.Department;
                 cmbLevel.SelectedValue = TaskDTO.Priority;
                 dtpDueDate.Value = Convert.ToDateTime(TaskDTO.DueDate);
+                linkFile.Text = TaskDTO.Files;
+
 
             }
             catch (Exception exception)
             {
-                MessageBox.Show("some thing wrong");
+                MessageBox.Show("Lỗi Bất Thường");
                 logger.Debug(exception);
             }
 
@@ -127,7 +131,7 @@ namespace Main.Bang
                 {
                     cmbAssign.DataSource = dtDepartment;
                     lbAssign.ForeColor = Color.Red;
-                    MessageBox.Show("Assign have not data", "Status");
+                    MessageBox.Show("Phòng/Ban Không Có Nhân Viên", "Cảnh Báo");
 
                 }
             }
@@ -148,23 +152,23 @@ namespace Main.Bang
                 // validate 
                 if (string.Empty.Equals(txtTaskName.Text.Trim()))
                 {
-                    MessageBox.Show("Enter Task Name!", "Warning");
+                    MessageBox.Show("Nhập Tên Nhiệm Vụ!", "Cảnh Báo");
                 }
                 else if (string.Empty.Equals(txtDescription.Text.Trim()))
                 {
-                    MessageBox.Show("Enter Description!", "Warning");
+                    MessageBox.Show("Nhập Mô Tả!", "WarnCảnh Báo");
                 }
                 else if (Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,200}") == false)
                 {
-                    MessageBox.Show(" Task Name must more than 2 characters!", "Warning");
+                    MessageBox.Show(" Tên Nhiệm Vụ Phải Có Ít Nhất 2 Ký Tự!", "Cảnh Báo");
                 }
                 else if (Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,2000}") == false)
                 {
-                    MessageBox.Show("Description must more than 2 characters!!", "Warning");
+                    MessageBox.Show("Mô Tả Phải Có Ít Nhất 2 Ký Tự!", "Cảnh Báo");
                 }
                 else if (Convert.ToDateTime(dtpDueDate.Value) < DateTime.Today)
                 {
-                    MessageBox.Show("Due Date must ' > ' or ' = ' Today", "Warning");
+                    MessageBox.Show("Hạn Chót Phải ' > ' Hoặc ' = ' Ngày Hiện Tại", "Cảnh Báo");
                 }
                 else
                 {
@@ -181,12 +185,12 @@ namespace Main.Bang
                         TaskDTO.DueDate, TaskDTO.Priority, TaskDTO.Files, TaskDTO.Status, TaskDTO.IsDelete,
                         TaskDTO.Description) != 0)
                     {
-                        MessageBox.Show("Succes", "Status");
+                        MessageBox.Show("Thành Công!", "Trạng Thái");
                         Close();
                     }
                     else
                     {
-                        MessageBox.Show("Error!", "Status");
+                        MessageBox.Show("Thất Bại!", "Trạng Thái");
                     }
                 }
             }
@@ -235,12 +239,12 @@ namespace Main.Bang
         {
             if (string.Empty.Equals(txtTaskName.Text.Trim()))
             {
-                MessageBox.Show("Enter Task Name!", "Warning");
+                MessageBox.Show("Nhập Tên Nhiệm Vụ!", "Cảnh Báo");
                 txtTaskName.Focus();
             }
             else if (Regex.IsMatch(txtTaskName.Text.Trim(), "\\w{2,200}") == false)
             {
-                MessageBox.Show(" Task Name must more than 2 characters!", "Warning");
+                MessageBox.Show("Tên Nhiệm Vụ Phải Có Ít Nhất 2 Ký Tự!", "Cảnh Báo");
                 txtTaskName.Focus();
             }
             else
@@ -266,12 +270,12 @@ namespace Main.Bang
         {
             if (string.Empty.Equals(txtDescription.Text.Trim()))
             {
-                MessageBox.Show("Enter Description!", "Warning");
+                MessageBox.Show("Nhập Mô Tả!", "Cảnh Báo");
                 txtDescription.Focus();
             }
             else if (Regex.IsMatch(txtDescription.Text.Trim(), "\\w{2,2000}") == false)
             {
-                MessageBox.Show(" Description must more than 2 characters!", "Warning");
+                MessageBox.Show(" Mô Tả Phải Có Ít Nhất 2 Ký Tự! ", "Cảnh Báo");
                 txtDescription.Focus();
             }
             else
@@ -284,7 +288,7 @@ namespace Main.Bang
         {
             if (Convert.ToDateTime(dtpDueDate.Value) < DateTime.Today)
             {
-                MessageBox.Show("Due Date must ' > ' or ' = ' Today", "Warning");
+                MessageBox.Show("Hạn Chót Phải ' > ' Hoặc ' = ' Ngày Hiện Tại", "Cảnh Báo");
                 dtpDueDate.Focus();
                 lbDate.ForeColor = Color.Red;
             }
@@ -297,18 +301,51 @@ namespace Main.Bang
 
         private void btnSelectfile_Click(object sender, EventArgs e)
         {
-            //using (OpenFileDialog myDialog = new OpenFileDialog())
-            //{
-            //    myDialog.CheckFileExists = true;
-            //    myDialog.Multiselect = false;
-            //    myDialog.Title = "Chọn file đính kèm";
-            //    myDialog.Filter = "Image|*.png|*.jpg|*.jpeg |Word file|*.doc| Excel file | *.xlsx| Other file | *.*";
-            //    if (myDialog.ShowDialog() == DialogResult.OK)
-            //    {
-            //        //lblFile.Text = Path.GetFileName(myDialog.FileName);
-            //        linkFile.Text = CommonLibrary.FPTFile.UploadFtpFile("", myDialog.FileName);
-            //    }
-            //}
+            using (OpenFileDialog myDialog = new OpenFileDialog())
+            {
+                myDialog.CheckFileExists = true;
+                myDialog.Multiselect = false;
+                myDialog.Title = "Chọn Tệp Đính Kèm";
+                myDialog.Filter = "Image|*.png; *.jpg; *.jpeg | Word file| *.docx| Excel file |*.xlsx";
+
+                if (myDialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    FileInfo fiArr = new FileInfo(myDialog.FileName);
+                    MessageBox.Show(fiArr.Length.ToString());
+                    if (fiArr.Length > long.Parse(ConfigurationManager.AppSettings["sizeFile"]))
+                    {
+                        MessageBox.Show("Dung lượng tệp lớn hơn 6MB", "Cảnh Báo");
+                    }
+                    else
+                    {
+                        btnUpdate.Enabled = false;
+                        linkFile.Text = CommonLibrary.FPTFile.UploadFtpFile("", myDialog.FileName);
+                        lbWaiting.Text = "Tệp Tải Lên Thành Công";
+                        btnUpdate.Enabled = true;
+                    }
+                }
+            }
         }
-    }   
+
+        private void linkFile_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (!string.Empty.Equals(linkFile.Text))
+            {
+                DialogResult dialog = MessageBox.Show("Bạn Có Muốn Xem Tệp Hoặc Tải?", "Xác Nhận", MessageBoxButtons.YesNo);
+                if (dialog == DialogResult.Yes)
+                {
+                    if (Regex.IsMatch(linkFile.Text, @"^http(s)?://([\w-]+.)+[\w-]+(/[\w- ./?%&=])?$"))
+                    {
+                        System.Diagnostics.Process.Start(linkFile.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đường Dẫn Định Dạng Không Hợp Lệ!");
+                    }
+                }
+            }
+        }
+    }
 }
+

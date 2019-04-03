@@ -49,9 +49,10 @@
             this.lbAssign = new System.Windows.Forms.Label();
             this.lbDescription = new System.Windows.Forms.Label();
             this.lbTaskName = new System.Windows.Forms.Label();
-            this.linkFile = new System.Windows.Forms.LinkLabel();
             this.btnSelectfile = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.lbWaiting = new System.Windows.Forms.Label();
+            this.linkFile = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // cmbLevel
@@ -63,7 +64,7 @@
             "High",
             "Medium",
             "Low"});
-            this.cmbLevel.Location = new System.Drawing.Point(113, 343);
+            this.cmbLevel.Location = new System.Drawing.Point(115, 340);
             this.cmbLevel.Name = "cmbLevel";
             this.cmbLevel.Size = new System.Drawing.Size(206, 21);
             this.cmbLevel.TabIndex = 35;
@@ -99,7 +100,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(113, 445);
+            this.btnUpdate.Location = new System.Drawing.Point(113, 465);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 30;
@@ -122,7 +123,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 393);
+            this.label7.Location = new System.Drawing.Point(14, 383);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 13);
             this.label7.TabIndex = 28;
@@ -194,7 +195,7 @@
             // 
             // btnCacncel
             // 
-            this.btnCacncel.Location = new System.Drawing.Point(244, 445);
+            this.btnCacncel.Location = new System.Drawing.Point(244, 465);
             this.btnCacncel.Name = "btnCacncel";
             this.btnCacncel.Size = new System.Drawing.Size(75, 23);
             this.btnCacncel.TabIndex = 36;
@@ -262,17 +263,9 @@
             this.lbTaskName.TabIndex = 37;
             this.lbTaskName.Text = "(*)";
             // 
-            // linkFile
-            // 
-            this.linkFile.AutoSize = true;
-            this.linkFile.Location = new System.Drawing.Point(116, 423);
-            this.linkFile.Name = "linkFile";
-            this.linkFile.Size = new System.Drawing.Size(0, 13);
-            this.linkFile.TabIndex = 44;
-            // 
             // btnSelectfile
             // 
-            this.btnSelectfile.Location = new System.Drawing.Point(113, 388);
+            this.btnSelectfile.Location = new System.Drawing.Point(115, 380);
             this.btnSelectfile.Name = "btnSelectfile";
             this.btnSelectfile.Size = new System.Drawing.Size(75, 23);
             this.btnSelectfile.TabIndex = 43;
@@ -290,14 +283,31 @@
             this.label8.TabIndex = 45;
             this.label8.Text = "Edit Task ";
             // 
+            // lbWaiting
+            // 
+            this.lbWaiting.AutoSize = true;
+            this.lbWaiting.Location = new System.Drawing.Point(220, 390);
+            this.lbWaiting.Name = "lbWaiting";
+            this.lbWaiting.Size = new System.Drawing.Size(0, 13);
+            this.lbWaiting.TabIndex = 48;
+            // 
+            // linkFile
+            // 
+            this.linkFile.Location = new System.Drawing.Point(115, 410);
+            this.linkFile.Name = "linkFile";
+            this.linkFile.Size = new System.Drawing.Size(207, 40);
+            this.linkFile.TabIndex = 49;
+            this.linkFile.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkFile_LinkClicked);
+            // 
             // frmEditTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(398, 497);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.linkFile);
+            this.Controls.Add(this.lbWaiting);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnSelectfile);
             this.Controls.Add(this.lbLevel);
             this.Controls.Add(this.lbDepartment);
@@ -355,8 +365,9 @@
         private System.Windows.Forms.Label lbAssign;
         private System.Windows.Forms.Label lbDescription;
         private System.Windows.Forms.Label lbTaskName;
-        private System.Windows.Forms.LinkLabel linkFile;
         private System.Windows.Forms.Button btnSelectfile;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbWaiting;
+        private System.Windows.Forms.LinkLabel linkFile;
     }
 }

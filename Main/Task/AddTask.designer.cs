@@ -52,11 +52,12 @@
             this.btnSelectfile = new System.Windows.Forms.Button();
             this.linkFile = new System.Windows.Forms.LinkLabel();
             this.label8 = new System.Windows.Forms.Label();
+            this.lbWaiting = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtTaskName
             // 
-            this.txtTaskName.Location = new System.Drawing.Point(118, 81);
+            this.txtTaskName.Location = new System.Drawing.Point(120, 85);
             this.txtTaskName.MaxLength = 200;
             this.txtTaskName.Name = "txtTaskName";
             this.txtTaskName.Size = new System.Drawing.Size(203, 20);
@@ -67,7 +68,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 85);
+            this.label1.Location = new System.Drawing.Point(18, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 1;
@@ -76,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 132);
+            this.label2.Location = new System.Drawing.Point(31, 120);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 2;
@@ -85,7 +86,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 174);
+            this.label3.Location = new System.Drawing.Point(29, 165);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 3;
@@ -94,7 +95,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(41, 218);
+            this.label4.Location = new System.Drawing.Point(41, 210);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 4;
@@ -103,7 +104,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(55, 283);
+            this.label5.Location = new System.Drawing.Point(55, 275);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 5;
@@ -112,7 +113,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(48, 348);
+            this.label6.Location = new System.Drawing.Point(48, 340);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 13);
             this.label6.TabIndex = 6;
@@ -121,7 +122,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 395);
+            this.label7.Location = new System.Drawing.Point(16, 380);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 13);
             this.label7.TabIndex = 7;
@@ -129,7 +130,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(118, 258);
+            this.txtDescription.Location = new System.Drawing.Point(120, 245);
             this.txtDescription.MaxLength = 2000;
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
@@ -140,7 +141,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(118, 450);
+            this.btnAdd.Location = new System.Drawing.Point(118, 465);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 7;
@@ -150,7 +151,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(246, 450);
+            this.btnReset.Location = new System.Drawing.Point(246, 465);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 8;
@@ -162,7 +163,7 @@
             // 
             this.cmbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDepartment.FormattingEnabled = true;
-            this.cmbDepartment.Location = new System.Drawing.Point(118, 129);
+            this.cmbDepartment.Location = new System.Drawing.Point(120, 120);
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(203, 21);
             this.cmbDepartment.TabIndex = 1;
@@ -172,7 +173,7 @@
             // 
             this.dtpDueDate.CustomFormat = "dd/MM/yyyy";
             this.dtpDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDueDate.Location = new System.Drawing.Point(118, 210);
+            this.dtpDueDate.Location = new System.Drawing.Point(118, 200);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.Size = new System.Drawing.Size(203, 20);
             this.dtpDueDate.TabIndex = 3;
@@ -183,7 +184,7 @@
             // 
             this.cmbAssign.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAssign.FormattingEnabled = true;
-            this.cmbAssign.Location = new System.Drawing.Point(118, 172);
+            this.cmbAssign.Location = new System.Drawing.Point(120, 160);
             this.cmbAssign.Name = "cmbAssign";
             this.cmbAssign.Size = new System.Drawing.Size(203, 21);
             this.cmbAssign.TabIndex = 2;
@@ -197,7 +198,7 @@
             "High",
             "Medium",
             "Low"});
-            this.cmbLevel.Location = new System.Drawing.Point(118, 345);
+            this.cmbLevel.Location = new System.Drawing.Point(118, 335);
             this.cmbLevel.Name = "cmbLevel";
             this.cmbLevel.Size = new System.Drawing.Size(203, 21);
             this.cmbLevel.TabIndex = 5;
@@ -265,20 +266,19 @@
             // 
             // btnSelectfile
             // 
-            this.btnSelectfile.Location = new System.Drawing.Point(118, 390);
+            this.btnSelectfile.Location = new System.Drawing.Point(118, 375);
             this.btnSelectfile.Name = "btnSelectfile";
             this.btnSelectfile.Size = new System.Drawing.Size(75, 23);
             this.btnSelectfile.TabIndex = 15;
             this.btnSelectfile.Text = "Chọn file";
             this.btnSelectfile.UseVisualStyleBackColor = true;
-            this.btnSelectfile.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnSelectfile.Click += new System.EventHandler(this.btnSelectfile_Click);
             // 
             // linkFile
             // 
-            this.linkFile.AutoSize = true;
-            this.linkFile.Location = new System.Drawing.Point(118, 420);
+            this.linkFile.Location = new System.Drawing.Point(118, 415);
             this.linkFile.Name = "linkFile";
-            this.linkFile.Size = new System.Drawing.Size(0, 13);
+            this.linkFile.Size = new System.Drawing.Size(207, 40);
             this.linkFile.TabIndex = 16;
             this.linkFile.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkFile_LinkClicked);
             // 
@@ -292,12 +292,21 @@
             this.label8.TabIndex = 46;
             this.label8.Text = "Add New Task";
             // 
+            // lbWaiting
+            // 
+            this.lbWaiting.AutoSize = true;
+            this.lbWaiting.Location = new System.Drawing.Point(210, 395);
+            this.lbWaiting.Name = "lbWaiting";
+            this.lbWaiting.Size = new System.Drawing.Size(0, 13);
+            this.lbWaiting.TabIndex = 47;
+            // 
             // AddTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(398, 497);
+            this.Controls.Add(this.lbWaiting);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.linkFile);
             this.Controls.Add(this.btnSelectfile);
@@ -362,5 +371,6 @@
         private System.Windows.Forms.Button btnSelectfile;
         private System.Windows.Forms.LinkLabel linkFile;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbWaiting;
     }
 }
