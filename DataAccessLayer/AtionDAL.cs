@@ -1,4 +1,10 @@
-﻿namespace DataAccessLayer
+﻿using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+namespace DataAccessLayer
 {
     using Helpers;
     using Entity;
@@ -28,22 +34,26 @@
 
         protected SqlHelpers<Action> sqlHelpers = new SqlHelpers<Action>();
         protected ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         /// <summary>
         /// The GetList
         /// </summary>
         /// <returns>The <see cref="List{Action}"/></returns>
         public List<Action> GetList()
         {
-            using (var con = Connection.GetConnection)
+            var request = (HttpWebRequest)WebRequest.Create("https://localhost:44372/api/values");
+            request.Method = "GET";
+            var response = (HttpWebResponse)request.GetResponse();
+            using (var reader = new StreamReader(response.GetResponseStream()))
             {
-                string cmd = "Action_GetAll";
-                var myParameters = new OracleParameter[]
-                {
-                    new OracleParameter("listAction",OracleDbType.RefCursor,ParameterDirection.Output)
-                };
-                return sqlHelpers.ExcuteQueryDataReader(cmd, CommandType.StoredProcedure, con, myParameters);
+                var data = reader.ReadToEnd();
+                return JsonConvert.DeserializeObject<List<Action>>(data);
             }
+        }
+
+        private async Task<string> GetJsonFromUrl(string url)
+        {
+            HttpClient client = new HttpClient();
+            return await client.GetStringAsync(url);
         }
 
         /// <summary>
@@ -88,15 +98,20 @@
         /// <returns>The <see cref="int"/></returns>
         public int Delete(int id)
         {
-            using (var con = Connection.GetConnection)
-            {
-                string cmd = "Action_Delete";
-                var myParameters = new OracleParameter[]
-                {
-                    new OracleParameter("actionId",id)
-                };
-                return sqlHelpers.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
-            }
+            var request = (HttpWebRequest)WebRequest.Create("https://localhost:44372/api/values/"+id);
+            request.Method = "DELETE";
+            var response = (HttpWebResponse)request.GetResponse();
+            response.GetResponseStream();
+            return -1;
+            //using (var con = Connection.GetConnection)
+            //{
+            //    string cmd = "Action_Delete";
+            //    var myParameters = new OracleParameter[]
+            //    {
+            //        new OracleParameter("actionId",id)
+            //    };
+            //    return sqlHelpers.ExcuteNonQuery(cmd, CommandType.StoredProcedure, con, myParameters);
+            //}
         }
 
         /// <summary>

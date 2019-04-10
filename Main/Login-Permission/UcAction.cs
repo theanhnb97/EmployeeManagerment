@@ -1,4 +1,7 @@
-﻿namespace Main
+﻿using System.Net.Http;
+using Newtonsoft.Json;
+
+namespace Main
 {
     using BusinessLayer;
     using System;
@@ -79,7 +82,7 @@
         public void LoadData()
         {
             dgvData.DataSource = myAction.GetList();
-            dgvData.Rows[0].Selected = false;
+            //dgvData.Rows[0].Selected = false;
         }
 
         /// <summary>
